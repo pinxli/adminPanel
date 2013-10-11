@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-10 06:48:17
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-11 09:50:30
          compiled from "application\modules\admin\views\dashboard.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2818352564db12830e1-05751103%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b513733275990d1e38dc5cd62799065886995ca6' => 
     array (
       0 => 'application\\modules\\admin\\views\\dashboard.tpl',
-      1 => 1381387695,
+      1 => 1381485028,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_52564db12c577',
   'variables' => 
   array (
     'baseUrl' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_52564db12c577',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_52564db12c577')) {function content_52564db12c577($_smarty_tpl) {?><div id="content" class="span10">
 			<!-- start: Content -->
@@ -725,12 +725,4 @@ assets/img/avatar.jpg">
 		
 		<div class="clearfix"></div>
 		
-		<footer>
-			<p>
-				<span style="text-align:left;float:left">&copy; <a href="http://clabs.co" target="_blank">creativeLabs</a> 2013</span>
-				<span style="text-align:right;float:right">Powered by: <a href="#">Perfectum Dashboard</a></span>
-			</p>
-
-		</footer>
-				
-	</div><!--/.fluid-container--><?php }} ?>
+		<?php }} ?>

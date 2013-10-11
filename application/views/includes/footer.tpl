@@ -1,3 +1,28 @@
+	</div><!--/fluid-row-->
+			
+	<div class="modal hide fade" id="myModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">Ã—</button>
+			<h3>Settings</h3>
+		</div>
+		<div class="modal-body">
+			<p>Here settings can be configured...</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+			<a href="#" class="btn btn-primary">Save changes</a>
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+	<footer>
+		<p>
+			<span style="text-align:left;float:left">&copy; <a href="http://clabs.co" target="_blank">creativeLabs</a> 2013</span>
+			<span style="text-align:right;float:right">Powered by: <a href="#">CompareHero</a></span>
+		</p>
+	</footer>
+				
+	</div><!--/.fluid-container-->
 <!-- start: JavaScript-->
 	<script src="{$baseUrl}assets/js/jquery-1.9.1.min.js"></script>
 	<script src="{$baseUrl}assets/js/jquery-migrate-1.0.0.min.js"></script>

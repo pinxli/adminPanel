@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-11 05:03:24
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-11 09:53:48
          compiled from "application\views\includes\footer.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:256435257869ca50b46-38921528%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7fd3891607dbbe199e9ee63baef196310d2ed14d' => 
     array (
       0 => 'application\\views\\includes\\footer.tpl',
-      1 => 1381387537,
+      1 => 1381485218,
       2 => 'file',
     ),
   ),
@@ -15,15 +15,40 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_5257869cad512',
   'variables' => 
   array (
     'baseUrl' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5257869cad512',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5257869cad512')) {function content_5257869cad512($_smarty_tpl) {?><!-- start: JavaScript-->
+<?php if ($_valid && !is_callable('content_5257869cad512')) {function content_5257869cad512($_smarty_tpl) {?>	</div><!--/fluid-row-->
+			
+	<div class="modal hide fade" id="myModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">Ã—</button>
+			<h3>Settings</h3>
+		</div>
+		<div class="modal-body">
+			<p>Here settings can be configured...</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+			<a href="#" class="btn btn-primary">Save changes</a>
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+	<footer>
+		<p>
+			<span style="text-align:left;float:left">&copy; <a href="http://clabs.co" target="_blank">creativeLabs</a> 2013</span>
+			<span style="text-align:right;float:right">Powered by: <a href="#">Perfectum Dashboard</a></span>
+		</p>
+	</footer>
+				
+	</div><!--/.fluid-container-->
+<!-- start: JavaScript-->
 	<script src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 assets/js/jquery-1.9.1.min.js"></script>
 	<script src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
