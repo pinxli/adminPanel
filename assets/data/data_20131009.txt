@@ -1,0 +1,2 @@
+{"product_id":"","product_type_id":"1","company_id":"1","product_name":"test product name","product_description":"test product desc","featured":"1","country_id":"1","area_id":"1","product_icon":"icon","product_link":"link","status":"1"}
+{"product_id":"1","product_type_id":"1","company_id":"1","product_name":"test product name","product_description":"test product desc","featured":"1","country_id":"1","area_id":"1","product_icon":"icon","product_link":"link","status":"1"}

@@ -1,0 +1,3 @@
+{"product_name":"Cookies","product_description":"Yummy","product_type_id":"5","featured":"1","company_id":"5","country_id":"133","area_id":"2","product_icon":"icon","product_link":"Product Link"}
+{"product_name":"Red Bull","product_description":"Red Bull","product_type_id":"3","featured":"1","company_id":"6","country_id":"133","area_id":"3","product_icon":"Product Icon","product_link":"Product Link"}
+{"product_name":"Nike Flyknit One","product_description":"Nike Flyknit One","product_type_id":"6","featured":"1","company_id":"6","country_id":"174","area_id":"2","product_icon":"Product Icon","product_link":"Product Link"}
