@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-10 07:12:13
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-11 05:06:23
          compiled from "application\modules\company\views\companylist.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2592525652dd3aecb8-98813037%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd3ab7b4ad0befd26bf0bb9f0d2206d2df057ec45' => 
     array (
       0 => 'application\\modules\\company\\views\\companylist.tpl',
-      1 => 1381389131,
+      1 => 1381467973,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'baseUrl' => 0,
+    'msgClass' => 0,
+    'msgInfo' => 0,
     'companyList' => 0,
     'company' => 0,
   ),
@@ -43,12 +45,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
             
             
+            
 			   <div class="row-fluid sortable">
 				<div class="box span12">
                 
                 <a class="btn" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 company/addcompany">Add Company</a>
                 <hr>
+                       
+                     <div class="<?php echo $_smarty_tpl->tpl_vars['msgClass']->value;?>
+"><strong><?php echo $_smarty_tpl->tpl_vars['msgInfo']->value;?>
+</strong></div>  
                             
 					<div class="box-header" data-original-title>
 						<h2><i class="icon-group"></i><span class="break"></span>Company</h2>

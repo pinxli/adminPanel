@@ -2,9 +2,14 @@
 
 class Settings extends CI_Controller {
 	
+	public $msgClass = '';
+	public $msgInfo  = ''; 
+	
 	
 	public function __construct() {
 		parent::__construct();
+		//check user session
+		$this->hero_session->is_active_session();
 		
 		//template path
 		$this->globalTpl = $this->config->item('global_tpl');
@@ -92,12 +97,12 @@ class Settings extends CI_Controller {
 			if($result->rc == 0)
 			{
 				$msgClass = 'alert alert-success';
-				$msgInfo  = ( $result->message ) ? $result->message : 'User has been added.';
+				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'User has been added.';
 			}
 			else 
 			{	
 				$msgClass = 'alert alert-error';
-				$msgInfo  = ( $result->message ) ? $result->message : 'Add user failed.';			
+				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add user failed.';			
 			}
 			
 			//set flash data for error/info message
@@ -133,12 +138,12 @@ class Settings extends CI_Controller {
 				if($result->rc == 0)
 				{
 					$msgClass = 'alert alert-success';
-					$msgInfo  = ( $result->message ) ? $result->message : 'User has been modified.';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'User has been modified.';
 				}
 				else 
 				{	
 					$msgClass = 'alert alert-error';
-					$msgInfo  = ( $result->message ) ? $result->message : 'Edit user failed.';			
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Edit user failed.';			
 				}
 				
 				//set flash data for error/info message
@@ -188,7 +193,7 @@ class Settings extends CI_Controller {
 		else 
 		{
 			$msgClass = 'alert alert-error';
-			$msgInfo  = ( $result->message ) ? $result->message : 'Cannot get User Info';	
+			$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Cannot get User Info';	
 				
 			//set flash data for error/info message
 			$msginfo_arr = array(
@@ -209,12 +214,12 @@ class Settings extends CI_Controller {
 		if($result->rc == 0)
 		{
 			$msgClass = 'alert alert-success';
-			$msgInfo  = ( $result->message ) ? $result->message : 'User has been deleted.';
+			$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'User has been deleted.';
 		}
 		else 
 		{	
 			$msgClass = 'alert alert-error';
-			$msgInfo  = ( $result->message ) ? $result->message : 'Delete user failed.';			
+			$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Delete user failed.';			
 		}
 		
 		//set flash data for error/info message

@@ -325,7 +325,7 @@
 			<div class="span2 main-menu-span">
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
-						<li><a href="{$baseUrl}dashoard/members_area"><i class="icon-home icon-white"></i><span class="hidden-tablet"> Home</span></a></li>
+						<li><a href="{$baseUrl}dashboard/members_area"><i class="icon-home icon-white"></i><span class="hidden-tablet"> Home</span></a></li>
                         <li><a class="dropmenu" href="#"><i class="icon-ellipsis-vertical icon-white"></i><span class="hidden-tablet"> Verticals</span></a>
 							<ul>
 								<li><a class="submenu" href="credit-card.html"><span class="hidden-tablet"> Credit Cards</span></a></li>
@@ -355,8 +355,7 @@
                          <li><a class="dropmenu" href="#"><i class="icon-cogs icon-white"></i><span class="hidden-tablet">Settings</span></a>
                         	<ul>
                            		<li><a class="submenu" href="{$baseUrl}settings/user_management/"><span class="hidden-tablet">User Management</span></a></li>
-                           		<li><a class="submenu" href="{$baseUrl}settings/accesslogs/"><span class="hidden-tablet">Access Logs</span></a></li>
-								
+								<li><a class="submenu" href="{$baseUrl}settings/accesslogs/"><span class="hidden-tablet">Access Logs</span></a></li>
 							</ul>
                             
                             	

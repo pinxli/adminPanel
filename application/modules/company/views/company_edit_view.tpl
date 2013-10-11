@@ -1,4 +1,3 @@
-
 <div id="content" class="span10">
 	<!-- start: Content -->
 			<div>
@@ -17,7 +16,7 @@
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="icon-edit"></i><span class="break"></span>Add Company</h2>
+						<h2><i class="icon-edit"></i><span class="break"></span>Edit Company</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
@@ -27,7 +26,7 @@
 					<div class="box-content">
 						
 					
-						<?php echo $form_open;?>
+							{$form_open}
 							<fieldset>
 							  
 							  <div class="control-group">
@@ -80,13 +79,13 @@
 							  </div>
 
 							   <div class="form-actions">
-								<button type="submit" class="btn btn-primary">Add</button>
+								<button type="submit" class="btn btn-primary">Edit</button>
 								<button class="btn">Cancel</button>
 							  </div>
 							</fieldset>
-							<input type="hidden" name="company_id" value="<?php echo $company_info->data->companyinfo[0]->company_id;?>">
+							<input type="hidden" name="company_id" value="{$company_id}">
 							<input type="hidden" name="editnow" value="editnow">
-						<?php echo $form_close;?>
+							{$form_close}
 					
 			
 			</div>

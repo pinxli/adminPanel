@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-10 12:01:17
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-11 06:36:09
          compiled from "application\modules\product\views\productarea_list_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:15174525695883de1c6-59984711%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e5a213999c02cddc273d9ad8eb14a5fcc77796b2' => 
     array (
       0 => 'application\\modules\\product\\views\\productarea_list_view.tpl',
-      1 => 1381406474,
+      1 => 1381473354,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'baseUrl' => 0,
+    'msgClass' => 0,
+    'msgInfo' => 0,
     'productAreaList' => 0,
     'AreaList' => 0,
   ),
@@ -49,7 +51,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <a class="btn" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 product/addproductarea">Add Product Area</a>
                 <hr>
-                            
+                    <div class="<?php echo $_smarty_tpl->tpl_vars['msgClass']->value;?>
+"><strong><?php echo $_smarty_tpl->tpl_vars['msgInfo']->value;?>
+</strong></div>        
 					<div class="box-header" data-original-title>
 						<h2><i class="icon-group"></i><span class="break"></span>Product Areas</h2>
 						<div class="box-icon">

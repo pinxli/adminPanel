@@ -1,2 +1,1 @@
 {"product_name":"Alak","product_description":"Alak","product_type_id":"2","featured":"1","company_id":"1","country_id":"99","area_id":"1","product_icon":"Product Icon","product_link":"Product Link"}
-{"product_name":"Table","product_description":"Table","product_type_id":"2","featured":"1","company_id":"1","country_id":"99","area_id":"1","product_icon":"Product Icon","product_link":"Product Link"}

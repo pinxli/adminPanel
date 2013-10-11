@@ -7,9 +7,14 @@
 
 class Product extends CI_Controller {
 	
+	public $msgClass = '';
+	public $msgInfo  = ''; 
 	
 	public function __construct() {
 		parent::__construct();
+		
+		//check user session
+		$this->hero_session->is_active_session();
 		
 		//template path
 		$this->globalTpl = $this->config->item('global_tpl');
@@ -53,7 +58,8 @@ class Product extends CI_Controller {
 		$data['data'] = array(
 			'baseUrl'			=> base_url(),
 			'title'				=> 'Product Type',
-			'messageInfo'		=> '',
+			'msgClass'			=> $this->msgClass,
+			'msgInfo'			=> $this->msgInfo,
 			'productTypeList'	=> $productTypeList
 		);
 		
@@ -73,7 +79,8 @@ class Product extends CI_Controller {
 		$data['data'] = array(
 			'baseUrl'			=> base_url(),
 			'title'				=> 'Product Area',
-			'messageInfo'		=> '',
+			'msgClass'			=> $this->msgClass,
+			'msgInfo'			=> $this->msgInfo,
 			'productAreaList'	=> $productAreaList
 		);
 		
@@ -172,12 +179,12 @@ class Product extends CI_Controller {
 			if($result->rc == 0)
 			{
 				$msgClass = 'alert alert-success';
-				$msgInfo  = ( $result->message ) ? $result->message : 'Product has been added.';
+				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product has been added.';
 			}
 			else 
 			{	
 				$msgClass = 'alert alert-error';
-				$msgInfo  = ( $result->message ) ? $result->message : 'Add product failed.';			
+				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add product failed.';			
 			}
 			
 			//set flash data for error/info message
@@ -235,12 +242,12 @@ class Product extends CI_Controller {
 			if($result->rc == 0)
 			{
 				$msgClass = 'alert alert-success';
-				$msgInfo  = ( $result->message ) ? $result->message : 'Product Type has been added.';
+				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product Type has been added.';
 			}
 			else 
 			{	
 				$msgClass = 'alert alert-error';
-				$msgInfo  = ( $result->message ) ? $result->message : 'Add product type failed.';			
+				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add product type failed.';			
 			}
 			
 			//set flash data for error/info message
@@ -300,12 +307,12 @@ class Product extends CI_Controller {
 			if($result->rc == 0)
 			{
 				$msgClass = 'alert alert-success';
-				$msgInfo  = ( $result->message ) ? $result->message : 'Product Area has been added.';
+				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product Area has been added.';
 			}
 			else 
 			{	
 				$msgClass = 'alert alert-error';
-				$msgInfo  = ( $result->message ) ? $result->message : 'Add product area failed.';			
+				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add product area failed.';			
 			}
 			
 			//set flash data for error/info message
@@ -348,12 +355,12 @@ class Product extends CI_Controller {
 				if($result->rc == 0)
 				{
 					$msgClass = 'alert alert-success';
-					$msgInfo  = ( $result->message ) ? $result->message : 'Product Area has been added.';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product Area has been added.';
 				}
 				else 
 				{	
 					$msgClass = 'alert alert-error';
-					$msgInfo  = ( $result->message ) ? $result->message : 'Add product area failed.';			
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add product area failed.';			
 				}
 				
 				//set flash data for error/info message
@@ -429,7 +436,7 @@ class Product extends CI_Controller {
 		else 
 		{
 			$msgClass = 'alert alert-error';
-			$msgInfo  = ( $result->message ) ? $result->message : 'Cannot get product info';
+			$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Cannot get product info';
 			
 			//set flash data for error/info message
 			$msginfo_arr = array(
@@ -461,12 +468,12 @@ class Product extends CI_Controller {
 				if($result->rc == 0)
 				{
 					$msgClass = 'alert alert-success';
-					$msgInfo  = ( $result->message ) ? $result->message : 'Product Type has been added.';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product Type has been added.';
 				}
 				else 
 				{	
 					$msgClass = 'alert alert-error';
-					$msgInfo  = ( $result->message ) ? $result->message : 'Add product type failed.';			
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add product type failed.';			
 				}
 				
 				//set flash data for error/info message
@@ -509,7 +516,7 @@ class Product extends CI_Controller {
 		else 
 		{
 			$msgClass = 'alert alert-error';
-			$msgInfo  = ( $result->message ) ? $result->message : 'Cannot get product type info';
+			$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Cannot get product type info';
 			
 			//set flash data for error/info message
 			$msginfo_arr = array(
@@ -543,12 +550,12 @@ class Product extends CI_Controller {
 				if($result->rc == 0)
 				{
 					$msgClass = 'alert alert-success';
-					$msgInfo  = ( $result->message ) ? $result->message : 'Product Area has been modified.';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product Area has been modified.';
 				}
 				else 
 				{	
 					$msgClass = 'alert alert-error';
-					$msgInfo  = ( $result->message ) ? $result->message : 'Edit product area failed.';			
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Edit product area failed.';			
 				}
 				
 				//set flash data for error/info message
@@ -557,6 +564,7 @@ class Product extends CI_Controller {
 					'msgInfo'  => $msgInfo,
 				);
 				$this->session->set_flashdata($msginfo_arr);
+				redirect('product/productarea/');
 				
 			}
 			else
@@ -584,13 +592,13 @@ class Product extends CI_Controller {
 				);
 		
 				$this->load->view($this->globalTpl, $data);	
-				
+	
 			}
 		}
 		else 
 		{
 			$msgClass = 'alert alert-error';
-			$msgInfo  = ( $result->message ) ? $result->message : 'Cannot get product area info';
+			$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Cannot get product area info';
 			
 			//set flash data for error/info message
 			$msginfo_arr = array(

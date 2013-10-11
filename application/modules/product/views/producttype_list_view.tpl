@@ -21,7 +21,7 @@
                 
                 <a class="btn" href="{$baseUrl}product/addproducttype">Add Product Type</a>
                 <hr>
-                            
+                    <div class="{$msgClass}"><strong>{$msgInfo}</strong></div>   
 					<div class="box-header" data-original-title>
 						<h2><i class="icon-group"></i><span class="break"></span>Product</h2>
 						<div class="box-icon">

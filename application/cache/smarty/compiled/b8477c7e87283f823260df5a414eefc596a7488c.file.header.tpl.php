@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-11 04:57:25
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-11 06:38:57
          compiled from "application\views\includes\header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:8049525784fb6aefa1-46424016%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:93385257869c99f3c7-90349051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'b8477c7e87283f823260df5a414eefc596a7488c' => 
     array (
       0 => 'application\\views\\includes\\header.tpl',
-      1 => 1381467420,
+      1 => 1381473534,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '8049525784fb6aefa1-46424016',
+  'nocache_hash' => '93385257869c99f3c7-90349051',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_525784fb6fd1b',
+  'unifunc' => 'content_5257869ca43cd',
   'variables' => 
   array (
     'title' => 0,
@@ -24,7 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_525784fb6fd1b')) {function content_525784fb6fd1b($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_5257869ca43cd')) {function content_5257869ca43cd($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
 	
@@ -368,7 +368,7 @@ admin/logout"><i class="icon-off"></i> Logout</a></li>
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li><a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-dashoard/members_area"><i class="icon-home icon-white"></i><span class="hidden-tablet"> Home</span></a></li>
+dashboard/members_area"><i class="icon-home icon-white"></i><span class="hidden-tablet"> Home</span></a></li>
                         <li><a class="dropmenu" href="#"><i class="icon-ellipsis-vertical icon-white"></i><span class="hidden-tablet"> Verticals</span></a>
 							<ul>
 								<li><a class="submenu" href="credit-card.html"><span class="hidden-tablet"> Credit Cards</span></a></li>
@@ -404,9 +404,8 @@ company/companymanagement"><span class="hidden-tablet"> Company Management</span
                         	<ul>
                            		<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 settings/user_management/"><span class="hidden-tablet">User Management</span></a></li>
-                           		<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 settings/accesslogs/"><span class="hidden-tablet">Access Logs</span></a></li>
-								
 							</ul>
                             
                             	

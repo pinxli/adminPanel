@@ -2,13 +2,18 @@
 
 class Company extends CI_Controller {
 	
+	public $msgClass = '';
+	public $msgInfo  = ''; 
 	
 	public function __construct() {
 		parent::__construct();
 		
+		
+		//check user session
+		$this->hero_session->is_active_session();
+		
 		//template path
 		$this->globalTpl = $this->config->item('global_tpl');
-		
 		//get flash data for error/info message
 		$this->msgClass = ( $this->session->flashdata('msgClass') ) ? $this->session->flashdata('msgClass') : '';
 		$this->msgInfo  = ( $this->session->flashdata('msgInfo') ) ? $this->session->flashdata('msgInfo') : '';
@@ -27,7 +32,9 @@ class Company extends CI_Controller {
 		$data['data'] = array(
 			'baseUrl'		=> base_url(),
 			'title'   		=> 'Company List',
-			'companyList'	=> $companyList
+			'companyList'	=> $companyList,
+			'msgClass'  	=> $this->msgClass,
+			'msgInfo'   	=> $this->msgInfo,
 		);
 		
 		$this->load->view($this->globalTpl, $data);	
@@ -98,12 +105,12 @@ class Company extends CI_Controller {
 			if($result->rc == 0)
 			{
 				$msgClass = 'alert alert-success';
-				$msgInfo  = ( $result->message ) ? $result->message : 'Company has been added.';
+				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Company has been added.';
 			}
 			else 
 			{	
 				$msgClass = 'alert alert-error';
-				$msgInfo  = ( $result->message ) ? $result->message : 'Add company failed.';			
+				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add company failed.';			
 			}
 			
 			//set flash data for error/info message
@@ -111,6 +118,7 @@ class Company extends CI_Controller {
 				'msgClass' => $msgClass,
 				'msgInfo'  => $msgInfo,
 			);
+
 			$this->session->set_flashdata($msginfo_arr);
 			
 			redirect('company/companymanagement/');
@@ -120,7 +128,7 @@ class Company extends CI_Controller {
 	
 	// edit user
 	function editcompany()
-	{		
+	{			
 		$company_info = $this->company_model->companyInfo($this->uri->segment(3));
 		
 		if($company_info->rc == 0)
@@ -143,12 +151,12 @@ class Company extends CI_Controller {
 				if($result->rc == 0)
 				{
 					$msgClass = 'alert alert-success';
-					$msgInfo  = ( $result->message ) ? $result->message : 'Company has been modified.';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Company has been modified.';
 				}
 				else 
 				{	
 					$msgClass = 'alert alert-error';
-					$msgInfo  = ( $result->message ) ? $result->message : 'Add company failed.';			
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add company failed.';			
 				}
 				
 				//set flash data for error/info message
@@ -156,6 +164,7 @@ class Company extends CI_Controller {
 					'msgClass' => $msgClass,
 					'msgInfo'  => $msgInfo,
 				);
+				
 				$this->session->set_flashdata($msginfo_arr);
 				
 				redirect('company/companymanagement/');
@@ -184,6 +193,7 @@ class Company extends CI_Controller {
 					'msgClass'  		=> $this->msgClass,
 					'msgInfo'   		=> $this->msgInfo,
 					'form_open'   		=> $form_open,
+					'company_id'		=> $company_info_res->company_id,
 					'company_name'   	=> $company_name,
 					'company_email'   	=> $company_email,
 					'company_phone'   	=> $company_phone,
