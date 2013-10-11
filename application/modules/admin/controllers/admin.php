@@ -5,18 +5,7 @@ class Admin extends CI_Controller {
 	
 	public function __construct() {
 		parent::__construct();
-			
-		/*$multidb = $this->load->database('comphk', true);
 		
-		$array = array('fname' => 'Jason', 'password' => 'password');
-		$multidb->where($array);
-		$result = $multidb->get('user');
-		
-		print_r($result->result());
-		
-		$multidb->close(); */
-
-				
 		$this->load->model('admin_model');
 		
 		//template path
@@ -94,21 +83,7 @@ class Admin extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect('admin');
 	}	
-	
-	// check user if logged into the system
-	function is_logged_in()
-	{
-		$is_logged_in = $this->session->userdata('is_logged_in');
-		if(!isset($is_logged_in) || $is_logged_in != true)
-		{
-			echo 'You don\'t have permission to access this page. <a href="'.base_url().'">Login</a>';	
-			die();		
-			//$this->load->view('login_form');
-		}		
-	}
-	
-	
-	
+
 	function postProduct()
 	{
 		$url = 'http://localhost/MoneyMaxPH/api/products/98740/';
