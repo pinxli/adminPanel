@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-11 09:53:48
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-11 10:31:12
          compiled from "application\views\includes\footer.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:256435257869ca50b46-38921528%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7fd3891607dbbe199e9ee63baef196310d2ed14d' => 
     array (
       0 => 'application\\views\\includes\\footer.tpl',
-      1 => 1381485218,
+      1 => 1381485270,
       2 => 'file',
     ),
   ),
@@ -43,7 +43,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<footer>
 		<p>
 			<span style="text-align:left;float:left">&copy; <a href="http://clabs.co" target="_blank">creativeLabs</a> 2013</span>
-			<span style="text-align:right;float:right">Powered by: <a href="#">Perfectum Dashboard</a></span>
+			<span style="text-align:right;float:right">Powered by: <a href="#">CompareHero</a></span>
 		</p>
 	</footer>
 				
