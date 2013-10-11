@@ -14,7 +14,7 @@ class Admin extends CI_Controller {
 		
 		print_r($result->result());
 		
-		$multidb->close(); test*/
+		$multidb->close(); asdf*/
 
 				
 		$this->load->model('admin_model');
