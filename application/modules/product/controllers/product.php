@@ -611,4 +611,157 @@ class Product extends CI_Controller {
 		}
 	}
 	
+	function csvupload()
+	{
+		$this->load->library('form_validation');				
+		
+		// field name, error message, validation rules
+		$this->form_validation->set_rules('product_type_id', 'product_type_id', 'xss_clean|trim|required');
+		$this->form_validation->set_rules('company_id', 'company_id', 'xss_clean|trim|required|required');
+		$this->form_validation->set_rules('country_id', 'country_id', 'xss_clean|trim|required');
+		$this->form_validation->set_rules('area_id', 'area_id', 'xss_clean|trim|required');
+		
+		if($this->form_validation->run() == FALSE)
+		{
+			
+			$clist			 = $this->product_model->companyList();
+			$type_list		 = $this->product_model->productTypeList();
+			$area_list 		 = $this->product_model->productAreasList();
+			$country_list	 = $this->product_model->countryList();
+			
+			foreach ($area_list->data->productarealist as $area):
+			$arealist[$area->area_id] = $area->area_name;
+			endforeach;
+			
+			foreach ($country_list->data->countrylist as $country):
+			$countrylist[$country->country_id] = $country->short_name;
+			endforeach;
+			
+			foreach ($type_list->data->producttypelist as $product):
+			$product_type_list[$product->product_type_id] = $product->product_type;
+			endforeach;
+			
+			foreach ($clist->data->companylist as $company):
+			$company_list[$company->company_id] = $company->company_name;
+			endforeach;
+
+			$form_open 			 	= form_open_multipart('',array('class' => 'form-horizontal', 'method' => 'post'));
+			$areaList			 	= form_dropdown('area_id', $arealist, '');
+			$countryList			= form_dropdown('country_id', $countrylist, '');
+			$productTypeList		= form_dropdown('product_type_id', $product_type_list, '');
+			$companyList			= form_dropdown('company_id', $company_list, '');
+			$form_close = form_close();
+
+			$data['mainContent'] = 'csv_upload_view.tpl';
+
+			$data['data'] = array(
+			'baseUrl'				=> base_url(),
+			'title'					=> 'CSV Upload',
+			'msgClass'				=> $this->msgClass,
+			'msgInfo'				=> $this->msgInfo,
+			'areaList'				=> $areaList,
+			'countryList'			=> $countryList,
+			'productTypeList'		=> $productTypeList,
+			'companyList'			=> $companyList,
+			'form_open'				=> $form_open,
+			'form_close'			=> $form_close
+			);
+		
+			$this->load->view('includes/template', $data);
+		}
+		else
+		{
+			$file_element_name = 'productcsv';
+			
+			$config['upload_path'] 		= './assets/data';
+			$config['allowed_types'] 	= 'csv|txt';
+			$config['max_size'] 		= 1024 * 8;
+			$config['remove_spaces']	= TRUE;
+
+			$this->load->library('upload', $config);
+
+			if (!$this->upload->do_upload($file_element_name))
+			{	
+				$msgClass = 'alert alert-error';
+				$msgInfo  = $this->upload->display_errors('', '');
+
+			}
+			else 
+			{
+				$data = $this->upload->data();
+				$file_handle = fopen($data["full_path"], "rb");
+				$ctr = 0;
+		
+				$insert_sql = " INSERT INTO products (product_type_id, company_id, product_name,product_description,featured,country_id,area_id,product_icon,product_link,product_status) VALUES ";
+				
+				while (!feof($file_handle) ) {
+					$line_of_text = fgets($file_handle);
+					$parts = explode(';', $line_of_text);
+
+										
+					if (count($parts) > 1 && $ctr > 0)
+					{
+						
+							$product_type_id		= $this->input->post('product_type_id');
+							$company_id      		= $this->input->post('company_id');
+							$product_name	 		= $parts[0];
+							$product_description	= $parts[1];
+							$featured				= $parts[2];
+							$country_id				= $this->input->post('country_id');
+							$area_id				= $this->input->post('area_id');
+							$product_icon 			= $parts[3];
+							$product_link 			= $parts[4];
+							$status					= $parts[5];
+
+						$insert_sql .= ' (
+											'.$product_type_id.', 
+											'.$company_id.', 
+											"'.$product_name.'", 
+											"'.$product_description.'", 
+											'.$featured.',
+											'.$country_id.',
+											'.$area_id.',
+											"'.$product_icon.'",
+											"'.$product_link.'",
+											'.$status.'),';									
+					}
+					
+					$ctr++;
+				}
+
+				
+				$query_string = substr($insert_sql, 0, -1);
+				
+				$sql_array = array('insert_sql' => $query_string);
+				
+				$result = $this->product_model->productAdd($sql_array);
+						
+				fclose($file_handle);
+				unlink($data["full_path"]);
+				
+				if($result->rc == 0)
+				{
+					$msgClass = 'alert alert-success';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'CSV upload success.';
+				}
+				else
+				{
+					$msgClass = 'alert alert-error';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'CSV upload failed.';
+				}
+
+			}
+			
+			//set flash data for error/info message
+			$msginfo_arr = array(
+				'msgClass' => $msgClass,
+				'msgInfo'  => $msgInfo,
+			);
+			$this->session->set_flashdata($msginfo_arr);
+			
+			redirect('product/csvupload/');
+			
+		}
+	}
+	
 }
