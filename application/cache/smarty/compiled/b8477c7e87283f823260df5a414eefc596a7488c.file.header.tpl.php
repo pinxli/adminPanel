@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-11 09:26:16
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-14 02:59:24
          compiled from "application\views\includes\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93385257869c99f3c7-90349051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b8477c7e87283f823260df5a414eefc596a7488c' => 
     array (
       0 => 'application\\views\\includes\\header.tpl',
-      1 => 1381483540,
+      1 => 1381719561,
       2 => 'file',
     ),
   ),
@@ -390,7 +390,8 @@ product/producttype"><span class="hidden-tablet"> Product Types</span></a></li>
 product/productarea"><span class="hidden-tablet"> Product Areas</span></a></li>
 								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 product/productoption"><span class="hidden-tablet"> Product Options</span></a></li>
-							</ul>	
+								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+product/csvupload"><span class="hidden-tablet"> CSV Upload</span></a></li>							</ul>	
 						</li>
 											
                         <li><a class="dropmenu" href="#"><i class="icon-rocket icon-white"></i><span class="hidden-tablet"> Company</span></a>

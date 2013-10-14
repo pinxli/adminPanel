@@ -343,7 +343,7 @@
 								<li><a class="submenu" href="{$baseUrl}product/producttype"><span class="hidden-tablet"> Product Types</span></a></li>
 								<li><a class="submenu" href="{$baseUrl}product/productarea"><span class="hidden-tablet"> Product Areas</span></a></li>
 								<li><a class="submenu" href="{$baseUrl}product/productoption"><span class="hidden-tablet"> Product Options</span></a></li>
-							</ul>	
+								<li><a class="submenu" href="{$baseUrl}product/csvupload"><span class="hidden-tablet"> CSV Upload</span></a></li>							</ul>	
 						</li>
 											
                         <li><a class="dropmenu" href="#"><i class="icon-rocket icon-white"></i><span class="hidden-tablet"> Company</span></a>
