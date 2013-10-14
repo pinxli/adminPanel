@@ -123,12 +123,15 @@ class Products extends CI_Controller {
 				
 				if($insert_sql != '' || $insert_sql != NULL)
 				{
+					$insert_sql = trim(preg_replace('/\s\s+/', ' ', $insert_sql));
 					$arr_data = array('sql'	=> $insert_sql);
 					
 					$response = $this->product_model->productcsvUpload($arr_data);
 				}
 				else 
 				{
+					
+					$response['message'][]	= 'waley';
 					$response = $this->product_model->productAdd($arr_data);
 				}	 
 			}

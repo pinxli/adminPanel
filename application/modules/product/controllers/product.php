@@ -676,7 +676,7 @@ class Product extends CI_Controller {
 			$config['upload_path'] 		= './assets/data';
 			$config['allowed_types'] 	= 'csv|txt';
 			$config['max_size'] 		= 1024 * 8;
-			$config['remove_spaces']	= TRUE;
+			// $config['remove_spaces']	= TRUE;
 
 			$this->load->library('upload', $config);
 
@@ -692,7 +692,7 @@ class Product extends CI_Controller {
 				$file_handle = fopen($data["full_path"], "rb");
 				$ctr = 0;
 		
-				#$insert_sql = " INSERT INTO products (product_type_id, company_id, product_name,product_description,featured,country_id,area_id,product_icon,product_link,product_status) VALUES ";
+				$insert_sql = " INSERT INTO products (product_type_id, company_id, product_name,product_description,featured,country_id,area_id,product_icon,product_link,`status`) VALUES ";
 				
 				while (!feof($file_handle) ) {
 					$line_of_text = fgets($file_handle);
@@ -702,36 +702,31 @@ class Product extends CI_Controller {
 					if (count($parts) > 1 && $ctr > 0)
 					{
 						
-						$insert_data = array(
-								'product_type_id'		=> $this->input->post('product_type_id'),
-								'company_id'  			=> $this->input->post('company_id'),
-								'product_name'	 		=> $parts[0],
-								'product_description'	=> $parts[1],
-								'featured'				=> $parts[2],
-								'country_id'			=> $this->input->post('country_id'),
-								'area_id'				=> $this->input->post('area_id'),
-								'product_icon' 			=> $parts[3],
-								'product_link' 			=> $parts[4],
-								'status'				=> $parts[5]);
+							$product_type_id		= $this->input->post('product_type_id');
+							$company_id      		= $this->input->post('company_id');
+							$product_name	 		= trim($parts[0]);
+							$product_description	= $parts[1];
+							$featured				= $parts[2];
+							$country_id				= $this->input->post('country_id');
+							$area_id				= $this->input->post('area_id');
+							$product_icon 			= $parts[3];
+							$product_link 			= $parts[4];
+							$status					= $parts[5];
 
-						$result = $this->product_model->productAdd($insert_data);	
-
-						#$insert_sql .= ' ('.$product_type_id.','.$company_id.',"'.$product_name.'","'.$product_description.'",'.$featured.','.$country_id.','.$area_id.',"'.$product_icon.'","'.$product_link.'",'.$status.'),';													
-
+						$insert_sql .= ' ('.$product_type_id.','.$company_id.',"'.$product_name.'","'.$product_description.'",'.$featured.','.$country_id.','.$area_id.',"'.$product_icon.'","'.$product_link.'",'.$status.'),';									
+						// $insert_sql .= "($product_type_id,$company_id,'$product_name','$product_description',$featured,$country_id,$area_id,'$product_icon','$product_link',$status),";
 					}
 					
 					$ctr++;
 				}
 
 				
-
-				#$query_string = substr($insert_sql, 0, -1);
+				$query_string = substr($insert_sql, 0, -1);
 				
-				#$sql_array = array('insert_sql' => $query_string);
+				$sql_array = array('insert_sql' => $query_string);
 				
-				#$result = $this->product_model->productAdd($sql_array);
+				$result = $this->product_model->productAdd($sql_array);
 						
-
 				fclose($file_handle);
 				unlink($data["full_path"]);
 				

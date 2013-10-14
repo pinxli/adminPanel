@@ -102,6 +102,25 @@ $db['comphk']['swap_pre'] = '';
 $db['comphk']['autoinit'] = TRUE;
 $db['comphk']['stricton'] = FALSE;
 
+// $active_group = 'comphk';
+// $active_record = TRUE;
+
+$db['compmy']['hostname'] = 'localhost';
+$db['compmy']['username'] = 'root';
+$db['compmy']['password'] = '';
+$db['compmy']['database'] = 'compmy';
+$db['compmy']['dbdriver'] = 'mysql';
+$db['compmy']['dbprefix'] = '';
+$db['compmy']['pconnect'] = TRUE;
+$db['compmy']['db_debug'] = TRUE;
+$db['compmy']['cache_on'] = FALSE;
+$db['compmy']['cachedir'] = '';
+$db['compmy']['char_set'] = 'utf8';
+$db['compmy']['dbcollat'] = 'utf8_general_ci';
+$db['compmy']['swap_pre'] = '';
+$db['compmy']['autoinit'] = TRUE;
+$db['compmy']['stricton'] = FALSE;
+
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
