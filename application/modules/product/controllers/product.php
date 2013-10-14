@@ -692,7 +692,7 @@ class Product extends CI_Controller {
 				$file_handle = fopen($data["full_path"], "rb");
 				$ctr = 0;
 		
-				$insert_sql = " INSERT INTO products (product_type_id, company_id, product_name,product_description,featured,country_id,area_id,product_icon,product_link,product_status) VALUES ";
+				#$insert_sql = " INSERT INTO products (product_type_id, company_id, product_name,product_description,featured,country_id,area_id,product_icon,product_link,product_status) VALUES ";
 				
 				while (!feof($file_handle) ) {
 					$line_of_text = fgets($file_handle);
@@ -716,30 +716,7 @@ class Product extends CI_Controller {
 
 						$result = $this->product_model->productAdd($insert_data);	
 
-						#$insert_sql .= ' ('.$product_type_id.','.$company_id.',"'.$product_name.'","'.$product_description.'",'.$featured.','.$country_id.','.$area_id.',"'.$product_icon.'","'.$product_link.'",'.$status.'),';									
-
-							$product_type_id		= $this->input->post('product_type_id');
-							$company_id      		= $this->input->post('company_id');
-							$product_name	 		= $parts[0];
-							$product_description	= $parts[1];
-							$featured				= $parts[2];
-							$country_id				= $this->input->post('country_id');
-							$area_id				= $this->input->post('area_id');
-							$product_icon 			= $parts[3];
-							$product_link 			= $parts[4];
-							$status					= $parts[5];
-
-						$insert_sql .= ' (
-											'.$product_type_id.', 
-											'.$company_id.', 
-											"'.$product_name.'", 
-											"'.$product_description.'", 
-											'.$featured.',
-											'.$country_id.',
-											'.$area_id.',
-											"'.$product_icon.'",
-											"'.$product_link.'",
-											'.$status.'),';									
+						#$insert_sql .= ' ('.$product_type_id.','.$company_id.',"'.$product_name.'","'.$product_description.'",'.$featured.','.$country_id.','.$area_id.',"'.$product_icon.'","'.$product_link.'",'.$status.'),';													
 
 					}
 					
@@ -753,13 +730,6 @@ class Product extends CI_Controller {
 				#$sql_array = array('insert_sql' => $query_string);
 				
 				#$result = $this->product_model->productAdd($sql_array);
-				
-
-				$query_string = substr($insert_sql, 0, -1);
-				
-				$sql_array = array('insert_sql' => $query_string);
-				
-				$result = $this->product_model->productAdd($sql_array);
 						
 
 				fclose($file_handle);
