@@ -702,7 +702,6 @@ class Product extends CI_Controller {
 					if (count($parts) > 1 && $ctr > 0)
 					{
 						
-<<<<<<< HEAD
 						$insert_data = array(
 								'product_type_id'		=> $this->input->post('product_type_id'),
 								'company_id'  			=> $this->input->post('company_id'),
@@ -718,7 +717,7 @@ class Product extends CI_Controller {
 						$result = $this->product_model->productAdd($insert_data);	
 
 						#$insert_sql .= ' ('.$product_type_id.','.$company_id.',"'.$product_name.'","'.$product_description.'",'.$featured.','.$country_id.','.$area_id.',"'.$product_icon.'","'.$product_link.'",'.$status.'),';									
-=======
+
 							$product_type_id		= $this->input->post('product_type_id');
 							$company_id      		= $this->input->post('company_id');
 							$product_name	 		= $parts[0];
@@ -741,28 +740,28 @@ class Product extends CI_Controller {
 											"'.$product_icon.'",
 											"'.$product_link.'",
 											'.$status.'),';									
->>>>>>> 8dcfa12caa0ac23d48f7abf5f90288b4fb7798d8
+
 					}
 					
 					$ctr++;
 				}
 
 				
-<<<<<<< HEAD
+
 				#$query_string = substr($insert_sql, 0, -1);
 				
 				#$sql_array = array('insert_sql' => $query_string);
 				
 				#$result = $this->product_model->productAdd($sql_array);
 				
-=======
+
 				$query_string = substr($insert_sql, 0, -1);
 				
 				$sql_array = array('insert_sql' => $query_string);
 				
 				$result = $this->product_model->productAdd($sql_array);
 						
->>>>>>> 8dcfa12caa0ac23d48f7abf5f90288b4fb7798d8
+
 				fclose($file_handle);
 				unlink($data["full_path"]);
 				
