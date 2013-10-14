@@ -90,6 +90,7 @@ class Products extends CI_Controller {
 			$area_id				= $this->security->xss_clean($this->input->post('area_id'));
 			$product_icon			= $this->security->xss_clean($this->input->post('product_icon'));
 			$product_link			= $this->security->xss_clean($this->input->post('product_link'));
+			$insert_sql				= $this->security->xss_clean($this->input->post('insert_sql'));
 			
 			$response['success'] = true;
 			
@@ -120,7 +121,16 @@ class Products extends CI_Controller {
 					'product_link' 			=> $product_link
 				);
 				
-				$response = $this->product_model->productAdd($arr_data);	 
+				if($insert_sql != '' || $insert_sql != NULL)
+				{
+					$arr_data = array('sql'	=> $insert_sql);
+					
+					$response = $this->product_model->productcsvUpload($arr_data);
+				}
+				else 
+				{
+					$response = $this->product_model->productAdd($arr_data);
+				}	 
 			}
 		}
 		else{

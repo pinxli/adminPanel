@@ -282,6 +282,30 @@ class Product_model extends CI_Model {
 		return $response;
 	}
 	
+	
+	public function productcsvUpload($data)
+	{
+		//sanitized data
+		$sql = $this->security->xss_clean($data['sql']);
+		
+		$query = $this->db->query($sql);
+		
+		if ( $this->db->affected_rows() > 0 ){
+			#$savetextfile  			= $this->savetextfile($data);
+			$response['rc']			= 0;
+			$response['success']	= true;
+			$response['message'][]	= 'csv upload was successful.';
+		}
+		else{
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message'][]	= 'Failed to Upload.';
+		}
+		return $response;
+	}
+	
+	
+	
 
 // end of the product model
 

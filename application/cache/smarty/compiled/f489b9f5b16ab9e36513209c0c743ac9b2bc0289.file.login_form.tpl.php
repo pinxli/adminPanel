@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-14 02:57:41
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-14 09:25:02
          compiled from "application\modules\admin\views\login_form.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1610652561f8c9eee99-96918773%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f489b9f5b16ab9e36513209c0c743ac9b2bc0289' => 
     array (
       0 => 'application\\modules\\admin\\views\\login_form.tpl',
-      1 => 1381719410,
+      1 => 1381742565,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'countryList' => 0,
     'baseUrl' => 0,
+    'msgClass' => 0,
+    'msgInfo' => 0,
     'country' => 0,
   ),
   'has_nocache_code' => false,
@@ -91,7 +93,7 @@ assets/img/bg-login.jpg) !important; }
 <body>
 <div class="container-fluid">
 		<div class="row-fluid">
-					
+				
 			<div class="row-fluid">
 				<div class="login-box">
 					<div class="icons">
@@ -100,7 +102,11 @@ assets/img/bg-login.jpg) !important; }
 					</div>
                     <div class="login-logo" align="center" style="max-width:80%; padding: 0px 80px;"><img src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 assets/img/comphero-logo_03.png"></div>					
+                   
                     <h2>Login to your account</h2>
+                    <div class="<?php echo $_smarty_tpl->tpl_vars['msgClass']->value;?>
+"><strong><?php echo $_smarty_tpl->tpl_vars['msgInfo']->value;?>
+</strong></div>  
 						<form action="admin/validate_credentials" method="post" class="form-horizontal">
 						<fieldset>
 							
