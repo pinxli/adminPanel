@@ -5,19 +5,20 @@ class Settings_model extends CI_Model {
 	function __construct()
 	{
 		parent::__construct();
+		$this->locale = $this->session->userdata('locale');
 	}
 	
 	// Get all users
 	function userlist()
 	{
-		$url = $this->config->item('rest_api_url') . 'users/98740';
+		$url = $this->config->item('rest_api_url') . 'users/'.$this->locale.'/98740';
 		return json_decode($this->call_rest_get($url,''));
 	}
 	
 	// Get users information
 	function user_info($userid)
 	{
-		$url = $this->config->item('rest_api_url') . 'users/98740/' . $userid;
+		$url = $this->config->item('rest_api_url') . 'users/'.$this->locale.'/98740/' . $userid;
 		return json_decode($this->call_rest_get($url,''));
 	}
 	
@@ -25,7 +26,7 @@ class Settings_model extends CI_Model {
 	// Edit user into the Admin Panel
 	function edit_user($data)
 	{
-		$url = $this->config->item('rest_api_url') . 'users/98740/' . $data['userid'];
+		$url = $this->config->item('rest_api_url') . 'users/'.$this->locale.'/98740/' . $data['userid'];
 		$json = json_encode($data);
 		return json_decode($this->call_rest_put($url,$json));
 	}
@@ -33,14 +34,14 @@ class Settings_model extends CI_Model {
 	// Delete user into the Admin Panel
 	function delete_user($userid)
 	{
-		$url = $this->config->item('rest_api_url') . 'users/98740/' . $userid;
+		$url = $this->config->item('rest_api_url') . 'users/'.$this->locale.'/98740/' . $userid;
 		return json_decode($this->call_rest_delete($url,''));
 	}
 	
 	// Add user into the Admin Panel
 	function add_user($data)
 	{
-		$url = $this->config->item('rest_api_url') . 'users/98740';
+		$url = $this->config->item('rest_api_url') . 'users/'.$this->locale.'/98740';
 		return json_decode($this->call_rest_post($url,$data));
 	}
 		
@@ -75,13 +76,14 @@ class Settings_model extends CI_Model {
 	
 	function logList()
 	{
-		$url = $this->config->item('rest_api_url') . 'users/accesslogs/98740';
+		$url = $this->config->item('rest_api_url') . 'users/accesslogs/'.$this->locale.'/98740';
+		// echo $url; exit;
 		return json_decode($this->call_rest_get($url,''));
 	}
 
 	function explogList()
 	{
-		$url = $this->config->item('rest_api_url') . 'users/accesslogs/98740';
+		$url = $this->config->item('rest_api_url') . 'users/accesslogs/'.$this->locale.'/98740';
 		return $this->call_rest_get($url,'');
 	}
 

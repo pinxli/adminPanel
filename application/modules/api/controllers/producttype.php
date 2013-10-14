@@ -12,6 +12,10 @@ class Producttype extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('common_model');	
+		
+		$this->locale	 	 = ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
+		$this->authKey	 	 = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+		$this->productTypeId = ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
 	}
 
 	public function rest()
@@ -36,17 +40,15 @@ class Producttype extends CI_Controller {
 	 **/ 
 	public function get()
 	{
-		$auth_key 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$type_id = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
 			$this->load->model('product_model');
 			
-			if ( $type_id != '' ){
+			if ( $this->productTypeId != '' ){
 				//get company info
-				$response = $this->product_model->typesInfo($type_id);
+				$response = $this->product_model->typesInfo($this->productTypeId);
 			}
 			else{
 				//get company list
@@ -75,8 +77,7 @@ class Producttype extends CI_Controller {
 	 **/
 	public function post()
 	{		
-		$auth_key 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
@@ -130,15 +131,13 @@ class Producttype extends CI_Controller {
 	 **/
 	public function put()
 	{
-		$auth_key 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$type_id = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
 			
 			//check if user id is present
-			if ( $type_id != '' ){
+			if ( $this->productTypeId != '' ){
 				
 				$data = json_decode(file_get_contents("php://input"), true);
 				
@@ -154,7 +153,7 @@ class Producttype extends CI_Controller {
 				if( !empty($arr_data) ){
 					$this->load->model('product_model');
 					//edit user info
-					$response = $this->product_model->typesEdit($type_id,$arr_data);						
+					$response = $this->product_model->typesEdit($this->productTypeId,$arr_data);						
 				}
 			}
 			else{ //user id is missing

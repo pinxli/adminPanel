@@ -54,7 +54,7 @@
 <body>
 <div class="container-fluid">
 		<div class="row-fluid">
-					
+				
 			<div class="row-fluid">
 				<div class="login-box">
 					<div class="icons">
@@ -62,7 +62,9 @@
 						<a href="#"><i class="icon-cog"></i></a>
 					</div>
                     <div class="login-logo" align="center" style="max-width:80%; padding: 0px 80px;"><img src="{$baseUrl}assets/img/comphero-logo_03.png"></div>					
+                   
                     <h2>Login to your account</h2>
+                    <div class="{$msgClass}"><strong>{$msgInfo}</strong></div>  
 						<form action="admin/validate_credentials" method="post" class="form-horizontal">
 						<fieldset>
 							

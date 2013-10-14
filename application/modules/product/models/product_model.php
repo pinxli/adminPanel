@@ -10,26 +10,27 @@ class Product_model extends CI_Model {
 	function __construct()
 	{
 		parent::__construct();
+		$this->locale = $this->session->userdata('locale');
 	}
 	
 	// get product list
 	function productList()
 	{
-		$url = $this->config->item('rest_api_url') . 'products/98740';
+		$url = $this->config->item('rest_api_url') . 'products/'.$this->locale.'/98740';
 		$res = $this->call_rest($url,'','get');
 		return json_decode($res);
 	}
 	
 	function countryList()
 	{
-		$url = $this->config->item('rest_api_url') . 'country/98740';
+		$url = $this->config->item('rest_api_url') . 'country/'.$this->locale.'/98740';
 		$res = $this->call_rest($url,'','get');
 		return json_decode($res);
 	}
 	
 	function companyList()
 	{
-		$url = $this->config->item('rest_api_url') . 'company/98740';
+		$url = $this->config->item('rest_api_url') . 'company/'.$this->locale.'/98740';
 		$res = $this->call_rest($url,'','get');
 		return json_decode($res);
 	}
@@ -38,7 +39,7 @@ class Product_model extends CI_Model {
 	// get product information
 	function productInfo($productId)
 	{
-		$url = $this->config->item('rest_api_url') . 'products/98740/' . $productId;
+		$url = $this->config->item('rest_api_url') . 'products/'.$this->locale.'/98740/' . $productId;
 		$res = $this->call_rest($url,'','get');
 		return json_decode($res);
 	}
@@ -46,7 +47,7 @@ class Product_model extends CI_Model {
 	// add product
 	function productAdd($data)
 	{
-		$url  = $this->config->item('rest_api_url') . 'products/98740/';
+		$url  = $this->config->item('rest_api_url') . 'products/'.$this->locale.'/98740/';
 		$res  = $this->call_rest($url,$data,'post');
 		return json_decode($res);
 	}
@@ -54,7 +55,7 @@ class Product_model extends CI_Model {
 	// edit product
 	function productEdit($data)
 	{
-		$url  = $this->config->item('rest_api_url') . 'products/98740/' . $data['product_id'];
+		$url  = $this->config->item('rest_api_url') . 'products/'.$this->locale.'/98740/' . $data['product_id'];
 		$json = json_encode($data);
 		$res  = $this->call_rest($url,$json,'put');
 		return json_decode($res);
@@ -63,7 +64,7 @@ class Product_model extends CI_Model {
 	// get product type list
 	function productTypeList()
 	{
-		$url = $this->config->item('rest_api_url') . 'producttype/98740/';
+		$url = $this->config->item('rest_api_url') . 'producttype/'.$this->locale.'/98740/';
 		$res = $this->call_rest($url,'','get');
 		return json_decode($res);
 	}
@@ -71,7 +72,7 @@ class Product_model extends CI_Model {
 	// get product type information
 	function productTypeInfo($productId)
 	{
-		$url = $this->config->item('rest_api_url') . 'producttype/98740/' . $productId;
+		$url = $this->config->item('rest_api_url') . 'producttype/'.$this->locale.'/98740/' . $productId;
 		$res = $this->call_rest($url,'','get');
 		return json_decode($res);
 	}
@@ -79,7 +80,7 @@ class Product_model extends CI_Model {
 	// add product type
 	function productTypeAdd($data)
 	{
-		$url  = $this->config->item('rest_api_url') . 'producttype/98740/';
+		$url  = $this->config->item('rest_api_url') . 'producttype/'.$this->locale.'/98740/';
 		$res  = $this->call_rest($url,$data,'post');
 		return json_decode($res);
 	}
@@ -87,7 +88,7 @@ class Product_model extends CI_Model {
 	// edit product type
 	function productTypeEdit($data)
 	{
-		$url  = $this->config->item('rest_api_url') . 'producttype/98740/' . $data['product_type_id'];
+		$url  = $this->config->item('rest_api_url') . 'producttype/'.$this->locale.'/98740/' . $data['product_type_id'];
 		$json = json_encode($data);
 		$res  = $this->call_rest($url,$json,'put');
 		return json_decode($res);
@@ -96,7 +97,7 @@ class Product_model extends CI_Model {
 	// get product option list
 	function productOptionList()
 	{
-		$url = $this->config->item('rest_api_url') . 'productoption/98740/';
+		$url = $this->config->item('rest_api_url') . 'productoption/'.$this->locale.'/98740/';
 		$res = $this->call_rest($url,'','get');
 		return json_decode($res);
 	}
@@ -104,7 +105,7 @@ class Product_model extends CI_Model {
 	// get product option information
 	function productOptionInfo($productId)
 	{
-		$url = $this->config->item('rest_api_url') . 'productoption/98740/' . $productId;
+		$url = $this->config->item('rest_api_url') . 'productoption/'.$this->locale.'/98740/' . $productId;
 		$res = $this->call_rest($url,'','get');
 		return json_decode($res);
 	}
@@ -112,7 +113,7 @@ class Product_model extends CI_Model {
 	// add product type
 	function productOptionAdd($data)
 	{
-		$url  = $this->config->item('rest_api_url') . 'productoption/98740/';
+		$url  = $this->config->item('rest_api_url') . 'productoption/'.$this->locale.'/98740/';
 		$res  = $this->call_rest($url,$json,'post');
 		return json_decode($res);
 	}
@@ -120,7 +121,7 @@ class Product_model extends CI_Model {
 	// edit product option
 	function productOptionEdit($data)
 	{
-		$url  = $this->config->item('rest_api_url') . 'productoption/98740/' . $data['product_id'];
+		$url  = $this->config->item('rest_api_url') . 'productoption/'.$this->locale.'/98740/' . $data['product_id'];
 		$json = json_encode($data);
 		$res  = $this->call_rest($url,$json,'put');
 		return json_decode($res);
@@ -129,7 +130,7 @@ class Product_model extends CI_Model {
 	// get product option list
 	function productAreasList()
 	{
-		$url = $this->config->item('rest_api_url') . 'productarea/98740/';
+		$url = $this->config->item('rest_api_url') . 'productarea/'.$this->locale.'/98740/';
 		$res = $this->call_rest($url,'','get');
 		return json_decode($res);
 	}
@@ -137,7 +138,7 @@ class Product_model extends CI_Model {
 	// get product option information
 	function productAreasInfo($productId)
 	{
-		$url = $this->config->item('rest_api_url') . 'productarea/98740/' . $productId;
+		$url = $this->config->item('rest_api_url') . 'productarea/'.$this->locale.'/98740/' . $productId;
 		$res = $this->call_rest($url,'','get');
 		return json_decode($res);
 	}
@@ -145,7 +146,7 @@ class Product_model extends CI_Model {
 	// add product type
 	function productAreasAdd($data)
 	{
-		$url  = $this->config->item('rest_api_url') . 'productarea/98740/';
+		$url  = $this->config->item('rest_api_url') . 'productarea/'.$this->locale.'/98740/';
 		$res  = $this->call_rest($url,$data,'post');
 		return json_decode($res);
 	}
@@ -153,7 +154,7 @@ class Product_model extends CI_Model {
 	// edit product option
 	function productAreasEdit($data)
 	{
-		$url  = $this->config->item('rest_api_url') . 'productarea/98740/' . $data['area_id'];
+		$url  = $this->config->item('rest_api_url') . 'productarea/'.$this->locale.'/98740/' . $data['area_id'];
 		$json = json_encode($data);
 		$res  = $this->call_rest($url,$json,'put');
 		return json_decode($res);

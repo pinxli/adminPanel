@@ -36,12 +36,13 @@ class Country extends CI_Controller {
 	 **/ 
 	public function get()
 	{
-		$auth_key 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
 		
+		$auth_key 		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
+		 
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$country_id = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+			$country_id = ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
 			$this->load->model('country_model');
 			
 			if ( $country_id != '' ){

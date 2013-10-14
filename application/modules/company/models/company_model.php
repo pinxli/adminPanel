@@ -5,19 +5,20 @@ class Company_model extends CI_Model {
 	function __construct()
 	{
 		parent::__construct();
+		$this->locale = $this->session->userdata('locale');
 	}
 	
 	// Get all company
 	function companyList()
 	{
-		$url = $this->config->item('rest_api_url') . 'company/98740';
+		$url = $this->config->item('rest_api_url') . 'company/'.$this->locale.'/98740';
 		return json_decode($this->call_rest_get($url,''));
 	}
 	
 	// Get users information
 	function companyInfo($companyId)
 	{
-		$url = $this->config->item('rest_api_url') . 'company/98740/' . $companyId;
+		$url = $this->config->item('rest_api_url') . 'company/'.$this->locale.'/98740/' . $companyId;
 		return json_decode($this->call_rest_get($url,''));
 	}
 	
@@ -25,7 +26,7 @@ class Company_model extends CI_Model {
 	// Edit user into the Admin Panel
 	function edit_company($data)
 	{
-		$url = $this->config->item('rest_api_url') . 'company/98740/' . $data['company_id'];
+		$url = $this->config->item('rest_api_url') . 'company/'.$this->locale.'/98740/' . $data['company_id'];
 		$json = json_encode($data);
 		return json_decode($this->call_rest_put($url,$json));
 	}
@@ -33,14 +34,14 @@ class Company_model extends CI_Model {
 	// Delete user into the Admin Panel
 	function delete_user($userid)
 	{
-		$url = $this->config->item('rest_api_url') . 'users/98740/' . $userid;
+		$url = $this->config->item('rest_api_url') . 'users/'.$this->locale.'/98740/' . $userid;
 		return json_decode($this->call_rest_delete($url,''));
 	}
 	
 	// Add user into the Admin Panel
 	function companyAdd($data)
 	{
-		$url = $this->config->item('rest_api_url') . 'company/98740';
+		$url = $this->config->item('rest_api_url') . 'company/'.$this->locale.'/98740';
 		return json_decode($this->call_rest_post($url,$data));
 	}
 		

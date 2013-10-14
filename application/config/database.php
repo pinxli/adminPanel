@@ -67,6 +67,25 @@ $db['default']['stricton'] = FALSE;
 // $active_group = 'comphk';
 // $active_record = TRUE;
 
+$db['compph']['hostname'] = '127.0.0.1';
+$db['compph']['username'] = 'root';
+$db['compph']['password'] = '';
+$db['compph']['database'] = 'compph';
+$db['compph']['dbdriver'] = 'mysqli';
+$db['compph']['dbprefix'] = '';
+$db['compph']['pconnect'] = FALSE;
+$db['compph']['db_debug'] = TRUE;
+$db['compph']['cache_on'] = FALSE;
+$db['compph']['cachedir'] = '';
+$db['compph']['char_set'] = 'utf8';
+$db['compph']['dbcollat'] = 'utf8_general_ci';
+$db['compph']['swap_pre'] = '';
+$db['compph']['autoinit'] = TRUE;
+$db['compph']['stricton'] = FALSE;
+
+// $active_group = 'comphk';
+// $active_record = TRUE;
+
 $db['comphk']['hostname'] = 'localhost';
 $db['comphk']['username'] = 'root';
 $db['comphk']['password'] = '';

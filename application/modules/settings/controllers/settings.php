@@ -94,6 +94,7 @@ class Settings extends CI_Controller {
 			);
 			
 			$result = $this->settings_model->add_user($insert_data);
+			
 			if($result->rc == 0)
 			{
 				$msgClass = 'alert alert-success';
@@ -135,6 +136,7 @@ class Settings extends CI_Controller {
 						);
 				
 				$result = $this->settings_model->edit_user($data);
+				
 				if($result->rc == 0)
 				{
 					$msgClass = 'alert alert-success';
@@ -165,8 +167,8 @@ class Settings extends CI_Controller {
 				$fname 		= form_input	(array('name' => 'fname', 		'class' => 'input-xlarge focused' , 'id' => 'focusedInput',  'placeholder' => 'First Name',			'value' => $user_info_res->fname));
 				$lastname 	= form_input	(array('name' => 'lname', 		'class' => 'input-xlarge focused' , 'id' => 'focusedInput',  'placeholder' => 'Last Name',			'value' => $user_info_res->lname));
 				$email 		= form_input	(array('name' => 'email', 		'class' => 'input-xlarge focused' , 'id' => 'focusedInput',  'placeholder' => 'Type here....',		'value' => $user_info_res->email));
-				$password 	= form_password	(array('name' => 'password', 	'class' => 'input-xlarge focused' , 'id' => 'inputPassword', 'placeholder' => 'Password',			'value' => $user_info_res->password));
-				$cpassword 	= form_password	(array('name' => 'cpassword', 	'class' => 'input-xlarge focused' , 'id' => 'inputPassword', 'placeholder' => 'Confirm Password',	'value' => $user_info_res->password));
+				$password 	= form_password	(array('name' => 'password', 	'class' => 'input-xlarge focused' , 'id' => 'inputPassword', 'placeholder' => 'Password',			'value' => ''/* $user_info_res->password */));
+				$cpassword 	= form_password	(array('name' => 'cpassword', 	'class' => 'input-xlarge focused' , 'id' => 'inputPassword', 'placeholder' => 'Confirm Password',	'value' => ''/* $user_info_res->password */));
 				$form_close = form_close();
 				$userid		= $user_info_res->userid;
 				

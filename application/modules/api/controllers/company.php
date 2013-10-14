@@ -12,6 +12,10 @@ class Company extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('common_model');	
+		
+		$this->locale 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
+		$this->authKey		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+		$this->countryId	= ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
 	}
 
 	public function rest()
@@ -36,17 +40,15 @@ class Company extends CI_Controller {
 	 **/ 
 	public function get()
 	{
-		$auth_key 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$country_id = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
 			$this->load->model('company_model');
 			
-			if ( $country_id != '' ){
+			if ( $this->countryId != '' ){
 				//get company info
-				$response = $this->company_model->companyInfo($country_id);
+				$response = $this->company_model->companyInfo($this->countryId);
 			}
 			else{
 				//get company list
@@ -75,8 +77,7 @@ class Company extends CI_Controller {
 	 **/
 	public function post()
 	{
-		$auth_key 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
@@ -141,15 +142,13 @@ class Company extends CI_Controller {
 	 **/
 	public function put()
 	{
-		$auth_key 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$company_id = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
 			
 			//check if user id is present
-			if ( $company_id != '' ){
+			if ( $this->companyId != '' ){
 				
 				$data = json_decode(file_get_contents("php://input"), true);
 				

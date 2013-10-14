@@ -15,6 +15,10 @@ class Users extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this -> load -> model('common_model');	
+		
+		$this->locale 	= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
+		$this->authKey	= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+		$this->userId 	= ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
 	}
 
 	public function rest()
@@ -38,17 +42,15 @@ class Users extends CI_Controller {
 	 **/
 	public function get()
 	{
-		$auth_key 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$user_id = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
 			$this->load->model('users_model');
 			
-			if ( $user_id != '' ){
+			if ( $this->userId != '' ){
 				//get user info
-				$response = $this->users_model->getUser($user_id);
+				$response = $this->users_model->getUser($this->userId);
 			}
 			else{
 				//get user list
@@ -78,8 +80,7 @@ class Users extends CI_Controller {
 	 **/
 	public function post()
 	{	
-		$auth_key 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
@@ -137,15 +138,13 @@ class Users extends CI_Controller {
 	 **/
 	public function put()
 	{
-		$auth_key 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$user_id = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
-			
+		
 			//check if user id is present
-			if ( $user_id != '' ){
+			if ( $this->userId != '' ){
 				
 				$data = json_decode(file_get_contents("php://input"), true);
 				
@@ -161,7 +160,7 @@ class Users extends CI_Controller {
 				if( !empty($arr_data) ){
 					$this->load->model('users_model');
 					//edit user info
-					$response = $this->users_model->editUser($user_id,$arr_data);						
+					$response = $this->users_model->editUser($this->userId,$arr_data);						
 				}
 			}
 			else{ //user id is missing
@@ -191,18 +190,16 @@ class Users extends CI_Controller {
 	 **/
 	public function delete()
 	{
-		$auth_key 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$user_id = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
-			
+		
 			//check if user id is present
-			if ( $user_id != '' ){
+			if ( $this->userId != '' ){
 				//if authorized delete call made with all segments			
 				$this->load->model('users_model');
-				$return = $this->users_model->delUser($user_id);					
+				$return = $this->users_model->delUser($this->userId);					
 			}
 			else{ //user id is missing
 				$response['rc']			= 999;
@@ -234,13 +231,13 @@ class Users extends CI_Controller {
 	 ** for user login. includes user access logs
 	 **/
 	public function login(){
-		$auth_key 		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+		$locale 		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+		$auth_key 		= ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
+		
 		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$locale	  = $this->security->xss_clean($this->input->post('locale'));
-			$this->session->set_userdata('locale', $locale);
 			$username = $this->security->xss_clean($this->input->post('username'));	
 			$password = $this->security->xss_clean($this->input->post('password'));
 			
@@ -262,6 +259,7 @@ class Users extends CI_Controller {
 				
 				//check if valid user
 				$response = $this->users_model->validateUser($username,md5($password));
+				
 				if ( $response['rc'] == 0 ){
 					$user_info = $response['data']['user'];
 					
@@ -272,7 +270,7 @@ class Users extends CI_Controller {
 					
 					// for access logs
 					$response['data']['user']->log_id = $this->common_model->access_logs($data_arr,'login');
-					$response['data']['user']->locale = $this->session->userdata('locale');
+					$response['data']['user']->locale = $locale;
 					$this->session->sess_destroy();
 				}					
 			}
@@ -342,12 +340,12 @@ class Users extends CI_Controller {
 	
 	public function accesslogs()
 	{
-		$auth_key 		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+		$auth_key 		= ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
 		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$log_id = ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
+			$log_id = ( $this->uri->segment(6) ) ? $this->uri->segment(6) : '';
 			$this->load->model('users_model');
 			
 			if ( $log_id != '' ){

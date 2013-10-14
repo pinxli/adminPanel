@@ -6,7 +6,7 @@ class Admin_model extends CI_Model {
 	// validate user credentials
 	function validate($data)
 	{
-		$url = $this->config->item('rest_api_url') . 'users/login/98740/';
+		$url = $this->config->item('rest_api_url') . 'users/login/'.$data['locale'].'/98740/';
 		return json_decode($this->call_rest_post($url,$data));
 	}
 	
@@ -22,7 +22,8 @@ class Admin_model extends CI_Model {
 	//countryList
 	function countryList()
 	{
-		$url = $this->config->item('rest_api_url') . 'country/98740/';
+		$url = $this->config->item('rest_api_url') . 'country/ph/98740/';
+		// echo $url; exit;
 		return json_decode($this->call_rest($url,''));
 	}
 	

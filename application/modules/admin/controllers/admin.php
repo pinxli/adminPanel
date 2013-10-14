@@ -11,6 +11,10 @@ class Admin extends CI_Controller {
 		//template path
 		$this->globalTpl = $this->config->item('global_tpl');
 		$this->globalhdr = $this->config->item('global_hdr');
+		
+		//get flash data for error/info message
+		$this->msgClass = ( $this->session->flashdata('msgClass') ) ? $this->session->flashdata('msgClass') : '';
+		$this->msgInfo  = ( $this->session->flashdata('msgInfo') ) ? $this->session->flashdata('msgInfo') : '';
 	}
 	
 	
@@ -22,7 +26,9 @@ class Admin extends CI_Controller {
 		
 		$data['title']			= 'Login';
 		$data['countryList'] 	= $res->data->countrylist;
-		$data['baseUrl'] 		= base_url();	
+		$data['baseUrl'] 		= base_url();
+		$data['msgClass'] 		= $this->msgClass;
+		$data['msgInfo'] 		= $this->msgInfo;
 
 		$this->parser->parse('login_form.tpl', $data);
 	}
@@ -45,6 +51,7 @@ class Admin extends CI_Controller {
 				'fname'	 		=> $login->data->user->fname,
 				'lname'			=> $login->data->user->lname,
 				'logid' 		=> $login->data->user->log_id,
+				'locale' 		=> $login->data->user->locale,
 				'user_level_id' => $login->data->user->user_level_id,
 				'is_logged_in'  => true
 			);
@@ -53,6 +60,18 @@ class Admin extends CI_Controller {
 			redirect('dashboard/members_area');
 		}
 		else{
+			$msgClass = 'alert alert-error';
+			$msgInfo  = ( $login->message[0] ) ? $login->message[0] : 'Invalid Username and/or Password.';	
+			
+			//set flash data for error/info message
+			$msginfo_arr = array(
+				'msgClass' => $msgClass,
+				'msgInfo'  => $msgInfo,
+			);
+			$this->session->set_flashdata($msginfo_arr);
+			
+			// echo "<pre />";
+			// print_r($msginfo_arr);
 			redirect('admin');
 		}		
 	}	
@@ -67,7 +86,9 @@ class Admin extends CI_Controller {
 		
 		$data['data'] = array(
 			'baseUrl'	=> base_url(),
-			'title'   	=> 'Dashboard'
+			'title'   	=> 'Dashboard',
+			'msgClass'  => $this->msgClass,
+			'msgInfo'   => $this->msgInfo,
 		);
 		
 		$this->load->view($this->globalTpl, $data);		

@@ -42,30 +42,30 @@ $route['default_controller'] 				= "admin";
 $route['dashboard/members_area'] 			= "admin/dashboard";
 
 /*Custom Routing*/
-$route['contact'] 							= "pages/contact";
-$route['api/users/([0-9]+)'] 				= "api/users/rest/$1"; 		//auth key
-$route['api/users/([0-9]+)/([0-9]+)'] 		= "api/users/rest/$1/$2"; 	//auth key, id
-$route['api/users'] 						= "api/users/rest";
+$route['contact'] 										= "pages/contact";
+$route['api/users/([a-z]+)/([0-9]+)']					= "api/users/rest/$1/$2"; 		//auth key
+$route['api/users/([a-z]+)/([0-9]+)/([0-9]+)'] 			= "api/users/rest/$1/$2/$3"; 	//auth key, id
+$route['api/users/([a-z]+)'] 							= "api/users/rest/$1";
 
-$route['api/country/([0-9]+)']				= "api/country/rest/$1";
-$route['api/country/([0-9]+)/([0-9]+)']		= "api/country/rest/$1/$2";	//auth key, id
-$route['api/country']						= "api/country/rest";
+$route['api/country/([a-z]+)/([0-9]+)']					= "api/country/rest/$1/$2";
+$route['api/country/([a-z]+)/([0-9]+)/([0-9]+)']		= "api/country/rest/$1/$2/$3";	//auth key, id
+$route['api/country/([a-z]+)/']							= "api/country/rest/$1";
 
-$route['api/company/([0-9]+)']				= "api/company/rest/$1";
-$route['api/company/([0-9]+)/([0-9]+)']		= "api/company/rest/$1/$2";	//auth key, id
-$route['api/company']						= "api/company/rest";
+$route['api/company/([a-z]+)/([0-9]+)']					= "api/company/rest/$1/$2";
+$route['api/company/([a-z]+)/([0-9]+)/([0-9]+)']		= "api/company/rest/$1/$2/$3";	//auth key, id
+$route['api/company/([a-z]+)/']							= "api/company/rest/$1";
 
-$route['api/products/([0-9]+)']    			= "api/products/rest/$1";
-$route['api/products/([0-9]+)/([0-9]+)']	= "api/products/rest/$1/$2"; //auth key, id
-$route['api/products']      				= "api/products/rest";
+$route['api/products/([a-z]+)/([0-9]+)']    			= "api/products/rest/$1/$2";
+$route['api/products/([a-z]+)/([0-9]+)/([0-9]+)']		= "api/products/rest/$1/$2/$3"; //auth key, id
+$route['api/products/([a-z]+)']      					= "api/products/rest/$1";
 
-$route['api/productarea/([0-9]+)']    		= "api/productarea/rest/$1";
-$route['api/productarea/([0-9]+)/([0-9]+)'] = "api/productarea/rest/$1/$2"; //auth key, id
-$route['api/productarea']      				= "api/productarea/rest";
+$route['api/productarea/([a-z]+)/([0-9]+)']    			= "api/productarea/rest/$1/$2";
+$route['api/productarea/([a-z]+)/([0-9]+)/([0-9]+)'] 	= "api/productarea/rest/$1/$2/$3"; //auth key, id
+$route['api/productarea/([a-z]+)']      				= "api/productarea/rest/$1";
 
-$route['api/producttype/([0-9]+)']   		= "api/producttype/rest/$1";
-$route['api/producttype/([0-9]+)/([0-9]+)']	= "api/producttype/rest/$1/$2"; //auth key, id
-$route['api/producttype']      				= "api/producttype/rest";
+$route['api/producttype/([a-z]+)/([0-9]+)']   			= "api/producttype/rest/$1/$2";
+$route['api/producttype/([a-z]+)/([0-9]+)/([0-9]+)']	= "api/producttype/rest/$1/$2/$3"; //auth key, id
+$route['api/producttype/([a-z]+)']      				= "api/producttype/rest/$1";
 
 $route['404_override'] = '';
 
