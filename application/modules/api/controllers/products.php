@@ -13,9 +13,9 @@ class Products extends CI_Controller {
 		parent::__construct();
 		$this->load->model('common_model');	
 		
-		$this->locale	 = ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$this->authKey	 = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
-		$this->productId = ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
+		$this->locale	 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
+		$this->authKey	 		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+		$this->productId 		= ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
 	}
 
 	public function rest()

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-11 04:56:46
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-22 06:54:31
          compiled from "application\modules\company\views\company_edit_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3091452565fa4a69e72-70392206%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1f5f03ef7b0d81a401f314551e133be7d3092a69' => 
     array (
       0 => 'application\\modules\\company\\views\\company_edit_view.tpl',
-      1 => 1381467186,
+      1 => 1382424868,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_52565fa4a94df',
   'variables' => 
   array (
+    'baseUrl' => 0,
     'form_open' => 0,
     'company_name' => 0,
     'company_email' => 0,
@@ -26,7 +27,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'company_fax' => 0,
     'company_address' => 0,
     'company_contact' => 0,
-    'company_logo' => 0,
+    'company_weblink' => 0,
+    'company_description' => 0,
+    'company' => 0,
     'company_id' => 0,
     'form_close' => 0,
   ),
@@ -38,10 +41,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="home.html">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Company</a>
+						<a href="#">Verticals</a> <span class="divider">/</span>
+					</li>
+                    <li>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+company/companymanagement">Company</a> <span class="divider">/</span>
+					</li>
+                    <li>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+company/editcompany">Edit Company</a> <span class="divider">/</span>
 					</li>
 				</ul>
 				<hr>
@@ -112,13 +123,31 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								</div>
 							  </div>
 							  
-							  <div class="control-group">
-								<label class="control-label" for="focusedInput">Company Logo:</label>
+							   <div class="control-group input-prepend">
+								<label class="control-label" for="focusedInput">Website Link:</label>
 								<div class="controls">
-								  <?php echo $_smarty_tpl->tpl_vars['company_logo']->value;?>
+								  <span class="add-on">www.</span>
+								  <?php echo $_smarty_tpl->tpl_vars['company_weblink']->value;?>
 
 								</div>
 							  </div>
+							  
+							   <div class="control-group">
+								<label class="control-label" for="focusedInput">Replace Image:</label>
+								<div class="controls">
+								   <input class="input-file uniform_on" id="fileInput" type="file" name="upload_image">
+								</div>
+							  </div> 
+							        
+							<div class="control-group hidden-phone">
+							  <label class="control-label" for="textarea2">Description</label>
+							  <div class="controls">
+								<?php echo $_smarty_tpl->tpl_vars['company_description']->value;?>
+
+								<!-- <textarea class="input-xlarge" rows="3" name="company_description" id="company_description"><?php echo $_smarty_tpl->tpl_vars['company']->value->company_description;?>
+</textarea>-->
+							  </div>
+							</div>
 
 							   <div class="form-actions">
 								<button type="submit" class="btn btn-primary">Edit</button>

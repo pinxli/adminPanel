@@ -4,10 +4,16 @@
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="home.html">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Company</a>
+						<a href="#">Verticals</a> <span class="divider">/</span>
+					</li>
+                    <li>
+						<a href="{$baseUrl}company/companymanagement">Company</a> <span class="divider">/</span>
+					</li>
+                    <li>
+						<a href="{$baseUrl}company/editcompany">Edit Company</a> <span class="divider">/</span>
 					</li>
 				</ul>
 				<hr>
@@ -71,12 +77,28 @@
 								</div>
 							  </div>
 							  
-							  <div class="control-group">
-								<label class="control-label" for="focusedInput">Company Logo:</label>
+							   <div class="control-group input-prepend">
+								<label class="control-label" for="focusedInput">Website Link:</label>
 								<div class="controls">
-								  {$company_logo}
+								  <span class="add-on">www.</span>
+								  {$company_weblink}
 								</div>
 							  </div>
+							  
+							   <div class="control-group">
+								<label class="control-label" for="focusedInput">Replace Image:</label>
+								<div class="controls">
+								   <input class="input-file uniform_on" id="fileInput" type="file" name="upload_image">
+								</div>
+							  </div> 
+							        
+							<div class="control-group hidden-phone">
+							  <label class="control-label" for="textarea2">Description</label>
+							  <div class="controls">
+								{$company_description}
+								<!-- <textarea class="input-xlarge" rows="3" name="company_description" id="company_description">{$company->company_description}</textarea>-->
+							  </div>
+							</div>
 
 							   <div class="form-actions">
 								<button type="submit" class="btn btn-primary">Edit</button>

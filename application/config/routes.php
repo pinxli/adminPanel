@@ -67,6 +67,14 @@ $route['api/producttype/([a-z]+)/([0-9]+)']   			= "api/producttype/rest/$1/$2";
 $route['api/producttype/([a-z]+)/([0-9]+)/([0-9]+)']	= "api/producttype/rest/$1/$2/$3"; //auth key, id
 $route['api/producttype/([a-z]+)']      				= "api/producttype/rest/$1";
 
+$route['api/productoption/([a-z]+)/([0-9]+)']			= "api/productoption/rest/$1/$2";
+$route['api/productoption/([a-z]+)/([0-9]+)/([0-9]+)']	= "api/productoption/rest/$1/$2/$3"; //auth key, id
+$route['api/productoption/([a-z]+)']      				= "api/productoption/rest/$1";
+
+$route['api/verticaloption/([a-z]+)/([0-9]+)']      	= "api/verticaloption/rest/$1/$2";
+$route['api/verticaloption/([a-z]+)/([0-9]+)/([0-9]+)'] = "api/verticaloption/rest/$1/$2/$3"; //auth key, id
+$route['api/verticaloption/([a-z]+)']           		= "api/verticaloption/rest/$1";
+
 $route['404_override'] = '';
 
 

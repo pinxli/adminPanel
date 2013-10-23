@@ -89,7 +89,7 @@ class Company_model extends CI_Model {
 		if ( $this->db->affected_rows() > 0 ){
 			$response['rc']			= 0;
 			$response['success']	= true;
-			$response['message'][]	= 'Company has been successfully modified.';
+			$response['message'][]	= 'Company '.strtoupper($data['company_name']).' has been successfully modified.';
 			$response['message'][]	= $data;
 		}
 		else{

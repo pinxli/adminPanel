@@ -19,6 +19,8 @@
 	<link id="base-style" href="{$baseUrl}assets/css/style.css" rel="stylesheet">
     <link href="{$baseUrl}assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 	<link id="base-style-responsive" href="{$baseUrl}assets/css/style-responsive.css" rel="stylesheet">
+	<link href="{$baseUrl}assets/css/custom.css" type="text/css" rel="stylesheet">
+    <link href="{$baseUrl}assets/js/jquery-1.9.1.min.js" type="text/javascript">
 	
 	<!--[if lt IE 7 ]>
 	<link id="ie-style" href="{$baseUrl}assets/css/style-ie.css" rel="stylesheet">
@@ -328,12 +330,11 @@
 						<li><a href="{$baseUrl}dashboard/members_area"><i class="icon-home icon-white"></i><span class="hidden-tablet"> Home</span></a></li>
                         <li><a class="dropmenu" href="#"><i class="icon-ellipsis-vertical icon-white"></i><span class="hidden-tablet"> Verticals</span></a>
 							<ul>
-								<li><a class="submenu" href="credit-card.html"><span class="hidden-tablet"> Credit Cards</span></a></li>
-								<li><a class="submenu" href="savings-account.html"><span class="hidden-tablet"> Savings Account</span></a></li>
-								<li><a class="submenu" href="fixed-term-deposits.html"><span class="hidden-tablet"> Fixed Term Deposits</span></a></li>	
-                                <li><a class="submenu" href="debit-cards.html"><span class="hidden-tablet"> Debit Cards</span></a></li>
-                                <li><a class="submenu" href="broadband.html"><span class="hidden-tablet"> Broadband</span></a></li>					
-                                <li><a class="submenu" href="mobile.html"><span class="hidden-tablet"> Mobile</span></a></li>
+								{foreach from=$verticalType item=producttype}								
+								<li><a class="submenu" href="{$baseUrl}verticals/verticaltype/{$producttype->product_type_id}/{$producttype->url_slug}"><span class="hidden-tablet"> {$producttype->product_type}</span></a></li>
+								{/foreach}
+								<li><a class="submenu" href="{$baseUrl}verticals/productlist/"><span class="hidden-tablet"> All Products</span></a></li>
+								<li><a class="submenu" href="{$baseUrl}verticals/verticaltypes/"><span class="hidden-tablet"> Vertical Types</span></a></li>
 							</ul>	
 						</li>
                       					

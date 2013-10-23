@@ -73,5 +73,36 @@ class Company_model extends CI_Model {
 		$result = $this->curl->simple_delete($url , $data , array(CURLOPT_SSL_VERIFYPEER => false, CURLOPT_SSL_VERIFYHOST=> false));	
 		return $result;
 	}
+	
+	function companyImg($file_element_name)
+	{
+		$config['upload_path']   = './assets/uploadimages/companyImg';
+		$config['allowed_types'] = 'jpg|png';
+		$config['max_size'] 	 = '100';
+		$config['max_width'] 	 = '50';
+		$config['max_height'] 	 = '50';
+
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload($file_element_name))
+		{
+			$response = array(
+			   'rc' 	 => '999',
+			   'msgInfo' => $this->upload->display_errors('', '')
+			);
+		}
+		else
+		{  
+			$data = $this->upload->data();
+
+			$response = array(
+			   'rc' 	=> '0',
+			   'data' 	=> $data
+			 );
+		}
+
+		return $response;
+
+	}
 
 }

@@ -40,7 +40,12 @@ class Product_model extends CI_Model {
 	}
 
 	public function productInfo($id) {
-		$this->db->where('product_id', $id);
+		
+		$product = array(
+					'product_id' 		=> $id
+		);
+		
+		$this->db->where($product);
 		$query = $this->db->get('products');
 		 
 		//if data exist, return results
@@ -70,6 +75,7 @@ class Product_model extends CI_Model {
 			$response['rc']			= 0;
 			$response['success']	= true;
 			$response['message'][]	= 'Product has been successfully added.';
+			$response['productId']  = $this->db->insert_id();
 		}
 		else{
 			$response['rc']			= 999;
@@ -247,9 +253,11 @@ class Product_model extends CI_Model {
 		//insert data
 		$query = $this->db->insert('products_types', $data);
 		if ( $this->db->affected_rows() > 0 ){
-			$response['rc']			= 0;
-			$response['success']	= true;
-			$response['message'][]	= 'Product Type has been successfully added.';
+			$response['rc']				= 0;
+			$response['success']		= true;
+			$response['message'][]		= 'Product Type has been successfully added.';
+			$response['producttypeId']  = $this->db->insert_id();
+			#$response['data']		= $data;
 		}
 		else{
 			$response['rc']			= 999;

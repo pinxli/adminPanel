@@ -1,0 +1,2 @@
+{"option_key":"test1","option_description":"asdf","option_autoload":"1","product_type_id":"20"}
+{"option_key":"test1","option_description":"asdf","option_autoload":"1","product_type_id":"21"}

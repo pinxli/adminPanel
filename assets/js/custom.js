@@ -1657,3 +1657,26 @@ function widthFunctions( e ) {
 	}
 
 }
+
+/* pnx 10-16-2013 */
+function showInfo(str,url){
+	
+	$.ajax({
+		type: 'POST',
+		url: $(this).attr('alt'),
+		data: { id : str }
+	}).done(function(data) {
+		alert(data);
+		var data_array = $.parseJSON(data);
+		$(data_array).each(function(i,val){
+			$.each(val,function(k,v){
+				// console.log(k+" : "+ v);  
+				if ( $('#'+k).length ){
+					$('#'+k).val(v);
+				}
+				
+			});
+		});
+	});
+	
+}

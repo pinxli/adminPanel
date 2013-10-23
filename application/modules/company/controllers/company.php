@@ -31,6 +31,7 @@ class Company extends CI_Controller {
 		
 		$data['data'] = array(
 			'baseUrl'		=> base_url(),
+			'default_icon'	=> $this->config->item('default_company_img'),
 			'title'   		=> 'Company List',
 			'companyList'	=> $companyList,
 			'msgClass'  	=> $this->msgClass,
@@ -52,19 +53,20 @@ class Company extends CI_Controller {
 		$this->form_validation->set_rules('company_fax', 'company_fax', 'xss_clean|trim|required');
 		$this->form_validation->set_rules('company_address', 'company_address', 'xss_clean|trim|required');
 		$this->form_validation->set_rules('company_contact', 'company_contact', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('company_logo', 'company_logo', 'xss_clean|trim|required');
+		// $this->form_validation->set_rules('company_logo', 'company_logo', 'xss_clean|trim|required');
 		
 		if($this->form_validation->run() == FALSE)
 		{
 			//set forms open, close and inputs
-			$form_open 			= form_open('',array('class' => 'form-horizontal', 'method' => 'post'));
+			$form_open 			= form_open_multipart('',array('class' => 'form-horizontal', 'method' => 'post'));
 			$company_name 		= form_input(array('name' => 'company_name', 	'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Company Name'));
+			$company_weblink	= form_input(array('name' => 'company_weblink',	'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Company Website Link'));
 			$company_email 		= form_input(array('name' => 'company_email', 	'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Company Email'));
 			$company_phone 		= form_input(array('name' => 'company_phone', 	'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Phone'));
 			$company_fax 		= form_input(array('name' => 'company_fax', 	'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Fax'));
 			$company_address 	= form_input(array('name' => 'company_address', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Address'));
 			$company_contact 	= form_input(array('name' => 'company_contact', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Contact Person'));
-			$company_logo 		= form_input(array('name' => 'company_logo', 	'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Logo'));
+			// $company_logo 		= form_input(array('name' => 'company_logo', 	'class' => 'input-xlarge focused span6' , 'id' => 'focusedInput', 'placeholder' => 'Logo'));
 			$form_close 		= form_close();
 
 			$data['mainContent'] = 'company_add_view.tpl';
@@ -74,45 +76,55 @@ class Company extends CI_Controller {
 				'title'   			=> 'Company Add',
 				'msgClass'  		=> $this->msgClass,
 				'msgInfo'   		=> $this->msgInfo,
-				'form_open'   		=> $form_open,
-				'company_name'   	=> $company_name,
-				'company_email'   	=> $company_email,
-				'company_phone'   	=> $company_phone,
-				'company_fax'   	=> $company_fax,
-				'company_address'	=> $company_address,
-				'company_contact'	=> $company_contact,
-				'company_logo'   	=> $company_logo,
-				'form_close'   		=> $form_close
+				'formOpen'   		=> $form_open,
+				'companyName'		=> $company_name,
+				'companyWeblink'	=> $company_weblink,
+				'companyEmail'		=> $company_email,
+				'companyPhone'		=> $company_phone,
+				'companyFax'		=> $company_fax,
+				'companyAddress'	=> $company_address,
+				'companyContract'	=> $company_contact,
+				'formClose'   		=> $form_close
 			);
 		
 			$this->load->view($this->globalTpl, $data);	
 		}
 		else 	
 		{
-			$insert_data = array(
-				'company_name' 			=> $this->input->post('company_name'),
-				'company_email' 		=> $this->input->post('company_email'),
-				'company_phone' 		=> $this->input->post('company_phone'),			
-				'company_fax' 			=> $this->input->post('company_fax'),
-				'company_address' 		=> $this->input->post('company_address'),	
-				'company_contact' 		=> $this->input->post('company_contact'),
-				'company_logo' 			=> $this->input->post('company_logo'),
-				'company_country_id' 	=> 1
-			);
+			$imgUp = $this->company_model->companyImg('upload_image');
 			
-			$result = $this->company_model->companyAdd($insert_data);
-			
-			if($result->rc == 0)
-			{
-				$msgClass = 'alert alert-success';
-				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Company has been added.';
+			if ( $imgUp['rc'] == 0 ){
+				$insert_data = array(
+					'company_name' 			=> $this->input->post('company_name'),
+					'company_weblink'		=> $this->input->post('company_weblink'),
+					'company_email' 		=> $this->input->post('company_email'),
+					'company_phone' 		=> $this->input->post('company_phone'),			
+					'company_fax' 			=> $this->input->post('company_fax'),
+					'company_address' 		=> $this->input->post('company_address'),	
+					'company_contact' 		=> $this->input->post('company_contact'),
+					'company_description'	=> $this->input->post('description'),
+					'company_logo' 			=> $this->config->item('path_upload_img'). $imgUp['data']['file_name'], //'assets/uploadimages/companyImg/' . $imgUp['data']['file_name'],
+					'company_country_id' 	=> 1
+				);
+				
+				$result = $this->company_model->companyAdd($insert_data);
+				
+				if($result->rc == 0)
+				{
+					$msgClass = 'alert alert-success';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Company has been added.';
+				}
+				else 
+				{	
+					$msgClass = 'alert alert-error';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add company failed.';			
+				}
 			}
-			else 
-			{	
-				$msgClass = 'alert alert-error';
-				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add company failed.';			
+			else{
+					$msgClass = 'alert alert-error';
+					$msgInfo  = ( $imgUp['msgInfo'] ) ? $imgUp['msgInfo'] : 'Upload image failed.';	
 			}
-			
+				
 			//set flash data for error/info message
 			$msginfo_arr = array(
 				'msgClass' => $msgClass,
@@ -122,13 +134,14 @@ class Company extends CI_Controller {
 			$this->session->set_flashdata($msginfo_arr);
 			
 			redirect('company/companymanagement/');
+			
 		}
 					
 	}	
 	
 	// edit user
 	function editcompany()
-	{			
+	{		
 		$company_info = $this->company_model->companyInfo($this->uri->segment(3));
 		
 		if($company_info->rc == 0)
@@ -136,27 +149,34 @@ class Company extends CI_Controller {
 			if($this->input->post('editnow',TRUE) == 'editnow')
 			{
 				$edit_data = array(
-					'company_id' => $this->input->post('company_id'),
-					'company_name' => $this->input->post('company_name'),
-					'company_email' => $this->input->post('company_email'),
-					'company_phone' => $this->input->post('company_phone'),			
-					'company_fax' => $this->input->post('company_fax'),
-					'company_address' => $this->input->post('company_address'),	
-					'company_contact' => $this->input->post('company_contact'),
-					'company_logo' => $this->input->post('company_logo'),
-					'company_country_id' => 1);
+					'company_id' 			=> $this->input->post('company_id'),
+					'company_name' 			=> $this->input->post('company_name'),
+					'company_weblink'		=> $this->input->post('company_weblink'),
+					'company_email' 		=> $this->input->post('company_email'),
+					'company_phone' 		=> $this->input->post('company_phone'),			
+					'company_fax' 			=> $this->input->post('company_fax'),
+					'company_address' 		=> $this->input->post('company_address'),	
+					'company_contact' 		=> $this->input->post('company_contact'),
+					'company_logo' 			=> $this->input->post('company_logo'),
+					'company_description' 	=> $this->input->post('company_description'),
+					'company_country_id' 	=> 1
+				);
 						
 				$result = $this->company_model->edit_company($edit_data);
-			
+				
+				// echo "<pre />";
+				// print_r($result);
+				// exit;
+				
 				if($result->rc == 0)
 				{
 					$msgClass = 'alert alert-success';
-					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Company has been modified.';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Company '.strtoupper($this->input->post('company_name')).' has been modified.';
 				}
 				else 
 				{	
 					$msgClass = 'alert alert-error';
-					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add company failed.';			
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Edit '.strtoupper($this->input->post('company_name')).' company failed.';			
 				}
 				
 				//set flash data for error/info message
@@ -176,13 +196,15 @@ class Company extends CI_Controller {
 				
 				//set forms open, close and inputs
 				$form_open 			= form_open('',array('class' => 'form-horizontal', 'method' => 'post'));
-				$company_name 		= form_input(array('name' => 'company_name',	'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Company Name' ,	'value' => $company_info_res->company_name));
-				$company_email 		= form_input(array('name' => 'company_email',	'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Company Email' ,	'value' => $company_info_res->company_email));
-				$company_phone 		= form_input(array('name' => 'company_phone',	'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Phone' , 		 	'value' => $company_info_res->company_phone));
-				$company_fax 		= form_input(array('name' => 'company_fax',		'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Fax' ,			'value' => $company_info_res->company_fax));
-				$company_address 	= form_input(array('name' => 'company_address', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Address' ,		'value' => $company_info_res->company_address));
-				$company_contact 	= form_input(array('name' => 'company_contact', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Contact Person' ,	'value' => $company_info_res->company_contact));
-				$company_logo		= form_input(array('name' => 'company_logo',	'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Logo' ,			'value' => $company_info_res->company_logo));
+				$company_name 		= form_input	(array('name' => 'company_name', 		'class' => 'input-xlarge focused', 'id' => 'focusedInput', 	 'placeholder' => 'Company Name', 		'value' => $company_info_res->company_name));
+				$company_weblink	= form_input	(array('name' => 'company_weblink',		'class' => 'input-xlarge focused', 'id' => 'prependedInput', 'placeholder' => 'Company Web Link',	'value' => $company_info_res->company_weblink));
+				$company_email 		= form_input	(array('name' => 'company_email', 		'class' => 'input-xlarge focused', 'id' => 'focusedInput', 	 'placeholder' => 'Company Email', 		'value' => $company_info_res->company_email));
+				$company_phone 		= form_input	(array('name' => 'company_phone', 		'class' => 'input-xlarge focused', 'id' => 'focusedInput', 	 'placeholder' => 'Phone', 				'value' => $company_info_res->company_phone));
+				$company_fax 		= form_input	(array('name' => 'company_fax', 		'class' => 'input-xlarge focused', 'id' => 'focusedInput', 	 'placeholder' => 'Fax', 				'value' => $company_info_res->company_fax));
+				$company_address 	= form_input	(array('name' => 'company_address', 	'class' => 'input-xlarge focused', 'id' => 'focusedInput', 	 'placeholder' => 'Address', 			'value' => $company_info_res->company_address));
+				$company_contact 	= form_input	(array('name' => 'company_contact', 	'class' => 'input-xlarge focused', 'id' => 'focusedInput',	 'placeholder' => 'Contact Person', 	'value' => $company_info_res->company_contact));
+				$company_logo		= form_input	(array('name' => 'company_logo', 		'class' => 'input-xlarge focused', 'id' => 'focusedInput',	 'placeholder' => 'Logo', 				'value' => $company_info_res->company_logo));
+				$company_description= form_textarea	(array('name' => 'company_description', 'class' => 'input-xlarge focused', 'id' => 'focusedInput',	 'placeholder' => 'Logo', 				'value' => $company_info_res->company_description, 'rows' => 3));
 				$form_close 		= form_close();
 				
 				$data['mainContent'] = 'company_edit_view.tpl';
@@ -195,12 +217,14 @@ class Company extends CI_Controller {
 					'form_open'   		=> $form_open,
 					'company_id'		=> $company_info_res->company_id,
 					'company_name'   	=> $company_name,
+					'company_weblink'	=> $company_weblink,
 					'company_email'   	=> $company_email,
 					'company_phone'   	=> $company_phone,
 					'company_fax'   	=> $company_fax,
 					'company_address'	=> $company_address,
 					'company_contact'	=> $company_contact,
 					'company_logo'   	=> $company_logo,
+					'company_description' => $company_description,
 					'form_close'   		=> $form_close
 				);
 		

@@ -15,7 +15,8 @@ class Company extends CI_Controller {
 		
 		$this->locale 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
 		$this->authKey		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
-		$this->countryId	= ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
+		$this->companyId	= ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
+		
 	}
 
 	public function rest()
@@ -46,9 +47,9 @@ class Company extends CI_Controller {
 		if ( $is_valid_auth['rc'] == 0 ){
 			$this->load->model('company_model');
 			
-			if ( $this->countryId != '' ){
+			if ( $this->companyId != '' ){
 				//get company info
-				$response = $this->company_model->companyInfo($this->countryId);
+				$response = $this->company_model->companyInfo($this->companyId);
 			}
 			else{
 				//get company list
@@ -81,14 +82,16 @@ class Company extends CI_Controller {
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$company_name		= $this->security->xss_clean($this->input->post('company_name'));
-			$company_email		= $this->security->xss_clean($this->input->post('company_email'));
-			$company_phone		= $this->security->xss_clean($this->input->post('company_phone'));
-			$company_fax		= $this->security->xss_clean($this->input->post('company_fax'));
-			$company_address	= $this->security->xss_clean($this->input->post('company_address'));
-			$company_country_id	= $this->security->xss_clean($this->input->post('company_country_id'));
-			$company_contact	= $this->security->xss_clean($this->input->post('company_contact'));
-			$company_logo		= $this->security->xss_clean($this->input->post('company_logo'));
+			$company_name		 = $this->security->xss_clean($this->input->post('company_name'));
+			$company_weblink	 = $this->security->xss_clean($this->input->post('company_weblink'));
+			$company_email		 = $this->security->xss_clean($this->input->post('company_email'));
+			$company_phone		 = $this->security->xss_clean($this->input->post('company_phone'));
+			$company_fax		 = $this->security->xss_clean($this->input->post('company_fax'));
+			$company_address	 = $this->security->xss_clean($this->input->post('company_address'));
+			$company_country_id	 = $this->security->xss_clean($this->input->post('company_country_id'));
+			$company_contact	 = $this->security->xss_clean($this->input->post('company_contact'));
+			$company_description = $this->security->xss_clean($this->input->post('company_description'));
+			$company_logo		 = $this->security->xss_clean($this->input->post('company_logo'));
 				
 			$response['success'] = true;
 			
@@ -109,12 +112,14 @@ class Company extends CI_Controller {
 				
 				$arr_data = array(
 					'company_name'			=> $company_name,
+					'company_weblink'		=> $company_weblink,
 					'company_email' 		=> $company_email,
 					'company_phone' 		=> $company_phone,
 					'company_fax' 			=> $company_fax,
 					'company_address' 		=> $company_address,
 					'company_country_id'	=> $company_country_id,
 					'company_contact' 		=> $company_contact,
+					'company_description'	=> $company_description,
 					'company_logo' 			=> $company_logo,
 				);
 				
@@ -164,7 +169,7 @@ class Company extends CI_Controller {
 				if( !empty($arr_data) ){
 					$this->load->model('company_model');
 					//edit user info
-					$response = $this->company_model->companyEdit($company_id,$arr_data);						
+					$response = $this->company_model->companyEdit($this->companyId,$arr_data);						
 				}
 			}
 			else{ //user id is missing

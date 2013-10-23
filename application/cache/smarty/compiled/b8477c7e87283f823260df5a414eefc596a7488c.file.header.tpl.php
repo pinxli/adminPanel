@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-14 09:25:10
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-22 10:17:43
          compiled from "application\views\includes\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93385257869c99f3c7-90349051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b8477c7e87283f823260df5a414eefc596a7488c' => 
     array (
       0 => 'application\\views\\includes\\header.tpl',
-      1 => 1381742566,
+      1 => 1382437045,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'title' => 0,
     'baseUrl' => 0,
+    'verticalType' => 0,
+    'producttype' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -51,6 +53,10 @@ assets/css/style.css" rel="stylesheet">
 assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 	<link id="base-style-responsive" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 assets/css/style-responsive.css" rel="stylesheet">
+	<link href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+assets/css/custom.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+assets/js/jquery-1.9.1.min.js" type="text/javascript">
 	
 	<!--[if lt IE 7 ]>
 	<link id="ie-style" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
@@ -371,12 +377,21 @@ admin/logout"><i class="icon-off"></i> Logout</a></li>
 dashboard/members_area"><i class="icon-home icon-white"></i><span class="hidden-tablet"> Home</span></a></li>
                         <li><a class="dropmenu" href="#"><i class="icon-ellipsis-vertical icon-white"></i><span class="hidden-tablet"> Verticals</span></a>
 							<ul>
-								<li><a class="submenu" href="credit-card.html"><span class="hidden-tablet"> Credit Cards</span></a></li>
-								<li><a class="submenu" href="savings-account.html"><span class="hidden-tablet"> Savings Account</span></a></li>
-								<li><a class="submenu" href="fixed-term-deposits.html"><span class="hidden-tablet"> Fixed Term Deposits</span></a></li>	
-                                <li><a class="submenu" href="debit-cards.html"><span class="hidden-tablet"> Debit Cards</span></a></li>
-                                <li><a class="submenu" href="broadband.html"><span class="hidden-tablet"> Broadband</span></a></li>					
-                                <li><a class="submenu" href="mobile.html"><span class="hidden-tablet"> Mobile</span></a></li>
+								<?php  $_smarty_tpl->tpl_vars['producttype'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['producttype']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['verticalType']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['producttype']->key => $_smarty_tpl->tpl_vars['producttype']->value){
+$_smarty_tpl->tpl_vars['producttype']->_loop = true;
+?>								
+								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/verticaltype/<?php echo $_smarty_tpl->tpl_vars['producttype']->value->product_type_id;?>
+/<?php echo $_smarty_tpl->tpl_vars['producttype']->value->url_slug;?>
+"><span class="hidden-tablet"> <?php echo $_smarty_tpl->tpl_vars['producttype']->value->product_type;?>
+</span></a></li>
+								<?php } ?>
+								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/productlist/"><span class="hidden-tablet"> All Products</span></a></li>
+								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/verticaltypes/"><span class="hidden-tablet"> Vertical Types</span></a></li>
 							</ul>	
 						</li>
                       					

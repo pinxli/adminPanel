@@ -87,6 +87,30 @@ class Product extends CI_Controller {
 		$this->load->view($this->globalTpl, $data);	
 	}
 	
+	// display product option list
+	function productoption()
+	{
+		$res = $this->product_model->productOptionList();
+		echo "<pre />";
+		print_r($res);
+		exit;
+		
+		//check if product type list is pulled. if not, list is set to empty array
+		// $productTypeList = ( $res->rc == 0 ) ? $res->data->producttypelist : array();
+		
+		// $data['mainContent'] = 'producttype_list_view.tpl';
+		
+		// $data['data'] = array(
+			// 'baseUrl'			=> base_url(),
+			// 'title'				=> 'Product Type',
+			// 'msgClass'			=> $this->msgClass,
+			// 'msgInfo'			=> $this->msgInfo,
+			// 'productTypeList'	=> $productTypeList
+		// );
+		
+		// $this->load->view($this->globalTpl, $data);	
+	}
+	
 	// add product
 	function addproduct()
 	{	
