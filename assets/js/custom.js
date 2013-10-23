@@ -65,18 +65,22 @@ $(document).ready(function(){
 	circle_progess();
 	
 	$('#btn_addverticals').click(function(){
+		var option_autoload 	= $("input[name='option_autoload']:checked").val();
+		var option_key 			= $('#option_key').val();
+		var option_description 	= $('#option_description').val();
+		var is_autoload 		= ( option_autoload == 1 ) ? 'Yes' : 'No';
 		
-		if ( $('#option_key').val() != '' && $('#option_description').val() != '' && $('#option_autoload').val() ){
+		if ( option_key != '' && option_description != '' && option_autoload ){
 			var verticalOptions = $('#verticaloptions').val();
 			
 			if ( verticalOptions != '' ){
-				verticalOptionValues = verticalOptions+',{"option_key":"'+$('#option_key').val()+'", "option_description":"'+$('#option_description').val()+'", "option_autoload":"'+$('#option_autoload').val()+'"}';
+				verticalOptionValues = verticalOptions+',{"option_key":"'+option_key+'", "option_description":"'+option_description+'", "option_autoload":"'+option_autoload+'"}';
 			}
 			else{
-				verticalOptionValues = '{"option_key":"'+$('#option_key').val()+'", "option_description":"'+$('#option_description').val()+'", "option_autoload":"'+$('#option_autoload').val()+'"}';
+				verticalOptionValues = '{"option_key":"'+option_key+'", "option_description":"'+option_description+'", "option_autoload":"'+option_autoload+'"}';
 			}
 			
-			$('#myTable').append('<tr><td>'+$('#option_key').val()+'</td><td>'+$('#option_description').val()+'</td><td>'+$('#option_autoload').val()+'</td></tr>');
+			$('#myTable').append('<tr><td>'+option_key+'</td><td>'+option_description+'</td><td>'+is_autoload+'</td></tr>');
 		
 			$('#verticaloptions').val(verticalOptionValues);
 		}

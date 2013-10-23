@@ -5,3 +5,4 @@
 {"option_key":"eyewear5678","option_description":"eye wear","option_autoload":"1","product_type_id":"25"}
 {"option_key":"1234567890asdf","option_description":"asdf","option_autoload":"undefined","product_type_id":"26"}
 {"option_key":"asdf","option_description":"asdf","option_autoload":"undefined","product_type_id":"26"}
+{"option_key":"glass1234","option_description":"glass1234 description","option_autoload":"1","product_type_id":"27"}
