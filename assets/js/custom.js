@@ -1707,6 +1707,26 @@ function showInfo(str,url){
 	
 }
 
+function verticalType(){
+	str = $( "#selectError3 option:selected" ).val();
+	
+	$(".product_options").remove();
+	
+	$.ajax({ 
+		   type: "GET",
+		   dataType: "json",
+		   url: "http://localhost/adminPanel/api/verticaloption/ph/98740/" + str,
+		   success: function(resultData){        
+			   var result = resultData.data.verticaloptioninfo;
+			    $.each(result, function(k,v){
+			     $('#category_type').after('<div class="control-group product_options"><label class="control-label" for="focusedInput">' +v.option_key +':</label><div class="controls"><input type="text" name="option['+v.option_key +'-' + v.id+ ']" value="" class="input-xlarge focused" id="focusedInput" placeholder="' +v.option_key +' Value"></div></div>');
+			     
+			    }); 
+			   
+		   }
+		});
+}
+
 function test(){
 
 		/* $.ajax({ 
