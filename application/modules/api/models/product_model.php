@@ -290,6 +290,94 @@ class Product_model extends CI_Model {
 		return $response;
 	}
 	
+	public function optionList() {
+		$this->db->from('products_options');
+		$this->db->order_by('option_id', 'asc');
+		$query = $this->db->get();
+		 
+		//if data exist, return results
+		if ($query->num_rows() > 0){
+			$response['rc']					 = 0;
+			$response['success']			 = true;
+			$response['data']['optionlist'] = $query->result();
+		}
+		else{ //no record found	 
+			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Option List: No Records Found.';
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message'][]	= $err_message;
+		}
+		return $response;
+	}
+	
+	public function optionInfo($id) {
+		
+		$product = array(
+					'product_id' 		=> $id
+		);
+		
+		$this->db->where($product);
+		$query = $this->db->get('products_options');
+		 
+		//if data exist, return results
+		if ($query->num_rows() > 0){
+			$response['rc']					 = 0;
+			$response['success']			 = true;
+			$response['data']['optioninfo'] = $query->result();
+		}
+		else{ //no record found	 
+			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Option Info: No Records Found.';
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message'][]	= $err_message;
+		}
+		return $response;
+	}
+	
+	public function optionAdd($data)
+	{
+		//sanitized data
+		$data = $this->security->xss_clean($data);
+	
+		//insert data
+		$query = $this->db->insert('products_options', $data);
+		if ( $this->db->affected_rows() > 0 ){
+			$response['rc']			= 0;
+			$response['success']	= true;
+			$response['message'][]	= 'product option has been successfully added.';
+			$response['productId']  = $this->db->insert_id();
+		}
+		else{
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message'][]	= 'Failed to add product option.';
+		}
+		return $response;
+	}
+	
+	public function optionEdit($id,$data)
+	{	
+		//sanitized data
+		$data = $this->security->xss_clean($data);
+		
+		$this->db->where('vertical_optionid', $id);
+		$this->db->update('products_options', $data); 
+		
+		if ( $this->db->affected_rows() > 0 ){
+			$response['rc']			= 0;
+			$response['success']	= true;
+			$response['message'][]	= 'Product Option has been successfully modified.';
+			$response['message'][]	= $data;
+		}
+		else{
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message'][]	= 'Failed to edit product option.';
+			$response['message'][]	= $data;
+		}
+		return $response;
+	}
+	
 	
 	public function productcsvUpload($data)
 	{

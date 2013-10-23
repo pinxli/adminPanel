@@ -157,7 +157,7 @@ class Verticals extends CI_Controller {
 			$product_link 		 	= form_input(array('name' => 'product_link', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Link'));
 			$areaList			 	= form_dropdown('area_id', $arealist, '', 'id="selectError1" data-rel="chosen"');
 			$countryList			= form_dropdown('country_id', $countrylist, '', 'id="selectError2" data-rel="chosen"');
-			$productTypeList		= form_dropdown('product_type_id', $product_type_list, '' , 'id="selectError3" data-rel="chosen"');
+			$productTypeList		= form_dropdown('product_type_id', $product_type_list, '' , 'id="selectError3" data-rel="chosen" onchange="verticalType();"');
 			$companyList			= form_dropdown('company_id', $company_list, '', 'id="selectError4" data-rel="chosen"');
 			$form_close = form_close();
 
@@ -184,7 +184,7 @@ class Verticals extends CI_Controller {
 		}
 		else 	
 		{
-			
+						
 			$imgUp = $this->verticals_model->productImg('productImg');
 		
 			if($imgUp['rc'] == 0)
@@ -203,9 +203,31 @@ class Verticals extends CI_Controller {
 				);
 					
 				$result = $this->verticals_model->productAdd($insert_data);
-					
+				
 				if($result->rc == 0)
 				{
+					$product_id = $result->productId;
+					
+					$option = $this->input->post('option');
+					
+					foreach ($option as $key=>$value)
+					{
+						$explode = explode("-", $key);
+						
+						$option_arr = array(
+							'product_id' 		=> $product_id,
+							'vertical_optionid' => $explode[1],
+							'option'			=> $explode[0],
+							'option_value'		=> $value,
+							'expiry_date'		=> 10
+						
+						);
+						
+						$option_insert = $this->verticals_model->productOptionAdd($option_arr);
+						
+					}
+					
+					
 					$msgClass = 'alert alert-success';
 					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product has been added.';
 				}

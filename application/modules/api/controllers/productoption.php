@@ -48,11 +48,11 @@ class Productoption extends CI_Controller {
 			
 			if ( $this->productId != '' ){
 				//get company info
-				$response = $this->product_model->productOptionInfo($this->productId);
+				$response = $this->product_model->optionInfo($this->productId);
 			}
 			else{
 				//get company list
-				$response = $this->product_model->productOptionList();
+				$response = $this->product_model->optionList();
 			}
 		}
 		else{
@@ -81,22 +81,17 @@ class Productoption extends CI_Controller {
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$product_name			= $this->security->xss_clean($this->input->post('product_name'));
-			$product_description	= $this->security->xss_clean($this->input->post('product_description'));
-			$product_type_id		= $this->security->xss_clean($this->input->post('product_type_id'));
-			$featured				= $this->security->xss_clean($this->input->post('featured'));
-			$country_id				= $this->security->xss_clean($this->input->post('country_id'));
-			$company_id				= $this->security->xss_clean($this->input->post('company_id'));
-			$area_id				= $this->security->xss_clean($this->input->post('area_id'));
-			$product_icon			= $this->security->xss_clean($this->input->post('product_icon'));
-			$product_link			= $this->security->xss_clean($this->input->post('product_link'));
-			$insert_sql				= $this->security->xss_clean($this->input->post('insert_sql'));
+			$product_id			= $this->security->xss_clean($this->input->post('product_id'));
+			$vertical_optionid	= $this->security->xss_clean($this->input->post('vertical_optionid'));
+			$option				= $this->security->xss_clean($this->input->post('option'));
+			$option_value		= $this->security->xss_clean($this->input->post('option_value'));
+			$expiry_date		= $this->security->xss_clean($this->input->post('expiry_date'));
 			
 			$response['success'] = true;
 			
 			//validation
 			foreach ( $this->input->post() as $key => $val ){
-				$required_fields = array('product_name','product_description','product_type_id','area_id','product_icon','product_link');
+				$required_fields = array('product_id','vertical_optionid','option','option_value','expiry_date');
 				if ( in_array($key, $required_fields) ){
 					if ( $val == '' || $val == NULL ){
 						$rename 				= str_replace("_"," ",$key);
@@ -110,30 +105,15 @@ class Productoption extends CI_Controller {
 				$this->load->model('product_model');
 				
 				$arr_data = array(
-					'product_name'			=> $product_name,
-					'product_description' 	=> $product_description,
-					'product_type_id' 		=> $product_type_id,
-					'featured' 				=> $featured,
-					'company_id'			=> $company_id,
-					'country_id' 			=> $country_id,
-					'area_id'				=> $area_id,
-					'product_icon' 			=> $product_icon,
-					'product_link' 			=> $product_link
+					'product_id'			=> $product_id,
+					'vertical_optionid' 	=> $vertical_optionid,
+					'option' 				=> $option,
+					'option_value' 			=> $option_value,
+					'expiry_date'			=> $expiry_date
 				);
 				
-				if($insert_sql != '' || $insert_sql != NULL)
-				{
-					$insert_sql = trim(preg_replace('/\s\s+/', ' ', $insert_sql));
-					$arr_data = array('sql'	=> $insert_sql);
-					
-					$response = $this->product_model->productcsvUpload($arr_data);
-				}
-				else 
-				{
-					
-					$response['message'][]	= 'waley';
-					$response = $this->product_model->productAdd($arr_data);
-				}	 
+				$response = $this->product_model->optionAdd($arr_data);
+					 
 			}
 		}
 		else{

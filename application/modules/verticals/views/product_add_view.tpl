@@ -39,15 +39,16 @@
                                 <div class="controls">{$companyList}</div>
                             </div>
                             
-                            <div class="control-group">
-                            	<label class="control-label" for="selectError3">Select Category Type</label>
-                                <div class="controls">{$productTypeList}</div>
-                            </div>
-                            
-                            <div class="control-group">
+                             <div class="control-group">
                             	<label class="control-label" for="selectError1">Select Area</label>
                                 <div class="controls">{$areaList}</div>
                             </div>
+                            
+                            <div class="control-group"  id="category_type">
+                            	<label class="control-label" for="selectError3">Select Category Type</label>
+                                <div class="controls">{$productTypeList}</div>
+                            </div>
+                                        
 							  
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">Product Name:</label>
@@ -58,6 +59,8 @@
 								<label class="control-label" for="focusedInput">Product Link:</label>
 								<div class="controls">{$product_link}</div>
 							  </div>
+							  
+							  
 							  
 							<div class="control-group">
 							  <label class="control-label" for="fileInput">Upload Image</label>
@@ -118,3 +121,6 @@
 				
 			<!-- end: Content -->
 			</div><!--/#content.span10-->
+			
+			
+						

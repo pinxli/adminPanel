@@ -114,7 +114,7 @@ class Verticals_model extends CI_Model {
 	function productOptionAdd($data)
 	{
 		$url  = $this->config->item('rest_api_url') . 'productoption/'.$this->locale.'/98740/';
-		$res  = $this->call_rest($url,$json,'post');
+		$res  = $this->call_rest($url,$data,'post');
 		return json_decode($res);
 	}
 	
