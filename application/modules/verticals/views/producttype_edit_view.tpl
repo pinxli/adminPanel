@@ -46,9 +46,35 @@
 								<label class="control-label" for="focusedInput"> URL Slug:</label>
 								<div class="controls">{$url_slug}</div>
 							  </div>
-		
+							  
+							<hr><br />
 
-							   <div class="form-actions">
+					<div class="box-content">
+						<table id="myTable"
+							class="table table-striped table-bordered bootstrap-datatable datatable">
+							<thead>
+								<tr>
+									<th width="26%">Option Key</th>
+									<th width="27%">Option Description</th>
+									<th width="10%">Autoload</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								{if $verticalOptions eq true}
+								{foreach $verticalOptions item=verticaloptions}
+								<tr>
+									<td>{$verticaloptions->option_key}</td>
+									<td>{$verticaloptions->option_description}</td>
+									<td>{$verticaloptions->option_autoload}</td>
+								</tr>
+								{/foreach}
+								{/if}
+							</tbody>
+						</table>
+					</div>
+
+					<div class="form-actions">
 								<button type="submit" class="btn btn-primary">Edit</button>
 								<button class="btn">Cancel</button>
 							  </div>

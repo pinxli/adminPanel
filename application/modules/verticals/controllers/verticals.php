@@ -569,6 +569,8 @@ class Verticals extends CI_Controller {
 			{
 				$productType = $product_info->data->producttypeinfo[0];
 				
+				
+				
 				$product_type 		= form_input(array('name' => 'product_type','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Product Type' , 'value' => $productType->product_type));
 				$description  		= form_input(array('name' => 'description','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Description', 'value' => $productType->description));
 				$url_slug  			= form_input(array('name' => 'url_slug','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'URL Slug', 'value' => $productType->url_slug));
@@ -576,6 +578,10 @@ class Verticals extends CI_Controller {
 				$form_open 	  		= form_open('',array('class' => 'form-horizontal', 'method' => 'post'));
 				$form_close   		= form_close();
 			
+				$vertical_options  = $this->verticals_model->verticaloptionInfo($product_type_id);
+				
+				$verticalOptions  = ( $vertical_options->rc == 0 ) ? $vertical_options->data->verticaloptioninfo : false;
+				
 				$data['mainContent'] = 'producttype_edit_view.tpl';
 
 				$data['data'] = array(
@@ -587,6 +593,7 @@ class Verticals extends CI_Controller {
 					'description'			=> $description,
 					'url_slug'				=> $url_slug,
 					'product_type_id'		=> $product_type_id,
+					'verticalOptions'		=> $verticalOptions,
 					'form_open'				=> $form_open,
 					'form_close'			=> $form_close,
 					);
