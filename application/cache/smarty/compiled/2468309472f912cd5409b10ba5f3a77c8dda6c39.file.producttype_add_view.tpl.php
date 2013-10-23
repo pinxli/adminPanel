@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-23 06:36:32
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-23 10:29:09
          compiled from "application\modules\verticals\views\producttype_add_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:250305267380857ab18-98056155%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2468309472f912cd5409b10ba5f3a77c8dda6c39' => 
     array (
       0 => 'application\\modules\\verticals\\views\\producttype_add_view.tpl',
-      1 => 1382510089,
+      1 => 1382524147,
       2 => 'file',
     ),
   ),
@@ -19,27 +19,37 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_526738085e42a',
   'variables' => 
   array (
+    'baseUrl' => 0,
     'form_open' => 0,
     'product_type' => 0,
     'description' => 0,
     'url_slug' => 0,
-    'baseUrl' => 0,
     'option_key' => 0,
     'option_description' => 0,
     'form_close' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_526738085e42a')) {function content_526738085e42a($_smarty_tpl) {?><div id="content" class="span10">
+<?php if ($_valid && !is_callable('content_526738085e42a')) {function content_526738085e42a($_smarty_tpl) {?>
+<div id="content" class="span10">
 	<!-- start: Content -->
 			<div>
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="home.html">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Product Type</a>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/verticaltypes/">Verticals</a> <span class="divider">/</span>
+					</li>
+                    <li>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/verticaltypes/">Vertical Types</a> <span class="divider">/</span>
+					</li>
+                    <li>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/addverticaltype/">Add Vertical Type</a>
 					</li>
 				</ul>
 				<hr>
@@ -83,11 +93,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							  <br /><hr>
 								
 							  <div class="control-group">
-								<img alt="" src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-assets/img/add.png">
-							  </div>
-								
-							  <div class="control-group">
 								<label class="control-label" for="focusedInput"> Option Key:</label>
 								<div class="controls"><?php echo $_smarty_tpl->tpl_vars['option_key']->value;?>
 </div>
@@ -101,17 +106,52 @@ assets/img/add.png">
 								
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput"> Option Autoload:</label>
+								
 								<div class="controls">
-								<input type="radio" name="option_autoload" value="1" checked="checked">Yes &nbsp;
-								<input type="radio" name="option_autoload" value="0">No
+								  <label class="radio">
+									<input type="radio" name="option_autoload" id="optionsRadios1" value="1" checked="">
+									Yes
+								  </label>
+								  <div style="clear:both"></div>
+								  <label class="radio">
+									<input type="radio" name="option_autoload" id="optionsRadios2" value="0">
+									No
+								  </label>
 								</div>
 							  </div>
+								
+							  <div class="control-group">
+							  <div class="controls">
+								<span class="label label-success hidden-phone" id="btn_addverticals">Add Vertical Option</span>
+							</div>
+							  </div>
+							  
+							<br /><br />
+							
+						<div class="box-content">
+							<table id="myTable" class="table table-striped table-bordered bootstrap-datatable ">
+							  <thead>
+								  <tr>
+									  <th width="26%">Option Key</th>
+									  <th width="27%">Option Description</th>
+	                                  <th width="10%">Autoload</th>
+									  
+								  </tr>
+							  </thead>   
+							  <tbody>						
+							  </tbody>
+						  </table> 
+	                          
+						</div>
+					
 
 							   <div class="form-actions">
 								<button type="submit" class="btn btn-primary">Add</button>
 								<button class="btn">Cancel</button>
 							  </div>
 							</fieldset>
+							
+							  <input type="hidden" name="verticaloptions" id="verticaloptions" value="" />	
 						<?php echo $_smarty_tpl->tpl_vars['form_close']->value;?>
 
 					

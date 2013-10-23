@@ -64,6 +64,28 @@ $(document).ready(function(){
 	widthFunctions();
 	circle_progess();
 	
+	$('#btn_addverticals').click(function(){
+		
+		if ( $('#option_key').val() != '' && $('#option_description').val() != '' && $('#option_autoload').val() ){
+			var verticalOptions = $('#verticaloptions').val();
+			
+			if ( verticalOptions != '' ){
+				verticalOptionValues = verticalOptions+',{"option_key":"'+$('#option_key').val()+'", "option_description":"'+$('#option_description').val()+'", "option_autoload":"'+$('#option_autoload').val()+'"}';
+			}
+			else{
+				verticalOptionValues = '{"option_key":"'+$('#option_key').val()+'", "option_description":"'+$('#option_description').val()+'", "option_autoload":"'+$('#option_autoload').val()+'"}';
+			}
+			
+			$('#myTable').append('<tr><td>'+$('#option_key').val()+'</td><td>'+$('#option_description').val()+'</td><td>'+$('#option_autoload').val()+'</td></tr>');
+		
+			$('#verticaloptions').val(verticalOptionValues);
+		}
+		else{
+			alert('Please Fill up Vertical Options Fields.');
+		}
+	
+	}).css('cursor','pointer');
+	
 	
 });
 
@@ -1679,4 +1701,45 @@ function showInfo(str,url){
 		});
 	});
 	
+}
+
+function test(){
+
+		/* $.ajax({ 
+			type: 'GET', 
+			url: 'http://localhost/adminPanel/api/verticaloption/ph/98740/', 
+			data: { get_param: 'value' }, 
+			dataType: 'json',
+			success: function (data) { 
+				// var data_array = $.parseJSON(data);
+				// console.log(data.data.productlist);
+				var xxx = data.data.productlist;
+				$.each(xxx, function(k,v){
+					console.log(v.id+' - '+v.option_key);
+				});
+				
+				// $(data.data).each(function(i,val){
+					// console.log(i+" : "+ val);
+					// $.each(val,function(k,v){
+						// $.each(v,function(a,b){
+							// $.each(b,function(x,y){
+								// console.log(x+" : "+ y);  
+							// });
+						// });						
+					// });
+				// });
+				
+				// $.each(list, function() {
+				  // console.log(this['city']); // could also be this.city
+				// });
+				
+				
+				
+				// $.each(data, function(index, element) {
+					// $('body').append($('<div>', {
+					// text: element.name
+					// }));
+				// });
+			}
+		}); */
 }

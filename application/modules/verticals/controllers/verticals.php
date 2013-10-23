@@ -252,8 +252,8 @@ class Verticals extends CI_Controller {
 			$url_slug	  = form_input(array('name' => 'url_slug','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Url Slugs'));
 			
 			//for vertical options table
-			$option_key	  = form_input(array('name' => 'option_key','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Option Key'));
-			$option_description  = form_input(array('name' => 'option_description','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Option Description'));
+			$option_key	  = form_input(array('name' => 'option_key','class' => 'input-xlarge focused','id' => 'option_key','placeholder' => 'Option Key'));
+			$option_description  = form_input(array('name' => 'option_description','class' => 'input-xlarge focused','id' => 'option_description','placeholder' => 'Option Description'));
 				
 			$form_open 	  = form_open('',array('class' => 'form-horizontal', 'method' => 'post'));
 			$form_close   = form_close();
@@ -280,10 +280,10 @@ class Verticals extends CI_Controller {
 		else 	
 		{
 			$insertproductType = array(
-				'product_type' 			=> $this->input->post('product_type'),
-				'description'  			=> $this->input->post('description'),
-				'url_slug'     			=> $this->input->post('url_slug')
-			);
+				'product_type'		=> $this->input->post('product_type'),
+				'description'		=> $this->input->post('description'),
+				'url_slug'			=> $this->input->post('url_slug')
+			);			
 			
 			// echo "<pre />";
 			// print_r($insertproductType);
@@ -294,15 +294,19 @@ class Verticals extends CI_Controller {
 			
 			if($resProductType->rc == 0)
 			{
-			
-				$insertVerticalOption = array(
-					'product_type_id'		=> $resProductType->producttypeId,
-					'option_key'    		=> $this->input->post('option_key'),
-					'option_description'	=> $this->input->post('option_description'),
-					'option_autoload'		=> $this->input->post('option_autoload')
-				);
+				$verticalOptions = json_decode('['.$this->input->post('verticaloptions').']');
 				
-				$resVerticalOption  = $this->verticals_model->verticalOptionAdd($insertVerticalOption);		
+				foreach ( $verticalOptions as $rw ){
+				
+					$insertVerticalOption = array(
+						'product_type_id'		=> $resProductType->producttypeId,
+						'option_key'    		=> $rw->option_key,
+						'option_description'	=> $rw->option_description,
+						'option_autoload'		=> $rw->option_autoload
+					);
+					
+					$resVerticalOption  = $this->verticals_model->verticalOptionAdd($insertVerticalOption);	
+				}
 				
 				$msgClass = 'alert alert-success';
 				$msgInfo  = ( $resProductType->message[0] ) ? $resProductType->message[0] : 'Vertical Type has been added.';

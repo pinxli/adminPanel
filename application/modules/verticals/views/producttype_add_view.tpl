@@ -1,13 +1,20 @@
+
 <div id="content" class="span10">
 	<!-- start: Content -->
 			<div>
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="home.html">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Product Type</a>
+						<a href="{$baseUrl}verticals/verticaltypes/">Verticals</a> <span class="divider">/</span>
+					</li>
+                    <li>
+						<a href="{$baseUrl}verticals/verticaltypes/">Vertical Types</a> <span class="divider">/</span>
+					</li>
+                    <li>
+						<a href="{$baseUrl}verticals/addverticaltype/">Add Vertical Type</a>
 					</li>
 				</ul>
 				<hr>
@@ -47,10 +54,6 @@
 							  <br /><hr>
 								
 							  <div class="control-group">
-								<img alt="" src="{$baseUrl}assets/img/add.png">
-							  </div>
-								
-							  <div class="control-group">
 								<label class="control-label" for="focusedInput"> Option Key:</label>
 								<div class="controls">{$option_key}</div>
 							  </div>
@@ -62,17 +65,52 @@
 								
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput"> Option Autoload:</label>
+								
 								<div class="controls">
-								<input type="radio" name="option_autoload" value="1" checked="checked">Yes &nbsp;
-								<input type="radio" name="option_autoload" value="0">No
+								  <label class="radio">
+									<input type="radio" name="option_autoload" id="optionsRadios1" value="1" checked="">
+									Yes
+								  </label>
+								  <div style="clear:both"></div>
+								  <label class="radio">
+									<input type="radio" name="option_autoload" id="optionsRadios2" value="0">
+									No
+								  </label>
 								</div>
 							  </div>
+								
+							  <div class="control-group">
+							  <div class="controls">
+								<span class="label label-success hidden-phone" id="btn_addverticals">Add Vertical Option</span>
+							</div>
+							  </div>
+							  
+							<br /><br />
+							
+						<div class="box-content">
+							<table id="myTable" class="table table-striped table-bordered bootstrap-datatable ">
+							  <thead>
+								  <tr>
+									  <th width="26%">Option Key</th>
+									  <th width="27%">Option Description</th>
+	                                  <th width="10%">Autoload</th>
+									  
+								  </tr>
+							  </thead>   
+							  <tbody>						
+							  </tbody>
+						  </table> 
+	                          
+						</div>
+					
 
 							   <div class="form-actions">
 								<button type="submit" class="btn btn-primary">Add</button>
 								<button class="btn">Cancel</button>
 							  </div>
 							</fieldset>
+							
+							  <input type="hidden" name="verticaloptions" id="verticaloptions" value="" />	
 						{$form_close}
 					
 			

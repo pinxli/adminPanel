@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-23 04:04:33
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-23 09:22:37
          compiled from "application\modules\verticals\views\product_add_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2606252674ad104ab83-51593417%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cd47632de75495303ccb36e4997c6aff058363a8' => 
     array (
       0 => 'application\\modules\\verticals\\views\\product_add_view.tpl',
-      1 => 1382414037,
+      1 => 1382511182,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_52674ad10cf8a',
   'variables' => 
   array (
     'form_open' => 0,
@@ -28,8 +30,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'form_close' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_52674ad10cf8a',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_52674ad10cf8a')) {function content_52674ad10cf8a($_smarty_tpl) {?><div id="content" class="span10">
 	<!-- start: Content -->
