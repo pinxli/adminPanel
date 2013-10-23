@@ -160,6 +160,22 @@ class Verticals_model extends CI_Model {
 		return json_decode($res);
 	}
 	
+	// get product list
+	function verticaloptionList()
+	{
+		$url = $this->config->item('rest_api_url') . 'verticaloption/'.$this->locale.'/98740';
+		$res = $this->call_rest($url,'','get');
+		return json_decode($res);
+	}
+	
+	function verticaloptionInfo($product_type_id)
+	{
+		$url = $this->config->item('rest_api_url') . 'verticaloption/'.$this->locale.'/98740/' . $product_type_id;
+		$res = $this->call_rest($url,'','get');
+		return json_decode($res);
+	}
+	
+	
 	// add vertical options
 	function verticalOptionAdd($data)
 	{
@@ -168,6 +184,8 @@ class Verticals_model extends CI_Model {
 		
 		return json_decode($res);
 	}
+	
+	
 	
 	function productImg($file_element_name)
 	{
