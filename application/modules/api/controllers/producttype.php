@@ -83,7 +83,8 @@ class Producttype extends CI_Controller {
 		if ( $is_valid_auth['rc'] == 0 ){
 			$product_type		= $this->security->xss_clean($this->input->post('product_type'));
 			$description		= $this->security->xss_clean($this->input->post('description'));
-		
+			$url_slug			= $this->security->xss_clean($this->input->post('url_slug'));
+			
 			$response['success'] = true;
 			
 			//validation
@@ -104,6 +105,7 @@ class Producttype extends CI_Controller {
 				$arr_data = array(
 					'product_type'		=> $product_type,
 					'description' 		=> $description,
+					'url_slug' 			=> $url_slug,
 	
 				);
 				
