@@ -26,9 +26,9 @@ class Verticaloption_model extends CI_Model {
 		 
 		//if data exist, return results
 		if ($query->num_rows() > 0){
-			$response['rc']					 = 0;
-			$response['success']			 = true;
-			$response['data']['productlist'] = $query->result();
+			$response['rc']							 = 0;
+			$response['success']					 = true;
+			$response['data']['verticaloptionlist']  = $query->result();
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Vertical Option: No Records Found.';
@@ -51,7 +51,7 @@ class Verticaloption_model extends CI_Model {
 		if ($query->num_rows() > 0){
 			$response['rc']					 = 0;
 			$response['success']			 = true;
-			$response['data']['productinfo'] = $query->result();
+			$response['data']['verticaloptioninfo'] = $query->result();
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Vertical Option Info: No Records Found.';
