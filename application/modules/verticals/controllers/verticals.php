@@ -145,7 +145,13 @@ class Verticals extends CI_Controller {
 			endforeach;
 			
 			$countrylist[''] = 'Select Country';
+			$countrySelected = false;
 			foreach ($countryList as $country):
+			if($countrySelected == false)
+			{
+				$countrySelected = ( $country->iso2 == strtoupper($this->session->userdata('locale'))) ? $country->country_id : false;
+			}
+			
 			$countrylist[$country->country_id] = $country->short_name;
 			endforeach;
 			
@@ -166,7 +172,7 @@ class Verticals extends CI_Controller {
 			$product_icon 		 	= form_input(array('name' => 'product_icon', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Icon'));
 			$product_link 		 	= form_input(array('name' => 'product_link', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Link'));
 			$areaList			 	= form_dropdown('area_id', $arealist, '', 'id="selectError1" data-rel="chosen"');
-			$countryList			= form_dropdown('country_id', $countrylist, '', 'id="selectError2" data-rel="chosen"');
+			$countryList			= form_dropdown('country_id', $countrylist, $countrySelected, 'id="selectError2" data-rel="chosen"');
 			$productTypeList		= form_dropdown('product_type_id', $product_type_list, '' , 'id="selectError3" data-rel="chosen" onchange="verticalType();"');
 			$companyList			= form_dropdown('company_id', $company_list, '', 'id="selectError4" data-rel="chosen"');
 			$form_close = form_close();
