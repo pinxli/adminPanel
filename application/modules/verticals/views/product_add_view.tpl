@@ -134,7 +134,7 @@ function verticalType(){
 	$.ajax({ 
 		   type: "GET",
 		   dataType: "json",
-		   url: "{$baseUrl}api/verticaloption/ph/98740/" + str,
+		   url: "{$baseUrl}api/verticaloption/{$locale}/98740/" + str,
 		   success: function(resultData){        
 			   var result = resultData.data.verticaloptioninfo;
 			    $.each(result, function(k,v){

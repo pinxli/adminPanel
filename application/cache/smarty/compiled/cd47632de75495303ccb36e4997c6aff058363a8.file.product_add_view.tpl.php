@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-24 07:35:53
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-24 10:41:31
          compiled from "application\modules\verticals\views\product_add_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2606252674ad104ab83-51593417%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cd47632de75495303ccb36e4997c6aff058363a8' => 
     array (
       0 => 'application\\modules\\verticals\\views\\product_add_view.tpl',
-      1 => 1382600130,
+      1 => 1382611285,
       2 => 'file',
     ),
   ),
@@ -29,6 +29,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'product_description' => 0,
     'form_close' => 0,
     'baseUrl' => 0,
+    'locale' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -178,7 +179,8 @@ function verticalType(){
 		   type: "GET",
 		   dataType: "json",
 		   url: "<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-api/verticaloption/ph/98740/" + str,
+api/verticaloption/<?php echo $_smarty_tpl->tpl_vars['locale']->value;?>
+/98740/" + str,
 		   success: function(resultData){        
 			   var result = resultData.data.verticaloptioninfo;
 			    $.each(result, function(k,v){

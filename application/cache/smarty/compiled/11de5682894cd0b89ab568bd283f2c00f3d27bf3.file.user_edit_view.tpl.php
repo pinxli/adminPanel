@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-10 08:36:50
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-24 10:13:43
          compiled from "application\modules\settings\views\user_edit_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:22384525667228b3383-94546075%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '11de5682894cd0b89ab568bd283f2c00f3d27bf3' => 
     array (
       0 => 'application\\modules\\settings\\views\\user_edit_view.tpl',
-      1 => 1381394104,
+      1 => 1382609137,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_525667228e600',
   'variables' => 
   array (
     'form_open' => 0,
@@ -27,8 +29,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'form_close' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_525667228e600',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_525667228e600')) {function content_525667228e600($_smarty_tpl) {?>
 <div id="content" class="span10">

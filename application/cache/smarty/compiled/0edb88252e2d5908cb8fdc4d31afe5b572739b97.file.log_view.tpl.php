@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-11 04:30:21
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-24 10:13:58
          compiled from "application\modules\settings\views\log_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:438752577eddc13a43-67891465%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0edb88252e2d5908cb8fdc4d31afe5b572739b97' => 
     array (
       0 => 'application\\modules\\settings\\views\\log_view.tpl',
-      1 => 1381465567,
+      1 => 1382609137,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_52577eddc4a55',
   'variables' => 
   array (
     'baseUrl' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'loglist' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_52577eddc4a55',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_52577eddc4a55')) {function content_52577eddc4a55($_smarty_tpl) {?><div id="content" class="span10">
 			<!-- start: Content -->

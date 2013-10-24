@@ -354,13 +354,13 @@ class Users extends CI_Controller {
 	 **/
 	public function logout()
 	{
-		$auth_key 		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+		$auth_key 		= ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
 		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$log_id = ( $this->uri->segment(6) ) ? $this->uri->segment(6) : '';
-			$userid = ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
+			$log_id = ( $this->uri->segment(6) ) ? $this->uri->segment(7) : '';
+			$userid = ( $this->uri->segment(5) ) ? $this->uri->segment(6) : '';
 			
 			//if validation is ok			
 			if( $log_id != '' && $userid != '' ){				

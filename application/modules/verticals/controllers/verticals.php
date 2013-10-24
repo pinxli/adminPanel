@@ -181,6 +181,7 @@ class Verticals extends CI_Controller {
 
 			$data['data'] = array(
 			'baseUrl'				=> base_url(),
+			'locale'				=> $this->session->userdata('locale'),
 			'title'					=> 'Add Product',
 			'msgClass'				=> $this->msgClass,
 			'msgInfo'				=> $this->msgInfo,
@@ -497,26 +498,44 @@ class Verticals extends CI_Controller {
 				
 				$productOptions = $this->verticals_model->productOptionInfo($this->uri->segment(3));
 				
+				$productoption = ( $productOptions->rc == 0 ) ? $productOptions->data->optioninfo : array();
+				
 				$productInfo 	= $product_info->data->productinfo;
 				
 				$clist			 = $this->verticals_model->companyList();
 				$type_list		 = $this->verticals_model->productTypeList();
 				$area_list 		 = $this->verticals_model->productAreasList();
 				$country_list	 = $this->verticals_model->countryList();
-			
-				foreach ($area_list->data->productarealist as $area):
+					
+				$comlist 		=	( $clist->rc == 0 ) ? $clist->data->companylist : array();
+				$typeList 		= 	( $type_list->rc == 0 ) ? $type_list->data->producttypelist : array();
+				$areaList		= 	( $area_list->rc == 0 ) ? $area_list->data->productarealist : array();
+				$countryList	=   ( $country_list->rc == 0 ) ? $country_list->data->countrylist : array();
+					
+				$arealist[''] = 'Select Area';
+				foreach ($areaList as $area):
 				$arealist[$area->area_id] = $area->area_name;
 				endforeach;
 					
-				foreach ($country_list->data->countrylist as $country):
+				$countrylist[''] = 'Select Country';
+				$countrySelected = false;
+				foreach ($countryList as $country):
+				if($countrySelected == false)
+				{
+					$countrySelected = ( $country->iso2 == strtoupper($this->session->userdata('locale'))) ? $country->country_id : false;
+				}
+					
 				$countrylist[$country->country_id] = $country->short_name;
 				endforeach;
 					
-				foreach ($type_list->data->producttypelist as $product):
-				$product_type_list[$product->product_type_id] = $product->product_type;
+				$product_type_list[''] = 'Select Product Type';
+				foreach ($typeList as $type):
+				$product_type_list[$type->product_type_id] = $type->product_type;
 				endforeach;
 					
-				foreach ($clist->data->companylist as $company):
+					
+				$company_list[''] = 'Select Company';
+				foreach ($comlist as $company):
 				$company_list[$company->company_id] = $company->company_name;
 				endforeach;
 				
@@ -548,7 +567,7 @@ class Verticals extends CI_Controller {
 					'companyList'			=> $companyList,
 					'form_open'				=> $form_open,
 					'form_close'			=> $form_close,
-					'productOptions'		=> $productOptions->data->optioninfo,
+					'productOptions'		=> $productoption,
 					'product_id'			=> $productInfo[0]->product_id
 				);
 				

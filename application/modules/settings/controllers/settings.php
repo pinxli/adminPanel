@@ -95,6 +95,7 @@ class Settings extends CI_Controller {
 			
 			$result = $this->settings_model->add_user($insert_data);
 			
+		
 			if($result->rc == 0)
 			{
 				$msgClass = 'alert alert-success';

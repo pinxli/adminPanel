@@ -15,7 +15,9 @@ class Admin_model extends CI_Model {
 	{
 		$userid = $this->session->userdata('userid');
 		$logid  = $this->session->userdata('logid');
-		$url = $this->config->item('rest_api_url') . 'users/logout/98740/'  . $userid . '/' . $logid;
+		$locale = $this->session->userdata('locale');
+		$url = $this->config->item('rest_api_url') . 'users/logout/'.$locale.'/98740/'  . $userid . '/' . $logid;
+		echo $url;
 		return json_decode($this->call_rest($url,''));
 	}
 	
