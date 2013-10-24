@@ -231,22 +231,10 @@ class Users extends CI_Controller {
 	 ** for user login. includes user access logs
 	 **/
 	public function login(){
-		
 		$locale 		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
 		$auth_key 		= ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
 		
 		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
-		
-		/* //api logs
-		$log_data = array(
-			'log_client_id' => $auth_key,
-			'log_method' 	=> 'validate_auth_key - '.$_SERVER['REQUEST_METHOD'],
-			'log_url' 		=> $this->uri->uri_string(),
-			'log_request' 	=> $auth_key,//json_encode($this->input->post()),
-			'log_response' 	=> json_encode($is_valid_auth),
-		);
-		$this->apilog_model->apiLog($log_data); //db logs
-		$this->api_functions->apiLog(json_encode($log_data),'validate_auth_key'); //text logs */
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
@@ -292,17 +280,6 @@ class Users extends CI_Controller {
 			$response['success']	= $is_valid_auth['success'];
 			$response['message'][]	= $is_valid_auth['message'];
 		}
-
-		//api logs
-		$log_data = array(
-			'log_client_id' => $auth_key,
-			'log_method' 	=> 'LOGIN - '.$_SERVER['REQUEST_METHOD'],
-			'log_url' 		=> $this->uri->uri_string(),
-			'log_request' 	=> json_encode($this->input->post()),
-			'log_response' 	=> json_encode($response),
-		);
-		$this->apilog_model->apiLog($log_data); //db logs
-		$this->api_functions->apiLog(json_encode($log_data),'validate_auth_key'); //text logs
 		
 		//display Jason
 		$this->output
