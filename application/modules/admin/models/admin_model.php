@@ -7,6 +7,7 @@ class Admin_model extends CI_Model {
 	function validate($data)
 	{
 		$url = $this->config->item('rest_api_url') . 'users/login/'.$data['locale'].'/98740/';
+		// echo $url; exit;
 		return json_decode($this->call_rest_post($url,$data));
 	}
 	
