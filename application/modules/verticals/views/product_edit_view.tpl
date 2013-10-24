@@ -39,16 +39,16 @@
                             <div class="control-group">
                             	<label class="control-label" for="selectError4">Select Company Name</label>
                                 <div class="controls">{$companyList}</div>
+                            </div>                       
+                                  
+                            <div class="control-group">
+                            	<label class="control-label" for="selectError1">Select Area</label>
+                                <div class="controls">{$areaList}</div>
                             </div>
                             
                             <div class="control-group">
                             	<label class="control-label" for="selectError3">Select Category Type</label>
                                 <div class="controls">{$productTypeList}</div>
-                            </div>
-                            
-                            <div class="control-group">
-                            	<label class="control-label" for="selectError1">Select Area</label>
-                                <div class="controls">{$areaList}</div>
                             </div>
 							  
 							  <div class="control-group">
@@ -103,6 +103,33 @@
 							  <label class="control-label" for="textarea2">Description</label>
 							  <div class="controls">{$product_description}</div>
 							</div>
+							
+					<hr>Product Option<br />
+
+					<div class="box-content">
+						<table id="myTable"
+							class="table table-striped table-bordered bootstrap-datatable datatable">
+							<thead>
+								<tr>
+									<th width="26%">Option</th>
+									<th width="27%">Value</th>
+									<th width="10%">Expiry Date</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								{if $productOptions eq true}
+								{foreach $productOptions item=options}
+								<tr>
+									<td>{$options->option}</td>
+									<td>{$options->option_value}</td>
+									<td>{$options->expiry_date}</td>
+								</tr>
+								{/foreach}
+								{/if}
+							</tbody>
+						</table>
+					</div>
 
 							   <div class="form-actions">
 								<button type="submit" class="btn btn-primary">Edit</button>

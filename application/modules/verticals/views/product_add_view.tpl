@@ -7,7 +7,10 @@
 						<a href="#">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Product</a>
+						<a href="#">Verticals</a> <span class="divider">/</span>
+					</li>
+					<li>
+						<a href="#">Add Product</a>
 					</li>
 				</ul>
 				<hr>
@@ -122,5 +125,25 @@
 			<!-- end: Content -->
 			</div><!--/#content.span10-->
 			
-			
+<script>
+function verticalType(){
+	str = $( "#selectError3 option:selected" ).val();
+	
+	$(".product_options").remove();
+	
+	$.ajax({ 
+		   type: "GET",
+		   dataType: "json",
+		   url: "{$baseUrl}api/verticaloption/ph/98740/" + str,
+		   success: function(resultData){        
+			   var result = resultData.data.verticaloptioninfo;
+			    $.each(result, function(k,v){
+			     $('#category_type').after('<div class="control-group product_options"><label class="control-label" for="focusedInput">' +v.option_key +':</label><div class="controls"><input type="text" name="option['+v.option_key +'-' + v.id+ ']" value="" class="input-xlarge focused" id="focusedInput" placeholder="' +v.option_key +' Value"> &nbsp; Expiry Days:<input class="input-small focused" type="number" name="expiry_date['+ v.id +']" min="1" max="30"></div></div>');
+			     
+			    }); 
+			   
+		   }
+		});
+}
+</script>
 						

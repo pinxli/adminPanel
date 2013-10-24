@@ -8,6 +8,11 @@
 					<li>
 						<a href="#">Home</a> <span class="divider">/</span>
 					</li>
+					
+					<li>
+						<a href="#">Verticals</a> <span class="divider">/</span>
+					</li>
+					
 					<li>
 						<a href="#">Product Area</a>
 					</li>
@@ -53,7 +58,7 @@
 								</td>
 								
 								<td class="center">
-										<a class="btn btn-info" href="{$baseUrl}product/editproductarea/{$AreaList->area_id}">
+										<a class="btn btn-info" href="{$baseUrl}verticals/editproductarea/{$AreaList->area_id}">
 										<i class="icon-edit icon-white"></i>  
 									</a>
 								</td>

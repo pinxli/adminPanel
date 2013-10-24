@@ -333,18 +333,11 @@
 								{foreach from=$verticalType item=producttype}								
 								<li><a class="submenu" href="{$baseUrl}verticals/verticaltype/{$producttype->product_type_id}/{$producttype->url_slug}"><span class="hidden-tablet"> {$producttype->product_type}</span></a></li>
 								{/foreach}
-								<li><a class="submenu" href="{$baseUrl}verticals/productlist/"><span class="hidden-tablet"> All Products</span></a></li>
+								<li><a class="submenu" href="{$baseUrl}verticals/productarea/"><span class="hidden-tablet"> Areas</span></a></li>
+								<li><a class="submenu" href="{$baseUrl}verticals/productlist/"><span class="hidden-tablet"> Products</span></a></li>
 								<li><a class="submenu" href="{$baseUrl}verticals/verticaltypes/"><span class="hidden-tablet"> Vertical Types</span></a></li>
+								<li><a class="submenu" href="{$baseUrl}verticals/csvupload"><span class="hidden-tablet"> Product CSV Upload</span></a></li>
 							</ul>	
-						</li>
-                      					
-						 <li><a class="dropmenu" href="#"><i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Products</span></a>
-							<ul>
-								<li><a class="submenu" href="{$baseUrl}product/productmanagement"><span class="hidden-tablet"> Product Management</span></a></li>
-								<li><a class="submenu" href="{$baseUrl}product/producttype"><span class="hidden-tablet"> Product Types</span></a></li>
-								<li><a class="submenu" href="{$baseUrl}product/productarea"><span class="hidden-tablet"> Product Areas</span></a></li>
-								<li><a class="submenu" href="{$baseUrl}product/productoption"><span class="hidden-tablet"> Product Options</span></a></li>
-								<li><a class="submenu" href="{$baseUrl}product/csvupload"><span class="hidden-tablet"> CSV Upload</span></a></li>							</ul>	
 						</li>
 											
                         <li><a class="dropmenu" href="#"><i class="icon-rocket icon-white"></i><span class="hidden-tablet"> Company</span></a>

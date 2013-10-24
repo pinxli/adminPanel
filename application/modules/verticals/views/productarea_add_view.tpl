@@ -7,7 +7,10 @@
 						<a href="#">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Product Area</a>
+						<a href="#">Verticals</a> <span class="divider">/</span>
+					</li>
+					<li>
+						<a href="#">Add Product Area</a>
 					</li>
 				</ul>
 				<hr>

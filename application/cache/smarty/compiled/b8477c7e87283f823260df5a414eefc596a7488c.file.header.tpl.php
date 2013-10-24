@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-24 02:48:19
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-24 07:14:15
          compiled from "application\views\includes\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93385257869c99f3c7-90349051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b8477c7e87283f823260df5a414eefc596a7488c' => 
     array (
       0 => 'application\\views\\includes\\header.tpl',
-      1 => 1382582698,
+      1 => 1382598169,
       2 => 'file',
     ),
   ),
@@ -389,24 +389,14 @@ verticals/verticaltype/<?php echo $_smarty_tpl->tpl_vars['producttype']->value->
 </span></a></li>
 								<?php } ?>
 								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-verticals/productlist/"><span class="hidden-tablet"> All Products</span></a></li>
+verticals/productarea/"><span class="hidden-tablet"> Areas</span></a></li>
+								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/productlist/"><span class="hidden-tablet"> Products</span></a></li>
 								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 verticals/verticaltypes/"><span class="hidden-tablet"> Vertical Types</span></a></li>
+								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/csvupload"><span class="hidden-tablet"> Product CSV Upload</span></a></li>
 							</ul>	
-						</li>
-                      					
-						 <li><a class="dropmenu" href="#"><i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Products</span></a>
-							<ul>
-								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-product/productmanagement"><span class="hidden-tablet"> Product Management</span></a></li>
-								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-product/producttype"><span class="hidden-tablet"> Product Types</span></a></li>
-								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-product/productarea"><span class="hidden-tablet"> Product Areas</span></a></li>
-								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-product/productoption"><span class="hidden-tablet"> Product Options</span></a></li>
-								<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-product/csvupload"><span class="hidden-tablet"> CSV Upload</span></a></li>							</ul>	
 						</li>
 											
                         <li><a class="dropmenu" href="#"><i class="icon-rocket icon-white"></i><span class="hidden-tablet"> Company</span></a>

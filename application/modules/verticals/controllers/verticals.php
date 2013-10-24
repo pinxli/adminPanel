@@ -110,7 +110,7 @@ class Verticals extends CI_Controller {
 		$this->load->view($this->globalTpl, $data);	
 	}
 	
-	// add product
+	// add product edited 10/24/2013
 	function addproduct()
 	{	
 		$this->load->library('form_validation');				
@@ -134,19 +134,29 @@ class Verticals extends CI_Controller {
 			$area_list 		 = $this->verticals_model->productAreasList();
 			$country_list	 = $this->verticals_model->countryList();
 			
-			foreach ($area_list->data->productarealist as $area):
+			$comlist 		=	( $clist->rc == 0 ) ? $clist->data->companylist : array();
+			$typeList 		= 	( $type_list->rc == 0 ) ? $type_list->data->producttypelist : array();
+			$areaList		= 	( $area_list->rc == 0 ) ? $area_list->data->productarealist : array();
+			$countryList	=   ( $country_list->rc == 0 ) ? $country_list->data->countrylist : array();
+			
+			$arealist[''] = 'Select Area';
+			foreach ($areaList as $area):
 			$arealist[$area->area_id] = $area->area_name;
 			endforeach;
 			
-			foreach ($country_list->data->countrylist as $country):
+			$countrylist[''] = 'Select Country';
+			foreach ($countryList as $country):
 			$countrylist[$country->country_id] = $country->short_name;
 			endforeach;
 			
-			foreach ($type_list->data->producttypelist as $product):
-			$product_type_list[$product->product_type_id] = $product->product_type;
+			$product_type_list[''] = 'Select Product Type';
+			foreach ($typeList as $type):
+			$product_type_list[$type->product_type_id] = $type->product_type;
 			endforeach;
 			
-			foreach ($clist->data->companylist as $company):
+			
+			$company_list[''] = 'Select Company';
+			foreach ($comlist as $company):
 			$company_list[$company->company_id] = $company->company_name;
 			endforeach;
 
@@ -183,8 +193,7 @@ class Verticals extends CI_Controller {
 			$this->load->view('includes/template', $data);
 		}
 		else 	
-		{
-						
+		{	
 			$imgUp = $this->verticals_model->productImg('productImg');
 		
 			if($imgUp['rc'] == 0)
@@ -210,6 +219,10 @@ class Verticals extends CI_Controller {
 					
 					$option = $this->input->post('option');
 					
+					$expiry_date = $this->input->post('expiry_date');
+					
+					$date = date("Y-m-d H:i:s");
+					
 					foreach ($option as $key=>$value)
 					{
 						$explode = explode("-", $key);
@@ -219,7 +232,7 @@ class Verticals extends CI_Controller {
 							'vertical_optionid' => $explode[1],
 							'option'			=> $explode[0],
 							'option_value'		=> $value,
-							'expiry_date'		=> 10
+							'expiry_date'		=> $this->add_date($date,$expiry_date[$explode[1]])
 						
 						);
 						
@@ -411,7 +424,7 @@ class Verticals extends CI_Controller {
 			);
 			$this->session->set_flashdata($msginfo_arr);
 			
-			redirect('product/productarea/');
+			redirect('verticals/productarea/');
 		}
 		
 	}	
@@ -476,7 +489,9 @@ class Verticals extends CI_Controller {
 			else
 			{
 				
-				$productInfo = $product_info->data->productinfo;
+				$productOptions = $this->verticals_model->productOptionInfo($this->uri->segment(3));
+				
+				$productInfo 	= $product_info->data->productinfo;
 				
 				$clist			 = $this->verticals_model->companyList();
 				$type_list		 = $this->verticals_model->productTypeList();
@@ -527,6 +542,7 @@ class Verticals extends CI_Controller {
 					'companyList'			=> $companyList,
 					'form_open'				=> $form_open,
 					'form_close'			=> $form_close,
+					'productOptions'		=> $productOptions->data->optioninfo,
 					'product_id'			=> $productInfo[0]->product_id
 				);
 				
@@ -612,7 +628,7 @@ class Verticals extends CI_Controller {
 				$description  		= form_input(array('name' => 'description','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Description', 'value' => $productType->description));
 				$url_slug  			= form_input(array('name' => 'url_slug','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'URL Slug', 'value' => $productType->url_slug));
 				$product_type_id	= $productType->product_type_id;
-			
+				
 				//for vertical options table
 				$option_key	  		= form_input(array('name' => 'option_key','class' => 'input-xlarge focused','id' => 'option_key','placeholder' => 'Option Key'));
 				$option_description = form_input(array('name' => 'option_description','class' => 'input-xlarge focused','id' => 'option_description','placeholder' => 'Option Description'));
@@ -696,7 +712,7 @@ class Verticals extends CI_Controller {
 					'msgInfo'  => $msgInfo,
 				);
 				$this->session->set_flashdata($msginfo_arr);
-				redirect('product/productarea/');
+				redirect('verticals/productarea/');
 				
 			}
 			else
@@ -739,10 +755,11 @@ class Verticals extends CI_Controller {
 			);
 			$this->session->set_flashdata($msginfo_arr);
 			
-			redirect('product/productarea/');
+			redirect('verticals/productarea/');
 		}
 	}
 	
+	//csv upload last edited 10/24/2014
 	function csvupload()
 	{
 		$this->load->library('form_validation');				
@@ -761,27 +778,37 @@ class Verticals extends CI_Controller {
 			$area_list 		 = $this->verticals_model->productAreasList();
 			$country_list	 = $this->verticals_model->countryList();
 			
-			foreach ($area_list->data->productarealist as $area):
+			$comlist 		=	( $clist->rc == 0 ) ? $clist->data->companylist : array();
+			$typeList 		= 	( $type_list->rc == 0 ) ? $type_list->data->producttypelist : array();
+			$areaList		= 	( $area_list->rc == 0 ) ? $area_list->data->productarealist : array();
+			$countryList	=   ( $country_list->rc == 0 ) ? $country_list->data->countrylist : array();
+			
+			$arealist[''] = 'Select Area';
+			foreach ($areaList as $area):
 			$arealist[$area->area_id] = $area->area_name;
 			endforeach;
 			
-			foreach ($country_list->data->countrylist as $country):
+			$countrylist[''] = 'Select Country';
+			foreach ($countryList as $country):
 			$countrylist[$country->country_id] = $country->short_name;
 			endforeach;
 			
-			foreach ($type_list->data->producttypelist as $product):
-			$product_type_list[$product->product_type_id] = $product->product_type;
+			$product_type_list[''] = 'Select Product Type';
+			foreach ($typeList as $type):
+			$product_type_list[$type->product_type_id] = $type->product_type;
 			endforeach;
 			
-			foreach ($clist->data->companylist as $company):
+			
+			$company_list[''] = 'Select Company';
+			foreach ($comlist as $company):
 			$company_list[$company->company_id] = $company->company_name;
 			endforeach;
 
 			$form_open 			 	= form_open_multipart('',array('class' => 'form-horizontal', 'method' => 'post'));
-			$areaList			 	= form_dropdown('area_id', $arealist, '');
-			$countryList			= form_dropdown('country_id', $countrylist, '');
-			$productTypeList		= form_dropdown('product_type_id', $product_type_list, '');
-			$companyList			= form_dropdown('company_id', $company_list, '');
+			$areaList			 	= form_dropdown('area_id', $arealist, '', 'id="selectError1" data-rel="chosen"');
+			$countryList			= form_dropdown('country_id', $countrylist, '', 'id="selectError2" data-rel="chosen"');
+			$productTypeList		= form_dropdown('product_type_id', $product_type_list, '' , 'id="selectError3" data-rel="chosen" onchange="verticalType();"');
+			$companyList			= form_dropdown('company_id', $company_list, '', 'id="selectError4" data-rel="chosen"');
 			$form_close = form_close();
 
 			$data['mainContent'] = 'csv_upload_view.tpl';
@@ -882,9 +909,17 @@ class Verticals extends CI_Controller {
 			);
 			$this->session->set_flashdata($msginfo_arr);
 			
-			redirect('product/csvupload/');
+			redirect('verticals/csvupload/');
 			
 		}
+	}
+	
+	function add_date($givendate,$day=0,$mth=0,$yr=0) {
+		$cd = strtotime($givendate);
+		$newdate = date('Y-m-d h:i:s', mktime(date('h',$cd),
+		date('i',$cd), date('s',$cd), date('m',$cd)+$mth,
+		date('d',$cd)+$day, date('Y',$cd)+$yr));
+		return $newdate;
 	}
 	
 }

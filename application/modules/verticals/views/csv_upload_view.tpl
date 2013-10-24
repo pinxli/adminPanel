@@ -7,6 +7,9 @@
 						<a href="#">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
+						<a href="#">Verticals</a> <span class="divider">/</span>
+					</li>
+					<li>
 						<a href="#">Product CSV Upload</a>
 					</li>
 				</ul>
