@@ -23,7 +23,6 @@ class Admin_model extends CI_Model {
 	function countryList()
 	{
 		$url = $this->config->item('rest_api_url') . 'country/ph/98740/';
-		echo $url; exit;
 		return json_decode($this->call_rest($url,''));
 	}
 	
