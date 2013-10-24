@@ -62,7 +62,7 @@ class Country extends CI_Controller {
 
 		//api logs
 		$log_data = array(
-			'log_client_id' => $this->authKey,
+			'log_client_id' => $auth_key,
 			'log_method' 	=> 'COUNTRY - '.$_SERVER['REQUEST_METHOD'],
 			'log_url' 		=> $this->uri->uri_string(),
 			'log_request' 	=> json_encode($this->input->post()),
