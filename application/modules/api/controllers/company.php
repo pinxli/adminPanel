@@ -61,6 +61,17 @@ class Company extends CI_Controller {
 			$response['success']	= $is_valid_auth['success'];
 			$response['message'][]	= $is_valid_auth['message'];
 		}
+
+		//api logs
+		$log_data = array(
+			'log_client_id' => $this->authKey,
+			'log_method' 	=> 'COMPANY - '.$_SERVER['REQUEST_METHOD'],
+			'log_url' 		=> $this->uri->uri_string(),
+			'log_request' 	=> json_encode($this->input->post()),
+			'log_response' 	=> json_encode($response),
+		);
+		$this->apilog_model->apiLog($log_data); //db logs
+		$this->api_functions->apiLog(json_encode($log_data),'GET_COMPANY'); //text logs
 		
 		//display Jason
 		$this->output
@@ -131,6 +142,17 @@ class Company extends CI_Controller {
 			$response['success']	= $is_valid_auth['success'];
 			$response['message'][]	= $is_valid_auth['message'];
 		}
+
+		//api logs
+		$log_data = array(
+			'log_client_id' => $this->authKey,
+			'log_method' 	=> 'COMPANY - '.$_SERVER['REQUEST_METHOD'],
+			'log_url' 		=> $this->uri->uri_string(),
+			'log_request' 	=> json_encode($this->input->post()),
+			'log_response' 	=> json_encode($response),
+		);
+		$this->apilog_model->apiLog($log_data); //db logs
+		$this->api_functions->apiLog(json_encode($log_data),'POST_COMPANY'); //text logs
 		
 		//display Jason
 		$this->output
@@ -183,6 +205,17 @@ class Company extends CI_Controller {
 			$response['success']	= $is_valid_auth['success'];
 			$response['message'][]	= $is_valid_auth['message'];
 		}
+
+		//api logs
+		$log_data = array(
+			'log_client_id' => $this->authKey,
+			'log_method' 	=> 'COMPANY - '.$_SERVER['REQUEST_METHOD'],
+			'log_url' 		=> $this->uri->uri_string(),
+			'log_request' 	=> json_encode($this->input->post()),
+			'log_response' 	=> json_encode($response),
+		);
+		$this->apilog_model->apiLog($log_data); //db logs
+		$this->api_functions->apiLog(json_encode($log_data),'PUT_COMPANY'); //text logs
 		
 		//display Jason
 		$this->output

@@ -75,6 +75,10 @@ $route['api/verticaloption/([a-z]+)/([0-9]+)']      	= "api/verticaloption/rest/
 $route['api/verticaloption/([a-z]+)/([0-9]+)/([0-9]+)'] = "api/verticaloption/rest/$1/$2/$3"; //auth key, id
 $route['api/verticaloption/([a-z]+)']           		= "api/verticaloption/rest/$1";
 
+$route['api/logs/([a-z]+)/([0-9]+)']          			= "api/logs/rest/$1/$2";
+$route['api/logs/([a-z]+)/([0-9]+)/([0-9]+)']    		= "api/logs/rest/$1/$2/$3"; //auth key, id
+$route['api/logs/([a-z]+)']                				= "api/logs/rest/$1";
+
 $route['404_override'] = '';
 
 

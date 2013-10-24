@@ -62,6 +62,17 @@ class Users extends CI_Controller {
 			$response['success']	= $is_valid_auth['success'];
 			$response['message'][]	= $is_valid_auth['message'];
 		}
+
+		//api logs
+		$log_data = array(
+			'log_client_id' => $this->authKey,
+			'log_method' 	=> 'USERS - '.$_SERVER['REQUEST_METHOD'],
+			'log_url' 		=> $this->uri->uri_string(),
+			'log_request' 	=> json_encode($this->input->post()),
+			'log_response' 	=> json_encode($response),
+		);
+		$this->apilog_model->apiLog($log_data); //db logs
+		$this->api_functions->apiLog(json_encode($log_data),'GET_USERS'); //text logs
 		
 		//display Jason
 		$this->output
@@ -121,6 +132,17 @@ class Users extends CI_Controller {
 				$response['message'][]	= $is_valid_auth['message'];
 			}
 		}
+
+		//api logs
+		$log_data = array(
+			'log_client_id' => $this->authKey,
+			'log_method' 	=> 'USERS - '.$_SERVER['REQUEST_METHOD'],
+			'log_url' 		=> $this->uri->uri_string(),
+			'log_request' 	=> json_encode($this->input->post()),
+			'log_response' 	=> json_encode($response),
+		);
+		$this->apilog_model->apiLog($log_data); //db logs
+		$this->api_functions->apiLog(json_encode($log_data),'POST_USERS'); //text logs
 		
 		//display Jason
 		$this->output
@@ -174,6 +196,17 @@ class Users extends CI_Controller {
 			$response['success']	= $is_valid_auth['success'];
 			$response['message'][]	= $is_valid_auth['message'];
 		}
+
+		//api logs
+		$log_data = array(
+			'log_client_id' => $this->authKey,
+			'log_method' 	=> 'USERS - '.$_SERVER['REQUEST_METHOD'],
+			'log_url' 		=> $this->uri->uri_string(),
+			'log_request' 	=> json_encode($this->input->post()),
+			'log_response' 	=> json_encode($response),
+		);
+		$this->apilog_model->apiLog($log_data); //db logs
+		$this->api_functions->apiLog(json_encode($log_data),'PUT_USERS'); //text logs
 		
 		//display Jason
 		$this->output
@@ -212,6 +245,17 @@ class Users extends CI_Controller {
 			$response['success']	= $is_valid_auth['success'];
 			$response['message'][]	= $is_valid_auth['message'];
 		}
+
+		//api logs
+		$log_data = array(
+			'log_client_id' => $this->authKey,
+			'log_method' 	=> 'USERS - '.$_SERVER['REQUEST_METHOD'],
+			'log_url' 		=> $this->uri->uri_string(),
+			'log_request' 	=> json_encode($this->input->post()),
+			'log_response' 	=> json_encode($response),
+		);
+		$this->apilog_model->apiLog($log_data); //db logs
+		$this->api_functions->apiLog(json_encode($log_data),'DELETE_USERS'); //text logs
 		
 		//display Jason
 		$this->output
@@ -280,6 +324,18 @@ class Users extends CI_Controller {
 			$response['success']	= $is_valid_auth['success'];
 			$response['message'][]	= $is_valid_auth['message'];
 		}
+
+		//api logs
+		$_POST['password'] = md5($this->input->post('password'));
+		$log_data = array(
+			'log_client_id' => $this->authKey,
+			'log_method' 	=> 'LOGIN - '.$_SERVER['REQUEST_METHOD'],
+			'log_url' 		=> $this->uri->uri_string(),
+			'log_request' 	=> json_encode($this->input->post()),
+			'log_response' 	=> json_encode($response),
+		);
+		$this->apilog_model->apiLog($log_data); //db logs
+		$this->api_functions->apiLog(json_encode($log_data),'validate_auth_key'); //text logs
 		
 		//display Jason
 		$this->output
