@@ -568,13 +568,28 @@ class Verticals extends CI_Controller {
 			
 				if($result->rc == 0)
 				{
+				
+					//for adding vertical options during edit vertical type
+					$verticalOptions = json_decode('['.$this->input->post('verticaloptions').']');
+					foreach ( $verticalOptions as $rw ){
+						$insertVerticalOption = array(
+							'product_type_id'		=> $this->input->post('product_type_id'),
+							'option_key'    		=> $rw->option_key,
+							'option_description'	=> $rw->option_description,
+							'option_autoload'		=> $rw->option_autoload
+						);
+						$resVerticalOption  = $this->verticals_model->verticalOptionAdd($insertVerticalOption);	
+					}
+					
+					$msgInfoeditVerticalOption = 'Product Type '.strtoupper($this->input->post('product_type')).': '.$resVerticalOption->message[0];
+					
 					$msgClass = 'alert alert-success';
-					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product Type has been added.';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] .'<br />'. $msgInfoeditVerticalOption : $msgInfoeditVerticalOption ;
 				}
 				else 
 				{	
 					$msgClass = 'alert alert-error';
-					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add product type failed.';			
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Edit product type failed.';			
 				}
 				
 				//set flash data for error/info message
@@ -597,6 +612,11 @@ class Verticals extends CI_Controller {
 				$description  		= form_input(array('name' => 'description','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Description', 'value' => $productType->description));
 				$url_slug  			= form_input(array('name' => 'url_slug','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'URL Slug', 'value' => $productType->url_slug));
 				$product_type_id	= $productType->product_type_id;
+			
+				//for vertical options table
+				$option_key	  		= form_input(array('name' => 'option_key','class' => 'input-xlarge focused','id' => 'option_key','placeholder' => 'Option Key'));
+				$option_description = form_input(array('name' => 'option_description','class' => 'input-xlarge focused','id' => 'option_description','placeholder' => 'Option Description'));
+				
 				$form_open 	  		= form_open('',array('class' => 'form-horizontal', 'method' => 'post'));
 				$form_close   		= form_close();
 			
@@ -616,6 +636,8 @@ class Verticals extends CI_Controller {
 					'url_slug'				=> $url_slug,
 					'product_type_id'		=> $product_type_id,
 					'verticalOptions'		=> $verticalOptions,
+					'option_key'			=> $option_key,
+					'option_description'	=> $option_description,
 					'form_open'				=> $form_open,
 					'form_close'			=> $form_close,
 					);

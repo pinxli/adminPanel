@@ -14,7 +14,7 @@
 						<a href="{$baseUrl}verticals/verticaltypes/">Vertical Types</a> <span class="divider">/</span>
 					</li>
                     <li>
-						<a href="{$baseUrl}verticals/addverticaltype/">Add Vertical Type</a>
+						<a href="#">Add Vertical Type</a>
 					</li>
 				</ul>
 				<hr>
@@ -110,7 +110,8 @@
 							  </div>
 							</fieldset>
 							
-							  <input type="hidden" name="verticaloptions" id="verticaloptions" value="" />	
+							<!-- handles added vertical options -->
+							<input type="hidden" name="verticaloptions" id="verticaloptions" value="" />	
 						{$form_close}
 					
 			

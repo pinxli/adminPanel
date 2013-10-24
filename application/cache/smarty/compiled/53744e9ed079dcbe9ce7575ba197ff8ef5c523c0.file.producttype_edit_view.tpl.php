@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-23 10:12:10
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-24 04:06:25
          compiled from "application\modules\verticals\views\producttype_edit_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:30099526651cddd54c0-89900755%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '53744e9ed079dcbe9ce7575ba197ff8ef5c523c0' => 
     array (
       0 => 'application\\modules\\verticals\\views\\producttype_edit_view.tpl',
-      1 => 1382511182,
+      1 => 1382587577,
       2 => 'file',
     ),
   ),
@@ -19,10 +19,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_526651cde042d',
   'variables' => 
   array (
+    'baseUrl' => 0,
     'form_open' => 0,
     'product_type' => 0,
     'description' => 0,
     'url_slug' => 0,
+    'option_key' => 0,
+    'option_description' => 0,
+    'verticalOptions' => 0,
+    'verticaloptions' => 0,
+    'autoload' => 0,
     'product_type_id' => 0,
     'form_close' => 0,
   ),
@@ -37,10 +43,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<a href="home.html">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Verticals</a> <span class="divider">/</span>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/verticaltypes/">Verticals</a> <span class="divider">/</span>
 					</li>
                     <li>
-						<a href="#">Edit Vertical Types</a>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/verticaltypes/">Vertical Types</a> <span class="divider">/</span>
+					</li>
+                    <li>
+						<a href="#">Edit Vertical Type</a>
 					</li>
 				</ul>
 				<hr>
@@ -80,9 +91,81 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<div class="controls"><?php echo $_smarty_tpl->tpl_vars['url_slug']->value;?>
 </div>
 							  </div>
-		
+							  
+							<hr><br />
+								
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput"> Option Key:</label>
+								<div class="controls"><?php echo $_smarty_tpl->tpl_vars['option_key']->value;?>
+</div>
+							  </div>
+								
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput"> Option Description:</label>
+								<div class="controls"><?php echo $_smarty_tpl->tpl_vars['option_description']->value;?>
+</div>
+							  </div>
+								
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput"> Option Autoload:</label>
+								
+								<div class="controls">
+								  <label class="radio">
+									<input type="radio" name="option_autoload" id="optionsRadios1" value="1" checked="">
+									Yes
+								  </label>
+								  <div style="clear:both"></div>
+								  <label class="radio">
+									<input type="radio" name="option_autoload" id="optionsRadios2" value="0">
+									No
+								  </label>
+								</div>
+							  </div>
+								
+							  <div class="control-group">
+							  	<div class="controls">
+									<span class="label label-success hidden-phone" id="btn_addverticals">Add Vertical Option</span>
+								</div>
+							  </div>
 
-							   <div class="form-actions">
+					<div class="box-content">
+						<table id="myTable"
+							class="table table-striped table-bordered bootstrap-datatable">
+							<thead>
+								<tr>
+									<th width="26%">Option Key</th>
+									<th width="27%">Option Description</th>
+									<th width="10%">Autoload</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<?php if ($_smarty_tpl->tpl_vars['verticalOptions']->value==true){?>
+								<?php  $_smarty_tpl->tpl_vars['verticaloptions'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['verticaloptions']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['verticalOptions']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['verticaloptions']->key => $_smarty_tpl->tpl_vars['verticaloptions']->value){
+$_smarty_tpl->tpl_vars['verticaloptions']->_loop = true;
+?>
+									<?php if ($_smarty_tpl->tpl_vars['verticaloptions']->value->option_autoload==1){?>
+										<?php $_smarty_tpl->tpl_vars['autoload'] = new Smarty_variable('Yes', null, 0);?>
+									<?php }else{ ?>
+										<?php $_smarty_tpl->tpl_vars['autoload'] = new Smarty_variable('No', null, 0);?>
+									<?php }?>
+								<tr>
+									<td><?php echo $_smarty_tpl->tpl_vars['verticaloptions']->value->option_key;?>
+</td>
+									<td><?php echo $_smarty_tpl->tpl_vars['verticaloptions']->value->option_description;?>
+</td>
+									<td><?php echo $_smarty_tpl->tpl_vars['autoload']->value;?>
+</td>
+								</tr>
+								<?php } ?>
+								<?php }?>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="form-actions">
 								<button type="submit" class="btn btn-primary">Edit</button>
 								<button class="btn">Cancel</button>
 							  </div>
@@ -90,6 +173,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							<input type="hidden" name="product_type_id" value="<?php echo $_smarty_tpl->tpl_vars['product_type_id']->value;?>
 ">
 							<input type="hidden" name="editnow" value="editnow">
+							
+							<!-- handles added vertical options -->
+							<input type="hidden" name="verticaloptions" id="verticaloptions" value="" />	
 						<?php echo $_smarty_tpl->tpl_vars['form_close']->value;?>
 
 					

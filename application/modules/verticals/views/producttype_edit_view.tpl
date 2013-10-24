@@ -7,10 +7,13 @@
 						<a href="home.html">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Verticals</a> <span class="divider">/</span>
+						<a href="{$baseUrl}verticals/verticaltypes/">Verticals</a> <span class="divider">/</span>
 					</li>
                     <li>
-						<a href="#">Edit Vertical Types</a>
+						<a href="{$baseUrl}verticals/verticaltypes/">Vertical Types</a> <span class="divider">/</span>
+					</li>
+                    <li>
+						<a href="#">Edit Vertical Type</a>
 					</li>
 				</ul>
 				<hr>
@@ -48,10 +51,42 @@
 							  </div>
 							  
 							<hr><br />
+								
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput"> Option Key:</label>
+								<div class="controls">{$option_key}</div>
+							  </div>
+								
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput"> Option Description:</label>
+								<div class="controls">{$option_description}</div>
+							  </div>
+								
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput"> Option Autoload:</label>
+								
+								<div class="controls">
+								  <label class="radio">
+									<input type="radio" name="option_autoload" id="optionsRadios1" value="1" checked="">
+									Yes
+								  </label>
+								  <div style="clear:both"></div>
+								  <label class="radio">
+									<input type="radio" name="option_autoload" id="optionsRadios2" value="0">
+									No
+								  </label>
+								</div>
+							  </div>
+								
+							  <div class="control-group">
+							  	<div class="controls">
+									<span class="label label-success hidden-phone" id="btn_addverticals">Add Vertical Option</span>
+								</div>
+							  </div>
 
 					<div class="box-content">
 						<table id="myTable"
-							class="table table-striped table-bordered bootstrap-datatable datatable">
+							class="table table-striped table-bordered bootstrap-datatable">
 							<thead>
 								<tr>
 									<th width="26%">Option Key</th>
@@ -63,10 +98,15 @@
 							<tbody>
 								{if $verticalOptions eq true}
 								{foreach $verticalOptions item=verticaloptions}
+									{if $verticaloptions->option_autoload == 1}
+										{assign 'autoload' 'Yes'}
+									{else}
+										{assign 'autoload' 'No'}
+									{/if}
 								<tr>
 									<td>{$verticaloptions->option_key}</td>
 									<td>{$verticaloptions->option_description}</td>
-									<td>{$verticaloptions->option_autoload}</td>
+									<td>{$autoload}</td>
 								</tr>
 								{/foreach}
 								{/if}
@@ -81,6 +121,9 @@
 							</fieldset>
 							<input type="hidden" name="product_type_id" value="{$product_type_id}">
 							<input type="hidden" name="editnow" value="editnow">
+							
+							<!-- handles added vertical options -->
+							<input type="hidden" name="verticaloptions" id="verticaloptions" value="" />	
 						{$form_close}
 					
 			

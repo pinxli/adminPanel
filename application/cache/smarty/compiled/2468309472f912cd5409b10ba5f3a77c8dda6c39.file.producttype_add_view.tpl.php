@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-23 10:29:09
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-24 04:04:34
          compiled from "application\modules\verticals\views\producttype_add_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:250305267380857ab18-98056155%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2468309472f912cd5409b10ba5f3a77c8dda6c39' => 
     array (
       0 => 'application\\modules\\verticals\\views\\producttype_add_view.tpl',
-      1 => 1382524147,
+      1 => 1382587402,
       2 => 'file',
     ),
   ),
@@ -48,8 +48,7 @@ verticals/verticaltypes/">Verticals</a> <span class="divider">/</span>
 verticals/verticaltypes/">Vertical Types</a> <span class="divider">/</span>
 					</li>
                     <li>
-						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-verticals/addverticaltype/">Add Vertical Type</a>
+						<a href="#">Add Vertical Type</a>
 					</li>
 				</ul>
 				<hr>
@@ -151,7 +150,8 @@ verticals/addverticaltype/">Add Vertical Type</a>
 							  </div>
 							</fieldset>
 							
-							  <input type="hidden" name="verticaloptions" id="verticaloptions" value="" />	
+							<!-- handles added vertical options -->
+							<input type="hidden" name="verticaloptions" id="verticaloptions" value="" />	
 						<?php echo $_smarty_tpl->tpl_vars['form_close']->value;?>
 
 					

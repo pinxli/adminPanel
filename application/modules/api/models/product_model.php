@@ -273,7 +273,7 @@ class Product_model extends CI_Model {
 		$data = $this->security->xss_clean($data);
 		
 		$this->db->where('product_type_id', $id);
-		$this->db->update('products_types', $data); 
+		$this->db->update('products_types', $data);	
 		
 		if ( $this->db->affected_rows() > 0 ){
 			$response['rc']			= 0;
@@ -282,10 +282,17 @@ class Product_model extends CI_Model {
 			$response['message'][]	= $data;
 		}
 		else{
-			$response['rc']			= 999;
-			$response['success']	= false;
-			$response['message'][]	= 'Failed to edit product type.';
-			$response['message'][]	= $data;
+			//check if data has no changes
+			if ( $this->db->_error_number() == 0 ){
+				$response['rc']			= 0;
+				$response['success']	= true;
+			}
+			else{
+				$response['rc']			= 999;
+				$response['success']	= false;
+				$response['message'][]	= 'Failed to edit product type.';
+				$response['message'][]	= $data;
+			}
 		}
 		return $response;
 	}
