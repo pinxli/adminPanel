@@ -16,51 +16,7 @@
 					</li>
 				</ul>
 				<hr>
-			</div>
-            
-             <div class="row-fluid">
-
-                        <div class="circleStats">
-
-                             <div class="span3 offset2" onTablet="span4" onDesktop="span2">
-                                <div class="circleStatsItem blue">
-                                    <i class="icon-globe"></i>
-                                    <span class="plus">+</span>
-                                    <span class="percent">%</span>
-                                    <input type="text" value="50" class="blueCircle" />
-                                </div>
-                                <div class="box-small-title">Over All Product Rate</div>
-                            </div>
-
-                            <div class="noMargin span2 offset1" onTablet="span4" onDesktop="span2">
-                              <div class="circleStatsItem yellow">
-                                <div class="circleStatsItem yellow"> 
-                                <i class="icon-th-large"></i> 
-                                <!--<span class="plus">+</span>--> 
-                                <span class="percent">%</span>
-                                  <input type="text" value="30" class="yellowCircle" />
-                                </div>
-                              </div>
-                              <div class="box-small-title">Top Selling Product Rate</div>
-                            </div>
-
-
-                            <div class="span2 offset1" onTablet="span4" onDesktop="span2">
-                                <div class="circleStatsItem lightorange">
-                                    <i class="icon-shopping-cart"></i>
-                                    <!--<span class="plus" pull>+</span>-->
-                                    <span class="percent">%</span>
-                                    <input type="text" value="42" class="lightOrangeCircle" />
-                                </div>
-                                <div class="box-small-title">Revenue</div>
-                            </div>
-
-						
-           
-                  </div>
-              </div>
-                    
-              <hr>     
+			</div>   
                 
                 <div class="row-fluid sortable">	
 				<div class="box span12">
@@ -84,7 +40,7 @@
 				<div class="box span12">
                      <div class="{$msgClass}"><strong>{$msgInfo}</strong></div>        
 					<div class="box-header" data-original-title>
-					<h2><i class="icon-sitemap"></i><span class="break"></span>All Categories</h2>
+					<h2><i class="fa fa-sitemap"></i><span class="break"></span>All Categories</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
@@ -99,31 +55,38 @@
 									  <th>Product Name</th>
 									  <th>Product Link</th>
 									  <th>Status</th>
-                                      <th>Edit</th>  
+                                      <th>Actions</th>  
 								  
 							  </tr>
 						  </thead>   
 						  <tbody>
 							
 							{foreach from=$productList item=product}
+							{if $product->status == '1'}
+								{assign 'status' '&nbsp;&nbsp;Active&nbsp;&nbsp;'}
+								{assign 'status_ico' 'label-success'}
+							{else}
+								{assign 'status' '&nbsp;Inactive&nbsp;'}
+								{assign 'status_ico' 'label-failed'}
+							{/if}
 							<tr>
 								<td><img src="{$baseUrl}{$product->product_icon}" width="30"></td>
 								<td class="center">{$product->product_name}</td>
 								<td class="center">{$product->product_link}</td>
 								<td class="center">
-									<span class="label label-success">Active</span>
+									<span class="label {$status_ico}">{$status}</span>
 								</td>
 							
 								 <td class="center">
 									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
+										<i class="fa fa-list-alt icon-white" title="View"></i>  
 									</a>
 									<a class="btn btn-info" href="{$baseUrl}verticals/editproduct/{$product->product_id}">
-										<i class="icon-edit icon-white"></i>  
+										<i class="icon-edit icon-white" title="Edit"></i>  
 									</a>
-									<a class="btn btn-danger" href="#">
+									<!-- <a class="btn btn-danger" href="#">
 										<i class="icon-trash icon-white"></i> 
-									</a>
+									</a>-->
 								</td> 
 							</tr>
 							{/foreach}

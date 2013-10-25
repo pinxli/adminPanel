@@ -110,7 +110,7 @@
 
 					<div class="box-content">
 						<table id="myTable"
-							class="table table-striped table-bordered bootstrap-datatable datatable">
+							class="table table-striped table-bordered bootstrap-datatable">
 							<thead>
 								<tr>
 									<th width="26%">Option</th>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 03:25:03
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 09:44:09
          compiled from "application\modules\verticals\views\verticallist.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:135485266513f24b874-91157550%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '95bcc911b173ccd9cffb3f13cc0f4a037b71efb7' => 
     array (
       0 => 'application\\modules\\verticals\\views\\verticallist.tpl',
-      1 => 1382669294,
+      1 => 1382694112,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'product' => 0,
     'productTypeId' => 0,
     'baseUrl' => 0,
+    'status_ico' => 0,
+    'status' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -44,56 +46,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				</ul>
 				<hr>
 			</div>
-            
-             <div class="row-fluid">
 
-                        <div class="circleStats">
-
-                             <div class="span3 offset2" onTablet="span4" onDesktop="span2">
-                                <div class="circleStatsItem blue">
-                                    <i class="icon-globe"></i>
-                                    <span class="plus">+</span>
-                                    <span class="percent">%</span>
-                                    <input type="text" value="50" class="blueCircle" />
-                                </div>
-                                <div class="box-small-title">Over All Product Rate</div>
-                            </div>
-
-                            <div class="noMargin span2 offset1" onTablet="span4" onDesktop="span2">
-                              <div class="circleStatsItem yellow">
-                                <div class="circleStatsItem yellow"> 
-                                <i class="icon-th-large"></i> 
-                                <!--<span class="plus">+</span>--> 
-                                <span class="percent">%</span>
-                                  <input type="text" value="30" class="yellowCircle" />
-                                </div>
-                              </div>
-                              <div class="box-small-title">Top Selling Product Rate</div>
-                            </div>
-
-
-                            <div class="span2 offset1" onTablet="span4" onDesktop="span2">
-                                <div class="circleStatsItem lightorange">
-                                    <i class="icon-shopping-cart"></i>
-                                    <!--<span class="plus" pull>+</span>-->
-                                    <span class="percent">%</span>
-                                    <input type="text" value="42" class="lightOrangeCircle" />
-                                </div>
-                                <div class="box-small-title">Revenue</div>
-                            </div>
-
-						
-           
-                  </div>
-              </div>                 
-            
 			   <div class="row-fluid sortable">
 				<div class="box span12">
                      <div class="<?php echo $_smarty_tpl->tpl_vars['msgClass']->value;?>
 "><strong><?php echo $_smarty_tpl->tpl_vars['msgInfo']->value;?>
 </strong></div>        
 					<div class="box-header" data-original-title>
-					<h2><i class="icon-sitemap"></i><span class="break"></span>All Categories</h2>
+					<h2><i class="fa fa-list"></i><span class="break"></span>All Categories</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
@@ -119,6 +79,13 @@ foreach ($_from as $_smarty_tpl->tpl_vars['product']->key => $_smarty_tpl->tpl_v
 $_smarty_tpl->tpl_vars['product']->_loop = true;
 ?>
 							<?php if ($_smarty_tpl->tpl_vars['product']->value->product_type_id==$_smarty_tpl->tpl_vars['productTypeId']->value){?>
+							<?php if ($_smarty_tpl->tpl_vars['product']->value->status=='1'){?>
+								<?php $_smarty_tpl->tpl_vars['status'] = new Smarty_variable('&nbsp;&nbsp;Active&nbsp;&nbsp;', null, 0);?>
+								<?php $_smarty_tpl->tpl_vars['status_ico'] = new Smarty_variable('label-success', null, 0);?>
+							<?php }else{ ?>
+								<?php $_smarty_tpl->tpl_vars['status'] = new Smarty_variable('&nbsp;Inactive&nbsp;', null, 0);?>
+								<?php $_smarty_tpl->tpl_vars['status_ico'] = new Smarty_variable('label-failed', null, 0);?>
+							<?php }?>
 							<tr>
 								<td><img src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['product']->value->product_icon;?>
@@ -128,21 +95,23 @@ $_smarty_tpl->tpl_vars['product']->_loop = true;
 								<td class="center"><?php echo $_smarty_tpl->tpl_vars['product']->value->product_link;?>
 </td>
 								<td class="center">
-									<span class="label label-success">Active</span>
+									<span class="label <?php echo $_smarty_tpl->tpl_vars['status_ico']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['status']->value;?>
+</span>
 								</td>
 							
 								 <td class="center">
 									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
+										<i class="fa fa-list-alt icon-white" title="View"></i>  
 									</a>
 									<a class="btn btn-info" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 verticals/editproduct/<?php echo $_smarty_tpl->tpl_vars['product']->value->product_id;?>
 ">
-										<i class="icon-edit icon-white"></i>  
+										<i class="icon-edit icon-white" title="Edit"></i>  
 									</a>
-									<a class="btn btn-danger" href="#">
+									<!-- <a class="btn btn-danger" href="#">
 										<i class="icon-trash icon-white"></i> 
-									</a>
+									</a>-->
 								</td> 
 							</tr>
 							<?php }?>

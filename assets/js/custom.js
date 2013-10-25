@@ -93,15 +93,28 @@ $(document).ready(function(){
 	
 	}).css('cursor','pointer');
 	
-	
-	// var mytable = $('#mytable').dataTable( {
-		 // "bFilter": false,
-		 // "bLengthChange": false
-		 // "bInfo": false,
-         // "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
-     // } );
-	 	 	 
-	 // mytable.fnSort( [ [1,'desc']] );
+	/* $("#selectError2").change(function(){
+		str = $("#selectError2 option:selected").val();
+	 
+		$.ajax({ 
+			type: "GET",
+			dataType: "json",
+			url: "http://localhost/adminPanel/api/productarea/my/98740/" ,
+			success: function(resultData){        
+			var result = resultData.data.productarealist;
+			 
+			$('#selectError1_chzn > div > ul > li').remove();
+			 
+			ctr = 1;
+			$.each(result, function(k,v){
+				
+				$('#selectError1').append("<option value="+v.area_id+">"+v.area_name+"</option>");
+				$('#selectError1_chzn > div > ul').append("<li id='selectError1_chzn_o_"+ctr+"' class='active-result'>"+v.area_name+"</li>");
+				ctr++;
+			}); 
+			}
+		});
+	}); */
 	
 });
 
@@ -292,8 +305,9 @@ function template_functions(){
 
 	/* ---------- Datable ---------- */
 	$('.datatable').dataTable({
-			"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
+			// "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
 			"sPaginationType": "bootstrap",
+			"bLengthChange": false,
 			"oLanguage": {
 			"sLengthMenu": "_MENU_ records per page"
 			}

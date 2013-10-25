@@ -32,6 +32,11 @@
 						{$form_open}
 							<fieldset>
 							  
+							 <div class="control-group">
+                            	<label class="control-label" for="selectError2">Select Country</label>
+                                <div class="controls">{$countryList}</div>
+                            </div>
+							  
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput"> Area Name:</label>
 								<div class="controls">

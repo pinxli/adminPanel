@@ -94,12 +94,13 @@ class Productarea extends CI_Controller {
 		if ( $is_valid_auth['rc'] == 0 ){
 			$area_name				= $this->security->xss_clean($this->input->post('area_name'));
 			$area_description		= $this->security->xss_clean($this->input->post('area_description'));
-		
+			$area_country_id		= $this->security->xss_clean($this->input->post('area_country_id'));
+			
 			$response['success'] = true;
 			
 			//validation
 			foreach ( $this->input->post() as $key => $val ){
-				$required_fields = array('area_name','area_description');
+				$required_fields = array('area_country_id','area_name','area_description');
 				if ( in_array($key, $required_fields) ){
 					if ( $val == '' || $val == NULL ){
 						$rename 				= str_replace("_"," ",$key);
@@ -115,6 +116,7 @@ class Productarea extends CI_Controller {
 				$arr_data = array(
 					'area_name'				=> $area_name,
 					'area_description' 		=> $area_description,
+					'area_country_id'		=> $area_country_id
 	
 				);
 				

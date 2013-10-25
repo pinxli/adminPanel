@@ -112,168 +112,171 @@ class Verticals extends CI_Controller {
 	
 	// add product edited 10/24/2013
 	function addproduct()
-	{	
-		$this->load->library('form_validation');				
+	 { 
+	  $this->load->library('form_validation');    
+	  
+	  // field name, error message, validation rules
+	  $this->form_validation->set_rules('product_type_id', 'product_type_id', 'xss_clean|trim|required');
+	  $this->form_validation->set_rules('company_id', 'company_id', 'xss_clean|trim|required|required');
+	  $this->form_validation->set_rules('product_name', 'product_name', 'xss_clean|trim|required');
+	  $this->form_validation->set_rules('product_description', 'product_description', 'xss_clean|trim|required');
+	  $this->form_validation->set_rules('featured', 'featured', 'xss_clean|trim|required');
+	  $this->form_validation->set_rules('country_id', 'country_id', 'xss_clean|trim|required');
+	  $this->form_validation->set_rules('area_id', 'area_id', 'xss_clean|trim|required');
+	  $this->form_validation->set_rules('product_link', 'product_link', 'xss_clean|trim|required');
+	  $this->form_validation->set_rules('status', 'status', 'xss_clean|trim|required');
+	  
+	  if($this->form_validation->run() == FALSE)
+	  {
+	   
+	   $clist    = $this->verticals_model->companyList();
+	   $type_list   = $this->verticals_model->productTypeList();
+	   $area_list    = $this->verticals_model->productAreasList();
+	   $country_list  = $this->verticals_model->countryList();
+	   
+	   $comlist   = ( $clist->rc == 0 ) ? $clist->data->companylist : array();
+	   $typeList   =  ( $type_list->rc == 0 ) ? $type_list->data->producttypelist : array();
+	   $areaList  =  ( $area_list->rc == 0 ) ? $area_list->data->productarealist : array();
+	   $countryList =   ( $country_list->rc == 0 ) ? $country_list->data->countrylist : array();
+	   
+	   $countrylist[''] = 'Select Country';
+	   $countrySelected = false;
+	   foreach ($countryList as $country):
+	   if($countrySelected == false)
+	   {
+		$countrySelected = ( $country->iso2 == strtoupper($this->session->userdata('locale'))) ? $country->country_id : false;
+	   }
+	   
+	   $countrylist[$country->country_id] = $country->short_name;
+	   endforeach;
+	   
+	   $arealist[''] = 'Select Area';
+	   foreach ($areaList as $area):
+	   if($area->area_country_id == $countrySelected)
+	   {
+		$arealist[$area->area_id] = $area->area_name;
+	   }
+	   endforeach;
+
+	   $product_type_list[''] = 'Select Product Type';
+	   foreach ($typeList as $type):
+	   $product_type_list[$type->product_type_id] = $type->product_type;
+	   endforeach;
+	   
+	   
+	   $company_list[''] = 'Select Company';
+	   foreach ($comlist as $company):
+	   $company_list[$company->company_id] = $company->company_name;
+	   endforeach;
+
+	   $form_open      = form_open_multipart('',array('class' => 'form-horizontal', 'method' => 'post'));
+	   $product_name     = form_input(array('name' => 'product_name', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Name'));
+	   $product_description  = form_textarea(array('name' => 'product_description', 'class' => 'input-xlarge', 'id'=> 'textarea2' , 'rows' =>'3'));
+	   $product_icon     = form_input(array('name' => 'product_icon', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Icon'));
+	   $product_link     = form_input(array('name' => 'product_link', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Link'));
+	   $areaList     = form_dropdown('area_id', $arealist, '', 'id="selectError1" data-rel="chosen"');
+	   $countryList   = form_dropdown('country_id', $countrylist, $countrySelected, 'id="selectError2" data-rel="chosen" ');
+	   $productTypeList  = form_dropdown('product_type_id', $product_type_list, '' , 'id="selectError3" data-rel="chosen" onchange="verticalType();"');
+	   $companyList   = form_dropdown('company_id', $company_list, '', 'id="selectError4" data-rel="chosen"');
+	   $form_close = form_close();
+
+	   $data['mainContent'] = 'product_add_view.tpl';
+
+	   $data['data'] = array(
+	   'baseUrl'    => base_url(),
+	   'locale'    => $this->session->userdata('locale'),
+	   'title'     => 'Add Product',
+	   'msgClass'    => $this->msgClass,
+	   'msgInfo'    => $this->msgInfo,
+	   'product_name'    => $product_name,
+	   'product_description' => $product_description,
+	   'product_icon'   => $product_icon,
+	   'product_link'   => $product_link,
+	   'areaList'    => $areaList,
+	   'countryList'   => $countryList,
+	   'productTypeList'  => $productTypeList,
+	   'companyList'   => $companyList,
+	   'form_open'    => $form_open,
+	   'form_close'   => $form_close
+	   );
+	  
+	   $this->load->view('includes/template', $data);
+	  }
+	  else  
+	  { 
+	   $imgUp = $this->verticals_model->productImg('productImg');
+	  
+	   if($imgUp['rc'] == 0)
+	   {    
+		$insert_data = array(
+		'product_type_id'   => $this->input->post('product_type_id'),
+		'company_id'    => $this->input->post('company_id'),
+		'product_name'    => $this->input->post('product_name'),
+		'product_description'  => $this->input->post('product_description'),
+		'featured'     => $this->input->post('featured'),
+		'country_id'    => $this->input->post('country_id'),
+		'area_id'     => $this->input->post('area_id'),
+		'product_icon'    => 'assets/uploadimages/productImg/' . $imgUp['data']['file_name'],
+		'product_link'    => $this->input->post('product_link'),
+		'status'     => $this->input->post('status')
+		);
+		 
+		$result = $this->verticals_model->productAdd($insert_data);
 		
-		// field name, error message, validation rules
-		$this->form_validation->set_rules('product_type_id', 'product_type_id', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('company_id', 'company_id', 'xss_clean|trim|required|required');
-		$this->form_validation->set_rules('product_name', 'product_name', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('product_description', 'product_description', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('featured', 'featured', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('country_id', 'country_id', 'xss_clean|trim|required');
-		#$this->form_validation->set_rules('product_icon', 'product_icon', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('product_link', 'product_link', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('status', 'status', 'xss_clean|trim|required');
-		
-		if($this->form_validation->run() == FALSE)
+		if($result->rc == 0)
 		{
-			
-			$clist			 = $this->verticals_model->companyList();
-			$type_list		 = $this->verticals_model->productTypeList();
-			$area_list 		 = $this->verticals_model->productAreasList();
-			$country_list	 = $this->verticals_model->countryList();
-			
-			$comlist 		=	( $clist->rc == 0 ) ? $clist->data->companylist : array();
-			$typeList 		= 	( $type_list->rc == 0 ) ? $type_list->data->producttypelist : array();
-			$areaList		= 	( $area_list->rc == 0 ) ? $area_list->data->productarealist : array();
-			$countryList	=   ( $country_list->rc == 0 ) ? $country_list->data->countrylist : array();
-			
-			$arealist[''] = 'Select Area';
-			foreach ($areaList as $area):
-			$arealist[$area->area_id] = $area->area_name;
-			endforeach;
-			
-			$countrylist[''] = 'Select Country';
-			$countrySelected = false;
-			foreach ($countryList as $country):
-			if($countrySelected == false)
-			{
-				$countrySelected = ( $country->iso2 == strtoupper($this->session->userdata('locale'))) ? $country->country_id : false;
-			}
-			
-			$countrylist[$country->country_id] = $country->short_name;
-			endforeach;
-			
-			$product_type_list[''] = 'Select Product Type';
-			foreach ($typeList as $type):
-			$product_type_list[$type->product_type_id] = $type->product_type;
-			endforeach;
-			
-			
-			$company_list[''] = 'Select Company';
-			foreach ($comlist as $company):
-			$company_list[$company->company_id] = $company->company_name;
-			endforeach;
-
-			$form_open 			 	= form_open_multipart('',array('class' => 'form-horizontal', 'method' => 'post'));
-			$product_name 		 	= form_input(array('name' => 'product_name', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Name'));
-			$product_description 	= form_textarea(array('name' => 'product_description', 'class' => 'input-xlarge', 'id'=> 'textarea2' , 'rows' =>'3'));
-			$product_icon 		 	= form_input(array('name' => 'product_icon', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Icon'));
-			$product_link 		 	= form_input(array('name' => 'product_link', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Link'));
-			$areaList			 	= form_dropdown('area_id', $arealist, '', 'id="selectError1" data-rel="chosen"');
-			$countryList			= form_dropdown('country_id', $countrylist, $countrySelected, 'id="selectError2" data-rel="chosen"');
-			$productTypeList		= form_dropdown('product_type_id', $product_type_list, '' , 'id="selectError3" data-rel="chosen" onchange="verticalType();"');
-			$companyList			= form_dropdown('company_id', $company_list, '', 'id="selectError4" data-rel="chosen"');
-			$form_close = form_close();
-
-			$data['mainContent'] = 'product_add_view.tpl';
-
-			$data['data'] = array(
-			'baseUrl'				=> base_url(),
-			'locale'				=> $this->session->userdata('locale'),
-			'title'					=> 'Add Product',
-			'msgClass'				=> $this->msgClass,
-			'msgInfo'				=> $this->msgInfo,
-			'product_name'  		=> $product_name,
-			'product_description'	=> $product_description,
-			'product_icon'			=> $product_icon,
-			'product_link'			=> $product_link,
-			'areaList'				=> $areaList,
-			'countryList'			=> $countryList,
-			'productTypeList'		=> $productTypeList,
-			'companyList'			=> $companyList,
-			'form_open'				=> $form_open,
-			'form_close'			=> $form_close
-			);
-		
-			$this->load->view('includes/template', $data);
+		 $product_id = $result->productId;
+		 
+		 $option = $this->input->post('option');
+		 
+		 $expiry_date = $this->input->post('expiry_date');
+		 
+		 $date = date("Y-m-d H:i(worry)");
+		 
+		 foreach ($option as $key=>$value)
+		 {
+		  $explode = explode("-", $key);
+		  
+		  $option_arr = array(
+		   'product_id'   => $product_id,
+		   'vertical_optionid' => $explode[1],
+		   'option'   => $explode[0],
+		   'option_value'  => $value,
+		   'expiry_date'  => $this->add_date($date,$expiry_date[$explode[1]])
+		  
+		  );
+		  
+		  $option_insert = $this->verticals_model->productOptionAdd($option_arr);
+		  
+		 }
+		 
+		 
+		 $msgClass = 'alert alert-success';
+		 $msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product has been added.';
 		}
-		else 	
-		{	
-			$imgUp = $this->verticals_model->productImg('productImg');
-		
-			if($imgUp['rc'] == 0)
-			{				
-				$insert_data = array(
-				'product_type_id' 		=> $this->input->post('product_type_id'),
-				'company_id' 			=> $this->input->post('company_id'),
-				'product_name' 			=> $this->input->post('product_name'),
-				'product_description' 	=> $this->input->post('product_description'),
-				'featured' 				=> $this->input->post('featured'),
-				'country_id' 			=> $this->input->post('country_id'),
-				'area_id' 				=> $this->input->post('area_id'),
-				'product_icon' 			=> 'assets/uploadimages/productImg/' . $imgUp['data']['file_name'],
-				'product_link' 			=> $this->input->post('product_link'),
-				'status' 				=> $this->input->post('status')
-				);
-					
-				$result = $this->verticals_model->productAdd($insert_data);
-				
-				if($result->rc == 0)
-				{
-					$product_id = $result->productId;
-					
-					$option = $this->input->post('option');
-					
-					$expiry_date = $this->input->post('expiry_date');
-					
-					$date = date("Y-m-d H:i:s");
-					
-					foreach ($option as $key=>$value)
-					{
-						$explode = explode("-", $key);
-						
-						$option_arr = array(
-							'product_id' 		=> $product_id,
-							'vertical_optionid' => $explode[1],
-							'option'			=> $explode[0],
-							'option_value'		=> $value,
-							'expiry_date'		=> $this->add_date($date,$expiry_date[$explode[1]])
-						
-						);
-						
-						$option_insert = $this->verticals_model->productOptionAdd($option_arr);
-						
-					}
-					
-					
-					$msgClass = 'alert alert-success';
-					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product has been added.';
-				}
-				else
-				{
-					$msgClass = 'alert alert-error';
-					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add product failed.';
-				}
-			}
-			else 
-			{
-				$msgClass = 'alert alert-error';
-				$msgInfo  = $imgUp['msgInfo'];
-			}
-			
-			//set flash data for error/info message
-			$msginfo_arr = array(
-				'msgClass' => $msgClass,
-				'msgInfo'  => $msgInfo,
-			);
-			$this->session->set_flashdata($msginfo_arr);
-			
-			redirect('verticals/productlist/');
+		else
+		{
+		 $msgClass = 'alert alert-error';
+		 $msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add product failed.';
 		}
-		
-	}
+	   }
+	   else 
+	   {
+		$msgClass = 'alert alert-error';
+		$msgInfo  = $imgUp['msgInfo'];
+	   }
+	   
+	   //set flash data for error/info message
+	   $msginfo_arr = array(
+		'msgClass' => $msgClass,
+		'msgInfo'  => $msgInfo,
+	   );
+	   $this->session->set_flashdata($msginfo_arr);
+	   
+	   redirect('verticals/productlist/');
+	  }
+	  
+	 }
 	
 	// add product type
 	function addverticaltype()
@@ -373,68 +376,87 @@ class Verticals extends CI_Controller {
 	
 	// add product area
 	function addproductarea()
-	{	
-		$this->load->library('form_validation');				
-		
-		// field name, error message, validation rules
-		$this->form_validation->set_rules('area_name', 'area_name', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('area_description', 'area_description', 'xss_clean|trim|required|required');
-		$this->form_validation->set_rules('area_active', 'area_active', 'xss_clean|trim|required|required');
-		
-		if($this->form_validation->run() == FALSE)
-		{
-			$area_name 		  	= form_input(array('name' => 'area_name','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Product Area'));
-			$area_description  	= form_input(array('name' => 'area_description','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Description'));
-			$form_open 	  		= form_open('',array('class' => 'form-horizontal', 'method' => 'post'));
-			$form_close   		= form_close();
-			
-			$data['mainContent'] = 'productarea_add_view.tpl';
+	 { 
+	  $this->load->library('form_validation');    
+	  
+	  // field name, error message, validation rules
+	  $this->form_validation->set_rules('area_name', 'area_name', 'xss_clean|trim|required');
+	  $this->form_validation->set_rules('area_description', 'area_description', 'xss_clean|trim|required|required');
+	  $this->form_validation->set_rules('area_active', 'area_active', 'xss_clean|trim|required|required');
+	  $this->form_validation->set_rules('area_country_id', 'area_country_id', 'xss_clean|trim|required');
+	  
+	  if($this->form_validation->run() == FALSE)
+	  {
+	   $country_list  = $this->verticals_model->countryList();
+	   $countryList =   ( $country_list->rc == 0 ) ? $country_list->data->countrylist : array();
 
-			$data['data'] = array(
-			'baseUrl'				=> base_url(),
-			'title'					=> 'Product',
-			'msgClass'				=> $this->msgClass,
-			'msgInfo'				=> $this->msgInfo,
-			'area_name'				=> $area_name,
-			'area_description'		=> $area_description,
-			'form_open'				=> $form_open,
-			'form_close'			=> $form_close,
-			);
-		
-			$this->load->view($this->globalTpl, $data);	
-		}
-		else 	
-		{
-			$insert_data = array(
-				'area_name' 		=> $this->input->post('area_name'),
-				'area_description'  => $this->input->post('area_description'),
-				'area_active'  		=> $this->input->post('area_active')
-			);
-			
-			$result = $this->verticals_model->productAreasAdd($insert_data);
-			
-			if($result->rc == 0)
-			{
-				$msgClass = 'alert alert-success';
-				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product Area has been added.';
-			}
-			else 
-			{	
-				$msgClass = 'alert alert-error';
-				$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add product area failed.';			
-			}
-			
-			//set flash data for error/info message
-			$msginfo_arr = array(
-				'msgClass' => $msgClass,
-				'msgInfo'  => $msgInfo,
-			);
-			$this->session->set_flashdata($msginfo_arr);
-			
-			redirect('verticals/productarea/');
-		}
-		
-	}	
+	   $countrylist[''] = 'Select Country';
+	   $countrySelected = false;
+	   foreach ($countryList as $country):
+	   if($countrySelected == false)
+	   {
+		$countrySelected = ( $country->iso2 == strtoupper($this->session->userdata('locale'))) ? $country->country_id : false;
+	   }
+	   $countrylist[$country->country_id] = $country->short_name;
+	   endforeach;
+	   
+	   $area_name      = form_input(array('name' => 'area_name','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Product Area'));
+	   $area_description   = form_input(array('name' => 'area_description','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Description'));
+	   $area_country_id = form_dropdown('area_country_id', $countrylist, $countrySelected, 'id="selectError2" data-rel="chosen"');
+	   $form_open      = form_open('',array('class' => 'form-horizontal', 'method' => 'post'));
+	   $form_close     = form_close();
+	   
+	   $data['mainContent'] = 'productarea_add_view.tpl';
+
+	   $data['data'] = array(
+	   'baseUrl'    => base_url(),
+	   'locale'    => $this->session->userdata('locale'),
+	   'title'     => 'Add Product Area',
+	   'msgClass'    => $this->msgClass,
+	   'msgInfo'    => $this->msgInfo,
+	   'area_name'    => $area_name,
+	   'area_description'  => $area_description,
+	   'countryList'   => $area_country_id,
+	   'form_open'    => $form_open,
+	   'form_close'   => $form_close,
+	   );
+	  
+	   $this->load->view($this->globalTpl, $data); 
+	  }
+	  else  
+	  {
+	   $insert_data = array(
+		'area_country_id'   => $this->input->post('area_country_id'),
+		'area_name'   => $this->input->post('area_name'),
+		'area_description'  => $this->input->post('area_description'),
+		'area_active'    => $this->input->post('area_active')
+	   );
+	   
+	   
+	   $result = $this->verticals_model->productAreasAdd($insert_data);
+	   
+	   if($result->rc == 0)
+	   {
+		$msgClass = 'alert alert-success';
+		$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product Area has been added.';
+	   }
+	   else 
+	   { 
+		$msgClass = 'alert alert-error';
+		$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add product area failed.';   
+	   }
+	   
+	   //set flash data for error/info message
+	   $msginfo_arr = array(
+		'msgClass' => $msgClass,
+		'msgInfo'  => $msgInfo,
+	   );
+	   $this->session->set_flashdata($msginfo_arr);
+	   
+	   redirect('verticals/productarea/');
+	  }
+	  
+	 }	
 	
 	// edit product
 	function editproduct()
