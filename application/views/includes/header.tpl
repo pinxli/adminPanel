@@ -350,6 +350,7 @@
                         	<ul>
                            		<li><a class="submenu" href="{$baseUrl}settings/user_management/"><span class="hidden-tablet">User Management</span></a></li>
 								<li><a class="submenu" href="{$baseUrl}settings/accesslogs/"><span class="hidden-tablet">Access Logs</span></a></li>
+								<li><a class="submenu" href="{$baseUrl}settings/apilogs/"><span class="hidden-tablet">API Logs</span></a></li>
 							</ul>
                             
                             	

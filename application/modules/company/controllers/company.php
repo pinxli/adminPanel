@@ -148,6 +148,9 @@ class Company extends CI_Controller {
 		{
 			if($this->input->post('editnow',TRUE) == 'editnow')
 			{
+				$imgUp = $this->company_model->companyImg('upload_image');
+				$company_logo = ( $imgUp['data']['file_name'] ) ? $this->config->item('path_upload_img').$imgUp['data']['file_name'] : '';
+				
 				$edit_data = array(
 					'company_id' 			=> $this->input->post('company_id'),
 					'company_name' 			=> $this->input->post('company_name'),
@@ -157,7 +160,7 @@ class Company extends CI_Controller {
 					'company_fax' 			=> $this->input->post('company_fax'),
 					'company_address' 		=> $this->input->post('company_address'),	
 					'company_contact' 		=> $this->input->post('company_contact'),
-					'company_logo' 			=> $this->input->post('company_logo'),
+					'company_logo' 			=> $company_logo, //$this->input->post('upload_image'),
 					'company_description' 	=> $this->input->post('company_description'),
 					'company_country_id' 	=> 1
 				);
@@ -195,7 +198,7 @@ class Company extends CI_Controller {
 				$company_info_res = $company_info->data->companyinfo[0];
 				
 				//set forms open, close and inputs
-				$form_open 			= form_open('',array('class' => 'form-horizontal', 'method' => 'post'));
+				$form_open 			= form_open_multipart('',array('class' => 'form-horizontal', 'method' => 'post'));
 				$company_name 		= form_input	(array('name' => 'company_name', 		'class' => 'input-xlarge focused', 'id' => 'focusedInput', 	 'placeholder' => 'Company Name', 		'value' => $company_info_res->company_name));
 				$company_weblink	= form_input	(array('name' => 'company_weblink',		'class' => 'input-xlarge focused', 'id' => 'prependedInput', 'placeholder' => 'Company Web Link',	'value' => $company_info_res->company_weblink));
 				$company_email 		= form_input	(array('name' => 'company_email', 		'class' => 'input-xlarge focused', 'id' => 'focusedInput', 	 'placeholder' => 'Company Email', 		'value' => $company_info_res->company_email));
