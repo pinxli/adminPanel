@@ -86,5 +86,19 @@ class Settings_model extends CI_Model {
 		$url = $this->config->item('rest_api_url') . 'users/accesslogs/'.$this->locale.'/98740';
 		return $this->call_rest_get($url,'');
 	}
+	
+	function expApiLog()
+	{
+		$url = $this->config->item('rest_api_url') . 'logs/'.$this->locale.'/98740';
+		return $this->call_rest_get($url,'');
+	}
+	
+	
+	function apilogList()
+	{
+		$url = $this->config->item('rest_api_url') . 'logs/'.$this->locale.'/98740';
+		// echo $url; exit;
+		return json_decode($this->call_rest_get($url,''));
+	}
 
 }

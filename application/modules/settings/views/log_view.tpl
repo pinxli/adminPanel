@@ -18,7 +18,7 @@
 			   <div class="row-fluid sortable">
 				<div class="box span12">
                 
-                <a class="btn" href="{$baseUrl}settings/excelexport">Extract To Excel</a>
+                <a class="btn" href="{$baseUrl}settings/excelexport/logList">Extract To Excel</a>
                 <hr>
                             
 					<div class="box-header" data-original-title>

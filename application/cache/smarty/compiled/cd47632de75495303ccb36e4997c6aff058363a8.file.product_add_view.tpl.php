@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-24 10:41:31
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 02:49:14
          compiled from "application\modules\verticals\views\product_add_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2606252674ad104ab83-51593417%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cd47632de75495303ccb36e4997c6aff058363a8' => 
     array (
       0 => 'application\\modules\\verticals\\views\\product_add_view.tpl',
-      1 => 1382611285,
+      1 => 1382669294,
       2 => 'file',
     ),
   ),

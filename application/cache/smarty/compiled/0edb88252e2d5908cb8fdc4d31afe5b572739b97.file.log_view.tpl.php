@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-24 10:13:58
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 04:17:33
          compiled from "application\modules\settings\views\log_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:438752577eddc13a43-67891465%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0edb88252e2d5908cb8fdc4d31afe5b572739b97' => 
     array (
       0 => 'application\\modules\\settings\\views\\log_view.tpl',
-      1 => 1382609137,
+      1 => 1382670786,
       2 => 'file',
     ),
   ),
@@ -46,7 +46,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<div class="box span12">
                 
                 <a class="btn" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-settings/excelexport">Extract To Excel</a>
+settings/excelexport/logList">Extract To Excel</a>
                 <hr>
                             
 					<div class="box-header" data-original-title>

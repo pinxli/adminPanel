@@ -284,9 +284,9 @@ class Verticals extends CI_Controller {
 		$this->form_validation->set_rules('product_type', 'product_type', 'xss_clean|trim|required');
 		$this->form_validation->set_rules('description', 'description', 'xss_clean|trim|required|required');
 		$this->form_validation->set_rules('url_slug', 'url_slug', 'xss_clean|trim');
-		$this->form_validation->set_rules('option_key', 'option_key', 'xss_clean|trim|required|required');
-		$this->form_validation->set_rules('option_description', 'option_description', 'xss_clean|trim|required|required');
-		
+		// $this->form_validation->set_rules('option_key', 'option_key', 'xss_clean|trim|required|required');
+		// $this->form_validation->set_rules('option_description', 'option_description', 'xss_clean|trim|required|required');
+		// echo "validation = ".$this->form_validation->run();
 		if($this->form_validation->run() === FALSE)
 		{
 			$product_type = form_input(array('name' => 'product_type','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Product Type'));
@@ -316,7 +316,7 @@ class Verticals extends CI_Controller {
 			'option_key'			=> $option_key,
 			'option_description'	=> $option_description
 			);
-		
+			
 			$this->load->view('includes/template', $data);
 		}
 		else 	
@@ -333,7 +333,9 @@ class Verticals extends CI_Controller {
 			// exit;
 			
 			$resProductType 	= $this->verticals_model->productTypeAdd($insertproductType);	
-			
+			echo "<pre />";
+			print_r($insertproductType);
+			exit;
 			if($resProductType->rc == 0)
 			{
 				$verticalOptions = json_decode('['.$this->input->post('verticaloptions').']');
@@ -622,7 +624,7 @@ class Verticals extends CI_Controller {
 						$resVerticalOption  = $this->verticals_model->verticalOptionAdd($insertVerticalOption);	
 					}
 					
-					$msgInfoeditVerticalOption = 'Product Type '.strtoupper($this->input->post('product_type')).': '.$resVerticalOption->message[0];
+					$msgInfoeditVerticalOption = ($resVerticalOption->message[0]) ? 'Product Type '.strtoupper($this->input->post('product_type')).': '.$resVerticalOption->message[0] : '';
 					
 					$msgClass = 'alert alert-success';
 					$msgInfo  = ( $result->message[0] ) ? $result->message[0] .'<br />'. $msgInfoeditVerticalOption : $msgInfoeditVerticalOption ;

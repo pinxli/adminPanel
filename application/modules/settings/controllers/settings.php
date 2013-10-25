@@ -249,14 +249,32 @@ class Settings extends CI_Controller {
 
 		$this->load->view($this->globalTpl, $data);  
 	}
+	
+	function apilogs()
+	{
+		$res = $this->settings_model->apilogList();
+		$data['mainContent'] = 'api_log_view.tpl';
+
+		$data['data'] = array(
+			'baseUrl' => base_url(),
+			'title'   => 'API Logs',
+			'logList' => $res->data->loglist
+		);
+
+		$this->load->view($this->globalTpl, $data);  
+	}
+	 
 
 	function excelexport()
 	{
-		$res = $this->settings_model->explogList();
+		
+		$uri = $this->uri->segment(3);
+		
+		$res = ( $uri == 'logList' ) ? $this->settings_model->explogList() : $this->settings_model->expApiLog();	
 
 		$res = json_decode($res, $array = TRUE);
 
-		$export = $this->export->to_excel($res['data']['loglist'],'accesslogs' . date('Ymdhmi'));
+		$export = $this->export->to_excel($res['data']['loglist'],$uri. date('Ymdhmi'));
 	}
 	
 }
