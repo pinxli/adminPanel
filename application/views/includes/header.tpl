@@ -328,7 +328,7 @@
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li><a href="{$baseUrl}dashboard/members_area"><i class="icon-home icon-white"></i><span class="hidden-tablet"> Home</span></a></li>
-                        <li><a class="dropmenu" href="#"><i class="icon-ellipsis-vertical icon-white"></i><span class="hidden-tablet"> Verticals</span></a>
+                        <li><a class="dropmenu" href="#"><i class="fa fa-sort-asc icon-white"></i><span class="hidden-tablet"> Verticals</span></a>
 							<ul>
 								{foreach from=$verticalType item=producttype}								
 								<li><a class="submenu" href="{$baseUrl}verticals/verticaltype/{$producttype->product_type_id}/{$producttype->url_slug}"><span class="hidden-tablet"> {$producttype->product_type}</span></a></li>
@@ -340,13 +340,13 @@
 							</ul>	
 						</li>
 											
-                        <li><a class="dropmenu" href="#"><i class="icon-rocket icon-white"></i><span class="hidden-tablet"> Company</span></a>
+                        <li><a class="dropmenu" href="#"><i class="fa fa-building icon-white"></i><span class="hidden-tablet"> Company</span></a>
                         <ul>
                            <li><a class="submenu" href="{$baseUrl}company/companymanagement"><span class="hidden-tablet"> Company Management</span></a></li>
 								
 							</ul>
                             
-                         <li><a class="dropmenu" href="#"><i class="icon-cogs icon-white"></i><span class="hidden-tablet">Settings</span></a>
+                         <li><a class="dropmenu" href="#"><i class="fa fa-gears icon-white"></i><span class="hidden-tablet">Settings</span></a>
                         	<ul>
                            		<li><a class="submenu" href="{$baseUrl}settings/user_management/"><span class="hidden-tablet">User Management</span></a></li>
 								<li><a class="submenu" href="{$baseUrl}settings/accesslogs/"><span class="hidden-tablet">Access Logs</span></a></li>

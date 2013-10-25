@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 07:50:36
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 09:00:06
          compiled from "application\views\includes\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93385257869c99f3c7-90349051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b8477c7e87283f823260df5a414eefc596a7488c' => 
     array (
       0 => 'application\\views\\includes\\header.tpl',
-      1 => 1382687132,
+      1 => 1382691605,
       2 => 'file',
     ),
   ),
@@ -375,7 +375,7 @@ admin/logout"><i class="icon-off"></i> Logout</a></li>
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li><a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 dashboard/members_area"><i class="icon-home icon-white"></i><span class="hidden-tablet"> Home</span></a></li>
-                        <li><a class="dropmenu" href="#"><i class="icon-ellipsis-vertical icon-white"></i><span class="hidden-tablet"> Verticals</span></a>
+                        <li><a class="dropmenu" href="#"><i class="fa fa-sort-asc icon-white"></i><span class="hidden-tablet"> Verticals</span></a>
 							<ul>
 								<?php  $_smarty_tpl->tpl_vars['producttype'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['producttype']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['verticalType']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -399,14 +399,14 @@ verticals/csvupload"><span class="hidden-tablet"> Product CSV Upload</span></a><
 							</ul>	
 						</li>
 											
-                        <li><a class="dropmenu" href="#"><i class="icon-rocket icon-white"></i><span class="hidden-tablet"> Company</span></a>
+                        <li><a class="dropmenu" href="#"><i class="fa fa-building icon-white"></i><span class="hidden-tablet"> Company</span></a>
                         <ul>
                            <li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 company/companymanagement"><span class="hidden-tablet"> Company Management</span></a></li>
 								
 							</ul>
                             
-                         <li><a class="dropmenu" href="#"><i class="icon-cogs icon-white"></i><span class="hidden-tablet">Settings</span></a>
+                         <li><a class="dropmenu" href="#"><i class="fa fa-gears icon-white"></i><span class="hidden-tablet">Settings</span></a>
                         	<ul>
                            		<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 settings/user_management/"><span class="hidden-tablet">User Management</span></a></li>

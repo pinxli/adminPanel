@@ -83,6 +83,9 @@ $(document).ready(function(){
 			$('#myTable').append('<tr><td>'+option_key+'</td><td>'+option_description+'</td><td>'+is_autoload+'</td></tr>');
 		
 			$('#verticaloptions').val(verticalOptionValues);
+			
+			$('#option_key').val('');
+			$('#option_description').val('');
 		}
 		else{
 			alert('Please Fill up Vertical Options Fields.');
