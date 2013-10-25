@@ -4,10 +4,13 @@
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="home.html">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
 						<a href="#">Verticals</a> <span class="divider">/</span>
+					</li>
+					<li>
+						<a href="{$baseUrl}verticals/productlist">Product List</a> <span class="divider">/</span>
 					</li>
 					<li>
 						<a href="#">Add Product</a>
@@ -58,9 +61,12 @@
 								<div class="controls">{$product_name}</div></div>
 			  
 									  
-						 	 <div class="control-group">
+						 	 <div class="control-group input-prepend">
 								<label class="control-label" for="focusedInput">Product Link:</label>
-								<div class="controls">{$product_link}</div>
+								<div class="controls">
+							 	 <span class="add-on">www.</span>
+								{$product_link}
+								</div>
 							  </div>
 							  
 							  

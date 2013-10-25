@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 02:49:14
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 08:16:22
          compiled from "application\modules\verticals\views\product_add_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2606252674ad104ab83-51593417%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cd47632de75495303ccb36e4997c6aff058363a8' => 
     array (
       0 => 'application\\modules\\verticals\\views\\product_add_view.tpl',
-      1 => 1382669294,
+      1 => 1382688975,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_52674ad10cf8a',
   'variables' => 
   array (
+    'baseUrl' => 0,
     'form_open' => 0,
     'countryList' => 0,
     'companyList' => 0,
@@ -28,7 +29,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'product_link' => 0,
     'product_description' => 0,
     'form_close' => 0,
-    'baseUrl' => 0,
     'locale' => 0,
   ),
   'has_nocache_code' => false,
@@ -39,10 +39,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="home.html">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
 						<a href="#">Verticals</a> <span class="divider">/</span>
+					</li>
+					<li>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/productlist">Product List</a> <span class="divider">/</span>
 					</li>
 					<li>
 						<a href="#">Add Product</a>
@@ -68,7 +72,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 							<fieldset>
 							  
-							  <div class="control-group">
+							 <div class="control-group">
                             	<label class="control-label" for="selectError2">Select Country</label>
                                 <div class="controls"><?php echo $_smarty_tpl->tpl_vars['countryList']->value;?>
 </div>
@@ -99,10 +103,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </div></div>
 			  
 									  
-						 	 <div class="control-group">
+						 	 <div class="control-group input-prepend">
 								<label class="control-label" for="focusedInput">Product Link:</label>
-								<div class="controls"><?php echo $_smarty_tpl->tpl_vars['product_link']->value;?>
-</div>
+								<div class="controls">
+							 	 <span class="add-on">www.</span>
+								<?php echo $_smarty_tpl->tpl_vars['product_link']->value;?>
+
+								</div>
 							  </div>
 							  
 							  

@@ -24,7 +24,7 @@
 			   <div class="row-fluid sortable">
 				<div class="box span12">
                 
-                <a class="btn" href="{$baseUrl}product/addproductarea">Add Product Area</a>
+                <a class="btn" href="{$baseUrl}verticals/addproductarea">Add Product Area</a>
                 <hr>
                     <div class="{$msgClass}"><strong>{$msgInfo}</strong></div>        
 					<div class="box-header" data-original-title>

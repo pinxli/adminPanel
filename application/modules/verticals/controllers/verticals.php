@@ -168,7 +168,7 @@ class Verticals extends CI_Controller {
 
 			$form_open 			 	= form_open_multipart('',array('class' => 'form-horizontal', 'method' => 'post'));
 			$product_name 		 	= form_input(array('name' => 'product_name', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Name'));
-			$product_description 	= form_textarea(array('name' => 'product_description', 'class' => 'cleditor', 'id'=> 'textarea2' , 'rows' =>'3'));
+			$product_description 	= form_textarea(array('name' => 'product_description', 'class' => 'input-xlarge', 'id'=> 'textarea2' , 'rows' =>'3'));
 			$product_icon 		 	= form_input(array('name' => 'product_icon', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Icon'));
 			$product_link 		 	= form_input(array('name' => 'product_link', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Link'));
 			$areaList			 	= form_dropdown('area_id', $arealist, '', 'id="selectError1" data-rel="chosen"');
@@ -445,42 +445,35 @@ class Verticals extends CI_Controller {
 		{
 			if($this->input->post('editnow',TRUE) == 'editnow')
 			{
-				$prod_icon = $this->verticals_model->productImg('productImg');
-
-				if($prod_icon['rc'] != 0)
+				
+				$imgUp = $this->verticals_model->productImg('productImg');
+				$prod_icon = ( $imgUp['data']['file_name'] ) ? $this->config->item('path_upload_img').$imgUp['data']['file_name'] : '';
+			
+				$edit_data = array(
+						'product_id'			=> $this->input->post('product_id'),
+						'product_type_id' 		=> $this->input->post('product_type_id'),
+						'company_id' 			=> $this->input->post('company_id'),
+						'product_name' 			=> $this->input->post('product_name'),
+						'product_description' 	=> $this->input->post('product_description'),
+						'featured' 				=> $this->input->post('featured'),
+						'country_id' 			=> $this->input->post('country_id'),
+						'area_id' 				=> $this->input->post('area_id'),
+						'product_icon' 			=> $prod_icon,
+						'product_link' 			=> $this->input->post('product_link'),
+						'status' 				=> $this->input->post('status')
+				);
+					
+				$result = $this->verticals_model->productEdit($edit_data);
+					
+				if($result->rc == 0)
 				{
-					$msgClass = 'alert alert-error';
-					$msgInfo  = $prod_icon['msgInfo'];
+					$msgClass = 'alert alert-success';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product Area has been added.';
 				}
 				else
 				{
-				
-					$edit_data = array(
-							'product_id'			=> $this->input->post('product_id'),
-							'product_type_id' 		=> $this->input->post('product_type_id'),
-							'company_id' 			=> $this->input->post('company_id'),
-							'product_name' 			=> $this->input->post('product_name'),
-							'product_description' 	=> $this->input->post('product_description'),
-							'featured' 				=> $this->input->post('featured'),
-							'country_id' 			=> $this->input->post('country_id'),
-							'area_id' 				=> $this->input->post('area_id'),
-							'product_icon' 			=> 'assets/uploadimages/productImg/' . $prod_icon['data']['file_name'],
-							'product_link' 			=> $this->input->post('product_link'),
-							'status' 				=> $this->input->post('status')
-					);
-						
-					$result = $this->verticals_model->productEdit($edit_data);
-						
-					if($result->rc == 0)
-					{
-						$msgClass = 'alert alert-success';
-						$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Product Area has been added.';
-					}
-					else
-					{
-						$msgClass = 'alert alert-error';
-						$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add product area failed.';
-					}
+					$msgClass = 'alert alert-error';
+					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add product area failed.';
 				}
 				
 				//set flash data for error/info message
@@ -541,7 +534,7 @@ class Verticals extends CI_Controller {
 				
 				$form_open 			 	= form_open_multipart('',array('class' => 'form-horizontal', 'method' => 'post'));
 				$product_name 		 	= form_input(array('name' => 'product_name', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Name', 'value' => $productInfo[0]->product_name));
-				$product_description 	= form_textarea(array('name' => 'product_description', 'class' => 'cleditor', 'id'=> 'textarea2' , 'rows' =>'3' , 'value' => $productInfo[0]->product_description));
+				$product_description 	= form_textarea(array('name' => 'product_description', 'class' => 'input-xlarge', 'id'=> 'textarea2' , 'rows' =>'3' , 'value' => $productInfo[0]->product_description));
 				$product_icon 		 	= form_input(array('name' => 'product_icon', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Icon' , 'value' => $productInfo[0]->product_icon));
 				$product_link 		 	= form_input(array('name' => 'product_link', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Link' , 'value' => $productInfo[0]->product_link));
 				$areaList			 	= form_dropdown('area_id', $arealist, $productInfo[0]->area_id , 'id="selectError1" data-rel="chosen"');

@@ -56,9 +56,11 @@
 								<div class="controls">{$product_name}</div></div>
 			  
 									  
-						 	 <div class="control-group">
+						 	 <div class="control-group input-prepend">
 								<label class="control-label" for="focusedInput">Product Link:</label>
-								<div class="controls">{$product_link}</div>
+								<div class="controls">
+								<span class="add-on">www.</span>
+								{$product_link}</div>
 							  </div>
 							  
 							<div class="control-group">

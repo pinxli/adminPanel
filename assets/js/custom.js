@@ -91,14 +91,14 @@ $(document).ready(function(){
 	}).css('cursor','pointer');
 	
 	
-	var mytable = $('#mytable').dataTable( {
-		 "bFilter": false,
-		 "bLengthChange": false
+	// var mytable = $('#mytable').dataTable( {
+		 // "bFilter": false,
+		 // "bLengthChange": false
 		 // "bInfo": false,
          // "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
-     } );
+     // } );
 	 	 	 
-	 mytable.fnSort( [ [1,'desc']] );
+	 // mytable.fnSort( [ [1,'desc']] );
 	
 });
 

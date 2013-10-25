@@ -108,9 +108,9 @@
 	
 	$(document).ready(function(){
 		
-		setTimeout("message_welcome1()",5000);
+		/*setTimeout("message_welcome1()",5000);
 		setTimeout("message_welcome2()",10000);	
-		setTimeout("message_welcome3()",15000);
+		setTimeout("message_welcome3()",15000);*/
 		
 	});			
 </script>

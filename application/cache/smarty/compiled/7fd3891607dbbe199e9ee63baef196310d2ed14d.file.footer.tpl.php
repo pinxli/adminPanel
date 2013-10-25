@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 02:48:49
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 08:12:25
          compiled from "application\views\includes\footer.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:256435257869ca50b46-38921528%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7fd3891607dbbe199e9ee63baef196310d2ed14d' => 
     array (
       0 => 'application\\views\\includes\\footer.tpl',
-      1 => 1382669294,
+      1 => 1382688739,
       2 => 'file',
     ),
   ),
@@ -163,9 +163,9 @@ assets/img/avatar.jpg',
 	
 	$(document).ready(function(){
 		
-		setTimeout("message_welcome1()",5000);
+		/*setTimeout("message_welcome1()",5000);
 		setTimeout("message_welcome2()",10000);	
-		setTimeout("message_welcome3()",15000);
+		setTimeout("message_welcome3()",15000);*/
 		
 	});			
 </script>
