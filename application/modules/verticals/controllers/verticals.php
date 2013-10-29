@@ -604,6 +604,16 @@ class Verticals extends CI_Controller {
 		}
 	}
 	
+	
+	function viewproduct()
+	{		
+		$product_info = $this->verticals_model->productInfo($this->uri->segment(3));
+		
+		echo "<pre />";
+		print_r($product_info);
+		exit;
+	}
+	
 	// edit product
 	function editverticaltype()
 	{		

@@ -78,7 +78,7 @@
 								</td>
 							
 								 <td class="center">
-									<a class="btn btn-success" href="#">
+									<a class="btn btn-success" href="{$baseUrl}verticals/viewproduct/{$product->product_id}">
 										<i class="fa fa-list-alt icon-white" title="View"></i>  
 									</a>
 									<a class="btn btn-info" href="{$baseUrl}verticals/editproduct/{$product->product_id}">
