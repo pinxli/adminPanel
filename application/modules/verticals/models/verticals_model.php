@@ -218,6 +218,42 @@ class Verticals_model extends CI_Model {
 		
 	}
 	
+	function checkProductType($productType)
+	{
+		$url = $this->config->item('rest_api_url') . 'producttype/checkProductType/'.$this->locale.'/98740/' . rawurlencode($productType);
+		$res = $this->call_rest($url,'','get');
+		return json_decode($res);
+	}
+	
+	function checkCountry($isoname)
+	{
+		$url = $this->config->item('rest_api_url') . 'country/checkCountry/'.$this->locale.'/98740/' . rawurlencode($isoname);
+		$res = $this->call_rest($url,'','get');
+		return json_decode($res);
+	}
+	
+	function checkCompany($company_name)
+	{
+		$url = $this->config->item('rest_api_url') . 'company/checkCompany/'.$this->locale.'/98740/' . rawurlencode($company_name);
+		$res = $this->call_rest($url,'','get');
+		return json_decode($res);
+	}
+	
+	function checkArea($area_name,$countryId)
+	{
+		$url = $this->config->item('rest_api_url') . 'productarea/checkArea/'.$this->locale.'/98740/' . rawurlencode($area_name) . '/' . $countryId;
+		$res = $this->call_rest($url,'','get');
+		return json_decode($res);
+	}
+	
+	function checkOptions($option_key,$producttypeId)
+	{
+		$url = $this->config->item('rest_api_url') . 'productoption/checkOptions/'.$this->locale.'/98740/' . rawurlencode($option_key) . '/' . $producttypeId;
+		$res = $this->call_rest($url,'','get');
+		echo $url;
+		return json_decode($res);
+	}
+	
 	function call_rest($url,$data,$method)
 	{
 		$function = 'simple_'.$method;

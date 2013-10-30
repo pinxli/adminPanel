@@ -277,4 +277,17 @@ class Settings extends CI_Controller {
 		$export = $this->export->to_excel($res['data']['loglist'],$uri. date('Ymdhmi'));
 	}
 	
+	function exporttoexcel()
+	{
+		$type = $this->uri->segment(3);
+		$res = $this->settings_model->$type();
+
+		if ( $res->rc == 0 ){
+			$data_arr = $res->data->$type;
+			
+			$export = $this->export->to_excel($data_arr,$type. date('Ymdhmi'));
+		}
+		
+	}
+	
 }

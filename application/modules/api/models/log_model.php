@@ -16,7 +16,6 @@ class Log_model extends CI_Model {
 	public function getAllLogs() {
 		$this->db->from('api_logs');
 		$this->db->order_by('log_id', 'asc');
-		$this->db->join('api_clients','api_clients.auth = api_logs.log_client_id','inner');
 		$query = $this->db->get();
 		 
 		//user data exist

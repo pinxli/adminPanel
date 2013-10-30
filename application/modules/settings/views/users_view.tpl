@@ -21,6 +21,7 @@
 				<div class="box span12">
                 
                 <a class="btn" href="{$baseUrl}settings/add_user">Add New User</a>
+                <a class="btn" href="{$baseUrl}settings/exporttoexcel/userlist">Export to Excel</a>
                 <hr>
                      <div class="{$msgClass}"><strong>{$msgInfo}</strong></div>        
 					<div class="box-header" data-original-title>

@@ -849,62 +849,72 @@ class Verticals extends CI_Controller {
 	function csvupload()
 	{
 		$this->load->library('form_validation');				
-		
-		// field name, error message, validation rules
-		$this->form_validation->set_rules('product_type_id', 'product_type_id', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('company_id', 'company_id', 'xss_clean|trim|required|required');
-		$this->form_validation->set_rules('country_id', 'country_id', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('area_id', 'area_id', 'xss_clean|trim|required');
-		
-		if($this->form_validation->run() == FALSE)
+
+		$file_element_name = 'productcsv';
+			
+		$config['upload_path'] 		= './assets/data';
+		$config['allowed_types'] 	= 'csv|txt';
+		$config['max_size'] 		= 1024 * 8;
+
+		$this->load->library('upload', $config);
+
+		if(!$this->upload->do_upload($file_element_name))
+
+
+
+
+
+
+
+
 		{
 			
-			$clist			 = $this->verticals_model->companyList();
-			$type_list		 = $this->verticals_model->productTypeList();
-			$area_list 		 = $this->verticals_model->productAreasList();
-			$country_list	 = $this->verticals_model->countryList();
-			
-			$comlist 		=	( $clist->rc == 0 ) ? $clist->data->companylist : array();
-			$typeList 		= 	( $type_list->rc == 0 ) ? $type_list->data->producttypelist : array();
-			$areaList		= 	( $area_list->rc == 0 ) ? $area_list->data->productarealist : array();
-			$countryList	=   ( $country_list->rc == 0 ) ? $country_list->data->countrylist : array();
-			
-			$arealist[''] = 'Select Area';
-			foreach ($areaList as $area):
-			$arealist[$area->area_id] = $area->area_name;
-			endforeach;
-			
-			$countrylist[''] = 'Select Country';
-			$countrySelected = false;
-			foreach ($countryList as $country):
-			if($countrySelected == false)
-			{
-				$countrySelected = ( $country->iso2 == strtoupper($this->session->userdata('locale'))) ? $country->country_id : false;
-			}
-			
-			$countrylist[$country->country_id] = $country->short_name;
-			endforeach;
-			
-			$product_type_list[''] = 'Select Product Type';
-			foreach ($typeList as $type):
-			$product_type_list[$type->product_type_id] = $type->product_type;
-			endforeach;
-			
-			
-			$company_list[''] = 'Select Company';
-			foreach ($comlist as $company):
-			$company_list[$company->company_id] = $company->company_name;
-			endforeach;
 
-			$form_open 			 	= form_open_multipart('',array('class' => 'form-horizontal', 'method' => 'post'));
-			$product_name 		 	= form_input(array('name' => 'product_name', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Name'));
-			$product_description 	= form_textarea(array('name' => 'product_description', 'class' => 'cleditor', 'id'=> 'textarea2' , 'rows' =>'3'));
-			$product_icon 		 	= form_input(array('name' => 'product_icon', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Icon'));
-			$product_link 		 	= form_input(array('name' => 'product_link', 'class' => 'input-xlarge focused' , 'id' => 'focusedInput', 'placeholder' => 'Product Link'));
-			$areaList			 	= form_dropdown('area_id', $arealist, '', 'id="selectError1" data-rel="chosen"');
-			$countryList			= form_dropdown('country_id', $countrylist, $countrySelected, 'id="selectError2" data-rel="chosen"');
-			$productTypeList		= form_dropdown('product_type_id', $product_type_list, '' , 'id="selectError3" data-rel="chosen" onchange="verticalType();"');
-			$companyList			= form_dropdown('company_id', $company_list, '', 'id="selectError4" data-rel="chosen"');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			$form_open 	= form_open_multipart('',array('class' => 'form-horizontal', 'method' => 'post'));
+
+
+
+
+
+
+
+
 			$form_close = form_close();
 
 			$data['mainContent'] = 'csv_upload_view.tpl';
@@ -915,10 +925,10 @@ class Verticals extends CI_Controller {
 			'title'					=> 'CSV Upload',
 			'msgClass'				=> $this->msgClass,
 			'msgInfo'				=> $this->msgInfo,
-			'areaList'				=> $areaList,
-			'countryList'			=> $countryList,
-			'productTypeList'		=> $productTypeList,
-			'companyList'			=> $companyList,
+
+
+
+
 			'form_open'				=> $form_open,
 			'form_close'			=> $form_close
 			);
@@ -927,138 +937,236 @@ class Verticals extends CI_Controller {
 		}
 		else
 		{
-			$file_element_name = 'productcsv';
-			
-			$config['upload_path'] 		= './assets/data';
-			$config['allowed_types'] 	= 'csv|txt';
-			$config['max_size'] 		= 1024 * 8;
-			// $config['remove_spaces']	= TRUE;
 
-			$this->load->library('upload', $config);
-
-			if (!$this->upload->do_upload($file_element_name))
-			{	
-				$msgClass = 'alert alert-error';
-				$msgInfo  = $this->upload->display_errors('', '');
-
-			}
-			else 
-			{
-				$data = $this->upload->data();
-				$file_handle = fopen($data["full_path"], "rb");
-				$ctr = 0;
+			$data = $this->upload->data();
+			$file_handle = fopen($data["full_path"], "rb");
+			$ctr = 0;
 		
-				#$insert_sql = " INSERT INTO products (product_type_id, company_id, product_name,product_description,featured,country_id,area_id,product_icon,product_link,`status`) VALUES ";
-				
-				$upload = false;
-				
-				while (!feof($file_handle) ) {
-					$line_of_text = fgets($file_handle);
-					$parts = explode(';', $line_of_text);
-				
+			$upload = false;
+
+			while (!feof($file_handle) ) {
+				$line_of_text = fgets($file_handle);
+				$parts = explode(',', $line_of_text);
+
+				if (count($parts) > 1 && $ctr > 0)
+				{
+					$check['producttype'] = $this->verticals_model->checkProductType($parts[5]);
+					$check['country']	  = $this->verticals_model->checkCountry($parts[2]);
+					$check['company']	  = $this->verticals_model->checkCompany($parts[3]);
+					$countryId			  = ($check['country']->rc == 0) ? $check['country']->country_id : '';
+					$producttypeId		  = ($check['producttype']->rc == 0) ? $check['producttype']->product_type_id : '';
+					$check['area']		  = $this->verticals_model->checkArea($parts[4],$countryId);
+					$check['options']	  = '';
 
 
-					if (count($parts) > 1 && $ctr > 0)
+
+
+
+
+
+					$chunk  = array_chunk($parts, 11);
+
+
+					$option_ctr = 0;
+
+
+
+
+
+					while (count($chunk[1]) > $option_ctr)
 					{
-						/*
+						$check['options'] = $this->verticals_model->checkOptions($chunk[1][$option_ctr],$producttypeId);
+						$option_ctr += 3;
+					}
 
-							$product_type_id		= $this->input->post('product_type_id');
-							$company_id      		= $this->input->post('company_id');
-							$product_name	 		= trim($parts[0]);
-							$product_description	= $parts[1];
-							$featured				= $parts[2];
-							$country_id				= $this->input->post('country_id');
-							$area_id				= $this->input->post('area_id');
-							$product_icon 			= $parts[3];
-							$product_link 			= $parts[4];
-							$status					= $parts[5];
 
-						$insert_sql .= ' ('.$product_type_id.','.$company_id.',"'.$product_name.'","'.$product_description.'",'.$featured.','.$country_id.','.$area_id.',"'.$product_icon.'","'.$product_link.'",'.$status.'),';									
-						// $insert_sql .= "($product_type_id,$company_id,'$product_name','$product_description',$featured,$country_id,$area_id,'$product_icon','$product_link',$status),";
-						*/
-						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					$error = 0;
+					$error_msg = '';
+
+					
+					//check for erros in CHECK array
+					foreach ($check as $key => $value)
+
+					{
+						if ($check[$key]->rc == 999)
+						{
+							$error = 1;
+							$error_msg .= $check[$key]->message . ',';
+
+
+						}
+					}
+
+
+
+
+
+
+
+
+
+
+
+					if($error == 0) // Check for error.
+					{
+
+
+
+
 						$insert_array =	array(
-											'product_type_id' 		=> $this->input->post('product_type_id'),
-											'company_id'    		=> $this->input->post('company_id'),
-											'product_name'	 		=> trim($parts[0]),
-											'product_description'	=> $parts[1],
-											'featured'				=> $parts[2],
-											'country_id'			=> $this->input->post('country_id'),
-											'area_id'				=> $this->input->post('area_id'),
-											'product_icon' 			=> $parts[3],
-											'product_link' 			=> $parts[4],
-											'status'				=> $parts[5]
+											'product_type_id' 		=> $check['producttype']->product_type_id,
+											'company_id'    		=> $check['company']->company_id,
+											'product_name'	 		=> trim($parts[6]),
+											'product_description'	=> $parts[10],
+											'featured'				=> $parts[1],
+											'country_id'			=> $countryId,
+											'area_id'				=> $check['area']->area_id,
+											'product_icon' 			=> base_url(). 'assets/uploadimages/productImg/' .$parts[8],
+
+											'product_link' 			=> $parts[7],
+											'status'				=> $parts[9]
 						);
-						
+
+
+
 						$result = $this->verticals_model->productAdd($insert_array);
 						
 						if($result->rc == 0)
 						{
-							$option = $this->input->post('option');
+							$optionctr 	  = 0;
+							$temp		  = 0;
+							$option_value = array('option','option_value','expiry_date');
+							$option_arr   = array();
+
 								
-							$expiry_date = $this->input->post('expiry_date');
-								
-							$date = date("Y-m-d H:i:s");
-								
-							foreach ($option as $key=>$value)
+							while (count($chunk[1]) > $optionctr)
+
+
+
+
+
 							{
-								$explode = explode("-", $key);
+								if(($temp + 1) % 3 == 0)
+								{
+									$date = date("Y-m-d H:i:s");
+									$option_arr['product_id'] 			= $result->productId;
+									$option_arr['vertical_optionid']	= $producttypeId;
+									$option_arr[$option_value[$temp]]   = $this->add_date($date,$chunk[1][$optionctr]);
+									$option_insert = $this->verticals_model->productOptionAdd($option_arr);
+									$temp = 0;
+									$option_arr = array();
+										
+								}
+								else
+								{
+									$option_arr[$option_value[$temp]] = $chunk[1][$optionctr];
+									$temp++;
+								}
 
-								$option_arr = array(
-									'product_id' 		=> $result->productId,
-									'vertical_optionid' => $explode[1],
-									'option'			=> $explode[0],
-									'option_value'		=> $value,
-									'expiry_date'		=> $this->add_date($date,$expiry_date[$explode[1]])
 
-								);
+								$optionctr++;
 
-								$option_insert = $this->verticals_model->productOptionAdd($option_arr);
+
+
+
+
+
+
+
+
+
 
 							}
-							
-							$upload = true;
+
+
 						}
 						
+
 					}
-					
-					$ctr++;
-				}
+					else
+					{
 
-				
-				#$query_string = substr($insert_sql, 0, -1);
-				
-				#$sql_array = array('insert_sql' => $query_string);
-				
-				#$result = $this->verticals_model->productAdd($sql_array);
+						$msginfo_arr = array(
+								'msgClass' => 'alert alert-error',
+								'msgInfo'  => 'Line ' . $ctr .' : ' . substr($error_msg, 0 , -1)
+						);
+
+
+
+
+						fclose($file_handle);
+						unlink($data["full_path"]);
+
+
+
+
+
+
 						
-				fclose($file_handle);
-				unlink($data["full_path"]);
-				
-				if($upload == true)
+						$this->call_redirect('verticals/csvupload/', $msginfo_arr);
+					}
 
-				{
-					$msgClass = 'alert alert-success';
-					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'CSV upload success.';
-				}
-				else
-				{
-					$msgClass = 'alert alert-error';
-					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'CSV upload failed.';
+
+
+
+
+
+
+
 				}
 
+
+
+
+
+
+				$ctr++;
 			}
-			
-			//set flash data for error/info message
+			//endofwhile FILE
+			fclose($file_handle);
+			unlink($data["full_path"]);
+				
+
+
 			$msginfo_arr = array(
-				'msgClass' => $msgClass,
-				'msgInfo'  => $msgInfo,
+					'msgClass' => 'alert alert-success',
+					'msgInfo'  => 'CSV upload success.'
+
+
 			);
-			$this->session->set_flashdata($msginfo_arr);
+
 			
-			redirect('verticals/csvupload/');
-			
+			$this->call_redirect('verticals/csvupload/', $msginfo_arr);
+		
 		}
+	
+	}
+	
+	function call_redirect($url,$msginfo)
+	{
+		$msginfo_arr = array(
+				'msgClass' => $msginfo['msgClass'],
+				'msgInfo'  => $msginfo['msgInfo'],
+			);
+		
+		$this->session->set_flashdata($msginfo_arr);
+			
+		redirect($url);	
+
 	}
 	
 	function add_date($givendate,$day=0,$mth=0,$yr=0) {

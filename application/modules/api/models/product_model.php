@@ -430,7 +430,7 @@ class Product_model extends CI_Model {
 			$response['product_type_id'] 	 = $query->row()->product_type_id;
 		}
 		else{ //no record found	 
-			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Not a valid product type.';
+			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : strtolower($productType). ' is not a valid product type';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message']	= $err_message;
@@ -460,7 +460,7 @@ class Product_model extends CI_Model {
 			$response['area_id'] 			 = $query->row()->area_id;
 		}
 		else{ //no record found	 
-			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Not a valid area.';
+			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : strtolower($area_name) . ' is not a valid area';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message']	= $err_message;
@@ -478,7 +478,7 @@ class Product_model extends CI_Model {
 		);
 		
 		$this->db->select('*')
-				 ->from('vertical_options')
+				->from('vertical_options')
 				->where($data);
 		
 		$query = $this->db->get();
@@ -490,7 +490,7 @@ class Product_model extends CI_Model {
 			$response['area_id'] 			 = $query->row();
 		}
 		else{ //no record found	 
-			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Not a valid option.';
+			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : 'error in vertical option.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message']	= $err_message;

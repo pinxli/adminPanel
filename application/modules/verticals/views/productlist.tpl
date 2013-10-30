@@ -48,7 +48,26 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+					
+						<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#advancedsearch">
+						  Advance Search
+						</button>
+						<br /><br />
+						<div id="advancedsearch" class="collapse out">
+							<table class="table table-striped table-bordered">
+								<tr>
+									<td>Search By:
+										<select>
+											<option>Option1</option>
+											<option>Option2</option>
+											<option>Option3</option>
+										</select>
+										<input type="text" name="searchby" value="" placeholder="Type keyword.." />
+									</td>
+								</tr>
+							</table>
+						</div>
+						<table class="table table-striped table-bordered bootstrap-datatable" id="datable-prodlist">
 						  <thead>
 							  <tr>
 	                                  <th>Product Image</th>

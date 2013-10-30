@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-29 02:37:22
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-30 09:02:04
          compiled from "application\modules\verticals\views\productlist.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:18815526650d9d7b9f2-24091906%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '223c997409effdeda2201f2a0685b465edcaf21b' => 
     array (
       0 => 'application\\modules\\verticals\\views\\productlist.tpl',
-      1 => 1383014124,
+      1 => 1383123722,
       2 => 'file',
     ),
   ),
@@ -82,7 +82,26 @@ verticals/addproduct/">
 						</div>
 					</div>
 					<div class="box-content">
-						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+					
+						<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#advancedsearch">
+						  Advance Search
+						</button>
+						<br /><br />
+						<div id="advancedsearch" class="collapse out">
+							<table class="table table-striped table-bordered">
+								<tr>
+									<td>Search By:
+										<select>
+											<option>Option1</option>
+											<option>Option2</option>
+											<option>Option3</option>
+										</select>
+										<input type="text" name="searchby" value="" placeholder="Type keyword.." />
+									</td>
+								</tr>
+							</table>
+						</div>
+						<table class="table table-striped table-bordered bootstrap-datatable" id="datable-prodlist">
 						  <thead>
 							  <tr>
 	                                  <th>Product Image</th>

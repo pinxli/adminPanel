@@ -115,7 +115,7 @@ class Company_model extends CI_Model {
 			$response['company_id'] 		 = $query->row()->company_id;
 		}
 		else{ //no record found	 
-			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Not a valid company name.';
+			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : strtolower($companyName) . ' is not a valid company';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message']	= $err_message;

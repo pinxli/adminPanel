@@ -235,7 +235,7 @@ class Productoption extends CI_Controller {
 			else{ //user id is missing
 				$response['rc']			= 999;
 				$response['success']	= false;
-				$response['message']	= 'option or verticaltypeId is missing.';
+				$response['message']	= 'option or verticaltypeId is missing';
 			}
 
 		}
