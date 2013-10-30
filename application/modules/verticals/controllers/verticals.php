@@ -125,7 +125,7 @@ class Verticals extends CI_Controller {
 	  $this->form_validation->set_rules('area_id', 'area_id', 'xss_clean|trim|required');
 	  $this->form_validation->set_rules('product_link', 'product_link', 'xss_clean|trim|required');
 	  $this->form_validation->set_rules('status', 'status', 'xss_clean|trim|required');
-	  
+	    
 	  if($this->form_validation->run() == FALSE)
 	  {
 	   
@@ -182,6 +182,11 @@ class Verticals extends CI_Controller {
 
 	   $data['mainContent'] = 'product_add_view.tpl';
 
+	   if ( validation_errors() ){
+		$this->msgClass = 'alert alert-error';
+		$this->msgInfo  = validation_errors();
+	   }
+	   
 	   $data['data'] = array(
 	   'baseUrl'    => base_url(),
 	   'locale'    => $this->session->userdata('locale'),
@@ -199,13 +204,13 @@ class Verticals extends CI_Controller {
 	   'form_open'    => $form_open,
 	   'form_close'   => $form_close
 	   );
-	  
+	   
 	   $this->load->view('includes/template', $data);
 	  }
 	  else  
 	  { 
 	   $imgUp = $this->verticals_model->productImg('productImg');
-	  
+	 
 	   if($imgUp['rc'] == 0)
 	   {    
 		$insert_data = array(
@@ -273,7 +278,7 @@ class Verticals extends CI_Controller {
 	   );
 	   $this->session->set_flashdata($msginfo_arr);
 	   
-	   redirect('verticals/productlist/');
+	   // redirect('verticals/productlist/');
 	  }
 	  
 	 }
@@ -469,8 +474,8 @@ class Verticals extends CI_Controller {
 			{
 				
 				$imgUp = $this->verticals_model->productImg('productImg');
-				$prod_icon = ( $imgUp['data']['file_name'] ) ? $this->config->item('path_upload_img').$imgUp['data']['file_name'] : '';
-			
+				$prod_icon = ( $imgUp['data']['file_name'] ) ? $this->config->item('product_upload_img').$imgUp['data']['file_name'] : '';
+				//Change Raphael
 				$edit_data = array(
 						'product_id'			=> $this->input->post('product_id'),
 						'product_type_id' 		=> $this->input->post('product_type_id'),
@@ -609,9 +614,42 @@ class Verticals extends CI_Controller {
 	{		
 		$product_info = $this->verticals_model->productInfo($this->uri->segment(3));
 		
-		echo "<pre />";
-		print_r($product_info);
-		exit;
+		if($product_info->rc == 0)
+		{
+			$data['mainContent'] = 'product_view.tpl';
+			
+			
+			$productOptions = $this->verticals_model->productOptionInfo($this->uri->segment(3));
+				
+			$productoption = ( $productOptions->rc == 0 ) ? $productOptions->data->optioninfo : array();
+			
+			$data['data'] = array(
+					'baseUrl'				=> base_url(),
+					'title'					=> 'View Products',
+					'msgClass'				=> $this->msgClass,
+					'msgInfo'				=> $this->msgInfo,
+					'productOptions'		=> $productoption,
+					'productInfo'			=> $product_info->data->productinfo[0]
+					);
+		
+				$this->load->view($this->globalTpl, $data);	
+		}
+		else 
+		{
+			$msgClass = 'alert alert-error';
+			$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Cannot get product info';
+			
+			//set flash data for error/info message
+			$msginfo_arr = array(
+				'msgClass' => $msgClass,
+				'msgInfo'  => $msgInfo,
+			);
+			$this->session->set_flashdata($msginfo_arr);
+			
+			redirect('product/productlist/');
+		}
+		
+		
 	}
 	
 	// edit product
@@ -671,9 +709,7 @@ class Verticals extends CI_Controller {
 			else
 			{
 				$productType = $product_info->data->producttypeinfo[0];
-				
-				
-				
+
 				$product_type 		= form_input(array('name' => 'product_type','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Product Type' , 'value' => $productType->product_type));
 				$description  		= form_input(array('name' => 'description','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'Description', 'value' => $productType->description));
 				$url_slug  			= form_input(array('name' => 'url_slug','class' => 'input-xlarge focused','id' => 'focusedInput','placeholder' => 'URL Slug', 'value' => $productType->url_slug));

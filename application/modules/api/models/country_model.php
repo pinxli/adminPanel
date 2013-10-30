@@ -57,7 +57,29 @@ class Country_model extends CI_Model {
 			$response['message'][]	= $err_message;
 		}
 		return $response;
-	}	
+	}
+
+	public function checkCountry($iso) {
+		$this->db->select('country_id')
+				 ->from('countries')
+				->where(array('LOWER(iso2)' => strtolower(urldecode($iso))));
+		
+		$query = $this->db->get();
+		 
+		//if data exist, return results
+		if ($query->num_rows() > 0){
+			$response['rc']					 = 0;
+			$response['success']			 = true;
+			$response['country_id'] 		 = $query->row()->country_id;
+		}
+		else{ //no record found	 
+			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Not a valid country.';
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message'][]	= $err_message;
+		}
+		return $response;
+	}
 // end of the country model
 
 }

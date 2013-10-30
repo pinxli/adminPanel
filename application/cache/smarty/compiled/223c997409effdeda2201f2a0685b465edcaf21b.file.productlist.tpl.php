@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 09:44:22
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-29 02:37:22
          compiled from "application\modules\verticals\views\productlist.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:18815526650d9d7b9f2-24091906%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '223c997409effdeda2201f2a0685b465edcaf21b' => 
     array (
       0 => 'application\\modules\\verticals\\views\\productlist.tpl',
-      1 => 1382693920,
+      1 => 1383014124,
       2 => 'file',
     ),
   ),
@@ -122,7 +122,9 @@ $_smarty_tpl->tpl_vars['product']->_loop = true;
 								</td>
 							
 								 <td class="center">
-									<a class="btn btn-success" href="#">
+									<a class="btn btn-success" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/viewproduct/<?php echo $_smarty_tpl->tpl_vars['product']->value->product_id;?>
+">
 										<i class="fa fa-list-alt icon-white" title="View"></i>  
 									</a>
 									<a class="btn btn-info" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>

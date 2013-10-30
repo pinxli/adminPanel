@@ -49,6 +49,7 @@
 						<table class="table table-striped table-bordered bootstrap-datatable datatable" id="tbl">
 						  <thead>
 							  <tr>
+								  <th width="5%">Product ID</th>
 								  <th width="26%">Product Name</th>
 								  <th width="27%">Product Description</th>
                                   <th width="10%">Action</th>
@@ -60,6 +61,7 @@
 							{foreach from=$productTypeList item=producttype}
 							
 							<tr>
+								<td>{$producttype->product_type_id}</td>
 								<td>{$producttype->product_type}</td>
 								<td class="center">{$producttype->description}</td>
 								<td class="center">

@@ -38,7 +38,7 @@
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
-								  <th>ClientId</th>
+								  <th>Client</th>
 								  <th>Method</th>
 								  <th>URL</th>
                                   <th>Access Time</th>
@@ -50,7 +50,7 @@
 							{foreach from=$logList item=loglist}
 							
 							<tr>
-								<td>{$loglist->log_client_id}</td>
+								<td>{$loglist->clientID}</td>
 								<td class="center">{$loglist->log_method}</td>
 								<td class="center">{$loglist->log_url}</td>
 								<td class="center">{$loglist->log_access_time}</td>

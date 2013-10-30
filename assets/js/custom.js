@@ -93,30 +93,51 @@ $(document).ready(function(){
 	
 	}).css('cursor','pointer');
 	
-	/* $("#selectError2").change(function(){
+	$("#selectError2").change(function(){
 		str = $("#selectError2 option:selected").val();
-	 
+		
 		$.ajax({ 
 			type: "GET",
 			dataType: "json",
-			url: "http://localhost/adminPanel/api/productarea/my/98740/" ,
-			success: function(resultData){        
-			var result = resultData.data.productarealist;
-			 
-			$('#selectError1_chzn > div > ul > li').remove();
-			 
-			ctr = 1;
-			$.each(result, function(k,v){
+			url: "http://localhost/adminPanel/api/productarea/my/98740/"+str ,
+			success: function(resultData){  
+				console.log(resultData);
 				
-				$('#selectError1').append("<option value="+v.area_id+">"+v.area_name+"</option>");
-				$('#selectError1_chzn > div > ul').append("<li id='selectError1_chzn_o_"+ctr+"' class='active-result'>"+v.area_name+"</li>");
-				ctr++;
-			}); 
+				if ( resultData.rc == 0 ){
+					var result = resultData.data.productarealist;
+					
+					$('#selectError1_chzn > div > ul > li').remove();
+					$('#selectError1 option').remove();
+					
+					ctr = 1;
+					$.each(result, function(k,v){
+						// $(".chzn-single span").remove()
+						$('#selectError1').append("<option value="+v.area_id+">"+v.area_name+"</option>");
+						$('#selectError1_chzn > div > ul').append("<li id='selectError1_chzn_o_"+ctr+"' class='active-result'>"+v.area_name+"</li>");
+						ctr++;
+					}); 
+				}
+				else{
+					$('#selectError1_chzn > div > ul > li').remove();
+					$('#selectError1 option').remove();
+					$('#selectError1').append("<option selected='selected' value=''>No Record</option>");
+				}
+				$('select').trigger("liszt:updated");
 			}
 		});
-	}); */
+	});
 	
+	$('.autonum').autoNumeric({vMin:'0', vMax:'100' });
 });
+
+function checknumeric()
+{
+	$('.autonum').autoNumeric({vMin:'0', vMax:'100' });
+	// $('.autonum').focusout(function(){
+		// $(this).replace('.00','');
+		// alert($(this).val());
+	// });
+}
 
 /* ---------- Masonry Gallery ---------- */
 

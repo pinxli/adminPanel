@@ -51,6 +51,7 @@
 	<script src="{$baseUrl}assets/js/jquery.knob.js"></script>
 	<script src="{$baseUrl}assets/js/jquery.sparkline.min.js"></script>
 	<script src="{$baseUrl}assets/js/custom.js"></script>
+	<script src="{$baseUrl}assets/js/autoNumeric-1.7.5.js"></script>
 <!-- end: JavaScript-->
 
 <script type="text/javascript">
@@ -107,6 +108,8 @@
 	}
 	
 	$(document).ready(function(){
+		
+		$('.autonum').autoNumeric();
 		
 		/*setTimeout("message_welcome1()",5000);
 		setTimeout("message_welcome2()",10000);	

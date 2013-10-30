@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 09:00:06
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-29 10:06:16
          compiled from "application\views\includes\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93385257869c99f3c7-90349051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b8477c7e87283f823260df5a414eefc596a7488c' => 
     array (
       0 => 'application\\views\\includes\\header.tpl',
-      1 => 1382691605,
+      1 => 1383041173,
       2 => 'file',
     ),
   ),
@@ -53,10 +53,16 @@ assets/css/style.css" rel="stylesheet">
 assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 	<link id="base-style-responsive" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 assets/css/style-responsive.css" rel="stylesheet">
-	<link href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-assets/css/custom.css" type="text/css" rel="stylesheet">
-    <link href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-assets/js/jquery-1.9.1.min.js" type="text/javascript">
+	<!-- <link href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+assets/css/custom.css" type="text/css" rel="stylesheet">-->
+    <!-- <link href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+assets/js/jquery-1.9.1.min.js" type="text/javascript">-->
+	<!-- <script src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+assets/js/jquery-1.9.1.min.js"></script>
+	<script src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+assets/js/jquery.numeric.js"></script>
+	<script src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+assets/js/main.js"></script>-->
 	
 	<!--[if lt IE 7 ]>
 	<link id="ie-style" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>

@@ -225,6 +225,54 @@ class Company extends CI_Controller {
 		$this->load->library('parser');
 		$this->parser->parse('index.tpl');
 	}
+	
+	function checkCompany()
+	{
+		$this->authKey	 	 = ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
+		$this->company_name   = ( $this->uri->segment(6) ) ? $this->uri->segment(6) : '';
+		
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
+		
+		//auth key is valid
+		if ( $is_valid_auth['rc'] == 0 ){
+			$this->load->model('company_model');
+			
+			if ( $this->company_name != '' ){
+				
+				$response = $this->company_model->checkCompany(urldecode($this->company_name));
+			}
+			else {
+				$response['rc']			= 999;
+				$response['success']	= false;
+				$response['message']	= 'required: company name';
+			}
+
+		}
+		else{
+			$response['rc']			= $is_valid_auth['rc'];
+			$response['success']	= $is_valid_auth['success'];
+			$response['message'][]	= $is_valid_auth['message'];
+		}
+
+		//api logs
+		$log_data = array(
+			'log_client_id' => $this->authKey,
+			'log_method' 	=> 'checkCompany',
+			'log_url' 		=> $this->uri->uri_string(),
+			'log_request' 	=> json_encode($this->input->get()),
+			'log_response' 	=> json_encode($response),
+		);
+		$this->apilog_model->apiLog($log_data); //db logs
+		$this->api_functions->apiLog(json_encode($log_data),'checkCompany'); //text logs
+		
+		//display Jason
+		$this->output
+			 ->set_content_type('application/json')
+			 ->set_output(json_encode($response));
+		
+		$this->load->library('parser');
+		$this->parser->parse('index.tpl');
+	}
 }
 
 /* End of file company.php/ Api Company Controller */

@@ -45,8 +45,17 @@ class Product_model extends CI_Model {
 					'product_id' 		=> $id
 		);
 		
-		$this->db->where($product);
-		$query = $this->db->get('products');
+		
+		$this->db->select('company_name,area_name,product_type,short_name,product_id,products.product_type_id,products.company_id,product_name,product_description,featured,products.country_id,products.area_id,product_icon,product_link,status')
+			->from('products')
+			->join('companies','products.company_id = companies.company_id','inner')
+			->join('products_types','products_types.product_type_id = products.product_type_id','inner')
+			->join('countries','countries.country_id= products.country_id','inner')
+			->join('products_areas','products_areas.area_id = products.area_id','inner')
+			->where($product)
+			->order_by('product_id','asc');
+
+		$query = $this->db->get();
 		 
 		//if data exist, return results
 		if ($query->num_rows() > 0){
@@ -403,6 +412,88 @@ class Product_model extends CI_Model {
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to Upload.';
+		}
+		return $response;
+	}
+	
+	public function checkProductType($productType) {
+		$this->db->select('product_type_id')
+				 ->from('products_types')
+				->where(array('LOWER(product_type)' => strtolower(urldecode($productType))));
+		
+		$query = $this->db->get();
+		 
+		//if data exist, return results
+		if ($query->num_rows() > 0){
+			$response['rc']					 = 0;
+			$response['success']			 = true;
+			$response['product_type_id'] 	 = $query->row()->product_type_id;
+		}
+		else{ //no record found	 
+			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Not a valid product type.';
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message']	= $err_message;
+		}
+		return $response;
+	}
+	
+	public function checkArea($area_name,$countryId) {
+		
+		$data = array(
+					'LOWER(area_name)' 	  => strtolower(urldecode($area_name)),
+					'area_country_id'	  => $countryId
+					
+		
+		);
+		
+		$this->db->select('area_id')
+				 ->from('products_areas')
+				->where($data);
+		
+		$query = $this->db->get();
+		 
+		//if data exist, return results
+		if ($query->num_rows() > 0){
+			$response['rc']					 = 0;
+			$response['success']			 = true;
+			$response['area_id'] 			 = $query->row()->area_id;
+		}
+		else{ //no record found	 
+			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Not a valid area.';
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message']	= $err_message;
+		}
+		return $response;
+	}
+	
+	public function checkOptions($option_key,$producttypeId) {
+		
+		$data = array(
+					'LOWER(option_key)' 	  => strtolower(urldecode($option_key)),
+					'product_type_id'	 	  => $producttypeId
+					
+		
+		);
+		
+		$this->db->select('*')
+				 ->from('vertical_options')
+				->where($data);
+		
+		$query = $this->db->get();
+		 
+		//if data exist, return results
+		if ($query->num_rows() > 0){
+			$response['rc']					 = 0;
+			$response['success']			 = true;
+			$response['area_id'] 			 = $query->row();
+		}
+		else{ //no record found	 
+			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Not a valid option.';
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message']	= $err_message;
 		}
 		return $response;
 	}

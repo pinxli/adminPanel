@@ -211,6 +211,55 @@ class Productarea extends CI_Controller {
 		$this->load->library('parser');
 		$this->parser->parse('index.tpl');
 	}
+	
+	function checkArea()
+	{
+		$this->authKey	 	 = ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
+		$this->area   		 = ( $this->uri->segment(6) ) ? $this->uri->segment(6) : '';
+		$this->countryId   	 = ( $this->uri->segment(7) ) ? $this->uri->segment(7) : '';
+		
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
+		
+		//auth key is valid
+		if ( $is_valid_auth['rc'] == 0 ){
+			$this->load->model('product_model');
+			
+			if ( $this->area != '' || $this->countryId != ''){
+				
+				$response = $this->product_model->checkArea(urldecode($this->area), $this->countryId);
+			}
+			else{ //user id is missing
+				$response['rc']			= 999;
+				$response['success']	= false;
+				$response['message']	= 'area name or country id is missing.';
+			}
+
+		}
+		else{
+			$response['rc']			= $is_valid_auth['rc'];
+			$response['success']	= $is_valid_auth['success'];
+			$response['message'][]	= $is_valid_auth['message'];
+		}
+
+		//api logs
+		$log_data = array(
+			'log_client_id' => $this->authKey,
+			'log_method' 	=> 'checkArea',
+			'log_url' 		=> $this->uri->uri_string(),
+			'log_request' 	=> json_encode($this->input->get()),
+			'log_response' 	=> json_encode($response),
+		);
+		$this->apilog_model->apiLog($log_data); //db logs
+		$this->api_functions->apiLog(json_encode($log_data),'checkArea'); //text logs
+		
+		//display Jason
+		$this->output
+			 ->set_content_type('application/json')
+			 ->set_output(json_encode($response));
+		
+		$this->load->library('parser');
+		$this->parser->parse('index.tpl');
+	}
 }
 
 /* End of file company.php/ Api Company Controller */

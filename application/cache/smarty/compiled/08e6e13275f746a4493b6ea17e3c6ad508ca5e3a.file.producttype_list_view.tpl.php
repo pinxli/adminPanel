@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 10:19:35
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-29 11:35:40
          compiled from "application\modules\verticals\views\producttype_list_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7742526651c1182189-42106615%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '08e6e13275f746a4493b6ea17e3c6ad508ca5e3a' => 
     array (
       0 => 'application\\modules\\verticals\\views\\producttype_list_view.tpl',
-      1 => 1382696373,
+      1 => 1383046539,
       2 => 'file',
     ),
   ),
@@ -81,6 +81,7 @@ verticals/addverticaltype">
 						<table class="table table-striped table-bordered bootstrap-datatable datatable" id="tbl">
 						  <thead>
 							  <tr>
+								  <th width="5%">Product ID</th>
 								  <th width="26%">Product Name</th>
 								  <th width="27%">Product Description</th>
                                   <th width="10%">Action</th>
@@ -96,6 +97,8 @@ $_smarty_tpl->tpl_vars['producttype']->_loop = true;
 ?>
 							
 							<tr>
+								<td><?php echo $_smarty_tpl->tpl_vars['producttype']->value->product_type_id;?>
+</td>
 								<td><?php echo $_smarty_tpl->tpl_vars['producttype']->value->product_type;?>
 </td>
 								<td class="center"><?php echo $_smarty_tpl->tpl_vars['producttype']->value->description;?>

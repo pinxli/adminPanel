@@ -19,8 +19,11 @@
 	<link id="base-style" href="{$baseUrl}assets/css/style.css" rel="stylesheet">
     <link href="{$baseUrl}assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 	<link id="base-style-responsive" href="{$baseUrl}assets/css/style-responsive.css" rel="stylesheet">
-	<link href="{$baseUrl}assets/css/custom.css" type="text/css" rel="stylesheet">
-    <link href="{$baseUrl}assets/js/jquery-1.9.1.min.js" type="text/javascript">
+	<!-- <link href="{$baseUrl}assets/css/custom.css" type="text/css" rel="stylesheet">-->
+    <!-- <link href="{$baseUrl}assets/js/jquery-1.9.1.min.js" type="text/javascript">-->
+	<!-- <script src="{$baseUrl}assets/js/jquery-1.9.1.min.js"></script>
+	<script src="{$baseUrl}assets/js/jquery.numeric.js"></script>
+	<script src="{$baseUrl}assets/js/main.js"></script>-->
 	
 	<!--[if lt IE 7 ]>
 	<link id="ie-style" href="{$baseUrl}assets/css/style-ie.css" rel="stylesheet">

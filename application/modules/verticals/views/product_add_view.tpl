@@ -22,6 +22,7 @@
          
 			<div class="row-fluid sortable">
 				<div class="box span12">
+                    <div class="{$msgClass}"><strong>{$msgInfo}</strong></div>        
 					<div class="box-header" data-original-title>
 						<h2><i class="icon-edit"></i><span class="break"></span>New Product</h2>
 						<div class="box-icon">
@@ -81,7 +82,8 @@
 							  <div class="control-group">
 								<label class="control-label">Featured</label>
 								<div class="controls">
-								  <label class="radio">
+								<input class="input-small focused autonum" type="number" name="featured" min="0" max="100">
+								  <!-- <label class="radio">
 									<input type="radio" name="featured" id="optionsRadios1" value="1" checked="">
 									Yes
 								  </label>
@@ -89,7 +91,7 @@
 								  <label class="radio">
 									<input type="radio" name="featured" id="optionsRadios2" value="0">
 									No
-								  </label>
+								  </label>-->
 								</div>
 							  </div>
 							  
@@ -144,7 +146,7 @@ function verticalType(){
 		   success: function(resultData){        
 			   var result = resultData.data.verticaloptioninfo;
 			    $.each(result, function(k,v){
-			     $('#category_type').after('<div class="control-group product_options"><label class="control-label" for="focusedInput">' +v.option_key +':</label><div class="controls"><input type="text" name="option['+v.option_key +'-' + v.id+ ']" value="" class="input-xlarge focused" id="focusedInput" placeholder="' +v.option_key +' Value"> &nbsp; Expiry Days:<input class="input-small focused" type="number" name="expiry_date['+ v.id +']" min="1" max="30"></div></div>');
+			     $('#category_type').after('<div class="control-group product_options"><label class="control-label" for="focusedInput">' +v.option_key +':</label><div class="controls"><input type="text" name="option['+v.option_key +'-' + v.id+ ']" value="" class="input-xlarge focused" id="focusedInput" placeholder="' +v.option_key +' Value"> &nbsp; Expiry Days:<input class="input-small focused autonum" type="number" name="expiry_date['+ v.id +']" min="1" max="30" onclick="checknumeric()"></div></div>');
 			     
 			    }); 
 			   

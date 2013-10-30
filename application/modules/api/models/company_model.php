@@ -101,6 +101,28 @@ class Company_model extends CI_Model {
 		return $response;
 	}
 	
+	public function checkCompany($companyName) {
+		$this->db->select('company_id')
+				 ->from('companies')
+				->where(array('LOWER(company_name)' => strtolower(urldecode($companyName))));
+		
+		$query = $this->db->get();
+		 
+		//if data exist, return results
+		if ($query->num_rows() > 0){
+			$response['rc']					 = 0;
+			$response['success']			 = true;
+			$response['company_id'] 		 = $query->row()->company_id;
+		}
+		else{ //no record found	 
+			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Not a valid company name.';
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message']	= $err_message;
+		}
+		return $response;
+	}
+	
 // end of the company model
 
 }
