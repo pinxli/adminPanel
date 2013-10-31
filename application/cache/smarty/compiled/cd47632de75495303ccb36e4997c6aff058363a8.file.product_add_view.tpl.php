@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-29 11:30:21
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-31 09:38:40
          compiled from "application\modules\verticals\views\product_add_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2606252674ad104ab83-51593417%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cd47632de75495303ccb36e4997c6aff058363a8' => 
     array (
       0 => 'application\\modules\\verticals\\views\\product_add_view.tpl',
-      1 => 1383046211,
+      1 => 1383211481,
       2 => 'file',
     ),
   ),
@@ -100,12 +100,32 @@ verticals/productlist">Product List</a> <span class="divider">/</span>
                                 <div class="controls"><?php echo $_smarty_tpl->tpl_vars['productTypeList']->value;?>
 </div>
                             </div>
-                                        
+                                                                                    
+                             <div class="control-group" id="product_promo" style="display:none;">
+								<label class="control-label">Promo</label>
+								<div class="controls">
+								  <label class="radio">
+									<input class="promo_options" type="radio" name="promo" id="optionsRadios1" value="1">
+									Yes
+								  </label>
+								  <div style="clear:both"></div>
+								  <label class="radio">
+									<input class="promo_options" type="radio" name="promo" id="optionsRadios2" value="0">
+									No
+								  </label>
+								</div>
+								<div class="controls" id="promo_value">
+								
+								</div>
+							 </div>            
+
+
 							  
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">Product Name:</label>
 								<div class="controls"><?php echo $_smarty_tpl->tpl_vars['product_name']->value;?>
-</div></div>
+</div>
+							</div>
 			  
 									  
 						 	 <div class="control-group input-prepend">
@@ -183,9 +203,18 @@ verticals/productlist">Product List</a> <span class="divider">/</span>
 			</div><!--/#content.span10-->
 			
 <script>
+
+function checkRadio()
+{
+	var value = $('.promo_options').val();
+
+	alert(value);
+}
+
 function verticalType(){
 	str = $( "#selectError3 option:selected" ).val();
 	
+	$('#product_promo').hide();
 	$(".product_options").remove();
 	
 	$.ajax({ 
@@ -197,8 +226,18 @@ api/verticaloption/<?php echo $_smarty_tpl->tpl_vars['locale']->value;?>
 		   success: function(resultData){        
 			   var result = resultData.data.verticaloptioninfo;
 			    $.each(result, function(k,v){
-			     $('#category_type').after('<div class="control-group product_options"><label class="control-label" for="focusedInput">' +v.option_key +':</label><div class="controls"><input type="text" name="option['+v.option_key +'-' + v.id+ ']" value="" class="input-xlarge focused" id="focusedInput" placeholder="' +v.option_key +' Value"> &nbsp; Expiry Days:<input class="input-small focused autonum" type="number" name="expiry_date['+ v.id +']" min="1" max="30" onclick="checknumeric()"></div></div>');
-			     
+
+					if(v.option_key.toLowerCase() == 'promo')
+					{
+						$('input:radio[name=promo]'). attr('id', v.id);
+						$('#product_promo').show();
+					}
+					else
+					{
+						$('#category_type').after('<div class="control-group product_options"><label class="control-label" for="focusedInput">' +v.option_key +':</label><div class="controls"><input type="text" name="option['+v.option_key +'-' + v.id+ ']" value="" class="input-xlarge focused" id="focusedInput" placeholder="' +v.option_key +' Value"> &nbsp; Expiry Days:<input class="input-small focused autonum" type="number" name="expiry_date['+ v.id +']" min="1" max="30" onclick="checknumeric()"></div></div>');
+					}
+								     
+
 			    }); 
 			   
 		   }

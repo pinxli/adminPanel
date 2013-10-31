@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-30 09:02:04
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-31 09:35:33
          compiled from "application\modules\verticals\views\productlist.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:18815526650d9d7b9f2-24091906%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '223c997409effdeda2201f2a0685b465edcaf21b' => 
     array (
       0 => 'application\\modules\\verticals\\views\\productlist.tpl',
-      1 => 1383123722,
+      1 => 1383206535,
       2 => 'file',
     ),
   ),
@@ -83,7 +83,7 @@ verticals/addproduct/">
 					</div>
 					<div class="box-content">
 					
-						<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#advancedsearch">
+						<!-- <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#advancedsearch">
 						  Advance Search
 						</button>
 						<br /><br />
@@ -92,15 +92,33 @@ verticals/addproduct/">
 								<tr>
 									<td>Search By:
 										<select>
-											<option>Option1</option>
-											<option>Option2</option>
-											<option>Option3</option>
+											<option>Company</option>
+											<option>Area</option>
+											<option>Status</option>
+											<option>Featured</option>
+											<option>Vertical</option>
 										</select>
 										<input type="text" name="searchby" value="" placeholder="Type keyword.." />
 									</td>
 								</tr>
 							</table>
-						</div>
+						</div>-->
+						<table class="table table-striped table-bordered">
+								<tr>
+									<td>Search By:
+										<select id="searchby" name="searchby">
+											<option value="company_name">Company</option>
+											<option value="area_name">Area</option>
+											<option value="status">Status</option>
+											<option value="featured">Featured</option>
+											<option value="product_type">Vertical</option>
+										</select>
+										<input type="text" id="searchkeyword" name="searchkeyword" value="" placeholder="Type keyword.." />
+										<button class="btn btn-primary" id="searchbtn" type="button" alt="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/productsearch">Search</button>
+									</td>
+								</tr>
+							</table>
 						<table class="table table-striped table-bordered bootstrap-datatable" id="datable-prodlist">
 						  <thead>
 							  <tr>
@@ -159,7 +177,12 @@ verticals/editproduct/<?php echo $_smarty_tpl->tpl_vars['product']->value->produ
 							<?php } ?>
 						  </tbody>
 					  </table> 
-                          
+                      <input type="hidden" id="prodview_url" value="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/viewproduct/" />
+                      <input type="hidden" id="prodedit_url" value="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/editproduct/" />
+                      <input type="hidden" id="base_url" value="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+" />
 					</div>
 				</div><!--/span-->
 			
