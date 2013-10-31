@@ -12,42 +12,47 @@ class Log_model extends CI_Model {
 		//load database based on locale
 		$this->db	= $this->load->database($dbPrefix.$locale,TRUE);
 	}
-
+	
 	public function getAllLogs() {
-		$this->db->from('api_logs');
-		$this->db->order_by('log_id', 'asc');
+		$this->db->select('*')
+		->from('api_logs')
+		->join('api_clients','api_logs.log_client_id = api_clients.auth','inner')
+		->order_by('log_id', 'asc');
 		$query = $this->db->get();
-		 
+
 		//user data exist
 		if ($query->num_rows() > 0){
-			$response['rc']					= 0;
-			$response['success']			= true;
-			$response['data']['loglist']	= $query->result();
+			$response['rc']     = 0;
+			$response['success']   = true;
+			$response['data']['loglist'] = $query->result();
 		}
-		else{ //no record found	 
+		else{ //no record found  
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'No Records Found.';
-			$response['rc']			= 999;
-			$response['success']	= false;
-			$response['message'][]	= $err_message;
+			$response['rc']   = 999;
+			$response['success'] = false;
+			$response['message'][] = $err_message;
 		}
 		return $response;
 	}
 
 	public function getLog($logid) {
-		$this->db->where('log_id', $logid);
-		$query = $this->db->get('api_logs');
-		 
+		$this->db->select('*')
+			->from('api_logs')
+			->join('api_clients','api_logs.log_client_id = api_clients.auth','inner')
+			->where('log_id', $logid);
+			$query = $this->db->get('api_logs');
+
 		//user data exist
 		if ($query->num_rows() > 0){
-			$response['rc']					= 0;
-			$response['success']			= true;
-			$response['data']['loginfo']	= $query->result();
+			$response['rc']     = 0;
+			$response['success']   = true;
+			$response['data']['loginfo'] = $query->result();
 		}
-		else{ //no record found	 
+		else{ //no record found  
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'No Records Found.';
-			$response['rc']			= 999;
-			$response['success']	= false;
-			$response['message'][]	= $err_message;
+			$response['rc']   = 999;
+			$response['success'] = false;
+			$response['message'][] = $err_message;
 		}
 		return $response;
 	}
