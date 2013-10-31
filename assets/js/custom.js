@@ -127,7 +127,78 @@ $(document).ready(function(){
 		});
 	});
 	
+	$("input:radio[name=promo]").change(function() {
+     var value = $(this).val();
+   var cl   = this.id;
+    
+     if(value == 1)
+     {
+      $('#promo_value').append('<input type="text" name="option[Promo-'+ cl +']" value="" class="input-small focused" id="focusedInput" placeholder="Promo Value">');
+     }
+     else
+     {
+      $('#promo_value > input').remove();
+     }
+     
+ });
+	
 	$('.autonum').autoNumeric({vMin:'0', vMax:'100' });
+	
+	// $('#DataTables_Table_0_filter').append('<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#advancedsearch">Advance Search</button>');
+	
+	// $('#datable-prodlist').dataTable({
+		// "aoColumnDefs": [
+			// { "bSearchable": true, "aTargets": [ 1 ] }
+		// ],
+		// "sPaginationType": "bootstrap",
+		// "bLengthChange"	: false
+	// });
+	
+	$('#searchbtn').click(function(){
+		var url = $(this).attr('alt');
+		var keyword = $('#searchby').val();
+		var keyword_value = $('#searchkeyword').val();
+		
+		$.ajax({
+			type: 'POST',
+			url: $(this).attr('alt'),
+			data: { 'id' : url, 'keyword':keyword, 'keyword_value':keyword_value }
+		}).done(function(data) {
+			var data_array = $.parseJSON(data);
+			
+			if ( data_array.rc == 0 ){
+				$('#datable-prodlist tbody').remove();
+				$('#datable-prodlist').append("<tbody>");
+				$(data_array.data.productlist).each(function(i,val){				
+					
+					if ( val.status == 1 ){
+						stat_class = 'label-success';
+						stat = 'Active';
+					}
+					else{
+						stat_class = 'label-failed';
+						stat = 'Inactive';
+					}
+					
+					company		 = "<td class='center'><img src='"+$('#base_url').val()+val.product_icon+"' width='30'></td>";
+					product 	 = "<td class='center'>"+val.product_name+"</td>";
+					product_link = "<td class='center'>"+val.product_link+"</td>";
+					status		 = "<td class='center'><span class='label "+stat_class+"'>"+stat+"</span></td>";
+					action		 = "<td class='center'><a class='btn btn-success' href='"+$('#prodview_url').val()+val.product_id+"'><i class='fa fa-list-alt icon-white' title='View'></i></a><a class=btn btn-info href='"+$('#prodedit_url').val()+val.product_id+"'><i class='icon-edit icon-white' title='Edit'></i></a></td>";
+					
+					$('#datable-prodlist').append("<tr>"+company+product+product_link+status+action+"</tr>");	
+				});
+				$('#datable-prodlist').append("</tbody>");	
+			}
+			else{
+				$('#datable-prodlist tbody').remove();
+				$('#datable-prodlist').append("<tbody><tr><td colspan='5'><center>"+data_array.message+"</center></td></tr></tbody>");
+			}
+			
+		});
+	
+	});
+	
 });
 
 function checknumeric()
@@ -327,10 +398,12 @@ function template_functions(){
 	/* ---------- Datable ---------- */
 	$('.datatable').dataTable({
 			// "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
+			// "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
 			"sPaginationType": "bootstrap",
 			"bLengthChange": false,
+			// "bFilter": false,
 			"oLanguage": {
-			"sLengthMenu": "_MENU_ records per page"
+			"sLengthMenu": "_MENU_ records per page",
 			}
 		} );
 	$('.btn-close').click(function(e){
