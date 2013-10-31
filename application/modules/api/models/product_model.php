@@ -20,8 +20,13 @@ class Product_model extends CI_Model {
 	}
 
 	public function productList() {
-		$this->db->from('products');
-		$this->db->order_by('product_id', 'asc');
+		$this->db->select('company_name,area_name,product_type,short_name,product_id,products.product_type_id,products.company_id,product_name,product_description,featured,products.country_id,products.area_id,product_icon,product_link,status')
+			->from('products')
+			->join('companies','products.company_id = companies.company_id','inner')
+			->join('products_types','products_types.product_type_id = products.product_type_id','inner')
+			->join('countries','countries.country_id= products.country_id','inner')
+			->join('products_areas','products_areas.area_id = products.area_id','inner')
+			->order_by('product_id', 'asc');
 		$query = $this->db->get();
 		 
 		//if data exist, return results
@@ -538,6 +543,34 @@ class Product_model extends CI_Model {
 		}
 		return $response;
 	}
+	
+	public function advanceSearch($keyword='', $value='') {
+		
+		$this->db->select('company_name,area_name,product_type,short_name,product_id,products.product_type_id,products.company_id,product_name,product_description,featured,products.country_id,products.area_id,product_icon,product_link,status')
+			->from('products')
+			->join('companies','products.company_id = companies.company_id','inner')
+			->join('products_types','products_types.product_type_id = products.product_type_id','inner')
+			->join('countries','countries.country_id= products.country_id','inner')
+			->join('products_areas','products_areas.area_id = products.area_id','inner')
+			->or_like($keyword,$value)
+			->order_by('product_id','asc');
+
+		$query = $this->db->get();
+		 
+		//if data exist, return results
+		if ($query->num_rows() > 0){
+			$response['rc']					 = 0;
+			$response['success']			 = true;
+			$response['data']['productlist'] = $query->result();
+		}
+		else{ //no record found	 
+			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'No Record Found.';
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message'][]	= $err_message;
+		}
+		return $response;
+	}	
 	
 	
 	

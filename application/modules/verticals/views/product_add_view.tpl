@@ -55,11 +55,31 @@
                             	<label class="control-label" for="selectError3">Select Category Type</label>
                                 <div class="controls">{$productTypeList}</div>
                             </div>
-                                        
+                                                                                    
+                             <div class="control-group" id="product_promo" style="display:none;">
+								<label class="control-label">Promo</label>
+								<div class="controls">
+								  <label class="radio">
+									<input class="promo_options" type="radio" name="promo" id="optionsRadios1" value="1">
+									Yes
+								  </label>
+								  <div style="clear:both"></div>
+								  <label class="radio">
+									<input class="promo_options" type="radio" name="promo" id="optionsRadios2" value="0">
+									No
+								  </label>
+								</div>
+								<div class="controls" id="promo_value">
+								
+								</div>
+							 </div>            
+
+
 							  
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">Product Name:</label>
-								<div class="controls">{$product_name}</div></div>
+								<div class="controls">{$product_name}</div>
+							</div>
 			  
 									  
 						 	 <div class="control-group input-prepend">
@@ -134,9 +154,18 @@
 			</div><!--/#content.span10-->
 			
 <script>
+
+function checkRadio()
+{
+	var value = $('.promo_options').val();
+
+	alert(value);
+}
+
 function verticalType(){
 	str = $( "#selectError3 option:selected" ).val();
 	
+	$('#product_promo').hide();
 	$(".product_options").remove();
 	
 	$.ajax({ 
@@ -146,8 +175,18 @@ function verticalType(){
 		   success: function(resultData){        
 			   var result = resultData.data.verticaloptioninfo;
 			    $.each(result, function(k,v){
-			     $('#category_type').after('<div class="control-group product_options"><label class="control-label" for="focusedInput">' +v.option_key +':</label><div class="controls"><input type="text" name="option['+v.option_key +'-' + v.id+ ']" value="" class="input-xlarge focused" id="focusedInput" placeholder="' +v.option_key +' Value"> &nbsp; Expiry Days:<input class="input-small focused autonum" type="number" name="expiry_date['+ v.id +']" min="1" max="30" onclick="checknumeric()"></div></div>');
-			     
+
+					if(v.option_key.toLowerCase() == 'promo')
+					{
+						$('input:radio[name=promo]'). attr('id', v.id);
+						$('#product_promo').show();
+					}
+					else
+					{
+						$('#category_type').after('<div class="control-group product_options"><label class="control-label" for="focusedInput">' +v.option_key +':</label><div class="controls"><input type="text" name="option['+v.option_key +'-' + v.id+ ']" value="" class="input-xlarge focused" id="focusedInput" placeholder="' +v.option_key +' Value"> &nbsp; Expiry Days:<input class="input-small focused autonum" type="number" name="expiry_date['+ v.id +']" min="1" max="30" onclick="checknumeric()"></div></div>');
+					}
+								     
+
 			    }); 
 			   
 		   }

@@ -49,7 +49,7 @@
 					</div>
 					<div class="box-content">
 					
-						<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#advancedsearch">
+						<!-- <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#advancedsearch">
 						  Advance Search
 						</button>
 						<br /><br />
@@ -58,15 +58,32 @@
 								<tr>
 									<td>Search By:
 										<select>
-											<option>Option1</option>
-											<option>Option2</option>
-											<option>Option3</option>
+											<option>Company</option>
+											<option>Area</option>
+											<option>Status</option>
+											<option>Featured</option>
+											<option>Vertical</option>
 										</select>
 										<input type="text" name="searchby" value="" placeholder="Type keyword.." />
 									</td>
 								</tr>
 							</table>
-						</div>
+						</div>-->
+						<table class="table table-striped table-bordered">
+								<tr>
+									<td>Search By:
+										<select id="searchby" name="searchby">
+											<option value="company_name">Company</option>
+											<option value="area_name">Area</option>
+											<option value="status">Status</option>
+											<option value="featured">Featured</option>
+											<option value="product_type">Vertical</option>
+										</select>
+										<input type="text" id="searchkeyword" name="searchkeyword" value="" placeholder="Type keyword.." />
+										<button class="btn btn-primary" id="searchbtn" type="button" alt="{$baseUrl}verticals/productsearch">Search</button>
+									</td>
+								</tr>
+							</table>
 						<table class="table table-striped table-bordered bootstrap-datatable" id="datable-prodlist">
 						  <thead>
 							  <tr>
@@ -111,7 +128,9 @@
 							{/foreach}
 						  </tbody>
 					  </table> 
-                          
+                      <input type="hidden" id="prodview_url" value="{$baseUrl}verticals/viewproduct/" />
+                      <input type="hidden" id="prodedit_url" value="{$baseUrl}verticals/editproduct/" />
+                      <input type="hidden" id="base_url" value="{$baseUrl}" />
 					</div>
 				</div><!--/span-->
 			

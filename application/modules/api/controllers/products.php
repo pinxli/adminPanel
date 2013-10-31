@@ -102,6 +102,7 @@ class Products extends CI_Controller {
 			$area_id				= $this->security->xss_clean($this->input->post('area_id'));
 			$product_icon			= $this->security->xss_clean($this->input->post('product_icon'));
 			$product_link			= $this->security->xss_clean($this->input->post('product_link'));
+			$status					= $this->security->xss_clean($this->input->post('status'));
 			$insert_sql				= $this->security->xss_clean($this->input->post('insert_sql'));
 			
 			$response['success'] = true;
@@ -130,7 +131,8 @@ class Products extends CI_Controller {
 					'country_id' 			=> $country_id,
 					'area_id'				=> $area_id,
 					'product_icon' 			=> $product_icon,
-					'product_link' 			=> $product_link
+					'product_link' 			=> $product_link,
+					'status'				=> $status
 				);
 				
 				if($insert_sql != '' || $insert_sql != NULL)
@@ -229,6 +231,59 @@ class Products extends CI_Controller {
 		);
 		$this->apilog_model->apiLog($log_data); //db logs
 		$this->api_functions->apiLog(json_encode($log_data),'PUT_PRODUCTS'); //text logs
+		
+		//display Jason
+		$this->output
+			 ->set_content_type('application/json')
+			 ->set_output(json_encode($response));
+		
+		$this->load->library('parser');
+		$this->parser->parse('index.tpl');
+	}
+	
+	function advanceSearch()
+	{
+		$this->authKey	 	 	 = ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
+		$this->keyword   		 =  $this->security->xss_clean($this->input->get_post('keyword'));
+		$this->keyword_value   	 =  $this->security->xss_clean($this->input->get_post('keyword_value'));
+		
+		
+		//$this->area   		 = ( $this->uri->segment(6) ) ? $this->uri->segment(6) : '';
+		//$this->countryId   	 = ( $this->uri->segment(7) ) ? $this->uri->segment(7) : '';
+		
+		$is_valid_auth 	= $this->common_model->validate_auth_key($this->authKey);
+		
+		//auth key is valid
+		if ( $is_valid_auth['rc'] == 0 ){
+			$this->load->model('product_model');
+			
+			if ( $this->keyword != '' || $this->keyword_value != ''){
+				
+				$response = $this->product_model->advanceSearch(urldecode($this->keyword), urldecode($this->keyword_value));
+			}
+			else{ //user id is missing
+				$response['rc']			= 999;
+				$response['success']	= false;
+				$response['message']	= 'keyword: '.$this->keyword.' or value: '.$this->keyword_value.' is missing.';
+			}
+
+		}
+		else{
+			$response['rc']			= $is_valid_auth['rc'];
+			$response['success']	= $is_valid_auth['success'];
+			$response['message'][]	= $is_valid_auth['message'];
+		}
+
+		//api logs
+		$log_data = array(
+			'log_client_id' => $this->authKey,
+			'log_method' 	=> 'advanceSearch',
+			'log_url' 		=> $this->uri->uri_string(),
+			'log_request' 	=> json_encode($this->input->get()),
+			'log_response' 	=> json_encode($response),
+		);
+		$this->apilog_model->apiLog($log_data); //db logs
+		$this->api_functions->apiLog(json_encode($log_data),'advanceSearch'); //text logs
 		
 		//display Jason
 		$this->output

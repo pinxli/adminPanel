@@ -13,6 +13,13 @@ class Verticals_model extends CI_Model {
 		$this->locale = $this->session->userdata('locale');
 	}
 	
+	function productSearch($data)
+	{
+		$url = $this->config->item('rest_api_url') . 'products/advanceSearch/'.$this->locale.'/98740';
+		$res  = $this->call_rest($url,$data,'post');
+		return json_decode($res);
+	}
+	
 	// get product list
 	function productList()
 	{

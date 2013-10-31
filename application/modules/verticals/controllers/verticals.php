@@ -72,7 +72,8 @@ class Verticals extends CI_Controller {
 	function productlist()
 	{
 		$res = $this->verticals_model->productList();
-		
+	
+
 		//check if product list is pulled. if not, list is set to empty array
 		$productList = ( $res->rc == 0 ) ? $res->data->productlist : array();
 		
@@ -87,6 +88,19 @@ class Verticals extends CI_Controller {
 		);
 		
 		$this->load->view($this->globalTpl, $data);	
+	}
+	
+	function productsearch()
+	{
+		// if ( isset($_POST['search']) ){
+			$data_arr = array(
+				'keyword' => $_POST['keyword'],
+				'keyword_value' => $_POST['keyword_value']
+			);
+			$res = $this->verticals_model->productSearch($data_arr);
+			echo json_encode($res);
+			exit;
+		// }
 	}
 	
 	// display product list
@@ -236,20 +250,24 @@ class Verticals extends CI_Controller {
 		 
 		 $expiry_date = $this->input->post('expiry_date');
 		 
-		 $date = date("Y-m-d H:i(worry)");
+		 $date = date("Y-m-d H:i:s");
 		 
 		 foreach ($option as $key=>$value)
 		 {
 		  $explode = explode("-", $key);
+		  
+		  $expiry  = ($explode[0] != 'Promo') ? $this->add_date($date,$expiry_date[$explode[1]]) : 0;
 		  
 		  $option_arr = array(
 		   'product_id'   => $product_id,
 		   'vertical_optionid' => $explode[1],
 		   'option'   => $explode[0],
 		   'option_value'  => $value,
-		   'expiry_date'  => $this->add_date($date,$expiry_date[$explode[1]])
+		   'expiry_date'  => $expiry
 		  
 		  );
+		  
+
 		  
 		  $option_insert = $this->verticals_model->productOptionAdd($option_arr);
 		  
@@ -278,7 +296,7 @@ class Verticals extends CI_Controller {
 	   );
 	   $this->session->set_flashdata($msginfo_arr);
 	   
-	   // redirect('verticals/productlist/');
+	   redirect('verticals/productlist/');
 	  }
 	  
 	 }
