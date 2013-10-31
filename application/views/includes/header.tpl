@@ -80,7 +80,9 @@
 					<ul class="nav pull-right">
 						<li class="dropdown hidden-phone">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-								<i class="icon-warning-sign icon-white"></i> <span class="label label-important hidden-phone">2</span> <span class="label label-success hidden-phone">11</span>
+								<i class="icon-large icon-bell icon-white"></i>
+								<!-- <span class="label label-important hidden-phone">2</span>
+								<span class="label label-success hidden-phone">11</span> -->
 							</a>
 							<ul class="dropdown-menu notifications">
 								<li>
@@ -142,7 +144,7 @@
 							</ul>
 						</li>
 						<!-- start: Notifications Dropdown -->
-						<li class="dropdown hidden-phone">
+						<!-- <li class="dropdown hidden-phone">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 								<i class="icon-tasks icon-white"></i> <span class="label label-warning hidden-phone">17</span>
 							</a>
@@ -199,10 +201,10 @@
                             		<a class="dropdown-menu-sub-footer">View all tasks</a>
 								</li>	
 							</ul>
-						</li>
+						</li> -->
 						<!-- end: Notifications Dropdown -->
 						<!-- start: Message Dropdown -->
-						<li class="dropdown hidden-phone">
+						<!-- <li class="dropdown hidden-phone">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 								<i class="icon-envelope icon-white"></i> <span class="label label-success hidden-phone">9</span>
 							</a>
@@ -294,13 +296,13 @@
                             		<a class="dropdown-menu-sub-footer">View all messages</a>
 								</li>	
 							</ul>
-						</li>
+						</li> -->
 						<!-- end: Message Dropdown -->
-						<li>
+						<!-- <li>
 							<a class="btn" href="#">
 								<i class="icon-wrench icon-white"></i>
 							</a>
-						</li>
+						</li> -->
 						<!-- start: User Dropdown -->
 						<li class="dropdown">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">

@@ -56,6 +56,13 @@
 
 <script type="text/javascript">
 	
+	// FOR TWITTER BOOTSTRAP POPOVER
+	$(".querytd[data-toggle=popover]")
+	      .popover({ trigger: "hover" })
+	      .hover(function(e) {
+	        e.preventDefault()
+    })
+
 	function message_welcome1(){
 		var unique_id = $.gritter.add({
 			// (string | mandatory) the heading of the notification

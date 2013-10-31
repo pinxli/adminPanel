@@ -23,18 +23,22 @@ class Company_model extends CI_Model {
 		$this->db->from('companies');
 		$this->db->order_by('company_id', 'asc');
 		$query = $this->db->get();
+
+		// print_r(str_replace('\n',' ',$this->db->last_query())); exit;
 		 
 		//if data exist, return results
 		if ($query->num_rows() > 0){
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['data']['companylist'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Company List: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -48,12 +52,14 @@ class Company_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['data']['companyinfo'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Company Info: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}	
@@ -69,11 +75,13 @@ class Company_model extends CI_Model {
 			$response['rc']			= 0;
 			$response['success']	= true;
 			$response['message'][]	= 'Company has been successfully added.';
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to add company.';
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -91,12 +99,14 @@ class Company_model extends CI_Model {
 			$response['success']	= true;
 			$response['message'][]	= 'Company '.strtoupper($data['company_name']).' has been successfully modified.';
 			$response['message'][]	= $data;
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to edit company.';
 			$response['message'][]	= $data;
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -113,12 +123,14 @@ class Company_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['company_id'] 		 = $query->row()->company_id;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : strtolower($companyName) . ' is not a valid company';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message']	= $err_message;
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}

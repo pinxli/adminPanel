@@ -1,0 +1,36 @@
+2013-10-29T02:14:44Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - GET","log_url":"api\/producttype\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"producttypelist\":[{\"product_type_id\":\"1\",\"product_type\":\"Shoes\",\"description\":\"Shoes\",\"url_slug\":\"\"},{\"product_type_id\":\"2\",\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"},{\"product_type_id\":\"3\",\"product_type\":\"Credit Card\",\"description\":\"Credit Card\",\"url_slug\":\"credit-card\"}]}}"}
+
+2013-10-29T02:15:08Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - GET","log_url":"api\/producttype\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"producttypelist\":[{\"product_type_id\":\"1\",\"product_type\":\"Shoes\",\"description\":\"Shoes\",\"url_slug\":\"\"},{\"product_type_id\":\"2\",\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"},{\"product_type_id\":\"3\",\"product_type\":\"Credit Card\",\"description\":\"Credit Card\",\"url_slug\":\"credit-card\"}]}}"}
+
+2013-10-29T02:15:16Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - GET","log_url":"api\/producttype\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"producttypelist\":[{\"product_type_id\":\"1\",\"product_type\":\"Shoes\",\"description\":\"Shoes\",\"url_slug\":\"\"},{\"product_type_id\":\"2\",\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"},{\"product_type_id\":\"3\",\"product_type\":\"Credit Card\",\"description\":\"Credit Card\",\"url_slug\":\"credit-card\"}]}}"}
+
+2013-10-29T02:20:58Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - GET","log_url":"api\/producttype\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"producttypelist\":[{\"product_type_id\":\"1\",\"product_type\":\"Shoes\",\"description\":\"Shoes\",\"url_slug\":\"\"},{\"product_type_id\":\"2\",\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"},{\"product_type_id\":\"3\",\"product_type\":\"Credit Card\",\"description\":\"Credit Card\",\"url_slug\":\"credit-card\"}]}}"}
+
+2013-10-29T02:20:58Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - GET","log_url":"api\/producttype\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"producttypelist\":[{\"product_type_id\":\"1\",\"product_type\":\"Shoes\",\"description\":\"Shoes\",\"url_slug\":\"\"},{\"product_type_id\":\"2\",\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"},{\"product_type_id\":\"3\",\"product_type\":\"Credit Card\",\"description\":\"Credit Card\",\"url_slug\":\"credit-card\"}]}}"}
+
+2013-10-29T02:21:13Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - GET","log_url":"api\/producttype\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"producttypelist\":[{\"product_type_id\":\"1\",\"product_type\":\"Shoes\",\"description\":\"Shoes\",\"url_slug\":\"\"},{\"product_type_id\":\"2\",\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"},{\"product_type_id\":\"3\",\"product_type\":\"Credit Card\",\"description\":\"Credit Card\",\"url_slug\":\"credit-card\"}]}}"}
+
+2013-10-29T02:21:13Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - GET","log_url":"api\/producttype\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"producttypelist\":[{\"product_type_id\":\"1\",\"product_type\":\"Shoes\",\"description\":\"Shoes\",\"url_slug\":\"\"},{\"product_type_id\":\"2\",\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"},{\"product_type_id\":\"3\",\"product_type\":\"Credit Card\",\"description\":\"Credit Card\",\"url_slug\":\"credit-card\"}]}}"}
+
+2013-10-29T02:21:34Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - GET","log_url":"api\/producttype\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"producttypelist\":[{\"product_type_id\":\"1\",\"product_type\":\"Shoes\",\"description\":\"Shoes\",\"url_slug\":\"\"},{\"product_type_id\":\"2\",\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"},{\"product_type_id\":\"3\",\"product_type\":\"Credit Card\",\"description\":\"Credit Card\",\"url_slug\":\"credit-card\"}]}}"}
+
+2013-10-29T02:21:35Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - GET","log_url":"api\/producttype\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"producttypelist\":[{\"product_type_id\":\"1\",\"product_type\":\"Shoes\",\"description\":\"Shoes\",\"url_slug\":\"\"},{\"product_type_id\":\"2\",\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"},{\"product_type_id\":\"3\",\"product_type\":\"Credit Card\",\"description\":\"Credit Card\",\"url_slug\":\"credit-card\"}]}}"}
+
+2013-10-29T02:22:12Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - GET","log_url":"api\/producttype\/hk\/98740\/2","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"producttypeinfo\":[{\"product_type_id\":\"2\",\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"}]}}"}
+
+2013-10-29T02:22:13Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - GET","log_url":"api\/producttype\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"producttypelist\":[{\"product_type_id\":\"1\",\"product_type\":\"Shoes\",\"description\":\"Shoes\",\"url_slug\":\"\"},{\"product_type_id\":\"2\",\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"},{\"product_type_id\":\"3\",\"product_type\":\"Credit Card\",\"description\":\"Credit Card\",\"url_slug\":\"credit-card\"}]}}"}
+
+2013-10-29T02:22:24Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - GET","log_url":"api\/producttype\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"producttypelist\":[{\"product_type_id\":\"1\",\"product_type\":\"Shoes\",\"description\":\"Shoes\",\"url_slug\":\"\"},{\"product_type_id\":\"2\",\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"},{\"product_type_id\":\"3\",\"product_type\":\"Credit Card\",\"description\":\"Credit Card\",\"url_slug\":\"credit-card\"}]}}"}
+

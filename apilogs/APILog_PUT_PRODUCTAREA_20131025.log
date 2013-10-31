@@ -1,0 +1,6 @@
+2013-10-25T03:06:12Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - PUT","log_url":"api\/productarea\/hk\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Area has been successfully modified.\",{\"area_id\":\"1\",\"area_name\":\"C5 Taguig City\",\"area_description\":\"C5 Taguig City\",\"area_active\":\"1\"}]}"}
+
+2013-10-25T03:06:27Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - PUT","log_url":"api\/productarea\/hk\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Area has been successfully modified.\",{\"area_id\":\"1\",\"area_name\":\"Taguig City\",\"area_description\":\"Taguig City\",\"area_active\":\"1\"}]}"}
+

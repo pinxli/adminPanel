@@ -1,0 +1,15 @@
+2013-10-25T03:08:32Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - POST","log_url":"api\/producttype\/hk\/98740","log_request":"{\"product_type\":\"Shoes\",\"description\":\"Shoes\",\"url_slug\":\"\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Type has been successfully added.\"],\"producttypeId\":1}"}
+
+2013-10-25T03:15:03Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - POST","log_url":"api\/producttype\/hk\/98740","log_request":"{\"product_type\":\"Bag\",\"description\":\"Bag\",\"url_slug\":\"\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Type has been successfully added.\"],\"producttypeId\":2}"}
+
+2013-10-25T04:56:15Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - POST","log_url":"api\/producttype\/my\/98740","log_request":"{\"product_type\":\"Running Shoes\",\"description\":\"Running Shoes\",\"url_slug\":\"running-shoes\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Type has been successfully added.\"],\"producttypeId\":1}"}
+
+2013-10-25T04:56:53Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - POST","log_url":"api\/producttype\/my\/98740","log_request":"{\"product_type\":\"Running Shoes\",\"description\":\"Running Shoes\",\"url_slug\":\"running-shoes\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Type has been successfully added.\"],\"producttypeId\":2}"}
+
+2013-10-25T08:31:04Z
+{"log_client_id":"98740","log_method":"PRODUCTTYPE - POST","log_url":"api\/producttype\/hk\/98740","log_request":"{\"product_type\":\"Credit Card\",\"description\":\"Credit Card\",\"url_slug\":\"credit-card\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Type has been successfully added.\"],\"producttypeId\":3}"}
+

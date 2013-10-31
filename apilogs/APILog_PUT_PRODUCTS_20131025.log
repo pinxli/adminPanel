@@ -1,0 +1,9 @@
+2013-10-25T08:20:49Z
+{"log_client_id":"98740","log_method":"PRODUCTS - PUT","log_url":"api\/products\/hk\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product has been successfully modified.\",{\"product_id\":\"1\",\"product_type_id\":\"1\",\"company_id\":\"1\",\"product_name\":\"Chuck Taylor\",\"product_description\":\"chucks grey\",\"featured\":\"1\",\"country_id\":\"99\",\"area_id\":\"1\",\"product_link\":\"converse.com\\\/chucktaylor\",\"status\":\"1\"}]}"}
+
+2013-10-25T08:21:09Z
+{"log_client_id":"98740","log_method":"PRODUCTS - PUT","log_url":"api\/products\/hk\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product has been successfully modified.\",{\"product_id\":\"1\",\"product_type_id\":\"1\",\"company_id\":\"1\",\"product_name\":\"Chuck Taylor\",\"product_description\":\"chucks grey\",\"featured\":\"1\",\"country_id\":\"99\",\"area_id\":\"1\",\"product_icon\":\"assets\\\/uploadimages\\\/companyImg\\\/download.jpg\",\"product_link\":\"converse.com\\\/chucktaylor\",\"status\":\"1\"}]}"}
+
+2013-10-25T08:21:24Z
+{"log_client_id":"98740","log_method":"PRODUCTS - PUT","log_url":"api\/products\/hk\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product has been successfully modified.\",{\"product_id\":\"1\",\"product_type_id\":\"1\",\"company_id\":\"1\",\"product_name\":\"Chuck Taylor\",\"product_description\":\"chucks grey\",\"featured\":\"1\",\"country_id\":\"99\",\"area_id\":\"1\",\"product_icon\":\"assets\\\/uploadimages\\\/companyImg\\\/converse-chucks-gray1.jpg\",\"product_link\":\"converse.com\\\/chucktaylor\",\"status\":\"1\"}]}"}
+

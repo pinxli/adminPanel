@@ -68,6 +68,10 @@ class Producttype extends CI_Controller {
 			'log_url' 		=> $this->uri->uri_string(),
 			'log_request' 	=> json_encode($this->input->post()),
 			'log_response' 	=> json_encode($response),
+<<<<<<< Updated upstream
+=======
+			'log_query' 	=> $response['log_query'],
+>>>>>>> Stashed changes
 		);
 		$this->apilog_model->apiLog($log_data); //db logs
 		$this->api_functions->apiLog(json_encode($log_data),'GET_PRODUCTTYPE'); //text logs
@@ -136,6 +140,10 @@ class Producttype extends CI_Controller {
 			'log_url' 		=> $this->uri->uri_string(),
 			'log_request' 	=> json_encode($this->input->post()),
 			'log_response' 	=> json_encode($response),
+<<<<<<< Updated upstream
+=======
+			'log_query' 	=> $response['log_query'],
+>>>>>>> Stashed changes
 		);
 		$this->apilog_model->apiLog($log_data); //db logs
 		$this->api_functions->apiLog(json_encode($log_data),'POST_PRODUCTTYPE'); //text logs
@@ -199,6 +207,10 @@ class Producttype extends CI_Controller {
 			'log_url' 		=> $this->uri->uri_string(),
 			'log_request' 	=> json_encode($this->input->post()),
 			'log_response' 	=> json_encode($response),
+<<<<<<< Updated upstream
+=======
+			'log_query' 	=> $response['log_query'],
+>>>>>>> Stashed changes
 		);
 		$this->apilog_model->apiLog($log_data); //db logs
 		$this->api_functions->apiLog(json_encode($log_data),'PUT_PRODUCTTYPE'); //text logs
@@ -211,6 +223,7 @@ class Producttype extends CI_Controller {
 		$this->load->library('parser');
 		$this->parser->parse('index.tpl');
 	}
+<<<<<<< Updated upstream
 	
 	function checkProductType()
 	{
@@ -260,6 +273,8 @@ class Producttype extends CI_Controller {
 		$this->parser->parse('index.tpl');
 	}
 	
+=======
+>>>>>>> Stashed changes
 }
 
 /* End of file company.php/ Api Company Controller */

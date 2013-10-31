@@ -1,0 +1,6 @@
+2013-10-25T04:12:46Z
+{"log_client_id":"98740","log_method":"USERS - PUT","log_url":"api\/users\/hk\/98740\/3","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"User has been successfully modified.\",{\"fname\":\"Jaslene Rylai\",\"lname\":\"Torres\",\"email\":\"jrt1@mail.com\",\"user_level_id\":\"2\",\"userid\":\"3\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}]}"}
+
+2013-10-25T04:14:08Z
+{"log_client_id":"98740","log_method":"USERS - PUT","log_url":"api\/users\/hk\/98740\/3","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"User has been successfully modified.\",{\"fname\":\"Jaslene Rylai\",\"lname\":\"Torres\",\"email\":\"jrt@mail.com\",\"user_level_id\":\"1\",\"userid\":\"3\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}]}"}
+

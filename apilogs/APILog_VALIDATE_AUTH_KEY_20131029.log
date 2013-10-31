@@ -1,0 +1,3 @@
+2013-10-29T02:14:44Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":44,\"locale\":\"hk\"}}}"}
+

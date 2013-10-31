@@ -1,0 +1,6 @@
+2013-10-29T02:20:58Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - GET","log_url":"api\/productarea\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"productarealist\":[{\"area_id\":\"1\",\"area_name\":\"Taguig City\",\"area_description\":\"Taguig City\",\"area_active\":\"1\",\"area_country_id\":\"174\"},{\"area_id\":\"2\",\"area_name\":\"Makati City\",\"area_description\":\"Makati City\",\"area_active\":\"1\",\"area_country_id\":\"174\"},{\"area_id\":\"3\",\"area_name\":\"Victoria City\",\"area_description\":\"Victoria City\",\"area_active\":\"1\",\"area_country_id\":\"99\"}]}}"}
+
+2013-10-29T02:21:13Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - GET","log_url":"api\/productarea\/hk\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"productarealist\":[{\"area_id\":\"1\",\"area_name\":\"Taguig City\",\"area_description\":\"Taguig City\",\"area_active\":\"1\",\"area_country_id\":\"174\"},{\"area_id\":\"2\",\"area_name\":\"Makati City\",\"area_description\":\"Makati City\",\"area_active\":\"1\",\"area_country_id\":\"174\"},{\"area_id\":\"3\",\"area_name\":\"Victoria City\",\"area_description\":\"Victoria City\",\"area_active\":\"1\",\"area_country_id\":\"99\"}]}}"}
+

@@ -1,0 +1,6 @@
+2013-10-25T03:35:34Z
+{"log_client_id":"98740","log_method":"PRODUCTS - POST","log_url":"api\/products\/hk\/98740","log_request":"{\"product_type_id\":\"1\",\"company_id\":\"1\",\"product_name\":\"Chuck Taylor\",\"product_description\":\"chucks gray<br>\",\"featured\":\"1\",\"country_id\":\"99\",\"area_id\":\"1\",\"product_icon\":\"assets\\\/uploadimages\\\/productImg\\\/converse-chucks-gray.jpg\",\"product_link\":\"converse.com\\\/chucktaylor\",\"status\":\"1\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product has been successfully added.\"],\"productId\":1}"}
+
+2013-10-25T08:03:20Z
+{"log_client_id":"98740","log_method":"PRODUCTS - POST","log_url":"api\/products\/hk\/98740","log_request":"{\"product_type_id\":\"1\",\"company_id\":\"2\",\"product_name\":\"Flyknit One\",\"product_description\":\"flyknit one<br>\",\"featured\":\"1\",\"country_id\":\"99\",\"area_id\":\"1\",\"product_icon\":\"assets\\\/uploadimages\\\/productImg\\\/nikeflyknit.jpg\",\"product_link\":\"nike.com\\\/flyknitone\",\"status\":\"1\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product has been successfully added.\"],\"productId\":2}"}
+

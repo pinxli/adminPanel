@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 04:17:33
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-30 11:03:08
          compiled from "application\modules\settings\views\log_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:438752577eddc13a43-67891465%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0edb88252e2d5908cb8fdc4d31afe5b572739b97' => 
     array (
       0 => 'application\\modules\\settings\\views\\log_view.tpl',
-      1 => 1382670786,
+      1 => 1383130741,
       2 => 'file',
     ),
   ),
@@ -70,24 +70,26 @@ settings/excelexport/logList">Extract To Excel</a>
 							  </tr>
 						  </thead>   
 						  <tbody>
-							
 							<?php  $_smarty_tpl->tpl_vars['loglist'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['loglist']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['logList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['loglist']->key => $_smarty_tpl->tpl_vars['loglist']->value){
 $_smarty_tpl->tpl_vars['loglist']->_loop = true;
 ?>
-							
 							<tr>
 								<td><?php echo $_smarty_tpl->tpl_vars['loglist']->value->log_id;?>
 </td>
 								<td class="center"><?php echo $_smarty_tpl->tpl_vars['loglist']->value->userid;?>
 </td>
-								<td class="center"><?php echo $_smarty_tpl->tpl_vars['loglist']->value->access_time;?>
+								<td class="center"><?php echo date("d M, Y H:i",strtotime($_smarty_tpl->tpl_vars['loglist']->value->access_time));?>
 </td>
 								<td class="center"><?php echo $_smarty_tpl->tpl_vars['loglist']->value->access_ip;?>
 </td>
-								<td class="center"><?php echo $_smarty_tpl->tpl_vars['loglist']->value->exit_time;?>
-</td>
+								<td class="center">
+									<?php if (!empty($_smarty_tpl->tpl_vars['loglist']->value->exit_time)){?>
+									<?php echo date("d M, Y H:i",strtotime($_smarty_tpl->tpl_vars['loglist']->value->exit_time));?>
+
+									<?php }?>
+								</td>
 							</tr>
 							<?php } ?>
 						  </tbody>

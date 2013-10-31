@@ -1,7 +1,5 @@
 <div id="content" class="span10">
 			<!-- start: Content -->
-			
-
 			<div>
 				<hr>
 				<ul class="breadcrumb">
@@ -42,18 +40,27 @@
 								  <th>Method</th>
 								  <th>URL</th>
                                   <th>Access Time</th>
+                                  <th id="logquery">Query</th>
 								  
 							  </tr>
 						  </thead>   
 						  <tbody>
-							
 							{foreach from=$logList item=loglist}
-							
 							<tr>
 								<td>{$loglist->clientID}</td>
 								<td class="center">{$loglist->log_method}</td>
 								<td class="center">{$loglist->log_url}</td>
-								<td class="center">{$loglist->log_access_time}</td>
+								<td class="center">{date("d M, Y H:i", strtotime($loglist->log_access_time))}</td>
+								{if !empty($loglist->log_query)}
+									<td class="center querytd" data-toggle="popover" data-placement="left" data-content="{$loglist->log_query}"  data-trigger="hover">
+										{rtrim(substr($loglist->log_query,0,60))}...
+									</td>
+								{/if}
+								{if empty($loglist->log_query)}
+									<td class="center">
+										N/A
+									</td>
+								{/if}
 							</tr>
 							{/foreach}
 						  </tbody>

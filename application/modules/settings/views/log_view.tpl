@@ -42,15 +42,17 @@
 							  </tr>
 						  </thead>   
 						  <tbody>
-							
 							{foreach from=$logList item=loglist}
-							
 							<tr>
 								<td>{$loglist->log_id}</td>
 								<td class="center">{$loglist->userid}</td>
-								<td class="center">{$loglist->access_time}</td>
+								<td class="center">{date("d M, Y H:i", strtotime($loglist->access_time))}</td>
 								<td class="center">{$loglist->access_ip}</td>
-								<td class="center">{$loglist->exit_time}</td>
+								<td class="center">
+									{if !empty($loglist->exit_time)}
+									{date("d M, Y H:i", strtotime($loglist->exit_time))}
+									{/if}
+								</td>
 							</tr>
 							{/foreach}
 						  </tbody>

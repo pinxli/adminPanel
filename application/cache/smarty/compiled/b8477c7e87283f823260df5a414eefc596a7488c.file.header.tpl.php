@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-29 10:06:16
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-31 02:50:05
          compiled from "application\views\includes\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93385257869c99f3c7-90349051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b8477c7e87283f823260df5a414eefc596a7488c' => 
     array (
       0 => 'application\\views\\includes\\header.tpl',
-      1 => 1383041173,
+      1 => 1383187703,
       2 => 'file',
     ),
   ),
@@ -123,7 +123,9 @@ assets/img/comphero-logo_04.png" style="max-width:25%" ></span></a>
 					<ul class="nav pull-right">
 						<li class="dropdown hidden-phone">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-								<i class="icon-warning-sign icon-white"></i> <span class="label label-important hidden-phone">2</span> <span class="label label-success hidden-phone">11</span>
+								<i class="icon-large icon-bell icon-white"></i>
+								<!-- <span class="label label-important hidden-phone">2</span>
+								<span class="label label-success hidden-phone">11</span> -->
 							</a>
 							<ul class="dropdown-menu notifications">
 								<li>
@@ -185,7 +187,7 @@ assets/img/comphero-logo_04.png" style="max-width:25%" ></span></a>
 							</ul>
 						</li>
 						<!-- start: Notifications Dropdown -->
-						<li class="dropdown hidden-phone">
+						<!-- <li class="dropdown hidden-phone">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 								<i class="icon-tasks icon-white"></i> <span class="label label-warning hidden-phone">17</span>
 							</a>
@@ -242,10 +244,10 @@ assets/img/comphero-logo_04.png" style="max-width:25%" ></span></a>
                             		<a class="dropdown-menu-sub-footer">View all tasks</a>
 								</li>	
 							</ul>
-						</li>
+						</li> -->
 						<!-- end: Notifications Dropdown -->
 						<!-- start: Message Dropdown -->
-						<li class="dropdown hidden-phone">
+						<!-- <li class="dropdown hidden-phone">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 								<i class="icon-envelope icon-white"></i> <span class="label label-success hidden-phone">9</span>
 							</a>
@@ -342,13 +344,13 @@ assets/img/avatar5.jpg" alt="Avatar"></span>
                             		<a class="dropdown-menu-sub-footer">View all messages</a>
 								</li>	
 							</ul>
-						</li>
+						</li> -->
 						<!-- end: Message Dropdown -->
-						<li>
+						<!-- <li>
 							<a class="btn" href="#">
 								<i class="icon-wrench icon-white"></i>
 							</a>
-						</li>
+						</li> -->
 						<!-- start: User Dropdown -->
 						<li class="dropdown">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">

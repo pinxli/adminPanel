@@ -1,0 +1,2 @@
+{"product_name":"Chuck Taylor","product_description":"chucks gray<br>","product_type_id":"1","featured":"1","company_id":"1","country_id":"99","area_id":"1","product_icon":"assets\/uploadimages\/productImg\/converse-chucks-gray.jpg","product_link":"converse.com\/chucktaylor"}
+{"product_name":"Flyknit One","product_description":"flyknit one<br>","product_type_id":"1","featured":"1","company_id":"2","country_id":"99","area_id":"1","product_icon":"assets\/uploadimages\/productImg\/nikeflyknit.jpg","product_link":"nike.com\/flyknitone"}

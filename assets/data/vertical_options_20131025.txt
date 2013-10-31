@@ -1,0 +1,12 @@
+{"option_key":"Color","option_description":"Color","option_autoload":"1","product_type_id":"1"}
+{"option_key":"Backpack","option_description":"Backpack","option_autoload":"1","product_type_id":"2"}
+{"option_key":"Size","option_description":"Size","option_autoload":"1","product_type_id":"1"}
+{"option_key":"Size","option_description":"Size","option_autoload":"1","product_type_id":"2"}
+{"option_key":"Color","option_description":"Color","option_autoload":"1","product_type_id":"2"}
+{"option_key":"Model","option_description":"Model","option_autoload":"1","product_type_id":"2"}
+{"option_key":"Color","option_description":"Color","option_autoload":"1","product_type_id":"1"}
+{"option_key":"Size","option_description":"Size","option_autoload":"1","product_type_id":"1"}
+{"option_key":"Price","option_description":"Price","option_autoload":"1","product_type_id":"1"}
+{"option_key":"Model","option_description":"Model","option_autoload":"1","product_type_id":"1"}
+{"option_key":"abc","option_description":"abc","option_autoload":"1","product_type_id":"3"}
+{"option_key":"xyz","option_description":"xyz","option_autoload":"1","product_type_id":"3"}

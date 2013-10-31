@@ -22,15 +22,17 @@ class Log_model extends CI_Model {
 
 		//user data exist
 		if ($query->num_rows() > 0){
-			$response['rc']     = 0;
-			$response['success']   = true;
-			$response['data']['loglist'] = $query->result();
+			$response['rc']					= 0;
+			$response['success']			= true;
+			$response['data']['loglist']	= $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found  
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'No Records Found.';
-			$response['rc']   = 999;
-			$response['success'] = false;
-			$response['message'][] = $err_message;
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -44,15 +46,17 @@ class Log_model extends CI_Model {
 
 		//user data exist
 		if ($query->num_rows() > 0){
-			$response['rc']     = 0;
-			$response['success']   = true;
-			$response['data']['loginfo'] = $query->result();
+			$response['rc']					= 0;
+			$response['success']			= true;
+			$response['data']['loginfo']	= $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found  
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'No Records Found.';
-			$response['rc']   = 999;
-			$response['success'] = false;
-			$response['message'][] = $err_message;
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -70,6 +74,7 @@ class Log_model extends CI_Model {
 			$return['rc'] 			= 0;
 			$return['success'] 		= true;
 			$return['message'][]	= 'Log id '.$id.' Successfully Removed';
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 				 
 		}
 		else{ //userdata don't exist	 
@@ -77,6 +82,7 @@ class Log_model extends CI_Model {
 			$return['rc'] 			= 0;
 			$return['success'] 		= true;
 			$return['message'][]	= 'Log id '.$id.' does not exist.';
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}		
 
 		return $return;
@@ -93,10 +99,12 @@ class Log_model extends CI_Model {
 		if ( $this->db->affected_rows() > 0 ){
 			$response['rc']			= 0;
 			$response['message'][]	= 'Log has been successfully added.';
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['message'][]	= 'Failed to add log.';
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		
 		return $response;
@@ -115,12 +123,14 @@ class Log_model extends CI_Model {
 			$response['success']	= true;
 			$response['message'][]	= 'log has been successfully modified.';
 			$response['message'][]	= $data;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to edit log.';
 			$response['message'][]	= $data;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}

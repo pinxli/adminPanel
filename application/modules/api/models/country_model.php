@@ -30,12 +30,14 @@ class Country_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['data']['countrylist'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Country List: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -49,12 +51,14 @@ class Country_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['data']['countryinfo'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Country Info: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -71,12 +75,14 @@ class Country_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['country_id'] 		 = $query->row()->country_id;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Not a valid country.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}

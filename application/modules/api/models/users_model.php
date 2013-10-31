@@ -23,12 +23,14 @@ class Users_model extends CI_Model {
 			$response['rc']					= 0;
 			$response['success']			= true;
 			$response['data']['userlist']	= $query->result();
+			$response['log_query']			= str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			= str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -42,12 +44,14 @@ class Users_model extends CI_Model {
 			$response['rc']					= 0;
 			$response['success']			= true;
 			$response['data']['userinfo']	= $query->result();
+			$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
 		}
 		return $response;
 	}
@@ -65,6 +69,7 @@ class Users_model extends CI_Model {
 			$return['rc'] 			= 0;
 			$return['success'] 		= true;
 			$return['message'][]	= 'User '.$id.' Successfully Removed';
+			$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
 				 
 		}
 		else{ //userdata don't exist	 
@@ -72,6 +77,7 @@ class Users_model extends CI_Model {
 			$return['rc'] 			= 0;
 			$return['success'] 		= true;
 			$return['message'][]	= 'User '.$id.' does not exist.';
+			$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
 		}		
 
 		return $return;
@@ -88,6 +94,7 @@ class Users_model extends CI_Model {
 		if ($query->num_rows() > 0){
 			$response['rc']			= 999;
 			$response['message'][]	= 'Add user failed. Email already exist.';
+			$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
 		}
 		else{
 			//sanitized data
@@ -98,10 +105,12 @@ class Users_model extends CI_Model {
 			if ( $this->db->affected_rows() > 0 ){
 				$response['rc']			= 0;
 				$response['message'][]	= 'User has been successfully added.';
+				$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
 			}
 			else{
 				$response['rc']			= 999;
 				$response['message'][]	= 'Failed to add user.';
+				$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
 			}
 		}
 		return $response;
@@ -122,6 +131,7 @@ class Users_model extends CI_Model {
 			$response['rc']				= 0;
 			$response['success'] 		= true;
 			$response['data']['user'] 	= $query->result()[0];
+			$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
 		//userdata don't exist	   			 
 		}
 		else{
@@ -129,6 +139,7 @@ class Users_model extends CI_Model {
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'User does not exist.';
+			$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
 		}
 		return $response;
 	
@@ -147,12 +158,14 @@ class Users_model extends CI_Model {
 			$response['success']	= true;
 			$response['message'][]	= 'User has been successfully modified.';
 			$response['message'][]	= $data;
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to edit user.';
 			$response['message'][]	= $data;
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());
 		}
 		return $response;
 	}
@@ -167,12 +180,14 @@ class Users_model extends CI_Model {
 			$response['rc']					= 0;
 			$response['success']			= true;
 			$response['data']['loglist']	= $query->result();
+			$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());
 		}
 		return $response;
 	}
@@ -192,6 +207,7 @@ class Users_model extends CI_Model {
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());
 		}
 		return $response;
 	}

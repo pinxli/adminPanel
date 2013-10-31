@@ -68,6 +68,7 @@ class Productoption extends CI_Controller {
 			'log_url' 		=> $this->uri->uri_string(),
 			'log_request' 	=> json_encode($this->input->post()),
 			'log_response' 	=> json_encode($response),
+			'log_query' 	=> $response['log_query'],
 		);
 		$this->apilog_model->apiLog($log_data); //db logs
 		$this->api_functions->apiLog(json_encode($log_data),'GET_PRODUCTOPTION'); //text logs
@@ -140,6 +141,7 @@ class Productoption extends CI_Controller {
 			'log_url' 		=> $this->uri->uri_string(),
 			'log_request' 	=> json_encode($this->input->post()),
 			'log_response' 	=> json_encode($response),
+			'log_query' 	=> $response['log_query'],
 		);
 		$this->apilog_model->apiLog($log_data); //db logs
 		$this->api_functions->apiLog(json_encode($log_data),'POST_PRODUCTOPTION'); //text logs
@@ -203,6 +205,7 @@ class Productoption extends CI_Controller {
 			'log_url' 		=> $this->uri->uri_string(),
 			'log_request' 	=> json_encode($this->input->post()),
 			'log_response' 	=> json_encode($response),
+			'log_query' 	=> $response['log_query'],
 		);
 		$this->apilog_model->apiLog($log_data); //db logs
 		$this->api_functions->apiLog(json_encode($log_data),'PUT_PRODUCTOPTION'); //text logs
@@ -252,6 +255,7 @@ class Productoption extends CI_Controller {
 			'log_url' 		=> $this->uri->uri_string(),
 			'log_request' 	=> json_encode($this->input->get()),
 			'log_response' 	=> json_encode($response),
+			'log_query' 	=> $response['log_query'],
 		);
 		$this->apilog_model->apiLog($log_data); //db logs
 		$this->api_functions->apiLog(json_encode($log_data),'checkArea'); //text logs

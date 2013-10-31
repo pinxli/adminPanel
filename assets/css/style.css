@@ -2348,3 +2348,29 @@ footer p {
 .icon-red {
   background-image: url("../img/glyphicons-halflings-red.png");
 }
+
+/*ADDITIONAL CSS FOR QUERY LOGS*/
+#logquery{
+	width: 40% !important;
+	height: 30px !important;
+	position: relative;
+}
+
+.querytd{
+	cursor: pointer;
+}
+
+.querypopup{
+	display: none;
+	position: absolute;
+	border: 1px solid #C9A016;
+	background: #FFFF96;
+	padding: 10px;
+	margin-left: -23px;
+	width: 500px !important
+}
+
+.popover{
+	background: #eeeeee;
+	max-width: 600px !important
+}

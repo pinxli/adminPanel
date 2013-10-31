@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 <?php /* Smarty version Smarty-3.1.7, created on 2013-10-30 03:28:26
+=======
+<?php /* Smarty version Smarty-3.1.7, created on 2013-10-30 08:25:10
+>>>>>>> Stashed changes
          compiled from "application\modules\settings\views\users_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1566352566210537993-72511892%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +11,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd6a560193c2b63bc7be63346f8d56d74fedf3123' => 
     array (
       0 => 'application\\modules\\settings\\views\\users_view.tpl',
+<<<<<<< Updated upstream
       1 => 1383103675,
+=======
+      1 => 1383102696,
+>>>>>>> Stashed changes
       2 => 'file',
     ),
   ),

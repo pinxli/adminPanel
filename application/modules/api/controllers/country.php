@@ -67,6 +67,7 @@ class Country extends CI_Controller {
 			'log_url' 		=> $this->uri->uri_string(),
 			'log_request' 	=> json_encode($this->input->post()),
 			'log_response' 	=> json_encode($response),
+			'log_query' 	=> $response['log_query'],
 		);
 		$this->apilog_model->apiLog($log_data); //db logs
 		$this->api_functions->apiLog(json_encode($log_data),'GET_COUNTRY'); //text logs
@@ -118,6 +119,7 @@ class Country extends CI_Controller {
 			'log_url' 		=> $this->uri->uri_string(),
 			'log_request' 	=> json_encode($this->input->get()),
 			'log_response' 	=> json_encode($response),
+			'log_query' 	=> $response['log_query'],
 		);
 		$this->apilog_model->apiLog($log_data); //db logs
 		$this->api_functions->apiLog(json_encode($log_data),'checkCountry'); //text logs

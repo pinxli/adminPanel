@@ -1,0 +1,27 @@
+2013-10-25T03:05:54Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - POST","log_url":"api\/productarea\/hk\/98740","log_request":"{\"area_name\":\"Taguig City\",\"area_description\":\"Taguig City\",\"area_active\":\"1\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Area has been successfully added.\"]}"}
+
+2013-10-25T04:54:45Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - POST","log_url":"api\/productarea\/my\/98740","log_request":"{\"area_name\":\"Kuala Lumpur\",\"area_description\":\"KL\",\"area_active\":\"1\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Area has been successfully added.\"]}"}
+
+2013-10-25T09:30:06Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - POST","log_url":"api\/productarea\/my\/98740","log_request":"{\"area_country_id\":\"133\",\"area_name\":\"Penang\",\"area_description\":\"Penang\",\"area_active\":\"1\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Area has been successfully added.\"]}"}
+
+2013-10-25T09:30:24Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - POST","log_url":"api\/productarea\/my\/98740","log_request":"{\"area_country_id\":\"133\",\"area_name\":\"Johor Bahru\",\"area_description\":\"Johor Bahru\",\"area_active\":\"1\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Area has been successfully added.\"]}"}
+
+2013-10-25T09:30:35Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - POST","log_url":"api\/productarea\/my\/98740","log_request":"{\"area_country_id\":\"133\",\"area_name\":\"Kota Kinabalu\",\"area_description\":\"Kota Kinabalu\",\"area_active\":\"1\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Area has been successfully added.\"]}"}
+
+2013-10-25T09:34:29Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - POST","log_url":"api\/productarea\/my\/98740","log_request":"{\"area_country_id\":\"133\",\"area_name\":\"Shah Alam\",\"area_description\":\"Shah Alam\",\"area_active\":\"1\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Area has been successfully added.\"]}"}
+
+2013-10-25T09:35:37Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - POST","log_url":"api\/productarea\/my\/98740","log_request":"{\"area_country_id\":\"133\",\"area_name\":\"Shah Alam\",\"area_description\":\"Shah Alam\",\"area_active\":\"1\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Area has been successfully added.\"]}"}
+
+2013-10-25T11:10:48Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - POST","log_url":"api\/productarea\/hk\/98740","log_request":"{\"area_name\":\"Makati City\",\"area_description\":\"Makati City\",\"area_active\":\"1\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Area has been successfully added.\"]}"}
+
+2013-10-25T12:33:44Z
+{"log_client_id":"98740","log_method":"PRODUCTAREA - POST","log_url":"api\/productarea\/hk\/98740","log_request":"{\"area_country_id\":\"99\",\"area_name\":\"Victoria City\",\"area_description\":\"Victoria City\",\"area_active\":\"1\"}","log_response":"{\"rc\":0,\"success\":true,\"message\":[\"Product Area has been successfully added.\"]}"}
+

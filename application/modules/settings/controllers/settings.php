@@ -270,11 +270,25 @@ class Settings extends CI_Controller {
 		
 		$uri = $this->uri->segment(3);
 		
-		$res = ( $uri == 'logList' ) ? $this->settings_model->explogList() : $this->settings_model->expApiLog();	
-
+		$res = ( $uri == 'logList' ) ? $this->settings_model->explogList() : $this->settings_model->expApiLog();
 		$res = json_decode($res, $array = TRUE);
 
-		$export = $this->export->to_excel($res['data']['loglist'],$uri. date('Ymdhmi'));
+		// echo '<pre>'; print_r($res); exit;
+		$newLogs = array();
+		foreach($res['data']['loglist'] as $key=>$logs){
+			if($uri == 'logList'){
+				$logs['access_time'] = date('d M, Y H:i', strtotime($logs['access_time']));
+				if(!empty($logs['exit_time'])){
+					$logs['exit_time'] = date('d M, Y H:i', strtotime($logs['exit_time']));
+				}
+			}else{
+				$logs['log_access_time'] = date('d M, Y H:i', strtotime($logs['log_access_time']));
+				// $logs['expiry'] = date('d M, Y H:i:s', strtotime($logs['expiry']));
+			}
+		array_push($newLogs, $logs);
+		}
+
+		$export = $this->export->to_excel($newLogs,$uri. date('Ymdhmi'));
 	}
 	
 	function exporttoexcel()

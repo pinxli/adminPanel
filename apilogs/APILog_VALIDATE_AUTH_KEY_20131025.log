@@ -1,0 +1,66 @@
+2013-10-25T02:48:49Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":24,\"locale\":\"hk\"}}}"}
+
+2013-10-25T03:27:32Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":25,\"locale\":\"hk\"}}}"}
+
+2013-10-25T04:19:42Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":26,\"locale\":\"hk\"}}}"}
+
+2013-10-25T04:23:08Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":27,\"locale\":\"hk\"}}}"}
+
+2013-10-25T04:24:10Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"raphaelhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"2\",\"email\":\"raphaelhk@novafabrik.com\",\"fname\":\"raphael\",\"lname\":\"torres\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:22:16\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":28,\"locale\":\"hk\"}}}"}
+
+2013-10-25T04:29:10Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":29,\"locale\":\"hk\"}}}"}
+
+2013-10-25T04:38:58Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":30,\"locale\":\"hk\"}}}"}
+
+2013-10-25T04:40:01Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":31,\"locale\":\"hk\"}}}"}
+
+2013-10-25T04:41:15Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"raphaelhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"2\",\"email\":\"raphaelhk@novafabrik.com\",\"fname\":\"raphael\",\"lname\":\"torres\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:22:16\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":32,\"locale\":\"hk\"}}}"}
+
+2013-10-25T04:41:34Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":33,\"locale\":\"hk\"}}}"}
+
+2013-10-25T04:42:28Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":34,\"locale\":\"hk\"}}}"}
+
+2013-10-25T07:25:41Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":35,\"locale\":\"hk\"}}}"}
+
+2013-10-25T07:50:17Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":36,\"locale\":\"hk\"}}}"}
+
+2013-10-25T07:50:35Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":37,\"locale\":\"hk\"}}}"}
+
+2013-10-25T07:51:12Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":38,\"locale\":\"hk\"}}}"}
+
+2013-10-25T07:52:52Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":39,\"locale\":\"hk\"}}}"}
+
+2013-10-25T08:01:21Z
+{"log_client_id":"my","log_method":"LOGIN - POST","log_url":"api\/users\/login\/my\/98740","log_request":"{\"username\":\"tearjerker_20@yahoo.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"my\"}","log_response":"{\"rc\":999,\"success\":false,\"message\":[\"User does not exist.\"]}"}
+
+2013-10-25T08:01:30Z
+{"log_client_id":"my","log_method":"LOGIN - POST","log_url":"api\/users\/login\/my\/98740","log_request":"{\"username\":\"tearjerker_20@yahoo.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"my\"}","log_response":"{\"rc\":999,\"success\":false,\"message\":[\"User does not exist.\"]}"}
+
+2013-10-25T08:11:00Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":40,\"locale\":\"hk\"}}}"}
+
+2013-10-25T08:35:11Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":41,\"locale\":\"hk\"}}}"}
+
+2013-10-25T10:15:10Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":42,\"locale\":\"hk\"}}}"}
+
+2013-10-25T11:06:13Z
+{"log_client_id":"hk","log_method":"LOGIN - POST","log_url":"api\/users\/login\/hk\/98740","log_request":"{\"username\":\"pinkyhk@novafabrik.com\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"locale\":\"hk\"}","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"user\":{\"userid\":\"1\",\"email\":\"pinkyhk@novafabrik.com\",\"fname\":\"pinky\",\"lname\":\"liwanagan\",\"password\":\"5f4dcc3b5aa765d61d8327deb882cf99\",\"create_time\":\"2013-10-24 12:21:14\",\"verified\":\"1\",\"user_level_id\":\"3\",\"log_id\":43,\"locale\":\"hk\"}}}"}
+

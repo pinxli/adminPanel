@@ -29,12 +29,14 @@ class Product_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['data']['productlist'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Product List: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -62,12 +64,14 @@ class Product_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['data']['productinfo'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Product Info: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}	
@@ -85,11 +89,13 @@ class Product_model extends CI_Model {
 			$response['success']	= true;
 			$response['message'][]	= 'Product has been successfully added.';
 			$response['productId']  = $this->db->insert_id();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to add product.';
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -107,12 +113,14 @@ class Product_model extends CI_Model {
 			$response['success']	= true;
 			$response['message'][]	= 'Product has been successfully modified.';
 			$response['message'][]	= $data;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to edit product.';
 			$response['message'][]	= $data;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -143,12 +151,14 @@ class Product_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['data']['productarealist'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Product Area List: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -162,12 +172,14 @@ class Product_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['data']['productareainfo'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Product Area Info: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}	
@@ -183,11 +195,13 @@ class Product_model extends CI_Model {
 			$response['rc']			= 0;
 			$response['success']	= true;
 			$response['message'][]	= 'Product Area has been successfully added.';
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to add product area.';
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -205,12 +219,14 @@ class Product_model extends CI_Model {
 			$response['success']	= true;
 			$response['message'][]	= 'Product Area has been successfully modified.';
 			$response['message'][]	= $data;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to edit product area.';
 			$response['message'][]	= $data;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -225,12 +241,14 @@ class Product_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['data']['producttypelist'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Product Type List: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -244,12 +262,14 @@ class Product_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['data']['producttypeinfo'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Product Type Info: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}	
@@ -267,11 +287,13 @@ class Product_model extends CI_Model {
 			$response['message'][]		= 'Product Type has been successfully added.';
 			$response['producttypeId']  = $this->db->insert_id();
 			#$response['data']		= $data;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to add product type.';
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -289,18 +311,21 @@ class Product_model extends CI_Model {
 			$response['success']	= true;
 			$response['message'][]	= 'Product Type has been successfully modified.';
 			$response['message'][]	= $data;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			//check if data has no changes
 			if ( $this->db->_error_number() == 0 ){
 				$response['rc']			= 0;
 				$response['success']	= true;
+				$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 			}
 			else{
 				$response['rc']			= 999;
 				$response['success']	= false;
 				$response['message'][]	= 'Failed to edit product type.';
 				$response['message'][]	= $data;
+				$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 			}
 		}
 		return $response;
@@ -316,12 +341,14 @@ class Product_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['data']['optionlist'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Option List: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -340,12 +367,14 @@ class Product_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['data']['optioninfo'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Option Info: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -362,11 +391,13 @@ class Product_model extends CI_Model {
 			$response['success']	= true;
 			$response['message'][]	= 'product option has been successfully added.';
 			$response['productId']  = $this->db->insert_id();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to add product option.';
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -384,12 +415,14 @@ class Product_model extends CI_Model {
 			$response['success']	= true;
 			$response['message'][]	= 'Product Option has been successfully modified.';
 			$response['message'][]	= $data;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to edit product option.';
 			$response['message'][]	= $data;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -407,11 +440,13 @@ class Product_model extends CI_Model {
 			$response['rc']			= 0;
 			$response['success']	= true;
 			$response['message'][]	= 'csv upload was successful.';
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to Upload.';
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -428,12 +463,14 @@ class Product_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['product_type_id'] 	 = $query->row()->product_type_id;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : strtolower($productType). ' is not a valid product type';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message']	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -458,12 +495,14 @@ class Product_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['area_id'] 			 = $query->row()->area_id;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : strtolower($area_name) . ' is not a valid area';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message']	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
@@ -488,12 +527,14 @@ class Product_model extends CI_Model {
 			$response['rc']					 = 0;
 			$response['success']			 = true;
 			$response['area_id'] 			 = $query->row();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
 			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : 'error in vertical option.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message']	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}
