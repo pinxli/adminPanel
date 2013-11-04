@@ -572,7 +572,35 @@ class Product_model extends CI_Model {
 		return $response;
 	}	
 	
-	
+	public function countryArea($countryId) {
+		
+		$data = array(
+					'area_country_id'	  => $countryId
+					
+		);
+		
+		$this->db->select('*')
+				 ->from('products_areas')
+				->where($data);
+		
+		$query = $this->db->get();
+		 
+		//if data exist, return results
+		if ($query->num_rows() > 0){
+			$response['rc']					 	 = 0;
+			$response['success']				 = true;
+			$response['data']['productarealist'] = $query->result();
+			$response['log_query']			 	 = str_replace('\n',' ',$this->db->last_query());	
+		}
+		else{ //no record found	 
+			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : strtolower($area_name) . ' is not a valid area';
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message']	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
+		}
+		return $response;
+	}
 	
 
 // end of the product model
