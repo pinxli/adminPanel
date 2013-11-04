@@ -144,60 +144,28 @@ $(document).ready(function(){
 	
 	$('.autonum').autoNumeric({vMin:'0', vMax:'100' });
 	
-	// $('#DataTables_Table_0_filter').append('<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#advancedsearch">Advance Search</button>');
+	 /* Initialise the DataTable */
+    var oTable = $('#datable-prodlist').dataTable({
+		"oLanguage": {
+			"sSearch": "Search all columns:"
+		},
+		"sPaginationType": "bootstrap",
+		"bLengthChange"	: false,
+		// "sDom": '<"top"i>rt<"bottom"flp><"clear">'
+    }); 
 	
-	// $('#datable-prodlist').dataTable({
-		// "aoColumnDefs": [
-			// { "bSearchable": true, "aTargets": [ 1 ] }
-		// ],
-		// "sPaginationType": "bootstrap",
-		// "bLengthChange"	: false
-	// });
+    $('select#searchby').on('change',function(){
+		$("#searchkeyword").val('');
+        // var columnIndex = $(this).val();
+		oTable.fnFilter( '', columnIndex, true );
+    });
 	
-	$('#searchbtn').click(function(){
-		var url = $(this).attr('alt');
-		var keyword = $('#searchby').val();
-		var keyword_value = $('#searchkeyword').val();
-		
-		$.ajax({
-			type: 'POST',
-			url: $(this).attr('alt'),
-			data: { 'id' : url, 'keyword':keyword, 'keyword_value':keyword_value }
-		}).done(function(data) {
-			var data_array = $.parseJSON(data);
-			
-			if ( data_array.rc == 0 ){
-				$('#datable-prodlist tbody').remove();
-				$('#datable-prodlist').append("<tbody>");
-				$(data_array.data.productlist).each(function(i,val){				
-					
-					if ( val.status == 1 ){
-						stat_class = 'label-success';
-						stat = 'Active';
-					}
-					else{
-						stat_class = 'label-failed';
-						stat = 'Inactive';
-					}
-					
-					company		 = "<td class='center'><img src='"+$('#base_url').val()+val.product_icon+"' width='30'></td>";
-					product 	 = "<td class='center'>"+val.product_name+"</td>";
-					product_link = "<td class='center'>"+val.product_link+"</td>";
-					status		 = "<td class='center'><span class='label "+stat_class+"'>"+stat+"</span></td>";
-					action		 = "<td class='center'><a class='btn btn-success' href='"+$('#prodview_url').val()+val.product_id+"'><i class='fa fa-list-alt icon-white' title='View'></i></a><a class=btn btn-info href='"+$('#prodedit_url').val()+val.product_id+"'><i class='icon-edit icon-white' title='Edit'></i></a></td>";
-					
-					$('#datable-prodlist').append("<tr>"+company+product+product_link+status+action+"</tr>");	
-				});
-				$('#datable-prodlist').append("</tbody>");	
-			}
-			else{
-				$('#datable-prodlist tbody').remove();
-				$('#datable-prodlist').append("<tbody><tr><td colspan='5'><center>"+data_array.message+"</center></td></tr></tbody>");
-			}
-			
-		});
-	
-	});
+	$("#searchkeyword").keyup( function () {
+		columnIndex = $('#searchby').val();
+		/* Filter on the column (the index) of this element */
+		oTable.fnFilter( this.value, columnIndex, true );
+	} );
+
 	
 });
 

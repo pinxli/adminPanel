@@ -20,7 +20,7 @@ class Product_model extends CI_Model {
 	}
 
 	public function productList() {
-		$this->db->select('company_name,area_name,product_type,short_name,product_id,products.product_type_id,products.company_id,product_name,product_description,featured,products.country_id,products.area_id,product_icon,product_link,status')
+		$this->db->select('company_name,area_name,product_type,short_name,product_id,products.product_type_id,products.company_id,product_name,product_description,featured,products.country_id,products.area_id,product_icon,product_link,status,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo')
 			->from('products')
 			->join('companies','products.company_id = companies.company_id','inner')
 			->join('products_types','products_types.product_type_id = products.product_type_id','inner')

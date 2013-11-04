@@ -80,11 +80,12 @@ class Verticals extends CI_Controller {
 		$data['mainContent'] = 'productlist.tpl';
 		
 		$data['data'] = array(
-			'baseUrl'		=> base_url(),
-			'title'			=> 'Product List',
-			'msgClass'		=> $this->msgClass,
-			'msgInfo'		=> $this->msgInfo,
-			'productList'	=> $productList
+			'baseUrl'				=> base_url(),
+			'default_product_img'	=> $this->config->item('default_product_img'),
+			'title'					=> 'Product List',
+			'msgClass'				=> $this->msgClass,
+			'msgInfo'				=> $this->msgInfo,
+			'productList'			=> $productList
 		);
 		
 		$this->load->view($this->globalTpl, $data);	
@@ -503,7 +504,7 @@ class Verticals extends CI_Controller {
 						'featured' 				=> $this->input->post('featured'),
 						'country_id' 			=> $this->input->post('country_id'),
 						'area_id' 				=> $this->input->post('area_id'),
-						'product_icon' 			=> $prod_icon,
+						'product_icon' 			=> $this->config->item('path_upload_img_product').$prod_icon,
 						'product_link' 			=> $this->input->post('product_link'),
 						'status' 				=> $this->input->post('status')
 				);
