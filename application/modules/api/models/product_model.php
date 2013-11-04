@@ -593,7 +593,7 @@ class Product_model extends CI_Model {
 			$response['log_query']			 	 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
-			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : strtolower($area_name) . ' is not a valid area';
+			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : 'No Records found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message']	= $err_message;
