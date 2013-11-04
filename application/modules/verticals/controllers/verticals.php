@@ -1196,4 +1196,12 @@ class Verticals extends CI_Controller {
 		return $newdate;
 	}
 	
+	function getprodarea()
+	{
+		$country_id = $_POST['id'];
+		// $myIP = $_SERVER['REMOTE_ADDR'];
+		$res = file_get_contents('http://192.168.0.67/adminPanel/api/productarea/countryArea/my/98740/'.$country_id);
+		echo $res;
+	}
+	
 }

@@ -97,9 +97,10 @@ $(document).ready(function(){
 		str = $("#selectError2 option:selected").val();
 		
 		$.ajax({ 
-			type: "GET",
+			type: "POST",
 			dataType: "json",
-			url: "http://localhost/adminPanel/api/productarea/my/98740/"+str ,
+			url: "http://localhost/adminPanel/verticals/getprodarea" ,
+			data: {id:str},
 			success: function(resultData){  
 				console.log(resultData);
 				

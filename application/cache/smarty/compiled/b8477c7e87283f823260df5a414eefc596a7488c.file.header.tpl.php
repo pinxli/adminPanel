@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-11-04 09:36:06
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-04 09:59:36
          compiled from "application\views\includes\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93385257869c99f3c7-90349051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b8477c7e87283f823260df5a414eefc596a7488c' => 
     array (
       0 => 'application\\views\\includes\\header.tpl',
-      1 => 1383557764,
+      1 => 1383558853,
       2 => 'file',
     ),
   ),
@@ -123,69 +123,125 @@ assets/img/comphero-logo_04.png" style="max-width:25%" ></span></a>
 				<div class="nav-no-collapse header-nav">
 					<ul class="nav pull-right">
 						<li class="dropdown hidden-phone">
-							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-								<i class="icon-large icon-bell icon-white"></i>
+							<a class="btn dropdown-toggle notif-dropdown" data-toggle="dropdown" href="#">
+								<i class="icon-globe icon-white"></i>
 								<!-- <span class="label label-important hidden-phone">2</span>
 								<span class="label label-success hidden-phone">11</span> -->
 							</a>
-							<ul class="dropdown-menu notifications">
-								<li>
-									<span class="dropdown-menu-title">You have 11 notifications</span>
-								</li>	
-                            	<li>
-                                    <a href="#">
-										+ <i class="icon-user"></i> <span class="message">New user registration</span> <span class="time">1 min</span> 
-                                    </a>
-                                </li>
-								<li>
-                                    <a href="#">
-										+ <i class="icon-comment"></i> <span class="message">New comment</span> <span class="time">7 min</span> 
-                                    </a>
-                                </li>
-								<li>
-                                    <a href="#">
-										+ <i class="icon-comment"></i> <span class="message">New comment</span> <span class="time">8 min</span> 
-                                    </a>
-                                </li>
-								<li>
-                                    <a href="#">
-										+ <i class="icon-comment"></i> <span class="message">New comment</span> <span class="time">16 min</span> 
-                                    </a>
-                                </li>
-								<li>
-                                    <a href="#">
-										+ <i class="icon-user"></i> <span class="message">New user registration</span> <span class="time">36 min</span> 
-                                    </a>
-                                </li>
-								<li>
-                                    <a href="#">
-										+ <i class="icon-shopping-cart"></i> <span class="message">2 items sold</span> <span class="time">1 hour</span> 
-                                    </a>
-                                </li>
-								<li class="warning">
-                                    <a href="#">
-										- <i class="icon-user icon-red"></i> <span class="message">User deleted account</span> <span class="time">2 hour</span> 
-                                    </a>
-                                </li>
-								<li class="warning">
-                                    <a href="#">
-										- <i class="icon-shopping-cart icon-red"></i> <span class="message">Transaction was canceled</span> <span class="time">6 hour</span> 
-                                    </a>
-                                </li>
-								<li>
-                                    <a href="#">
-										+ <i class="icon-comment"></i> <span class="message">New comment</span> <span class="time">yesterday</span> 
-                                    </a>
-                                </li>
-								<li>
-                                    <a href="#">
-										+ <i class="icon-user"></i> <span class="message">New user registration</span> <span class="time">yesterday</span> 
-                                    </a>
-                                </li>
-                                <li>
-                            		<a class="dropdown-menu-sub-footer">View all notifications</a>
-								</li>	
-							</ul>
+							<!-- <div class="dropdown-menu notifications">
+								<span class="dropdown-menu-title dropdown-menu-title-1">Notifications</span>
+								<ul id="notif_container">
+									<li class="notif noti_item">
+	                                    <p class="pull-left">New Notification!</p>
+	                                    <i class="fa fa-bell pull-right fa-notifs fa-notif-green"></i>
+	                                </li>
+									<li class="alertnotif noti_item">
+	                                    <p class="pull-left">Transaction was cancelled!</p>
+	                                    <i class="fa fa-exclamation-circle pull-right fa-notifs fa-notif-orange"></i>
+	                                </li>
+									<li class="critical noti_item">
+	                                    <p class="pull-left">Critical Alert!</p>
+	                                    <i class="fa fa-warning pull-right fa-notifs fa-notif-red"></i>
+	                                </li>
+									<li class="notif noti_item">
+	                                    <p class="pull-left">New Notification!</p>
+	                                    <i class="fa fa-bell pull-right fa-notifs fa-notif-green"></i>
+	                                </li>
+									<li class="alertnotif noti_item">
+	                                    <p class="pull-left">Transaction was cancelled!</p>
+	                                    <i class="fa fa-exclamation-circle pull-right fa-notifs fa-notif-orange"></i>
+	                                </li>
+									<li class="critical noti_item">
+	                                    <p class="pull-left">Critical Alert!</p>
+	                                    <i class="fa fa-warning pull-right fa-notifs fa-notif-red"></i>
+	                                </li>
+									<li class="notif noti_item">
+	                                    <p class="pull-left">New Notification!</p>
+	                                    <i class="fa fa-bell pull-right fa-notifs fa-notif-green"></i>
+	                                </li>
+									<li class="alertnotif noti_item">
+	                                    <p class="pull-left">Transaction was cancelled!</p>
+	                                    <i class="fa fa-exclamation-circle pull-right fa-notifs fa-notif-orange"></i>
+	                                </li>
+									<li class="critical noti_item">
+	                                    <p class="pull-left">Critical Alert!</p>
+	                                    <i class="fa fa-warning pull-right fa-notifs fa-notif-red"></i>
+	                                </li>
+								</ul>
+								<div id="notif_full">
+										testsdsdfsdfasd
+								</div>
+							</div> -->
+							<!-- wrapper is the notification box -->
+							<div id="wrapper" class="dropdown-menu">
+								<!-- div1 will hold the notification list -->
+								<div class="full" id="div1">
+									<div id='box_header'>
+										<div id='noti_text'>Notifications</div>
+										<!-- ajax loader was shown when a notification item was clicked -->
+										<div id='loader'><img src='<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+assets/img/ajax-loader.gif' /></div>
+									</div>
+									<div id='noti_list'>
+										<ul id="notif_container">
+											<li class="notif noti_item">
+			                                    <p class="pull-left">New Notification!</p>
+			                                    <i class="fa fa-bell pull-right fa-notifs fa-notif-green"></i>
+			                                </li>
+											<li class="alertnotif noti_item">
+			                                    <p class="pull-left">Transaction was cancelled!</p>
+			                                    <i class="fa fa-exclamation-circle pull-right fa-notifs fa-notif-orange"></i>
+			                                </li>
+											<li class="critical noti_item">
+			                                    <p class="pull-left">Critical Alert!</p>
+			                                    <i class="fa fa-warning pull-right fa-notifs fa-notif-red"></i>
+			                                </li>
+											<li class="notif noti_item">
+			                                    <p class="pull-left">New Notification!</p>
+			                                    <i class="fa fa-bell pull-right fa-notifs fa-notif-green"></i>
+			                                </li>
+											<li class="alertnotif noti_item">
+			                                    <p class="pull-left">Transaction was cancelled!</p>
+			                                    <i class="fa fa-exclamation-circle pull-right fa-notifs fa-notif-orange"></i>
+			                                </li>
+											<li class="critical noti_item">
+			                                    <p class="pull-left">Critical Alert!</p>
+			                                    <i class="fa fa-warning pull-right fa-notifs fa-notif-red"></i>
+			                                </li>
+											<li class="notif noti_item">
+			                                    <p class="pull-left">New Notification!</p>
+			                                    <i class="fa fa-bell pull-right fa-notifs fa-notif-green"></i>
+			                                </li>
+											<li class="alertnotif noti_item">
+			                                    <p class="pull-left">Transaction was cancelled!</p>
+			                                    <i class="fa fa-exclamation-circle pull-right fa-notifs fa-notif-orange"></i>
+			                                </li>
+											<li class="critical noti_item">
+			                                    <p class="pull-left">Critical Alert!</p>
+			                                    <i class="fa fa-warning pull-right fa-notifs fa-notif-red"></i>
+			                                </li>
+										</ul>								
+									</div>
+								</div>
+								
+								<!-- div2 will hold the actual notification -->
+								<div class="full" id="div2">
+									<div id='box_header'>
+										<div id='noti_text'> <a href='#'>&#9668; <span id='back_to_noti'>Back to Notifications</span></a></div>
+										<!-- <div id='site_link'>
+											<a href='http://www.codeofaninja.com/'>+Code of a Ninja</a> &#9658;
+										</div> -->
+									</div>
+
+									<div id='actual_notification'>
+										<!-- Here is where the actual notification will be loaded -->
+										testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>testsdsds<br/>
+									</div>
+									
+								</div>
+								
+
+							</div>
 						</li>
 						<!-- start: Notifications Dropdown -->
 						<!-- <li class="dropdown hidden-phone">
@@ -354,7 +410,7 @@ assets/img/avatar5.jpg" alt="Avatar"></span>
 						</li> -->
 						<!-- start: User Dropdown -->
 						<li class="dropdown">
-							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+							<a class="btn dropdown-toggle user-dropdown" data-toggle="dropdown" href="#">
 								<i class="icon-user icon-white"></i>
 								<span class="caret"></span>
 							</a>
