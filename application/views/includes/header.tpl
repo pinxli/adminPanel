@@ -73,7 +73,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="home.html"><span class="hidden-phone"><img src="{$baseUrl}assets/img/comphero-logo_04.png" style="max-width:25%" ></span></a>
+				<a class="brand" href="{$baseUrl}dashboard/members_area"><span class="hidden-phone"><img src="{$baseUrl}assets/img/comphero-logo_04.png" style="max-width:25%" ></span></a>
 								
 				<!-- start: Header Menu -->
 				<div class="nav-no-collapse header-nav">

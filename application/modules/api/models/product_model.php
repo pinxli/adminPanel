@@ -20,7 +20,7 @@ class Product_model extends CI_Model {
 	}
 
 	public function productList() {
-		$this->db->select('company_name,area_name,product_type,short_name,product_id,products.product_type_id,products.company_id,product_name,product_description,featured,products.country_id,products.area_id,product_icon,product_link,status')
+		$this->db->select('company_name,area_name,product_type,short_name,product_id,products.product_type_id,products.company_id,product_name,product_description,featured,products.country_id,products.area_id,product_icon,product_link,status,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo')
 			->from('products')
 			->join('companies','products.company_id = companies.company_id','inner')
 			->join('products_types','products_types.product_type_id = products.product_type_id','inner')
@@ -572,7 +572,35 @@ class Product_model extends CI_Model {
 		return $response;
 	}	
 	
-	
+	public function countryArea($countryId) {
+		
+		$data = array(
+					'area_country_id'	  => $countryId
+					
+		);
+		
+		$this->db->select('*')
+				 ->from('products_areas')
+				->where($data);
+		
+		$query = $this->db->get();
+		 
+		//if data exist, return results
+		if ($query->num_rows() > 0){
+			$response['rc']					 	 = 0;
+			$response['success']				 = true;
+			$response['data']['productarealist'] = $query->result();
+			$response['log_query']			 	 = str_replace('\n',' ',$this->db->last_query());	
+		}
+		else{ //no record found	 
+			$err_message 			= ( $this->db->_error_message() ) ? $this->db->_error_message() : 'No Records found.';
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message']	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
+		}
+		return $response;
+	}
 	
 
 // end of the product model

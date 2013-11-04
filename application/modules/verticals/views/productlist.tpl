@@ -73,14 +73,14 @@
 								<tr>
 									<td>Search By:
 										<select id="searchby" name="searchby">
-											<option value="company_name">Company</option>
-											<option value="area_name">Area</option>
-											<option value="status">Status</option>
-											<option value="featured">Featured</option>
-											<option value="product_type">Vertical</option>
+											<option value="2">Product Type</option>
+											<option value="3">Company</option>
+											<option value="4">Area</option>
+											<option value="6">Promo</option>
+											<option value="7">Status</option>
 										</select>
 										<input type="text" id="searchkeyword" name="searchkeyword" value="" placeholder="Type keyword.." />
-										<button class="btn btn-primary" id="searchbtn" type="button" alt="{$baseUrl}verticals/productsearch">Search</button>
+										<!-- <button class="btn btn-primary" id="searchbtn" type="button" alt="{$baseUrl}verticals/productsearch">Search</button>-->
 									</td>
 								</tr>
 							</table>
@@ -89,26 +89,46 @@
 							  <tr>
 	                                  <th>Product Image</th>
 									  <th>Product Name</th>
+									  <th>Product Type</th>
+									  <th>Company</th>
+									  <th>Area</th>
 									  <th>Product Link</th>
+									  <th>Promo</th>
 									  <th>Status</th>
-                                      <th>Actions</th>  
+                                      <th width="10%">Actions</th>  
 								  
 							  </tr>
 						  </thead>   
 						  <tbody>
 							
 							{foreach from=$productList item=product}
-							{if $product->status == '1'}
-								{assign 'status' '&nbsp;&nbsp;Active&nbsp;&nbsp;'}
-								{assign 'status_ico' 'label-success'}
-							{else}
-								{assign 'status' '&nbsp;Inactive&nbsp;'}
-								{assign 'status_ico' 'label-failed'}
-							{/if}
+								{if $product->status == '1'}
+									{assign 'status' 'Active'}
+									{assign 'status_ico' 'label-success'}
+								{else}
+									{assign 'status' 'Inactive'}
+									{assign 'status_ico' 'label-failed'}
+								{/if}
+								
+								{if $product->promo == '1'}
+									{assign 'promo' 'Yes'}
+								{else}
+									{assign 'promo' 'No'}
+								{/if}
+								
+								{if file_exists($product->product_icon)}
+									{assign 'product_icon' $product->product_icon}
+								{else}
+									{assign 'product_icon' $default_product_img}
+								{/if}
 							<tr>
-								<td><img src="{$baseUrl}{$product->product_icon}" width="30"></td>
+								<td><img src="{$baseUrl}{$product_icon}" width="30"></td>
 								<td class="center">{$product->product_name}</td>
+								<td class="center">{$product->product_type}</td>
+								<td class="center">{$product->company_name}</td>
+								<td class="center">{$product->area_name}</td>
 								<td class="center">{$product->product_link}</td>
+								<td class="center">{$promo}</td>
 								<td class="center">
 									<span class="label {$status_ico}">{$status}</span>
 								</td>

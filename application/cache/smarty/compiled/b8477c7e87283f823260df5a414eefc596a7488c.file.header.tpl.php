@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-31 09:34:35
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-04 09:36:06
          compiled from "application\views\includes\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93385257869c99f3c7-90349051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b8477c7e87283f823260df5a414eefc596a7488c' => 
     array (
       0 => 'application\\views\\includes\\header.tpl',
-      1 => 1383210912,
+      1 => 1383557764,
       2 => 'file',
     ),
   ),
@@ -115,7 +115,8 @@ assets/img/favicon.ico">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="home.html"><span class="hidden-phone"><img src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+				<a class="brand" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+dashboard/members_area"><span class="hidden-phone"><img src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 assets/img/comphero-logo_04.png" style="max-width:25%" ></span></a>
 								
 				<!-- start: Header Menu -->

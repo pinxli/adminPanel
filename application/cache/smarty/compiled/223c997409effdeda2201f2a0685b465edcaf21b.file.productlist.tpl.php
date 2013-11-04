@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-31 09:35:33
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-04 09:02:17
          compiled from "application\modules\verticals\views\productlist.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:18815526650d9d7b9f2-24091906%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '223c997409effdeda2201f2a0685b465edcaf21b' => 
     array (
       0 => 'application\\modules\\verticals\\views\\productlist.tpl',
-      1 => 1383206535,
+      1 => 1383555735,
       2 => 'file',
     ),
   ),
@@ -24,6 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'msgInfo' => 0,
     'productList' => 0,
     'product' => 0,
+    'default_product_img' => 0,
+    'product_icon' => 0,
+    'promo' => 0,
     'status_ico' => 0,
     'status' => 0,
   ),
@@ -107,15 +110,15 @@ verticals/addproduct/">
 								<tr>
 									<td>Search By:
 										<select id="searchby" name="searchby">
-											<option value="company_name">Company</option>
-											<option value="area_name">Area</option>
-											<option value="status">Status</option>
-											<option value="featured">Featured</option>
-											<option value="product_type">Vertical</option>
+											<option value="2">Product Type</option>
+											<option value="3">Company</option>
+											<option value="4">Area</option>
+											<option value="6">Promo</option>
+											<option value="7">Status</option>
 										</select>
 										<input type="text" id="searchkeyword" name="searchkeyword" value="" placeholder="Type keyword.." />
-										<button class="btn btn-primary" id="searchbtn" type="button" alt="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-verticals/productsearch">Search</button>
+										<!-- <button class="btn btn-primary" id="searchbtn" type="button" alt="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/productsearch">Search</button>-->
 									</td>
 								</tr>
 							</table>
@@ -124,9 +127,13 @@ verticals/productsearch">Search</button>
 							  <tr>
 	                                  <th>Product Image</th>
 									  <th>Product Name</th>
+									  <th>Product Type</th>
+									  <th>Company</th>
+									  <th>Area</th>
 									  <th>Product Link</th>
+									  <th>Promo</th>
 									  <th>Status</th>
-                                      <th>Actions</th>  
+                                      <th width="10%">Actions</th>  
 								  
 							  </tr>
 						  </thead>   
@@ -137,20 +144,40 @@ verticals/productsearch">Search</button>
 foreach ($_from as $_smarty_tpl->tpl_vars['product']->key => $_smarty_tpl->tpl_vars['product']->value){
 $_smarty_tpl->tpl_vars['product']->_loop = true;
 ?>
-							<?php if ($_smarty_tpl->tpl_vars['product']->value->status=='1'){?>
-								<?php $_smarty_tpl->tpl_vars['status'] = new Smarty_variable('&nbsp;&nbsp;Active&nbsp;&nbsp;', null, 0);?>
-								<?php $_smarty_tpl->tpl_vars['status_ico'] = new Smarty_variable('label-success', null, 0);?>
-							<?php }else{ ?>
-								<?php $_smarty_tpl->tpl_vars['status'] = new Smarty_variable('&nbsp;Inactive&nbsp;', null, 0);?>
-								<?php $_smarty_tpl->tpl_vars['status_ico'] = new Smarty_variable('label-failed', null, 0);?>
-							<?php }?>
+								<?php if ($_smarty_tpl->tpl_vars['product']->value->status=='1'){?>
+									<?php $_smarty_tpl->tpl_vars['status'] = new Smarty_variable('Active', null, 0);?>
+									<?php $_smarty_tpl->tpl_vars['status_ico'] = new Smarty_variable('label-success', null, 0);?>
+								<?php }else{ ?>
+									<?php $_smarty_tpl->tpl_vars['status'] = new Smarty_variable('Inactive', null, 0);?>
+									<?php $_smarty_tpl->tpl_vars['status_ico'] = new Smarty_variable('label-failed', null, 0);?>
+								<?php }?>
+								
+								<?php if ($_smarty_tpl->tpl_vars['product']->value->promo=='1'){?>
+									<?php $_smarty_tpl->tpl_vars['promo'] = new Smarty_variable('Yes', null, 0);?>
+								<?php }else{ ?>
+									<?php $_smarty_tpl->tpl_vars['promo'] = new Smarty_variable('No', null, 0);?>
+								<?php }?>
+								
+								<?php if (file_exists($_smarty_tpl->tpl_vars['product']->value->product_icon)){?>
+									<?php $_smarty_tpl->tpl_vars['product_icon'] = new Smarty_variable($_smarty_tpl->tpl_vars['product']->value->product_icon, null, 0);?>
+								<?php }else{ ?>
+									<?php $_smarty_tpl->tpl_vars['product_icon'] = new Smarty_variable($_smarty_tpl->tpl_vars['default_product_img']->value, null, 0);?>
+								<?php }?>
 							<tr>
 								<td><img src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-<?php echo $_smarty_tpl->tpl_vars['product']->value->product_icon;?>
+<?php echo $_smarty_tpl->tpl_vars['product_icon']->value;?>
 " width="30"></td>
 								<td class="center"><?php echo $_smarty_tpl->tpl_vars['product']->value->product_name;?>
 </td>
+								<td class="center"><?php echo $_smarty_tpl->tpl_vars['product']->value->product_type;?>
+</td>
+								<td class="center"><?php echo $_smarty_tpl->tpl_vars['product']->value->company_name;?>
+</td>
+								<td class="center"><?php echo $_smarty_tpl->tpl_vars['product']->value->area_name;?>
+</td>
 								<td class="center"><?php echo $_smarty_tpl->tpl_vars['product']->value->product_link;?>
+</td>
+								<td class="center"><?php echo $_smarty_tpl->tpl_vars['promo']->value;?>
 </td>
 								<td class="center">
 									<span class="label <?php echo $_smarty_tpl->tpl_vars['status_ico']->value;?>
