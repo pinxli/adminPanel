@@ -52,6 +52,7 @@
 	<script src="{$baseUrl}assets/js/jquery.sparkline.min.js"></script>
 	<script src="{$baseUrl}assets/js/custom.js"></script>
 	<script src="{$baseUrl}assets/js/autoNumeric-1.7.5.js"></script>
+	<script src="{$baseUrl}assets/js/jquery.easing.1.3.js"></script>
 <!-- end: JavaScript-->
 
 <script type="text/javascript">
@@ -115,14 +116,96 @@
 	}
 	
 	$(document).ready(function(){
-		
 		$('.autonum').autoNumeric();
-		
 		/*setTimeout("message_welcome1()",5000);
 		setTimeout("message_welcome2()",10000);	
 		setTimeout("message_welcome3()",15000);*/
+
+		// FOR NOTIFICATIONS
+		$(document).click(function() {
+			$('#wrapper').fadeOut();
+		});
+		$(".noti_item").click(function(e) {
+		    e.stopPropagation(); // This is the preferred method.
+		    return false;        // This should not be used unless you do not want
+		                         // any click events registering inside the div
+		});
+
+		$(".box_header").click(function(e) {
+		    e.stopPropagation(); // This is the preferred method.
+		    return false;        // This should not be used unless you do not want
+		                         // any click events registering inside the div
+		});
+
+		$('.notif-dropdown').click(function(){
+			$('#wrapper').fadeToggle();
+		});
+
+		$('.user-dropdown').click(function(){
+			if ($('#wrapper').css("visibility") == "hidden") {
+		        $('#wrapper').fadeIn();
+		    } else {
+		        $('#wrapper').fadeOut();
+		    }
+		});
+
+		//prepare/show #div2 on load
+		$('#div2').css('left','440px').show();
+
 		
-	});			
+		$('.noti_item').click(function(){
+		
+			//show the loader while waiting for the actual notificaiton to be loaded
+			$('#loader').show();
+			// var noti_id = $(this).find('.noti_id').text();
+			
+			//item.php will load the actual notification based on the notification id
+			// $("#actual_notification").load("item.php?id=" + noti_id, function(){
+			
+				//after loading the actual notification,
+				//hide the loader when the actual notification was loaded
+				$('#loader').hide();
+				
+				//animate the box
+				//hide #div1 (notification list) 
+				$('#div1').animate(
+					{ left: '-440px' },{
+						duration: '350',
+						easing: 'easeOutQuint'
+				});
+
+				//then show #div2(actual notification)
+				$('#div2').animate(
+					{ left: 0 }, {
+						duration: '350',
+						easing: 'easeOutQuint'
+				});
+
+			// });
+			
+		});
+		
+		//going back to notification list
+		$('#back_to_noti').click(function(){
+			
+			//hide #div2 (actual notification)
+			
+			$('#div2').animate(
+				{ left: '440px' },{
+					duration: '350',
+					easing: 'easeOutQuint'
+			});
+
+			//then show #div1 (notification list)
+			$('#div1').animate(
+				{ left: 0 }, {
+					duration: '350',
+					easing: 'easeOutQuint'
+			});
+
+			return false;
+		});		
+	});	
 </script>
 
 </body>
