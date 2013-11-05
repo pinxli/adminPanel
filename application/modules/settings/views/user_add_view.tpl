@@ -5,10 +5,13 @@
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="{$baseUrl}dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Users</a>
+						<a href="{$baseUrl}settings/user_management">Users</a>
+					</li>
+					<li>
+						<a href="#">Add Users</a>
 					</li>
 				</ul>
 				<hr>

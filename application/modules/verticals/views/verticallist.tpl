@@ -6,20 +6,28 @@
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="{$baseUrl}dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
 						<a href="#">Verticals</a>
 					</li>
 				</ul>
 				<hr>
-			</div>
+			</div> 
+          
+			<!-- for error/success info message -->
+	        {if $msgInfo}
+	        	<br />
+	        	<div class="{$msgClass}">
+	            	<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+	                <strong>{$msgInfo}</strong>
+	            </div>
+	        {/if}  
 
 			   <div class="row-fluid sortable">
-				<div class="box span12">
-                     <div class="{$msgClass}"><strong>{$msgInfo}</strong></div>        
+				<div class="box span12">   
 					<div class="box-header" data-original-title>
-					<h2><i class="fa fa-list"></i><span class="break"></span>All Categories</h2>
+					<h2><i class="icon-list"></i><span class="break"></span>{$productType}</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
@@ -40,16 +48,28 @@
 						  <tbody>
 							
 							{foreach from=$productList item=product}
-							{if $product->product_type_id eq $productTypeId}
-							{if $product->status == '1'}
-								{assign 'status' '&nbsp;&nbsp;Active&nbsp;&nbsp;'}
-								{assign 'status_ico' 'label-success'}
-							{else}
-								{assign 'status' '&nbsp;Inactive&nbsp;'}
-								{assign 'status_ico' 'label-failed'}
-							{/if}
+								{if $product->product_type_id eq $productTypeId}
+								{if $product->status == '1'}
+									{assign 'status' '&nbsp;&nbsp;Active&nbsp;&nbsp;'}
+									{assign 'status_ico' 'label-success'}
+								{else}
+									{assign 'status' '&nbsp;Inactive&nbsp;'}
+									{assign 'status_ico' 'label-failed'}
+								{/if}
+								
+								{if $product->product_icon eq ''}
+									{assign "icon" $default_icon}
+								{else}
+									{assign "icon" $product->product_icon}
+								{/if}
+								
+								{if file_exists($product->product_icon)}
+									{assign 'icon' $icon}
+								{else}
+									{assign 'icon' $default_icon}
+								{/if}
 							<tr>
-								<td><img src="{$baseUrl}{$product->product_icon}" width="30"></td>
+								<td><p class="text-center"><img src="{$baseUrl}{$icon}" width="30"></p></td>
 								<td class="center">{$product->product_name}</td>
 								<td class="center">{$product->product_link}</td>
 								<td class="center">

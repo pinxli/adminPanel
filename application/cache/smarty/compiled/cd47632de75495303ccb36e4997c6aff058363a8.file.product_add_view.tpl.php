@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-31 09:38:40
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-05 08:48:11
          compiled from "application\modules\verticals\views\product_add_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2606252674ad104ab83-51593417%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cd47632de75495303ccb36e4997c6aff058363a8' => 
     array (
       0 => 'application\\modules\\verticals\\views\\product_add_view.tpl',
-      1 => 1383211481,
+      1 => 1383638013,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'baseUrl' => 0,
-    'msgClass' => 0,
     'msgInfo' => 0,
+    'msgClass' => 0,
     'form_open' => 0,
     'countryList' => 0,
     'companyList' => 0,
@@ -57,12 +57,18 @@ verticals/productlist">Product List</a> <span class="divider">/</span>
 				<hr>
 			</div>
           
+			<!-- for error/success info message -->
+	        <?php if ($_smarty_tpl->tpl_vars['msgInfo']->value){?>
+	        	<div class="<?php echo $_smarty_tpl->tpl_vars['msgClass']->value;?>
+">
+	            	<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+	                <strong><?php echo $_smarty_tpl->tpl_vars['msgInfo']->value;?>
+</strong>
+	            </div>
+	        <?php }?> 
          
 			<div class="row-fluid sortable">
-				<div class="box span12">
-                    <div class="<?php echo $_smarty_tpl->tpl_vars['msgClass']->value;?>
-"><strong><?php echo $_smarty_tpl->tpl_vars['msgInfo']->value;?>
-</strong></div>        
+				<div class="box span12">    
 					<div class="box-header" data-original-title>
 						<h2><i class="icon-edit"></i><span class="break"></span>New Product</h2>
 						<div class="box-icon">

@@ -27,7 +27,8 @@ class Settings extends CI_Controller {
 		//check if user list is pulled. if not, list is set to empty array
 		$userList = ( $res->rc == 0 ) ? $res->data->userlist : array();
 		
-		$data['mainContent'] = 'users_view.tpl';
+		$data['mainContent'] = 'userlist_view.tpl';
+		// $data['mainContent'] = 'user_add_view.tpl';
 		
 		$data['data'] = array(
 			'baseUrl'	=> base_url(),
@@ -260,7 +261,7 @@ class Settings extends CI_Controller {
 			'title'   => 'API Logs',
 			'logList' => $res->data->loglist
 		);
-
+		
 		$this->load->view($this->globalTpl, $data);  
 	}
 	 

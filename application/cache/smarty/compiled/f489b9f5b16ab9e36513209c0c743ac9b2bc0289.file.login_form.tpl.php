@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-31 09:27:07
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-05 08:35:31
          compiled from "application\modules\admin\views\login_form.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1610652561f8c9eee99-96918773%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f489b9f5b16ab9e36513209c0c743ac9b2bc0289' => 
     array (
       0 => 'application\\modules\\admin\\views\\login_form.tpl',
-      1 => 1383210912,
+      1 => 1383640529,
       2 => 'file',
     ),
   ),
@@ -21,9 +21,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'countryList' => 0,
     'baseUrl' => 0,
-    'msgClass' => 0,
     'msgInfo' => 0,
+    'msgClass' => 0,
+    'formOpen' => 0,
+    'username' => 0,
+    'password' => 0,
     'country' => 0,
+    'formClose' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -102,23 +106,35 @@ assets/img/bg-login.jpg) !important; }
 					</div>
                     <div class="login-logo" align="center" style="max-width:80%; padding: 0px 80px;"><img src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 assets/img/comphero-logo_03.png"></div>					
-                   
+                             
+					<!-- for error/success info message -->
+			        <?php if ($_smarty_tpl->tpl_vars['msgInfo']->value){?>
+			        	<div class="<?php echo $_smarty_tpl->tpl_vars['msgClass']->value;?>
+">
+			            	<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+			                <strong><?php echo $_smarty_tpl->tpl_vars['msgInfo']->value;?>
+</strong>
+			            </div>
+			        <?php }?>
+			        
                     <h2>Login to your account</h2>
-                    <div class="<?php echo $_smarty_tpl->tpl_vars['msgClass']->value;?>
-"><strong><?php echo $_smarty_tpl->tpl_vars['msgInfo']->value;?>
-</strong></div>  
-						<form action="admin/validate_credentials" method="post" class="form-horizontal">
+                    
+						<!-- <form action="admin/validate_credentials" method="post" class="form-horizontal">-->
+						<?php echo $_smarty_tpl->tpl_vars['formOpen']->value;?>
+
 						<fieldset>
 							
 							<div class="input-prepend" title="Username">
 								<span class="add-on"><i class="icon-user"></i></span>
-								<input class="input-large span10" name="username" id="username" type="text" placeholder="type email"/>
+								<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
+
 							</div>
 							<div class="clearfix"></div>
 
 							<div class="input-prepend" title="Password">
 								<span class="add-on"><i class="icon-lock"></i></span>
-								<input class="input-large span10" name="password" id="password" type="password" placeholder="type password"/>
+								<?php echo $_smarty_tpl->tpl_vars['password']->value;?>
+
 							</div>
 							
 							<div class="clearfix"></div>
@@ -154,7 +170,9 @@ $_smarty_tpl->tpl_vars['country']->_loop = true;
 							</div>
 							<div class="clearfix"></div>
 					</fieldset>
-					</form>
+					<!-- </form>-->
+					<?php echo $_smarty_tpl->tpl_vars['formClose']->value;?>
+
 					<hr>
 					<h3>Forgot Password?</h3>
 					<p>

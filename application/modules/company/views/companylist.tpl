@@ -4,7 +4,7 @@
             
 				<ul class="breadcrumb">
 					<li>
-						<a href="home.html">Home</a> <span class="divider">/</span>
+						<a href="{$baseUrl}dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
 						<a href="#">Verticals</a> <span class="divider">/</span>
@@ -16,34 +16,23 @@
             
 				<hr>
                 
-               <div class="row-fluid sortable">	
-				<div class="box span12">
-					<div class="box-header">
-						<h2><i class="icon-list"></i><span class="break"></span>Company Settings</h2>
-					</div>
+              
 					<div class="box-content">
-						
 						<a class="quick-button span4" href="{$baseUrl}company/addcompany">
 							<i class="fa-icon-group"></i>
 							<p>ADD COMPANY</p>
 						</a>
-						<!-- <a class="quick-button span4" href="{$baseUrl}company/editcompany">
-							<i class="icon-pencil"></i>
-							<p>EDIT COMPANY INFORMATION</p>	
-						</a>
-						<a class="quick-button span4" href="{$baseUrl}company/companymanagement">
-							<i class="icon-eye-open"></i>
-							<p>VIEW COMPANY LISTS</p>
-						</a>-->
-					
-						
 						<div class="clearfix"></div>
 					</div>	
-				</div>
-				
-			</div>
-                <div class="{$msgClass}"><strong>{$msgInfo}</strong></div>  
-                
+			
+				<!-- for error/success info message -->
+		        {if $msgInfo}
+		        	<br />
+		        	<div class="{$msgClass}">
+		            	<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+		                <strong>{$msgInfo}</strong>
+		            </div>
+		        {/if}  
                 
                 <div class="row-fluid sortable">	
 				<div class="box span12">
@@ -72,6 +61,12 @@
 										{assign "icon" $default_icon}
 									{else}
 										{assign "icon" $company->company_logo}
+									{/if}
+								
+									{if file_exists($company->company_logo)}
+										{assign 'icon' $icon}
+									{else}
+										{assign 'icon' $default_icon}
 									{/if}
 								
 								<tr>

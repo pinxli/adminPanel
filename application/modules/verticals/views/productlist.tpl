@@ -6,7 +6,7 @@
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="{$baseUrl}dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
 						<a href="#">Verticals</a> <span class="divider">/</span>
@@ -18,29 +18,28 @@
 				<hr>
 			</div>   
                 
-                <div class="row-fluid sortable">	
-				<div class="box span12">
-					<div class="box-header">
-						<h2><i class="icon-list"></i><span class="break"></span>Product List Settings</h2>
-					</div>
-					<div class="box-content">
-						
-						<a class="quick-button span4" href="{$baseUrl}verticals/addproduct/">
-							<i class="icon-folder-open"></i>
-							<p>ADD PRODUCT</p>
-						</a>
-					
-						<div class="clearfix"></div>
-					</div>	
-				</div><!--/span-->
-				
-			</div>            
+             
+			<div class="box-content">
+				<a class="quick-button span4" href="{$baseUrl}verticals/addproduct/">
+					<i class="fa fa-plus-circle"></i>
+					<p>ADD PRODUCT</p>
+				</a>
+				<div class="clearfix"></div>
+			</div>  
+          
+			<!-- for error/success info message -->
+	        {if $msgInfo}
+	        	<br />
+	        	<div class="{$msgClass}">
+	            	<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+	                <strong>{$msgInfo}</strong>
+	            </div>
+	        {/if}         
             
 			   <div class="row-fluid sortable">
-				<div class="box span12">
-                     <div class="{$msgClass}"><strong>{$msgInfo}</strong></div>        
+				<div class="box span12">      
 					<div class="box-header" data-original-title>
-					<h2><i class="fa fa-sitemap"></i><span class="break"></span>All Categories</h2>
+					<h2><i class="icon-list"></i><span class="break"></span>All Categories</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
@@ -122,7 +121,7 @@
 									{assign 'product_icon' $default_product_img}
 								{/if}
 							<tr>
-								<td><img src="{$baseUrl}{$product_icon}" width="30"></td>
+								<td><p class="text-center"><img src="{$baseUrl}{$product_icon}" width="30"></p></td>
 								<td class="center">{$product->product_name}</td>
 								<td class="center">{$product->product_type}</td>
 								<td class="center">{$product->company_name}</td>

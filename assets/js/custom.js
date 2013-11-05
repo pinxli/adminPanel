@@ -102,8 +102,7 @@ $(document).ready(function(){
 			url: "http://localhost/adminPanel/verticals/getprodarea" ,
 			data: {id:str},
 			success: function(resultData){  
-				console.log(resultData);
-				
+				// console.log(resultData);
 				if ( resultData.rc == 0 ){
 					var result = resultData.data.productarealist;
 					

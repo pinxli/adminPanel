@@ -15,14 +15,21 @@
 				<hr>
 			</div>
 			   
+               
+					<div class="box-content">
+						
+						<a class="quick-button span4" href="{$baseUrl}settings/excelexport/logList">
+							<i class="fa fa-download"></i>
+							<p>EXPORT TO EXCEL</p>
+						</a>
+					
+						<div class="clearfix"></div>
+					</div> 
+					
 			   <div class="row-fluid sortable">
-				<div class="box span12">
-                
-                <a class="btn" href="{$baseUrl}settings/excelexport/logList">Extract To Excel</a>
-                <hr>
-                            
+				<div class="box span12">      
 					<div class="box-header" data-original-title>
-						<h2><i class="icon-group"></i><span class="break"></span>Access Logs</h2>
+						<h2><i class="icon-list"></i><span class="break"></span>Access Logs</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>

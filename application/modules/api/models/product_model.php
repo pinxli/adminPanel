@@ -147,8 +147,9 @@ class Product_model extends CI_Model {
 	}
 	
 	public function areaList() {
-		$this->db->from('products_areas');
-		$this->db->order_by('area_id', 'asc');
+		$this->db->from('products_areas')
+			 ->join('countries', 'countries.country_id = products_areas.area_country_id')
+			 ->order_by('products_areas.area_id', 'asc');
 		$query = $this->db->get();
 		 
 		//if data exist, return results

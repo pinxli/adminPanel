@@ -4,7 +4,7 @@
             
 				<ul class="breadcrumb">
 					<li>
-						<a href="home.html">Home</a> <span class="divider">/</span>
+						<a href="{$baseUrl}dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
 						<a href="#">Verticals</a> <span class="divider">/</span>
@@ -43,7 +43,14 @@
 				</div>
 				
 			</div>
-                
+			
+				<!-- for error/success info message -->
+                {if $msgInfo}
+                    <div class="{$msgClass}">
+                    	<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+                    	<strong>{$msgInfo}</strong>
+                    </div>
+                {/if} 
                 
                 <div class="row-fluid sortable">
 				<div class="box span12">

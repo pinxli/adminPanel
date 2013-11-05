@@ -21,29 +21,98 @@ class Admin extends CI_Controller {
 	//loads the login form
 	function index()
 	{
+		$this->load->library('form_validation');  
 		
-		$res = $this->admin_model->countryList();
+		$this->form_validation->set_rules('username', 'Username or Email', 'xss_clean|trim|required|valid_email');
+		$this->form_validation->set_rules('password', 'password', 'xss_clean|trim|required');
 		
-		$data['title']			= 'Login';
-		$data['countryList'] 	= $res->data->countrylist;
-		$data['baseUrl'] 		= base_url();
-		$data['msgClass'] 		= $this->msgClass;
-		$data['msgInfo'] 		= $this->msgInfo;
+		if($this->form_validation->run() == FALSE)
+		{
+			//set forms open, close and inputs
+			$form_open	= form_open_multipart('',array('class' => 'form-horizontal', 'method' => 'post'));
+			$form_close	= form_close();
+			$username	= form_input(array('name' => 'username', 'class' => 'input-large span10' , 'id' => 'focusedInput', 'placeholder' => 'Enter Email'));
+			$password	= form_password(array('name' => 'password', 'class' => 'input-large span10' , 'id' => 'focusedInput', 'placeholder' => 'Enter Password'));
+			
+			$res = $this->admin_model->countryList();
+			
+			if ( validation_errors() ){
+				$this->msgClass = 'alert alert-error';
+				$this->msgInfo  = validation_errors();
+			}
+			
+			$data['title']			= 'Login';
+			$data['countryList'] 	= $res->data->countrylist;
+			$data['baseUrl'] 		= base_url();
+			$data['msgClass'] 		= $this->msgClass;
+			$data['msgInfo'] 		= $this->msgInfo;
+			$data['username'] 		= $username;
+			$data['password'] 		= $password;
+			$data['formOpen'] 		= $form_open;
+			$data['formClose'] 		= $form_close;
 
-		$this->parser->parse('login_form.tpl', $data);
+			$this->parser->parse('login_form.tpl', $data);
+		}
+		else{
+			$login_data = array(
+				'username' => $this->input->post('username'),
+				'password' => $this->input->post('password'),
+				'locale'   => strtolower($this->input->post('locale'))
+			);	
+			
+			$login = $this->admin_model->validate($login_data);
+				
+			// echo "<pre />";
+			// print_r($login);
+			// exit;
+			if ( $login->rc == 0 ){
+				$data = array(
+					'userid' 		=> $login->data->user->userid,
+					'email'	 		=> $login->data->user->email,
+					'fname'	 		=> $login->data->user->fname,
+					'lname'			=> $login->data->user->lname,
+					'logid' 		=> $login->data->user->log_id,
+					'locale' 		=> $login->data->user->locale,
+					'user_level_id' => $login->data->user->user_level_id,
+					'is_logged_in'  => true
+				);
+				
+				$this->session->set_userdata($data);
+				redirect('dashboard/members_area');
+			}
+			else{
+				$msgClass = 'alert alert-error';
+				$msgInfo  = ( $login->message[0] ) ? $login->message[0] : 'Invalid Username and/or Password.';	
+				
+				//set flash data for error/info message
+				$msginfo_arr = array(
+					'msgClass' => $msgClass,
+					'msgInfo'  => $msgInfo,
+				);
+				$this->session->set_flashdata($msginfo_arr);
+				
+				// echo "<pre />";
+				// print_r($msginfo_arr);
+				redirect('admin');
+			}	
+		}
+
 	}
 	
 	//login into the system
 	function validate_credentials()
-	{				
+	{	
 		$login_data = array(
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password'),
 			'locale'   => strtolower($this->input->post('locale'))
-		);
+		);	
 		
 		$login = $this->admin_model->validate($login_data);
-		
+			
+		// echo "<pre />";
+		// print_r($login);
+		// exit;
 		if ( $login->rc == 0 ){
 			$data = array(
 				'userid' 		=> $login->data->user->userid,

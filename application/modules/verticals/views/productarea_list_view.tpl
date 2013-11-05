@@ -6,7 +6,7 @@
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="{$baseUrl}dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					
 					<li>
@@ -21,14 +21,30 @@
 			</div>
             
             
+               
+					<div class="box-content">
+						
+						<a class="quick-button span4" href="{$baseUrl}verticals/addproductarea">
+							<i class="fa fa-plus-circle"></i>
+							<p>ADD PRODUCT AREA</p>
+						</a>
+					
+						<div class="clearfix"></div>
+					</div>  
+          
+			<!-- for error/success info message -->
+	        {if $msgInfo}
+	        	<br />
+	        	<div class="{$msgClass}">
+	            	<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+	                <strong>{$msgInfo}</strong>
+	            </div>
+	        {/if}  
+			
 			   <div class="row-fluid sortable">
-				<div class="box span12">
-                
-                <a class="btn" href="{$baseUrl}verticals/addproductarea">Add Product Area</a>
-                <hr>
-                    <div class="{$msgClass}"><strong>{$msgInfo}</strong></div>        
+				<div class="box span12">   
 					<div class="box-header" data-original-title>
-						<h2><i class="icon-group"></i><span class="break"></span>Product Areas</h2>
+						<h2><i class="icon-list"></i><span class="break"></span>Product Areas</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
@@ -41,6 +57,7 @@
 							  <tr>
 								  <th width="26%">Area Name</th>
 								  <th width="27%">Area Description</th>
+								  <th width="27%">Country</th>
                                   <th width="10%">Active</th>
                                   <th width="10%">Action</th>
 								  
@@ -52,7 +69,7 @@
 							<tr>
 								<td>{$AreaList->area_name}</td>
 								<td class="center">{$AreaList->area_description}</td>
-				
+								<td class="center">{$AreaList->short_name}</td>				
 								<td class="center">
 									<span class="label label-success">Active</span>
 								</td>

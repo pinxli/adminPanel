@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 04:44:21
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-05 09:58:51
          compiled from "application\modules\verticals\views\csv_upload_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:139955269f725a97c97-06502050%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f1fd18d28ce46a9465c9de5d7c28d955b6b4f862' => 
     array (
       0 => 'application\\modules\\verticals\\views\\csv_upload_view.tpl',
-      1 => 1382669294,
+      1 => 1383210912,
       2 => 'file',
     ),
   ),
@@ -15,20 +15,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_5269f725ac6a9',
   'variables' => 
   array (
     'msgClass' => 0,
     'msgInfo' => 0,
     'form_open' => 0,
-    'productTypeList' => 0,
-    'areaList' => 0,
-    'countryList' => 0,
-    'companyList' => 0,
     'form_close' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5269f725ac6a9',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5269f725ac6a9')) {function content_5269f725ac6a9($_smarty_tpl) {?><div id="content" class="span10">
 	<!-- start: Content -->
@@ -80,31 +76,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								</div>
 							  </div>
 							  </div>
-							  
-							  <div class="control-group">
-								<label class="control-label" for="focusedInput">Product Type:</label>
-								<div class="controls"><?php echo $_smarty_tpl->tpl_vars['productTypeList']->value;?>
-</div>
-							  </div>
-							  
-							 <div class="control-group">
-								<label class="control-label" for="focusedInput">Product Area:</label>
-								<div class="controls"><?php echo $_smarty_tpl->tpl_vars['areaList']->value;?>
-</div>
-							 </div>
-							  
-							  <div class="control-group">
-								<label class="control-label" for="focusedInput">Country:</label>
-								<div class="controls"><?php echo $_smarty_tpl->tpl_vars['countryList']->value;?>
-</div>
-							  </div> 
-							  
-							 <div class="control-group">
-								<label class="control-label" for="focusedInput">Company:</label>
-								<div class="controls"><?php echo $_smarty_tpl->tpl_vars['companyList']->value;?>
-</div>
-							  </div>
-							  
+							 						  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 							   <div class="form-actions">
 								<button type="submit" class="btn btn-primary">Upload</button>
@@ -122,4 +115,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     
 				
 			<!-- end: Content -->
-			</div><!--/#content.span10--><?php }} ?>
+			</div><!--/#content.span10-->	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php }} ?>

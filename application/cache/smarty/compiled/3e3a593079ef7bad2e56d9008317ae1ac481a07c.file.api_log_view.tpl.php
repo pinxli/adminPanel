@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-31 02:50:05
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-05 10:49:35
          compiled from "application\modules\settings\views\api_log_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28369526a2d5c177078-13796815%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3e3a593079ef7bad2e56d9008317ae1ac481a07c' => 
     array (
       0 => 'application\\modules\\settings\\views\\api_log_view.tpl',
-      1 => 1383187703,
+      1 => 1383648571,
       2 => 'file',
     ),
   ),
@@ -31,7 +31,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					
 					<li>
@@ -45,15 +46,23 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<hr>
 			</div>
 			   
+               
+					<div class="box-content">
+						
+						<a class="quick-button span4" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+settings/excelexport/apilogList">
+							<i class="fa fa-download"></i>
+							<p>EXPORT TO EXCEL</p>
+						</a>
+					
+						<div class="clearfix"></div>
+					</div> 
+					
 			   <div class="row-fluid sortable">
 				<div class="box span12">
-                
-                <a class="btn" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-settings/excelexport/apilogList">Extract To Excel</a>
-                <hr>
                             
 					<div class="box-header" data-original-title>
-						<h2><i class="icon-group"></i><span class="break"></span>API Logs</h2>
+						<h2><i class="icon-list"></i><span class="break"></span>API Logs</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>

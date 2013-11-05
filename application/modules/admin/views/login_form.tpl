@@ -62,21 +62,30 @@
 						<a href="#"><i class="icon-cog"></i></a>
 					</div>
                     <div class="login-logo" align="center" style="max-width:80%; padding: 0px 80px;"><img src="{$baseUrl}assets/img/comphero-logo_03.png"></div>					
-                   
+                             
+					<!-- for error/success info message -->
+			        {if $msgInfo}
+			        	<div class="{$msgClass}">
+			            	<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+			                <strong>{$msgInfo}</strong>
+			            </div>
+			        {/if}
+			        
                     <h2>Login to your account</h2>
-                    <div class="{$msgClass}"><strong>{$msgInfo}</strong></div>  
-						<form action="admin/validate_credentials" method="post" class="form-horizontal">
+                    
+						<!-- <form action="admin/validate_credentials" method="post" class="form-horizontal">-->
+						{$formOpen}
 						<fieldset>
 							
 							<div class="input-prepend" title="Username">
 								<span class="add-on"><i class="icon-user"></i></span>
-								<input class="input-large span10" name="username" id="username" type="text" placeholder="type email"/>
+								{$username}
 							</div>
 							<div class="clearfix"></div>
 
 							<div class="input-prepend" title="Password">
 								<span class="add-on"><i class="icon-lock"></i></span>
-								<input class="input-large span10" name="password" id="password" type="password" placeholder="type password"/>
+								{$password}
 							</div>
 							
 							<div class="clearfix"></div>
@@ -104,7 +113,8 @@
 							</div>
 							<div class="clearfix"></div>
 					</fieldset>
-					</form>
+					<!-- </form>-->
+					{$formClose}
 					<hr>
 					<h3>Forgot Password?</h3>
 					<p>

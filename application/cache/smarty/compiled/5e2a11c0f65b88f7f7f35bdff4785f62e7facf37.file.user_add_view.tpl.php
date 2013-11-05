@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-24 10:10:53
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-05 10:40:31
          compiled from "application\modules\settings\views\user_add_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:84815256632bf33290-96416127%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5e2a11c0f65b88f7f7f35bdff4785f62e7facf37' => 
     array (
       0 => 'application\\modules\\settings\\views\\user_add_view.tpl',
-      1 => 1382609137,
+      1 => 1383648003,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5256632c017fa',
   'variables' => 
   array (
+    'baseUrl' => 0,
     'form_open' => 0,
     'fname' => 0,
     'lastname' => 0,
@@ -39,7 +40,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<a href="#">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Users</a>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+settings/user_management">Users</a>
 					</li>
 				</ul>
 				<hr>

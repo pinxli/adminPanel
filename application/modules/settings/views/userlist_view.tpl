@@ -1,31 +1,33 @@
+
 <div id="content" class="span10">
 			<!-- start: Content -->
 			
 
+			<div>
 				<hr>
-            
 				<ul class="breadcrumb">
 					<li>
 						<a href="{$baseUrl}dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Verticals</a> <span class="divider">/</span>
-					</li>
-                    <li>
-						<a href="#">Vertical Types</a>
+						<a href="#">Users</a>
 					</li>
 				</ul>
-              	<hr>     
-                
-                
+				<hr>
+			</div>
+
 					<div class="box-content">
-						<a class="quick-button span4" href="{$baseUrl}verticals/addverticaltype">
+						<a class="quick-button span4" href="{$baseUrl}settings/add_user">
 							<i class="fa fa-plus-circle"></i>
-							<p>ADD VERTICAL TYPES</p>
+							<p>ADD USER</p>
 						</a>
+						<a class="quick-button span4" href="{$baseUrl}settings/exporttoexcel/userlist">
+							<i class="fa fa-download"></i>
+							<p>EXPORT TO EXCEL</p>
+						</a>
+					
 						<div class="clearfix"></div>
-					</div>	
-    	 
+					</div>  
           
 			<!-- for error/success info message -->
 	        {if $msgInfo}
@@ -35,11 +37,12 @@
 	                <strong>{$msgInfo}</strong>
 	            </div>
 	        {/if}  
-            
+	        
 			   <div class="row-fluid sortable">
 				<div class="box span12">
+                    
 					<div class="box-header" data-original-title>
-						<h2><i class="icon-list"></i><span class="break"></span>Vertical Types</h2>
+						<h2><i class="icon-group"></i><span class="break"></span>Users</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
@@ -47,33 +50,38 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<table class="table table-striped table-bordered bootstrap-datatable datatable" id="tbl">
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
-								  <th width="5%">Product ID</th>
-								  <th width="26%">Product Name</th>
-								  <th width="27%">Product Description</th>
+								  <th width="26%">Name</th>
+								  <th width="27%">E-mail Address</th>
+								  <th width="26%">Roles</th>
+                                  <th width="11%">Status</th>
                                   <th width="10%">Action</th>
 								  
 							  </tr>
 						  </thead>   
 						  <tbody>
-							
-							{foreach from=$productTypeList item=producttype}
+							{foreach from=$userList item=user}
 							
 							<tr>
-								<td>{$producttype->product_type_id}</td>
-								<td>{$producttype->product_type}</td>
-								<td class="center">{$producttype->description}</td>
+								<td>{$user->fname} {$user->lname}</td>
+								<td class="center">{$user->email}</td>
+								<td class="center">admin</td>
 								<td class="center">
-									<a class="btn btn-info" href="{$baseUrl}verticals/editverticaltype/{$producttype->product_type_id}">
-									<i class="icon-edit icon-white"></i>  
+									<span class="label label-success">Active</span>
+								</td>
+								
+								<td class="center">
+										<a class="btn btn-info" href="{$baseUrl}settings/user_edit/{$user->userid}">
+										<i class="icon-edit icon-white"></i>  
+									</a>
+									<a class="btn btn-danger" href="{$baseUrl}settings/user_delete/{$user->userid}">
+										<i class="icon-trash icon-white"></i> 
 									</a>
 								</td>
 							</tr>
-							
 							{/foreach}
-							
 						  </tbody>
 					  </table> 
                           

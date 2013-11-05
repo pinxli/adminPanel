@@ -4,7 +4,7 @@
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="{$baseUrl}dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					
 					<li>
@@ -18,14 +18,22 @@
 				<hr>
 			</div>
 			   
+               
+					<div class="box-content">
+						
+						<a class="quick-button span4" href="{$baseUrl}settings/excelexport/apilogList">
+							<i class="fa fa-download"></i>
+							<p>EXPORT TO EXCEL</p>
+						</a>
+					
+						<div class="clearfix"></div>
+					</div> 
+					
 			   <div class="row-fluid sortable">
 				<div class="box span12">
-                
-                <a class="btn" href="{$baseUrl}settings/excelexport/apilogList">Extract To Excel</a>
-                <hr>
                             
 					<div class="box-header" data-original-title>
-						<h2><i class="icon-group"></i><span class="break"></span>API Logs</h2>
+						<h2><i class="icon-list"></i><span class="break"></span>API Logs</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>

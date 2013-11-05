@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-25 08:41:18
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-05 10:44:41
          compiled from "application\modules\verticals\views\productarea_list_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:184295269dfa7b01554-51739483%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'adeabbb901190f18ee5432774c395deb261f6b49' => 
     array (
       0 => 'application\\modules\\verticals\\views\\productarea_list_view.tpl',
-      1 => 1382688529,
+      1 => 1383648162,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'baseUrl' => 0,
-    'msgClass' => 0,
     'msgInfo' => 0,
+    'msgClass' => 0,
     'productAreaList' => 0,
     'AreaList' => 0,
   ),
@@ -35,7 +35,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					
 					<li>
@@ -50,17 +51,33 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
             
             
+               
+					<div class="box-content">
+						
+						<a class="quick-button span4" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+verticals/addproductarea">
+							<i class="fa fa-plus-circle"></i>
+							<p>ADD PRODUCT AREA</p>
+						</a>
+					
+						<div class="clearfix"></div>
+					</div>  
+          
+			<!-- for error/success info message -->
+	        <?php if ($_smarty_tpl->tpl_vars['msgInfo']->value){?>
+	        	<br />
+	        	<div class="<?php echo $_smarty_tpl->tpl_vars['msgClass']->value;?>
+">
+	            	<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+	                <strong><?php echo $_smarty_tpl->tpl_vars['msgInfo']->value;?>
+</strong>
+	            </div>
+	        <?php }?>  
+			
 			   <div class="row-fluid sortable">
-				<div class="box span12">
-                
-                <a class="btn" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-verticals/addproductarea">Add Product Area</a>
-                <hr>
-                    <div class="<?php echo $_smarty_tpl->tpl_vars['msgClass']->value;?>
-"><strong><?php echo $_smarty_tpl->tpl_vars['msgInfo']->value;?>
-</strong></div>        
+				<div class="box span12">   
 					<div class="box-header" data-original-title>
-						<h2><i class="icon-group"></i><span class="break"></span>Product Areas</h2>
+						<h2><i class="icon-list"></i><span class="break"></span>Product Areas</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
@@ -73,6 +90,7 @@ verticals/addproductarea">Add Product Area</a>
 							  <tr>
 								  <th width="26%">Area Name</th>
 								  <th width="27%">Area Description</th>
+								  <th width="27%">Country</th>
                                   <th width="10%">Active</th>
                                   <th width="10%">Action</th>
 								  
@@ -90,7 +108,8 @@ $_smarty_tpl->tpl_vars['AreaList']->_loop = true;
 </td>
 								<td class="center"><?php echo $_smarty_tpl->tpl_vars['AreaList']->value->area_description;?>
 </td>
-				
+								<td class="center"><?php echo $_smarty_tpl->tpl_vars['AreaList']->value->short_name;?>
+</td>				
 								<td class="center">
 									<span class="label label-success">Active</span>
 								</td>

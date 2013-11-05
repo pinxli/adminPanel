@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-30 03:23:59
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-05 10:51:07
          compiled from "application\modules\company\views\companylist.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2592525652dd3aecb8-98813037%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd3ab7b4ad0befd26bf0bb9f0d2206d2df057ec45' => 
     array (
       0 => 'application\\modules\\company\\views\\companylist.tpl',
-      1 => 1383102695,
+      1 => 1383648665,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'baseUrl' => 0,
-    'msgClass' => 0,
     'msgInfo' => 0,
+    'msgClass' => 0,
     'companyList' => 0,
     'company' => 0,
     'default_icon' => 0,
@@ -35,7 +35,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             
 				<ul class="breadcrumb">
 					<li>
-						<a href="home.html">Home</a> <span class="divider">/</span>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
 						<a href="#">Verticals</a> <span class="divider">/</span>
@@ -48,39 +49,26 @@ company/companymanagement">Company</a>
             
 				<hr>
                 
-               <div class="row-fluid sortable">	
-				<div class="box span12">
-					<div class="box-header">
-						<h2><i class="icon-list"></i><span class="break"></span>Company Settings</h2>
-					</div>
+              
 					<div class="box-content">
-						
 						<a class="quick-button span4" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 company/addcompany">
 							<i class="fa-icon-group"></i>
 							<p>ADD COMPANY</p>
 						</a>
-						<!-- <a class="quick-button span4" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-company/editcompany">
-							<i class="icon-pencil"></i>
-							<p>EDIT COMPANY INFORMATION</p>	
-						</a>
-						<a class="quick-button span4" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-company/companymanagement">
-							<i class="icon-eye-open"></i>
-							<p>VIEW COMPANY LISTS</p>
-						</a>-->
-					
-						
 						<div class="clearfix"></div>
 					</div>	
-				</div>
-				
-			</div>
-                <div class="<?php echo $_smarty_tpl->tpl_vars['msgClass']->value;?>
-"><strong><?php echo $_smarty_tpl->tpl_vars['msgInfo']->value;?>
-</strong></div>  
-                
+			
+				<!-- for error/success info message -->
+		        <?php if ($_smarty_tpl->tpl_vars['msgInfo']->value){?>
+		        	<br />
+		        	<div class="<?php echo $_smarty_tpl->tpl_vars['msgClass']->value;?>
+">
+		            	<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+		                <strong><?php echo $_smarty_tpl->tpl_vars['msgInfo']->value;?>
+</strong>
+		            </div>
+		        <?php }?>  
                 
                 <div class="row-fluid sortable">	
 				<div class="box span12">
@@ -113,6 +101,12 @@ $_smarty_tpl->tpl_vars['company']->_loop = true;
 										<?php $_smarty_tpl->tpl_vars["icon"] = new Smarty_variable($_smarty_tpl->tpl_vars['default_icon']->value, null, 0);?>
 									<?php }else{ ?>
 										<?php $_smarty_tpl->tpl_vars["icon"] = new Smarty_variable($_smarty_tpl->tpl_vars['company']->value->company_logo, null, 0);?>
+									<?php }?>
+								
+									<?php if (file_exists($_smarty_tpl->tpl_vars['company']->value->company_logo)){?>
+										<?php $_smarty_tpl->tpl_vars['icon'] = new Smarty_variable($_smarty_tpl->tpl_vars['icon']->value, null, 0);?>
+									<?php }else{ ?>
+										<?php $_smarty_tpl->tpl_vars['icon'] = new Smarty_variable($_smarty_tpl->tpl_vars['default_icon']->value, null, 0);?>
 									<?php }?>
 								
 								<tr>

@@ -47,14 +47,15 @@ class Company extends CI_Controller {
 		$this->load->library('form_validation');
 		
 		// field name, error message, validation rules
-		$this->form_validation->set_rules('company_name', 'company_name', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('company_email', 'company_email', 'xss_clean|trim|required|valid_email');
-		$this->form_validation->set_rules('company_phone', 'company_phone', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('company_fax', 'company_fax', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('company_address', 'company_address', 'xss_clean|trim|required');
-		$this->form_validation->set_rules('company_contact', 'company_contact', 'xss_clean|trim|required');
+		$this->form_validation->set_rules('company_name', 	 'Company Name', 	'xss_clean|trim|required');
+		$this->form_validation->set_rules('company_email', 	 'Company Email', 	'xss_clean|trim|required|valid_email');
+		$this->form_validation->set_rules('company_phone', 	 'Company Phone', 	'xss_clean|trim|required');
+		$this->form_validation->set_rules('company_fax', 	 'Company Fax', 	'xss_clean|trim|required');
+		$this->form_validation->set_rules('company_address', 'Company Address', 'xss_clean|trim|required');
+		$this->form_validation->set_rules('company_contact', 'Company Contact', 'xss_clean|trim|required');
 		// $this->form_validation->set_rules('company_logo', 'company_logo', 'xss_clean|trim|required');
-		
+	
+	
 		if($this->form_validation->run() == FALSE)
 		{
 			//set forms open, close and inputs
@@ -70,6 +71,11 @@ class Company extends CI_Controller {
 			$form_close 		= form_close();
 
 			$data['mainContent'] = 'company_add_view.tpl';
+
+			if ( validation_errors() ){
+				$this->msgClass = 'alert alert-error';
+				$this->msgInfo  = validation_errors();
+			}
 			
 			$data['data'] = array(
 				'baseUrl'			=> base_url(),
@@ -91,7 +97,16 @@ class Company extends CI_Controller {
 		}
 		else 	
 		{
+			$path_upload_img_company = $this->config->item('path_upload_img');
+			$default_company_img 	 = $this->config->item('default_company_img');
+			
 			$imgUp = $this->company_model->companyImg('upload_image');
+			$prod_icon = ( $imgUp['data']['file_name'] ) ? $path_upload_img_company.$imgUp['data']['file_name'] : $path_upload_img_company.$default_company_img;
+			
+			$imgUpErrMsg = '';
+			if($imgUp['rc'] != 0){
+				$imgUpErrMsg  = $imgUp['msgInfo'].'<br />';
+			}
 			
 			if ( $imgUp['rc'] == 0 ){
 				$insert_data = array(
@@ -103,19 +118,17 @@ class Company extends CI_Controller {
 					'company_address' 		=> $this->input->post('company_address'),	
 					'company_contact' 		=> $this->input->post('company_contact'),
 					'company_description'	=> $this->input->post('description'),
-					'company_logo' 			=> $this->config->item('path_upload_img'). $imgUp['data']['file_name'], //'assets/uploadimages/companyImg/' . $imgUp['data']['file_name'],
+					'company_logo' 			=> $prod_icon, //$this->config->item('path_upload_img'). $imgUp['data']['file_name'], //'assets/uploadimages/companyImg/' . $imgUp['data']['file_name'],
 					'company_country_id' 	=> 1
 				);
 				
 				$result = $this->company_model->companyAdd($insert_data);
 				
-				if($result->rc == 0)
-				{
+				if($result->rc == 0){
 					$msgClass = 'alert alert-success';
 					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Company has been added.';
 				}
-				else 
-				{	
+				else{	
 					$msgClass = 'alert alert-error';
 					$msgInfo  = ( $result->message[0] ) ? $result->message[0] : 'Add company failed.';			
 				}
@@ -136,7 +149,6 @@ class Company extends CI_Controller {
 			redirect('company/companymanagement/');
 			
 		}
-					
 	}	
 	
 	// edit user
@@ -166,10 +178,6 @@ class Company extends CI_Controller {
 				);
 						
 				$result = $this->company_model->edit_company($edit_data);
-				
-				// echo "<pre />";
-				// print_r($result);
-				// exit;
 				
 				if($result->rc == 0)
 				{

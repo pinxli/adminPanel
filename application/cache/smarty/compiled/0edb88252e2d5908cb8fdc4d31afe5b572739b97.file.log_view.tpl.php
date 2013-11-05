@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-10-30 11:03:08
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-05 10:48:16
          compiled from "application\modules\settings\views\log_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:438752577eddc13a43-67891465%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0edb88252e2d5908cb8fdc4d31afe5b572739b97' => 
     array (
       0 => 'application\\modules\\settings\\views\\log_view.tpl',
-      1 => 1383130741,
+      1 => 1383648495,
       2 => 'file',
     ),
   ),
@@ -42,15 +42,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<hr>
 			</div>
 			   
+               
+					<div class="box-content">
+						
+						<a class="quick-button span4" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+settings/excelexport/logList">
+							<i class="fa fa-download"></i>
+							<p>EXPORT TO EXCEL</p>
+						</a>
+					
+						<div class="clearfix"></div>
+					</div> 
+					
 			   <div class="row-fluid sortable">
-				<div class="box span12">
-                
-                <a class="btn" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-settings/excelexport/logList">Extract To Excel</a>
-                <hr>
-                            
+				<div class="box span12">      
 					<div class="box-header" data-original-title>
-						<h2><i class="icon-group"></i><span class="break"></span>Access Logs</h2>
+						<h2><i class="icon-list"></i><span class="break"></span>Access Logs</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
