@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-11-06 09:59:45
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-07 09:41:29
          compiled from "application\modules\verticals\views\product_add_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2606252674ad104ab83-51593417%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cd47632de75495303ccb36e4997c6aff058363a8' => 
     array (
       0 => 'application\\modules\\verticals\\views\\product_add_view.tpl',
-      1 => 1383648236,
+      1 => 1383817283,
       2 => 'file',
     ),
   ),
@@ -241,7 +241,8 @@ api/verticaloption/<?php echo $_smarty_tpl->tpl_vars['locale']->value;?>
 					}
 					else
 					{
-						$('#category_type').after('<div class="control-group product_options"><label class="control-label" for="focusedInput">' +v.option_key +':</label><div class="controls"><input type="text" name="option['+v.option_key +'-' + v.id+ ']" value="" class="input-xlarge focused" id="focusedInput" placeholder="' +v.option_key +' Value"> &nbsp; Expiry Days:<input class="input-small focused autonum" type="number" name="expiry_date['+ v.id +']" min="1" max="30" onclick="checknumeric()"></div></div>');
+							var optionkey = v.option_key.split(" ").join("");
+						$('#category_type').after('<div class="control-group product_options"><label class="control-label" for="focusedInput">' +v.option_key +':</label><div class="controls"><input type="text" name="option['+optionkey +'-' + v.id+ ']" value="" class="input-xlarge focused" id="focusedInput" placeholder="' +v.option_key +' Value"> &nbsp; Expiry Days:<input class="input-small focused autonum" type="number" name="expiry_date['+ v.id +']" min="1" max="30" onclick="checknumeric()"></div></div>');
 					}
 								     
 

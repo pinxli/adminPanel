@@ -189,7 +189,8 @@ function verticalType(){
 					}
 					else
 					{
-						$('#category_type').after('<div class="control-group product_options"><label class="control-label" for="focusedInput">' +v.option_key +':</label><div class="controls"><input type="text" name="option['+v.option_key +'-' + v.id+ ']" value="" class="input-xlarge focused" id="focusedInput" placeholder="' +v.option_key +' Value"> &nbsp; Expiry Days:<input class="input-small focused autonum" type="number" name="expiry_date['+ v.id +']" min="1" max="30" onclick="checknumeric()"></div></div>');
+							var optionkey = v.option_key.split(" ").join("");
+						$('#category_type').after('<div class="control-group product_options"><label class="control-label" for="focusedInput">' +v.option_key +':</label><div class="controls"><input type="text" name="option['+optionkey +'-' + v.id+ ']" value="" class="input-xlarge focused" id="focusedInput" placeholder="' +v.option_key +' Value"> &nbsp; Expiry Days:<input class="input-small focused autonum" type="number" name="expiry_date['+ v.id +']" min="1" max="30" onclick="checknumeric()"></div></div>');
 					}
 								     
 

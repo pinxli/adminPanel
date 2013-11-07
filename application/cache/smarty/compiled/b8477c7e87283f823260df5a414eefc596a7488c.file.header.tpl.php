@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-11-07 08:26:20
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-07 09:35:53
          compiled from "application\views\includes\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93385257869c99f3c7-90349051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b8477c7e87283f823260df5a414eefc596a7488c' => 
     array (
       0 => 'application\\views\\includes\\header.tpl',
-      1 => 1383812774,
+      1 => 1383816950,
       2 => 'file',
     ),
   ),
@@ -480,7 +480,7 @@ leads/leadslist"><span class="hidden-tablet"> Leads</span></a></li>
                            	<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 leads/leaduser"><span class="hidden-tablet"> Leads User</span></a></li>
                            	<li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
-leads/leadslist"><span class="hidden-tablet"> Leads Search</span></a></li>
+leads/leadsearch"><span class="hidden-tablet"> Leads Search</span></a></li>
                            	<!-- <li><a class="submenu" href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 leads/leadslist"><span class="hidden-tablet"> Leads List</span></a></li>-->
 							</ul>

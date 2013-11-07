@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	
+	
 	/* ---------- Login Box Styles ---------- */
 	if($(".login-box")) {
 		

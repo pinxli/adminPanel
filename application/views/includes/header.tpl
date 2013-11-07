@@ -412,7 +412,7 @@
 							<ul>
                            	<li><a class="submenu" href="{$baseUrl}leads/leadslist"><span class="hidden-tablet"> Leads</span></a></li>
                            	<li><a class="submenu" href="{$baseUrl}leads/leaduser"><span class="hidden-tablet"> Leads User</span></a></li>
-                           	<li><a class="submenu" href="{$baseUrl}leads/leadslist"><span class="hidden-tablet"> Leads Search</span></a></li>
+                           	<li><a class="submenu" href="{$baseUrl}leads/leadsearch"><span class="hidden-tablet"> Leads Search</span></a></li>
                            	<!-- <li><a class="submenu" href="{$baseUrl}leads/leadslist"><span class="hidden-tablet"> Leads List</span></a></li>-->
 							</ul>
 						</li>
