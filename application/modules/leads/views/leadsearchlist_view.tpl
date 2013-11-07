@@ -46,10 +46,10 @@
 								<tr>
 									<td>Search By:
 										<select id="searchby" name="searchby">
-											<option value="0">First Name</option>
-											<option value="1">Last Name</option>
-											<option value="2">Email</option>
-											<option value="3">Phone No.</option>
+											<option value="0">Lead User</option>
+											<option value="1">Search Key</option>
+											<option value="2">Search Value</option>
+											<option value="3">Date</option>
 										</select>
 										<input type="text" id="searchkeyword" name="searchkeyword" value="" placeholder="Type keyword.." />
 										<!-- <button class="btn btn-primary" id="searchbtn" type="button" alt="{$baseUrl}verticals/productsearch">Search</button>-->
