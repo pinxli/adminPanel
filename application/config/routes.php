@@ -79,6 +79,14 @@ $route['api/logs/([a-z]+)/([0-9]+)']          			= "api/logs/rest/$1/$2";
 $route['api/logs/([a-z]+)/([0-9]+)/([0-9]+)']    		= "api/logs/rest/$1/$2/$3"; //auth key, id
 $route['api/logs/([a-z]+)']                				= "api/logs/rest/$1";
 
+$route['api/leads/([a-z]+)/([0-9]+)']          			= "api/leads/rest/$1/$2";
+$route['api/leads/([a-z]+)/([0-9]+)/([0-9]+)']    		= "api/leads/rest/$1/$2/$3"; //auth key, id
+$route['api/leads/([a-z]+)']							= "api/leads/rest/$1";
+
+$route['api/leaduser/([a-z]+)/([0-9]+)']				= "api/leaduser/rest/$1/$2";
+$route['api/leaduser/([a-z]+)/([0-9]+)/([0-9]+)']		= "api/leaduser/rest/$1/$2/$3"; //auth key, id
+$route['api/leaduser/([a-z]+)']							= "api/leaduser/rest/$1";
+
 $route['404_override'] = '';
 
 

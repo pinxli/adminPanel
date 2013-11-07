@@ -400,11 +400,22 @@
 							</ul>	
 						</li>
 											
-                        <li><a class="dropmenu" href="#"><i class="fa fa-building icon-white"></i><span class="hidden-tablet"> Company</span></a>
-                        <ul>
-                           <li><a class="submenu" href="{$baseUrl}company/companymanagement"><span class="hidden-tablet"> Company Management</span></a></li>
-								
+                        <li>
+                        	<a class="dropmenu" href="#"><i class="fa fa-building icon-white"></i><span class="hidden-tablet"> Company</span></a>
+                        	<ul>
+                           	<li><a class="submenu" href="{$baseUrl}company/companymanagement"><span class="hidden-tablet"> Company Management</span></a></li>
 							</ul>
+						</li>
+										
+                        <li>
+                        	<a class="dropmenu" href="#"><i class="fa fa-suitcase icon-white"></i><span class="hidden-tablet"> Leads</span></a>
+							<ul>
+                           	<li><a class="submenu" href="{$baseUrl}leads/leadslist"><span class="hidden-tablet"> Leads</span></a></li>
+                           	<li><a class="submenu" href="{$baseUrl}leads/leaduser"><span class="hidden-tablet"> Leads User</span></a></li>
+                           	<li><a class="submenu" href="{$baseUrl}leads/leadslist"><span class="hidden-tablet"> Leads Search</span></a></li>
+                           	<!-- <li><a class="submenu" href="{$baseUrl}leads/leadslist"><span class="hidden-tablet"> Leads List</span></a></li>-->
+							</ul>
+						</li>
                             
                          <li><a class="dropmenu" href="#"><i class="fa fa-gears icon-white"></i><span class="hidden-tablet">Settings</span></a>
                         	<ul>

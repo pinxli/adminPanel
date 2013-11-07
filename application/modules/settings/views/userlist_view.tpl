@@ -76,7 +76,7 @@
 										<a class="btn btn-info" href="{$baseUrl}settings/user_edit/{$user->userid}">
 										<i class="icon-edit icon-white"></i>  
 									</a>
-									<a class="btn btn-danger" href="{$baseUrl}settings/user_delete/{$user->userid}">
+									<a id="del-user" class="btn btn-danger" href="{$baseUrl}settings/user_delete/{$user->userid}">
 										<i class="icon-trash icon-white"></i> 
 									</a>
 								</td>

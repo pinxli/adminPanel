@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-11-05 08:35:31
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-06 09:55:38
          compiled from "application\modules\admin\views\login_form.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1610652561f8c9eee99-96918773%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f489b9f5b16ab9e36513209c0c743ac9b2bc0289' => 
     array (
       0 => 'application\\modules\\admin\\views\\login_form.tpl',
-      1 => 1383640529,
+      1 => 1383731734,
       2 => 'file',
     ),
   ),
@@ -240,6 +240,8 @@ assets/js/jquery.knob.js"></script>
 assets/js/jquery.sparkline.min.js"></script>
 	<script src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
 assets/js/custom.js"></script>
+	<script src="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+assets/js/autoNumeric-1.7.5.js"></script>
 		<!-- end: JavaScript-->
 	
 </body>

@@ -2,11 +2,19 @@
 
 class Admin_model extends CI_Model {
 
+	function __construct()
+	{
+		parent::__construct();
+		$this->locale 		= $this->session->userdata('locale');
+		$this->restApiUrl 	= $this->config->item('rest_api_url');
+		$this->apiAuthKey 	= $this->config->item('api_auth_key');
+	}
+
 	
 	// validate user credentials
 	function validate($data)
 	{
-		$url = $this->config->item('rest_api_url') . 'users/login/'.$data['locale'].'/98740/';
+		$url = $this->restApiUrl. 'users/login/'.$data['locale'].'/'.$this->apiAuthKey.'/';
 		// echo $url; exit;
 		return json_decode($this->call_rest_post($url,$data));
 	}
@@ -17,7 +25,7 @@ class Admin_model extends CI_Model {
 		$userid = $this->session->userdata('userid');
 		$logid  = $this->session->userdata('logid');
 		$locale = $this->session->userdata('locale');
-		$url = $this->config->item('rest_api_url') . 'users/logout/'.$locale.'/98740/'  . $userid . '/' . $logid;
+		$url = $this->restApiUrl. 'users/logout/'.$locale.'/'.$this->apiAuthKey.'/'  . $userid . '/' . $logid;
 		echo $url;
 		return json_decode($this->call_rest($url,''));
 	}
@@ -25,7 +33,7 @@ class Admin_model extends CI_Model {
 	//countryList
 	function countryList()
 	{
-		$url = $this->config->item('rest_api_url') . 'country/ph/98740/';
+		$url = $this->restApiUrl. 'country/ph/'.$this->apiAuthKey.'/';
 		return json_decode($this->call_rest($url,''));
 	}
 	

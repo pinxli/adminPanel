@@ -155,6 +155,7 @@
 	<script src="{$baseUrl}assets/js/jquery.knob.js"></script>
 	<script src="{$baseUrl}assets/js/jquery.sparkline.min.js"></script>
 	<script src="{$baseUrl}assets/js/custom.js"></script>
+	<script src="{$baseUrl}assets/js/autoNumeric-1.7.5.js"></script>
 		<!-- end: JavaScript-->
 	
 </body>

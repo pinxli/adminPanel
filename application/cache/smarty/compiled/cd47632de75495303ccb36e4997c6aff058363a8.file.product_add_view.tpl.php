@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-11-05 08:48:11
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-06 09:59:45
          compiled from "application\modules\verticals\views\product_add_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2606252674ad104ab83-51593417%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cd47632de75495303ccb36e4997c6aff058363a8' => 
     array (
       0 => 'application\\modules\\verticals\\views\\product_add_view.tpl',
-      1 => 1383638013,
+      1 => 1383648236,
       2 => 'file',
     ),
   ),
@@ -41,7 +41,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="home.html">Home</a> <span class="divider">/</span>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
 						<a href="#">Verticals</a> <span class="divider">/</span>

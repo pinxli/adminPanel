@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-11-04 08:00:41
+<?php /* Smarty version Smarty-3.1.7, created on 2013-11-06 10:01:20
          compiled from "application\modules\verticals\views\product_edit_view.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:135495269e7179a15f5-99774838%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2ae81698d981dbe25febbe10bf45cb6c05d31a6a' => 
     array (
       0 => 'application\\modules\\verticals\\views\\product_edit_view.tpl',
-      1 => 1383210912,
+      1 => 1383648146,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5269e7179e7b0',
   'variables' => 
   array (
+    'baseUrl' => 0,
     'form_open' => 0,
     'countryList' => 0,
     'companyList' => 0,
@@ -40,7 +41,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<hr>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['baseUrl']->value;?>
+dashboard/members_area">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
 						<a href="#">Verticals</a> <span class="divider">/</span>
