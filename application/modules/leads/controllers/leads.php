@@ -99,11 +99,23 @@ class Leads extends CI_Controller {
 	{
 		$type = $this->uri->segment(3);
 		$res = $this->leads_model->$type();
-
+		
 		if ( $res->rc == 0 ){
 			$data_arr = $res->data->$type;
 			
 			$export = $this->export->to_excel($data_arr,$type. date('Ymdhmi'));
+		}
+		else{
+				
+			//set flash data for error/info message
+			$msginfo_arr = array(
+				'msgClass' => 'alert alert-error',
+				'msgInfo'  => ( $res->message ) ? $res->message[0] : 'Export to Excel failed.',
+			);
+
+			$this->session->set_flashdata($msginfo_arr);
+			
+			redirect('leads/'.$type);
 		}
 		
 	}

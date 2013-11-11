@@ -302,6 +302,18 @@ class Settings extends CI_Controller {
 			
 			$export = $this->export->to_excel($data_arr,$type. date('Ymdhmi'));
 		}
+		else{
+				
+			//set flash data for error/info message
+			$msginfo_arr = array(
+				'msgClass' => 'alert alert-error',
+				'msgInfo'  => ( $res->message ) ? $res->message[0] : 'Export to Excel failed.',
+			);
+
+			$this->session->set_flashdata($msginfo_arr);
+			
+			redirect('settings/'.$type);
+		}
 		
 	}
 	
